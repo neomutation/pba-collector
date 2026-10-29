@@ -1,0 +1,50 @@
+# 휴대폰용 사이트: 30분마다 새 경기 결과를 모아 GitHub Pages 에 다시 올린다
+#  (GitHub 예약 실행은 몇 분씩 늦어질 수 있음. Actions 탭에서 'Run workflow' 를 누르면 바로 한 번 실행)
+name: 업데이트 · 배포
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pba-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    env:
+      TZ: Asia/Seoul
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: 루비 라이브러리
+        run: gem install --no-document nokogiri -v '~> 1.15.0' && gem install --no-document sqlite3 -v '~> 1.6.0' && gem install --no-document webrick
+      - name: 새 경기 결과 모으기
+        run: bash ci_update.sh
+      - name: 모은 원본 자료 저장 (다음 실행이 이어서 쓰도록)
+        run: |
+          git config user.name "pba-bot"
+          git config user.email "pba-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || { git commit -q -m "자료 업데이트 $(date '+%Y-%m-%d %H:%M')" && git push -q; }
+      - name: 휴대폰용 사이트 만들기
+        run: |
+          PORT=4567 ruby -Eutf-8 server.rb > /tmp/server.log 2>&1 &
+          for i in $(seq 1 60); do curl -s -o /dev/null localhost:4567/api/meta && break; sleep 1; done
+          ruby -Eutf-8 static_export.rb
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,2926 @@
+{
+  "2020": [
+    {
+      "lct": 8,
+      "name": "웰컴저축은행 웰뱅 피닉스",
+      "players": [
+        {
+          "name": "프레드릭 쿠드롱",
+          "mem": "M0017122",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017122_2020.png",
+          "captain": true
+        },
+        {
+          "name": "한지승",
+          "mem": "M0016927",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016927_2020.png",
+          "captain": false
+        },
+        {
+          "name": "비롤 우이마즈",
+          "mem": "M0017148",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017148_2020.png",
+          "captain": false
+        },
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2020.png",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2020.png",
+          "captain": false
+        },
+        {
+          "name": "차유람",
+          "mem": "M0017268",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017268_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "프레드릭 쿠드롱"
+    },
+    {
+      "lct": 9,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2020.png",
+          "captain": true
+        },
+        {
+          "name": "이영훈1",
+          "mem": "M0016834",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016834_2020.png",
+          "captain": false
+        },
+        {
+          "name": "선지훈",
+          "mem": "M0017081",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017081_2020.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2020.png",
+          "captain": false
+        },
+        {
+          "name": "박인수",
+          "mem": "M0017145",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017145_2020.png",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2020.png",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 10,
+      "name": "TS·JDX 히어로즈",
+      "players": [
+        {
+          "name": "정경섭",
+          "mem": "M0016644",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016644_2020.png",
+          "captain": true
+        },
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2020.png",
+          "captain": false
+        },
+        {
+          "name": "김남수",
+          "mem": "M0017098",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017098_2020.png",
+          "captain": false
+        },
+        {
+          "name": "필리포스 카시도코스타스",
+          "mem": "M0017142",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017142_2020.png",
+          "captain": false
+        },
+        {
+          "name": "로빈슨 모랄레스",
+          "mem": "M0017153",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017153_2020.png",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "정경섭"
+    },
+    {
+      "lct": 11,
+      "name": "블루원 엔젤스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2020.png",
+          "captain": true
+        },
+        {
+          "name": "최원준1",
+          "mem": "M0016904",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016904_2020.png",
+          "captain": false
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2020.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2020.png",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2020.png",
+          "captain": false
+        },
+        {
+          "name": "김갑선",
+          "mem": "M0017177",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017177_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 12,
+      "name": "SK렌터카 위너스",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2020.png",
+          "captain": true
+        },
+        {
+          "name": "김형곤1",
+          "mem": "M0017132",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017132_2020.png",
+          "captain": false
+        },
+        {
+          "name": "고상운",
+          "mem": "M0017149",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017149_2020.png",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2020.png",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2020.png",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    },
+    {
+      "lct": 7,
+      "name": "신한 알파스",
+      "players": [
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2020.png",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2020.png",
+          "captain": false
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2020.png",
+          "captain": false
+        },
+        {
+          "name": "오성욱",
+          "mem": "M0017158",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017158_2020.png",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2020.png",
+          "captain": false
+        }
+      ],
+      "leader": "김가영"
+    }
+  ],
+  "2021": [
+    {
+      "lct": 58,
+      "name": "웰컴저축은행 웰뱅피닉스",
+      "players": [
+        {
+          "name": "프레드릭 쿠드롱",
+          "mem": "M0017122",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017122_2021.png",
+          "captain": true
+        },
+        {
+          "name": "한지승",
+          "mem": "M0016927",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016927_2021.png",
+          "captain": false
+        },
+        {
+          "name": "비롤 우이마즈",
+          "mem": "M0017148",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017148_2021.png",
+          "captain": false
+        },
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2021.png",
+          "captain": false
+        },
+        {
+          "name": "차유람",
+          "mem": "M0017268",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017268_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "프레드릭 쿠드롱"
+    },
+    {
+      "lct": 61,
+      "name": "NH농협카드 그린포스",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2021.png",
+          "captain": true
+        },
+        {
+          "name": "오태준",
+          "mem": "M0016947",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016947_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김현우1",
+          "mem": "M0017136",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017136_2021.png",
+          "captain": false
+        },
+        {
+          "name": "전애린",
+          "mem": "M0017179",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017179_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2021.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌프엉린",
+          "mem": "M0017782",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017782_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 59,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2021.png",
+          "captain": true
+        },
+        {
+          "name": "이영훈1",
+          "mem": "M0016834",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016834_2021.png",
+          "captain": false
+        },
+        {
+          "name": "선지훈",
+          "mem": "M0017081",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017081_2021.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2021.png",
+          "captain": false
+        },
+        {
+          "name": "박인수",
+          "mem": "M0017145",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017145_2021.png",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2021.png",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 62,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "김기혁",
+          "mem": "M0017095",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017095_2021.png",
+          "captain": true
+        },
+        {
+          "name": "글렌 호프만",
+          "mem": "M0017133",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017133_2021.png",
+          "captain": false
+        },
+        {
+          "name": "하비에르 팔라손",
+          "mem": "M0017150",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017150_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2021.png",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김봉철",
+          "mem": "M0017293",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017293_2021.png",
+          "captain": false
+        },
+        {
+          "name": "오슬지",
+          "mem": "M0017326",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017326_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "김기혁"
+    },
+    {
+      "lct": 60,
+      "name": "TS샴푸 히어로즈",
+      "players": [
+        {
+          "name": "김종원",
+          "mem": "M0016791",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016791_2021.png",
+          "captain": true
+        },
+        {
+          "name": "문성원",
+          "mem": "M0016810",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016810_2021.png",
+          "captain": false
+        },
+        {
+          "name": "한동우",
+          "mem": "M0017096",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017096_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김남수",
+          "mem": "M0017098",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017098_2021.png",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2021.png",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2021.png",
+          "captain": false
+        },
+        {
+          "name": "정보라",
+          "mem": "M0020021",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020021_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "김종원"
+    },
+    {
+      "lct": 55,
+      "name": "신한 알파스",
+      "players": [
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2021.png",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2021.png",
+          "captain": false
+        },
+        {
+          "name": "오성욱",
+          "mem": "M0017158",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017158_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2021.png",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2021.png",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "조건휘"
+    },
+    {
+      "lct": 56,
+      "name": "블루원 엔젤스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2021.png",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2021.png",
+          "captain": false
+        },
+        {
+          "name": "홍진표",
+          "mem": "M0017124",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017124_2021.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2021.png",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2021.png",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 57,
+      "name": "SK렌터카 위너스",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2021.png",
+          "captain": true
+        },
+        {
+          "name": "홍종명",
+          "mem": "M0017051",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017051_2021.png",
+          "captain": false
+        },
+        {
+          "name": "박한기",
+          "mem": "M0017090",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017090_2021.png",
+          "captain": false
+        },
+        {
+          "name": "고상운",
+          "mem": "M0017149",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017149_2021.png",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2021.png",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2021.png",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2021.png",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    }
+  ],
+  "2022": [
+    {
+      "lct": 65,
+      "name": "웰컴저축은행 웰뱅피닉스",
+      "players": [
+        {
+          "name": "프레드릭 쿠드롱",
+          "mem": "M0017122",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017122_2022.png",
+          "captain": true
+        },
+        {
+          "name": "한지승",
+          "mem": "M0016927",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016927_2022.png",
+          "captain": false
+        },
+        {
+          "name": "비롤 우이마즈",
+          "mem": "M0017148",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017148_2022.png",
+          "captain": false
+        },
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2022.png",
+          "captain": false
+        },
+        {
+          "name": "오수정",
+          "mem": "M0017163",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017163_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "프레드릭 쿠드롱"
+    },
+    {
+      "lct": 68,
+      "name": "NH농협카드 그린포스",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2022.png",
+          "captain": true
+        },
+        {
+          "name": "김현우1",
+          "mem": "M0017136",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017136_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2022.png",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2022.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌프엉린",
+          "mem": "M0017782",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017782_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 66,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2022.png",
+          "captain": true
+        },
+        {
+          "name": "박한기",
+          "mem": "M0017090",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017090_2022.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2022.png",
+          "captain": false
+        },
+        {
+          "name": "박인수",
+          "mem": "M0017145",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017145_2022.png",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2022.png",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 70,
+      "name": "하나카드 원큐페이",
+      "players": [
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2022.png",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2022.png",
+          "captain": false
+        },
+        {
+          "name": "필리포스 카시도코스타스",
+          "mem": "M0017142",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017142_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2022.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌꾸옥응우옌",
+          "mem": "M0022042",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022042_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김진아",
+          "mem": "M0022049",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022049_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "김병호"
+    },
+    {
+      "lct": 69,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2022.png",
+          "captain": true
+        },
+        {
+          "name": "고상운",
+          "mem": "M0017149",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017149_2022.png",
+          "captain": false
+        },
+        {
+          "name": "하비에르 팔라손",
+          "mem": "M0017150",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017150_2022.png",
+          "captain": false
+        },
+        {
+          "name": "오성욱",
+          "mem": "M0017158",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017158_2022.png",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김봉철",
+          "mem": "M0017293",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017293_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "김세연"
+    },
+    {
+      "lct": 67,
+      "name": "TS샴푸·푸라닭 히어로즈",
+      "players": [
+        {
+          "name": "김종원",
+          "mem": "M0016791",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016791_2022.png",
+          "captain": true
+        },
+        {
+          "name": "김임권",
+          "mem": "M0016789",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016789_2022.png",
+          "captain": false
+        },
+        {
+          "name": "임성균",
+          "mem": "M0017002",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017002_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김남수",
+          "mem": "M0017098",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017098_2022.png",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2022.png",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "김종원"
+    },
+    {
+      "lct": 63,
+      "name": "블루원 엔젤스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2022.png",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2022.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2022.png",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2022.png",
+          "captain": false
+        },
+        {
+          "name": "김민영",
+          "mem": "M0017176",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017176_2022.png",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2022.png",
+          "captain": false
+        },
+        {
+          "name": "잔 차파크",
+          "mem": "M0022043",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022043_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 64,
+      "name": "SK렌터카 다이렉트",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2022.png",
+          "captain": true
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2022.png",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2022.png",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2022.png",
+          "captain": false
+        },
+        {
+          "name": "이우경",
+          "mem": "M0017738",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017738_2022.png",
+          "captain": false
+        },
+        {
+          "name": "응오딘나이",
+          "mem": "M0017783",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017783_2022.png",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2022.png",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    }
+  ],
+  "2023": [
+    {
+      "lct": 73,
+      "name": "웰컴저축은행 웰뱅피닉스",
+      "players": [
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2023.png",
+          "captain": true
+        },
+        {
+          "name": "김임권",
+          "mem": "M0016789",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016789_2023.png",
+          "captain": false
+        },
+        {
+          "name": "이상대",
+          "mem": "M0017129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017129_2023.png",
+          "captain": false
+        },
+        {
+          "name": "비롤 우이마즈",
+          "mem": "M0017148",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017148_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2023.png",
+          "captain": false
+        },
+        {
+          "name": "히가시우치 나쓰미",
+          "mem": "M0017208",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017208_2023.png",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "서현민"
+    },
+    {
+      "lct": 78,
+      "name": "에스와이 바자르",
+      "players": [
+        {
+          "name": "황득희",
+          "mem": "M0017116",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017116_2023.png",
+          "captain": true
+        },
+        {
+          "name": "이영훈1",
+          "mem": "M0016834",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016834_2023.png",
+          "captain": false
+        },
+        {
+          "name": "박인수",
+          "mem": "M0017145",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017145_2023.png",
+          "captain": false
+        },
+        {
+          "name": "즈엉아인부",
+          "mem": "M0017159",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017159_2023.png",
+          "captain": false
+        },
+        {
+          "name": "한슬기",
+          "mem": "M0017274",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017274_2023.png",
+          "captain": false
+        },
+        {
+          "name": "이우경",
+          "mem": "M0017738",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017738_2023.png",
+          "captain": false
+        },
+        {
+          "name": "다니엘 산체스",
+          "mem": "M0022424",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022424_2023.png",
+          "captain": false
+        },
+        {
+          "name": "한지은",
+          "mem": "M0022432",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022432_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "황득희"
+    },
+    {
+      "lct": 75,
+      "name": "NH농협카드 그린포스",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2023.png",
+          "captain": true
+        },
+        {
+          "name": "김현우1",
+          "mem": "M0017136",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017136_2023.png",
+          "captain": false
+        },
+        {
+          "name": "오성욱",
+          "mem": "M0017158",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017158_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2023.png",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2023.png",
+          "captain": false
+        },
+        {
+          "name": "안토니오 몬테스",
+          "mem": "M0022044",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022044_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 74,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2023.png",
+          "captain": true
+        },
+        {
+          "name": "오태준",
+          "mem": "M0016947",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016947_2023.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2023.png",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2023.png",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김태관",
+          "mem": "M0020080",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020080_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 77,
+      "name": "하나카드 하나페이",
+      "players": [
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2023.png",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2023.png",
+          "captain": false
+        },
+        {
+          "name": "사카이 아야코",
+          "mem": "M0017279",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017279_2023.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌꾸옥응우옌",
+          "mem": "M0022042",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022042_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김진아",
+          "mem": "M0022049",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022049_2023.png",
+          "captain": false
+        },
+        {
+          "name": "무라트 나지 초클루",
+          "mem": "M0022426",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022426_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "김병호"
+    },
+    {
+      "lct": 79,
+      "name": "하이원 위너스",
+      "players": [
+        {
+          "name": "이충복",
+          "mem": "M0022429",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022429_2023.png",
+          "captain": true
+        },
+        {
+          "name": "임성균",
+          "mem": "M0017002",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017002_2023.png",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2023.png",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2023.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌프엉린",
+          "mem": "M0017782",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017782_2023.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌득아인찌엔",
+          "mem": "M0022423",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022423_2023.png",
+          "captain": false
+        },
+        {
+          "name": "륏피 체네트",
+          "mem": "M0022425",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022425_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "이충복"
+    },
+    {
+      "lct": 76,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "최성원",
+          "mem": "M0022430",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022430_2023.png",
+          "captain": true
+        },
+        {
+          "name": "하비에르 팔라손",
+          "mem": "M0017150",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017150_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2023.png",
+          "captain": false
+        },
+        {
+          "name": "전애린",
+          "mem": "M0017179",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017179_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김봉철",
+          "mem": "M0017293",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017293_2023.png",
+          "captain": false
+        },
+        {
+          "name": "세미 사이그너",
+          "mem": "M0022428",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022428_2023.png",
+          "captain": false
+        },
+        {
+          "name": "장가연",
+          "mem": "M0022434",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022434_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "최성원"
+    },
+    {
+      "lct": 71,
+      "name": "블루원 엔젤스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2023.png",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2023.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2023.png",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2023.png",
+          "captain": false
+        },
+        {
+          "name": "김민영",
+          "mem": "M0017176",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017176_2023.png",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2023.png",
+          "captain": false
+        },
+        {
+          "name": "잔 차파크",
+          "mem": "M0022043",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022043_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 72,
+      "name": "SK렌터카 다이렉트",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2023.png",
+          "captain": true
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2023.png",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2023.png",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2023.png",
+          "captain": false
+        },
+        {
+          "name": "응오딘나이",
+          "mem": "M0017783",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017783_2023.png",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2023.png",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    }
+  ],
+  "2024": [
+    {
+      "lct": 81,
+      "name": "웰컴저축은행 웰컴피닉스",
+      "players": [
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2024.png",
+          "captain": true
+        },
+        {
+          "name": "김임권",
+          "mem": "M0016789",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016789_2024.png",
+          "captain": false
+        },
+        {
+          "name": "필리포스 카시도코스타스",
+          "mem": "M0017142",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017142_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2024.png",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2024.png",
+          "captain": false
+        },
+        {
+          "name": "세미 사이그너",
+          "mem": "M0022428",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022428_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김도경",
+          "mem": "M0024005",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024005_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "서현민"
+    },
+    {
+      "lct": 86,
+      "name": "에스와이 빌더스",
+      "players": [
+        {
+          "name": "황득희",
+          "mem": "M0017116",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017116_2024.png",
+          "captain": true
+        },
+        {
+          "name": "박인수",
+          "mem": "M0017145",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017145_2024.png",
+          "captain": false
+        },
+        {
+          "name": "모리 유스케",
+          "mem": "M0020018",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020018_2024.png",
+          "captain": false
+        },
+        {
+          "name": "권발해",
+          "mem": "M0022034",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022034_2024.png",
+          "captain": false
+        },
+        {
+          "name": "다니엘 산체스",
+          "mem": "M0022424",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022424_2024.png",
+          "captain": false
+        },
+        {
+          "name": "한지은",
+          "mem": "M0022432",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022432_2024.png",
+          "captain": false
+        },
+        {
+          "name": "장가연",
+          "mem": "M0022434",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022434_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "황득희"
+    },
+    {
+      "lct": 83,
+      "name": "NH 농협카드 그린포스",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2024.png",
+          "captain": true
+        },
+        {
+          "name": "김현우1",
+          "mem": "M0017136",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017136_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2024.png",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2024.png",
+          "captain": false
+        },
+        {
+          "name": "정수빈",
+          "mem": "M0022011",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022011_2024.png",
+          "captain": false
+        },
+        {
+          "name": "안토니오 몬테스",
+          "mem": "M0022044",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022044_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 88,
+      "name": "우리금융캐피탈 우리WON위비스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2024.png",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2024.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2024.png",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김민영",
+          "mem": "M0017176",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017176_2024.png",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2024.png",
+          "captain": false
+        },
+        {
+          "name": "잔 차파크",
+          "mem": "M0022043",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022043_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 82,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2024.png",
+          "captain": true
+        },
+        {
+          "name": "오태준",
+          "mem": "M0016947",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016947_2024.png",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2024.png",
+          "captain": false
+        },
+        {
+          "name": "황형범",
+          "mem": "M0017131",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017131_2024.png",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2024.png",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2024.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌득아인찌엔",
+          "mem": "M0022423",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022423_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 85,
+      "name": "하나카드 하나페이",
+      "players": [
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2024.png",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2024.png",
+          "captain": false
+        },
+        {
+          "name": "사카이 아야코",
+          "mem": "M0017279",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017279_2024.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌꾸옥응우옌",
+          "mem": "M0022042",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022042_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김진아",
+          "mem": "M0022049",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022049_2024.png",
+          "captain": false
+        },
+        {
+          "name": "무라트 나지 초클루",
+          "mem": "M0022426",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022426_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "김병호"
+    },
+    {
+      "lct": 87,
+      "name": "하이원 위너스",
+      "players": [
+        {
+          "name": "이충복",
+          "mem": "M0022429",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022429_2024.png",
+          "captain": true
+        },
+        {
+          "name": "임성균",
+          "mem": "M0017002",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017002_2024.png",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2024.png",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2024.png",
+          "captain": false
+        },
+        {
+          "name": "전지우",
+          "mem": "M0022048",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022048_2024.png",
+          "captain": false
+        },
+        {
+          "name": "륏피 체네트",
+          "mem": "M0022425",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022425_2024.png",
+          "captain": false
+        },
+        {
+          "name": "부라크 하샤시",
+          "mem": "M0024006",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024006_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "이충복"
+    },
+    {
+      "lct": 84,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "최성원",
+          "mem": "M0022430",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022430_2024.png",
+          "captain": true
+        },
+        {
+          "name": "이상대",
+          "mem": "M0017129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017129_2024.png",
+          "captain": false
+        },
+        {
+          "name": "하비에르 팔라손",
+          "mem": "M0017150",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017150_2024.png",
+          "captain": false
+        },
+        {
+          "name": "로빈슨 모랄레스",
+          "mem": "M0017153",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017153_2024.png",
+          "captain": false
+        },
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2024.png",
+          "captain": false
+        },
+        {
+          "name": "차유람",
+          "mem": "M0017268",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017268_2024.png",
+          "captain": false
+        },
+        {
+          "name": "이신영",
+          "mem": "M0023172",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0023172_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "최성원"
+    },
+    {
+      "lct": 80,
+      "name": "SK 렌터카 다이렉트",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2024.png",
+          "captain": true
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2024.png",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2024.png",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2024.png",
+          "captain": false
+        },
+        {
+          "name": "응오딘나이",
+          "mem": "M0017783",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017783_2024.png",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2024.png",
+          "captain": false
+        },
+        {
+          "name": "조예은",
+          "mem": "M0020072",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020072_2024.png",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    }
+  ],
+  "2025": [
+    {
+      "lct": 121,
+      "name": "웰컴저축은행 웰컴피닉스",
+      "players": [
+        {
+          "name": "다니엘 산체스",
+          "mem": "M0022424",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022424_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "김종원",
+          "mem": "M0016791",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016791_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "한지승",
+          "mem": "M0016927",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016927_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "세미 사이그너",
+          "mem": "M0022428",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022428_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "다니엘 산체스"
+    },
+    {
+      "lct": 128,
+      "name": "에스와이 빌더스",
+      "players": [
+        {
+          "name": "황득희",
+          "mem": "M0017116",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017116_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "최원준1",
+          "mem": "M0016904",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016904_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "모리 유스케",
+          "mem": "M0020018",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020018_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "권발해",
+          "mem": "M0022034",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022034_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "이우경",
+          "mem": "M0017738",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017738_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "한지은",
+          "mem": "M0022432",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022432_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "응우옌호앙옌니",
+          "mem": "M0024051",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024051_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "황득희"
+    },
+    {
+      "lct": 124,
+      "name": "NH농협카드 NH pay",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "김현우1",
+          "mem": "M0017136",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017136_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "안토니오 몬테스",
+          "mem": "M0022044",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022044_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "이반 마요르",
+          "mem": "M0022040",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022040_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "정수빈",
+          "mem": "M0022011",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022011_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "황민지",
+          "mem": "M0020077",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020077_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 130,
+      "name": "우리금융캐피탈 우리WON위비스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "선지훈",
+          "mem": "M0017081",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017081_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김민영",
+          "mem": "M0017176",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017176_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 122,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "노병찬",
+          "mem": "M0017295",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017295_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "오태준",
+          "mem": "M0016947",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016947_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "히가시우치 나쓰미",
+          "mem": "M0017208",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017208_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 127,
+      "name": "하나카드 하나페이",
+      "players": [
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "무라트 나지 초클루",
+          "mem": "M0022426",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022426_2026.png",
+          "captain": false
+        },
+        {
+          "name": "응우옌꾸옥응우옌",
+          "mem": "M0022042",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022042_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김진아",
+          "mem": "M0022049",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022049_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "사카이 아야코",
+          "mem": "M0017279",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017279_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "김병호"
+    },
+    {
+      "lct": 129,
+      "name": "하림 드래곤즈",
+      "players": [
+        {
+          "name": "김준태",
+          "mem": "M0024069",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024069_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "김영원",
+          "mem": "M0021129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0021129_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "응우옌프엉린",
+          "mem": "M0017782",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017782_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "쩐득민",
+          "mem": "M0020019",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020019_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김상아",
+          "mem": "M0017215",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017215_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "박정현",
+          "mem": "M0024073",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024073_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "정보윤",
+          "mem": "M0022046",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022046_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "김준태"
+    },
+    {
+      "lct": 126,
+      "name": "하이원리조트 하이원 위너스",
+      "players": [
+        {
+          "name": "이충복",
+          "mem": "M0022429",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022429_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "임성균",
+          "mem": "M0017002",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017002_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "륏피 체네트",
+          "mem": "M0022425",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022425_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "부라크 하샤시",
+          "mem": "M0024006",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024006_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김다희",
+          "mem": "M0022016",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022016_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "임경진",
+          "mem": "M0017319",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017319_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "전지우",
+          "mem": "M0022048",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022048_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "이충복"
+    },
+    {
+      "lct": 125,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "최성원",
+          "mem": "M0022430",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022430_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "이상대",
+          "mem": "M0017129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017129_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "로빈슨 모랄레스",
+          "mem": "M0017153",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017153_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "하비에르 팔라손",
+          "mem": "M0017150",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017150_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "이신영",
+          "mem": "M0023172",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0023172_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "차유람",
+          "mem": "M0017268",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017268_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "최지민",
+          "mem": "M0017172",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017172_20252.png",
+          "captain": false
+        }
+      ],
+      "leader": "최성원"
+    },
+    {
+      "lct": 123,
+      "name": "SK렌터카 다이렉트",
+      "players": [
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2025.jpg",
+          "captain": true
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "응오딘나이",
+          "mem": "M0017783",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017783_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "조예은",
+          "mem": "M0020072",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020072_2025.jpg",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2025.jpg",
+          "captain": false
+        }
+      ],
+      "leader": "강동궁"
+    }
+  ],
+  "2026": [
+    {
+      "lct": 159,
+      "name": "웰컴저축은행 웰컴피닉스",
+      "players": [
+        {
+          "name": "다니엘 산체스",
+          "mem": "M0022424",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022424_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "김종원",
+          "mem": "M0016791",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016791_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "조건휘",
+          "mem": "M0017111",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017111_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "세미 사이그너",
+          "mem": "M0022428",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022428_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": "M0017780",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "최봄이",
+          "mem": "M0025068",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0025068_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": "M0017210",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "응우옌쩐타인타오",
+          "mem": "M0025074",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0025074_2026.png",
+          "captain": false
+        },
+        {
+          "name": "강유진",
+          "mem": "M0017198",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017198_2026.png",
+          "captain": false
+        }
+      ],
+      "leader": "다니엘 산체스"
+    },
+    {
+      "lct": 165,
+      "name": "에스와이 빌더스",
+      "players": [
+        {
+          "name": "서현민",
+          "mem": "M0017152",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017152_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "최원준1",
+          "mem": "M0016904",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016904_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "모리 유스케",
+          "mem": "M0020018",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020018_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "부라크 하샤시",
+          "mem": "M0024006",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024006_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "권발해",
+          "mem": "M0022034",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022034_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "이우경",
+          "mem": "M0017738",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017738_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "한지은",
+          "mem": "M0022432",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022432_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "서현민"
+    },
+    {
+      "lct": 161,
+      "name": "NH농협카드 NH pay",
+      "players": [
+        {
+          "name": "조재호",
+          "mem": "M0017784",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017784_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "오태준",
+          "mem": "M0016947",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016947_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "다오반리",
+          "mem": "M0025073",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0025073_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "마민껌",
+          "mem": "M0017287",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017287_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김민아",
+          "mem": "M0017737",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017737_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김보미",
+          "mem": "M0017162",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017162_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "정수빈",
+          "mem": "M0022011",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022011_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "조재호"
+    },
+    {
+      "lct": 166,
+      "name": "우리금융캐피탈 우리WON위비스",
+      "players": [
+        {
+          "name": "엄상필",
+          "mem": "M0017107",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017107_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "강민구",
+          "mem": "M0017118",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017118_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "이상대",
+          "mem": "M0017129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017129_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "다비드 사파타",
+          "mem": "M0017147",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017147_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김민영",
+          "mem": "M0017176",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017176_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김지연3",
+          "mem": "M0022406",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022406_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "장가연",
+          "mem": "M0022434",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022434_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "스롱 피아비",
+          "mem": "M0020007",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020007_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "엄상필"
+    },
+    {
+      "lct": 160,
+      "name": "크라운해태 라온",
+      "players": [
+        {
+          "name": "김재근",
+          "mem": "M0017146",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017146_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "김임권",
+          "mem": "M0016789",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016789_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "노병찬",
+          "mem": "M0017295",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017295_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "다비드 마르티네스",
+          "mem": "M0017113",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017113_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "백민주",
+          "mem": "M0017224",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017224_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "임정숙",
+          "mem": "M0017175",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017175_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "히가시우치 나쓰미",
+          "mem": "M0017208",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017208_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "김재근"
+    },
+    {
+      "lct": 164,
+      "name": "하나카드 하나페이",
+      "players": [
+        {
+          "name": "김병호",
+          "mem": "M0016801",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016801_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "신정주",
+          "mem": "M0016795",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016795_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "한지승",
+          "mem": "M0016927",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0016927_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "무라트 나지 초클루",
+          "mem": "M0022426",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022426_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "응우옌꾸옥응우옌",
+          "mem": "M0022042",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022042_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김가영",
+          "mem": "M0017225",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017225_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김진아",
+          "mem": "M0022049",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022049_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "한슬기",
+          "mem": "M0017274",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017274_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "김병호"
+    },
+    {
+      "lct": 167,
+      "name": "하림 용가리즈",
+      "players": [
+        {
+          "name": "김준태",
+          "mem": "M0024069",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024069_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "김영원",
+          "mem": "M0021129",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0021129_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "임완섭",
+          "mem": "M0022311",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022311_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "응우옌프엉린",
+          "mem": "M0017782",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017782_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "쩐득민",
+          "mem": "M0020019",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020019_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김상아",
+          "mem": "M0017215",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017215_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "박정현",
+          "mem": "M0024073",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0024073_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "정보윤",
+          "mem": "M0022046",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022046_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "김준태"
+    },
+    {
+      "lct": 163,
+      "name": "하이원리조트 하이원 위너스",
+      "players": [
+        {
+          "name": "이충복",
+          "mem": "M0022429",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022429_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "임성균",
+          "mem": "M0017002",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017002_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "륏피 체네트",
+          "mem": "M0022425",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022425_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "에디 레펀스",
+          "mem": "M0017156",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017156_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "강지은",
+          "mem": "M0017165",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017165_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "이미래",
+          "mem": "M0017161",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017161_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "전지우",
+          "mem": "M0022048",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022048_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "이충복"
+    },
+    {
+      "lct": 162,
+      "name": "휴온스 헬스케어 레전드",
+      "players": [
+        {
+          "name": "최성원",
+          "mem": "M0022430",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022430_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "강동궁",
+          "mem": "M0017160",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017160_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "로빈슨 모랄레스",
+          "mem": "M0017153",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017153_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "응오딘나이",
+          "mem": "M0017783",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017783_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김세연",
+          "mem": "M0017166",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017166_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김예은",
+          "mem": "M0017164",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017164_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "서한솔",
+          "mem": "M0017170",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017170_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "최지민",
+          "mem": "M0017172",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017172_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "최성원"
+    },
+    {
+      "lct": 168,
+      "name": "브레이커스",
+      "players": [
+        {
+          "name": "이승진",
+          "mem": "M0017143",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017143_2026.png?v=20260921",
+          "captain": true
+        },
+        {
+          "name": "오성욱",
+          "mem": "M0017158",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017158_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "이상용",
+          "mem": "M0017102",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017102_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "안토니오 몬테스",
+          "mem": "M0022044",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022044_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "김다희",
+          "mem": "M0022016",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0022016_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "임경진",
+          "mem": "M0017319",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0017319_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "황민지",
+          "mem": "M0020077",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020077_2026.png?v=20260921",
+          "captain": false
+        },
+        {
+          "name": "히다 오리에",
+          "mem": "M0020020",
+          "photo": "https://teamfile.billiboard.co.kr/players/M0020020_2026.png?v=20260921",
+          "captain": false
+        }
+      ],
+      "leader": "이승진"
+    }
+  ]
+}

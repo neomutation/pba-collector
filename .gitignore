@@ -1,0 +1,10 @@
+# 휴대폰용 사이트 저장소에 올리지 않는 것: 맥에서만 쓰는 캐시 · 로그 · 만들어지는 결과물
+cache/
+cache_team/
+tmp/
+out/
+site/
+data/*.db
+data/*.log
+data/.update.lock
+.DS_Store

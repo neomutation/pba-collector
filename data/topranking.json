@@ -1,0 +1,572 @@
+[
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "3.125",
+    "PBA_DESCRIPTION": "준결승",
+    "RALLY_NAME": "국민의 행복쉼터 하이원리조트 PBA-LPBA 챔피언십 2026",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "응오딘나이",
+    "SEASON": "2026-2027",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "권발해",
+    "LPBA_DES2": "2.083",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "우리금융캐피탈 PBA-LPBA 챔피언십 2026",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "이태희",
+    "SEASON": "2026-2027",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "임정숙",
+    "LPBA_DES2": "2.778",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "우리금융캐피탈 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "황형범",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "2.500",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "하나카드 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "다비드 마르티네스",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "이지은",
+    "LPBA_DES2": "1.923",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "올바른 생활카드 NH농협카드 PBA-LPBA 채리티 챔피언십",
+    "LPBA_DESCRIPTION": "PQ",
+    "PBA_NAME": "최성원",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "SY 베리테옴므 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64",
+    "PBA_NAME": "응우옌꾸옥응우옌",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "2.048",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2025 한가위",
+    "LPBA_DESCRIPTION": "8강",
+    "PBA_NAME": "이상대",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "1.737",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "휴온스 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "김영원",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "히다 오리에",
+    "LPBA_DES2": "1.563",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "국민의 행복쉼터 하이원리조트 PBA-LPBA 챔피언십 2025",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "이충복",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "김보름",
+    "LPBA_DES2": "2.500",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "하림 PBA-LPBA 챔피언십 2025",
+    "LPBA_DESCRIPTION": "PPQ",
+    "PBA_NAME": "응우옌꾸옥응우옌",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "응우옌호앙옌니",
+    "LPBA_DES2": "3.571",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "웰컴저축은행 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "PQ",
+    "PBA_NAME": "하비에르 팔라손",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "차유람",
+    "LPBA_DES2": "3.000",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "하나카드 하나캐피탈 제주특별자치도 PBA-LPBA 월드챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "응우옌프엉린",
+    "SEASON": "2025-2026",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "임경진",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "우리금융캐피탈 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "다비드 마르티네스",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "4.091"
+  },
+  {
+    "LPBA_NAME": "이우경",
+    "LPBA_DES2": "2.083",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "웰컴저축은행 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "세미 사이그너",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "최연주",
+    "LPBA_DES2": "2.778",
+    "PBA_DESCRIPTION": "8강",
+    "RALLY_NAME": "하이원리조트 PBA-LPBA 챔피언십 2024",
+    "LPBA_DESCRIPTION": "PQ",
+    "PBA_NAME": "다비드 마르티네스",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "2.889"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "1.923",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "NH농협카드 PBA-LPBA 챔피언십 24-25",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "응우옌꾸옥응우옌",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "4.091"
+  },
+  {
+    "LPBA_NAME": "이유주",
+    "LPBA_DES2": "1.786",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "휴온스 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "엄상필",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "하야시 나미코",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2024 한가위",
+    "LPBA_DESCRIPTION": "PPQ",
+    "PBA_NAME": "무라트 나지 초클루",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "2.357",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "2024 에스와이 바자르 PBA-LPBA 하노이 오픈",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "김영섭",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "2.750"
+  },
+  {
+    "LPBA_NAME": "차유람",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "하나카드 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "PPQ",
+    "PBA_NAME": "최원준1",
+    "SEASON": "2024-2025",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "한지은",
+    "LPBA_DES2": "2.200",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "하이원리조트 PBA-LPBA 챔피언십 2023",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "정해명",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "2.778",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "경주 블루원리조트 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "하비에르 팔라손",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "권발해",
+    "LPBA_DES2": "1.786",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "실크로드&안산 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "128강",
+    "PBA_NAME": "하비에르 팔라손",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "용현지",
+    "LPBA_DES2": "1.389",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "하나카드 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "하비에르 팔라손",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "2.478"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "에스와이 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "이반 마요르",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "전어람",
+    "LPBA_DES2": "1.786",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "휴온스 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "다비드 사파타",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "5.625"
+  },
+  {
+    "LPBA_NAME": "용현지",
+    "LPBA_DES2": "1.923",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "NH농협카드 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "강동궁",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "김경자",
+    "LPBA_DES2": "1.833",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "웰컴저축은행 웰뱅 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "박기호",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "서한솔",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2024",
+    "LPBA_DESCRIPTION": "128강",
+    "PBA_NAME": "다비드 사파타",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "2.444",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "SK렌터카 제주특별자치도 PBA-LPBA 월드챔피언십 2024",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "에디 레펀스",
+    "SEASON": "2023-2024",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "히다 오리에",
+    "LPBA_DES2": "1.789",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "하이원리조트 PBA-LPBA 챔피언십 2022",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "하비에르 팔라손",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "1.571",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "SK렌터카 PBA-LPBA 월드 챔피언십 2023",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "프레드릭 쿠드롱",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "1.813",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2023",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "강동궁",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "2.647"
+  },
+  {
+    "LPBA_NAME": "김보미",
+    "LPBA_DES2": "2.200",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "웰컴저축은행 웰뱅 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "임태수",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "김예은",
+    "LPBA_DES2": "1.600",
+    "PBA_DESCRIPTION": "8강",
+    "RALLY_NAME": "NH농협카드 PBA-LPBA 챔피언십 22-23",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "프레드릭 쿠드롱",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "6.429"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "1.889",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "휴온스 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "다비드 마르티네스",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "3.400"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "1.600",
+    "PBA_DESCRIPTION": "16강",
+    "RALLY_NAME": "TS샴푸·푸라닭 PBA-LPBA 챔피언십 2022",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "다비드 마르티네스",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "박지현1",
+    "LPBA_DES2": "1.391",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "하나카드 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "오성욱",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "1.833",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "경주 블루원리조트 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "프레드릭 쿠드롱",
+    "SEASON": "2022-2023",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "최혜미",
+    "LPBA_DES2": "1.692",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "블루원리조트 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "마민껌",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "3.000"
+  },
+  {
+    "LPBA_NAME": "백민주",
+    "LPBA_DES2": "1.933",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "SK렌터카 PBA-LPBA 월드 챔피언십 2022",
+    "LPBA_DESCRIPTION": "32강",
+    "PBA_NAME": "마민껌",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "2.882"
+  },
+  {
+    "LPBA_NAME": "용현지",
+    "LPBA_DES2": "1.650",
+    "PBA_DESCRIPTION": "8강",
+    "RALLY_NAME": "웰컴저축은행 웰뱅 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "김임권",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "1.900",
+    "PBA_DESCRIPTION": "결승",
+    "RALLY_NAME": "NH농협카드 PBA-LPBA 챔피언십 21-22",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "프레드릭 쿠드롱",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "3.550"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "2.056",
+    "PBA_DESCRIPTION": "",
+    "RALLY_NAME": "에버콜라겐 LPBA 챔피언십@태백",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "",
+    "SEASON": "2021-2022",
+    "PBA_DES2": ""
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "1.692",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 21-22",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "마민껌",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "2.647"
+  },
+  {
+    "LPBA_NAME": "하윤정",
+    "LPBA_DES2": "1.250",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "휴온스 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "조재호",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "3.214"
+  },
+  {
+    "LPBA_NAME": "스롱 피아비",
+    "LPBA_DES2": "2.000",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "TS샴푸 PBA-LPBA 챔피언십 2021",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "김남수",
+    "SEASON": "2021-2022",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "1.571",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2021",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "강민구",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "3.462"
+  },
+  {
+    "LPBA_NAME": "김가영",
+    "LPBA_DES2": "1.375",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "웰컴저축은행 웰뱅 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "8강",
+    "PBA_NAME": "필리포스 카시도코스타스",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "2.667"
+  },
+  {
+    "LPBA_NAME": "전애린",
+    "LPBA_DES2": "1.571",
+    "PBA_DESCRIPTION": "32강",
+    "RALLY_NAME": "SK렌터카 PBA-LPBA 월드챔피언십 2021",
+    "LPBA_DESCRIPTION": "16강",
+    "PBA_NAME": "강동궁",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "2.636"
+  },
+  {
+    "LPBA_NAME": "김세연",
+    "LPBA_DES2": "2.000",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "PBA-LPBA TOUR 제3차전 NH농협카드 챔피언십",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "비롤 우이마즈",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "3.750"
+  },
+  {
+    "LPBA_NAME": "김세연",
+    "LPBA_DES2": "1.692",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "TS샴푸 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "8강",
+    "PBA_NAME": "김남수",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "2.786"
+  },
+  {
+    "LPBA_NAME": "오지연",
+    "LPBA_DES2": "1.542",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "PBA-LPBA TOUR 개막전 SK렌터카 챔피언십",
+    "LPBA_DESCRIPTION": "PQ",
+    "PBA_NAME": "김기혁",
+    "SEASON": "2020-2021",
+    "PBA_DES2": "2.842"
+  },
+  {
+    "LPBA_NAME": "이미래",
+    "LPBA_DES2": "1.692",
+    "PBA_DESCRIPTION": "8강",
+    "RALLY_NAME": "웰컴저축은행 웰뱅 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "4강",
+    "PBA_NAME": "프레드릭 쿠드롱",
+    "SEASON": "2019-2020",
+    "PBA_DES2": "2.647"
+  },
+  {
+    "LPBA_NAME": "박정현",
+    "LPBA_DES2": "1.947",
+    "PBA_DESCRIPTION": "64강",
+    "RALLY_NAME": "친환경 건축자재 에스와이 PBA-LPBA 챔피언십",
+    "LPBA_DESCRIPTION": "8강",
+    "PBA_NAME": "응우옌프엉린",
+    "SEASON": "2026-2027",
+    "PBA_DES2": "4.091"
+  },
+  {
+    "LPBA_NAME": "하윤정",
+    "LPBA_DES2": "2.500",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "크라운해태 PBA-LPBA 챔피언십 2026",
+    "LPBA_DESCRIPTION": "128강",
+    "PBA_NAME": "강의주",
+    "SEASON": "2026-2027",
+    "PBA_DES2": "2.813"
+  },
+  {
+    "LPBA_NAME": "한슬기",
+    "LPBA_DES2": "2.273",
+    "PBA_DESCRIPTION": "128강",
+    "RALLY_NAME": "지금 잘 사는 방법 zgm NH농협카드 PBA-LPBA 챔피언십 26-27",
+    "LPBA_DESCRIPTION": "64강",
+    "PBA_NAME": "정해창",
+    "SEASON": "2026-2027",
+    "PBA_DES2": "2.647"
+  }
+]

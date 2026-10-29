@@ -1,0 +1,248 @@
+{
+  "Q.응우옌": {
+    "2019": {
+      "prize": null,
+      "prize_rank": null,
+      "points": null,
+      "points_rank": null,
+      "avg": 0.0,
+      "bank": 0.0,
+      "long": 0.0,
+      "success": 0.0
+    },
+    "2020": {
+      "prize": null,
+      "prize_rank": null,
+      "points": null,
+      "points_rank": null,
+      "avg": 0.0,
+      "bank": 0.0,
+      "long": 0.0,
+      "success": 0.0
+    },
+    "2021": {
+      "prize": null,
+      "prize_rank": null,
+      "points": null,
+      "points_rank": null,
+      "avg": 0.0,
+      "bank": 0.0,
+      "long": 0.0,
+      "success": 0.0
+    },
+    "2022": {
+      "prize": "7,500,000",
+      "prize_rank": "44",
+      "points": "27500",
+      "points_rank": "41",
+      "avg": 1.636,
+      "bank": 22.7,
+      "long": 9.9,
+      "success": 61.1
+    },
+    "2023": {
+      "prize": "52,000,000",
+      "prize_rank": "15",
+      "points": "103500",
+      "points_rank": "14",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2024": {
+      "prize": "28,000,000",
+      "prize_rank": "15",
+      "points": "96000",
+      "points_rank": "12",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2025": {
+      "prize": "113,000,000",
+      "prize_rank": "7",
+      "points": "147500",
+      "points_rank": "8",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2026": {
+      "prize": "109,000,000",
+      "prize_rank": "2",
+      "points": "131000",
+      "points_rank": "2",
+      "avg": 1.564,
+      "bank": 27.1,
+      "long": 9.7,
+      "success": 59.7
+    }
+  },
+  "강동궁": {
+    "2019": {
+      "prize": "107,500,000",
+      "prize_rank": "5",
+      "points": "107500",
+      "points_rank": "5",
+      "avg": 1.613,
+      "bank": 20.2,
+      "long": 7.8,
+      "success": 60.1
+    },
+    "2020": {
+      "prize": "39,500,000",
+      "prize_rank": "8",
+      "points": "57000",
+      "points_rank": "9",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2021": {
+      "prize": "126,500,000",
+      "prize_rank": "3",
+      "points": "178000",
+      "points_rank": "3",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2022": {
+      "prize": "58,500,000",
+      "prize_rank": "8",
+      "points": "119000",
+      "points_rank": "9",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2023": {
+      "prize": "25,500,000",
+      "prize_rank": "21",
+      "points": "85000",
+      "points_rank": "18",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2024": {
+      "prize": "301,500,000",
+      "prize_rank": "2",
+      "points": "402000",
+      "points_rank": "1",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2025": {
+      "prize": "47,500,000",
+      "prize_rank": "13",
+      "points": "97500",
+      "points_rank": "14",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2026": {
+      "prize": "6,000,000",
+      "prize_rank": "22",
+      "points": "20000",
+      "points_rank": "24",
+      "avg": 1.818,
+      "bank": 25.6,
+      "long": 10.3,
+      "success": 63.6
+    }
+  },
+  "조건휘": {
+    "2019": {
+      "prize": "55,500,000",
+      "prize_rank": "9",
+      "points": "56000",
+      "points_rank": "9",
+      "avg": 1.464,
+      "bank": 20.6,
+      "long": 8.2,
+      "success": 57.8
+    },
+    "2020": {
+      "prize": "6,000,000",
+      "prize_rank": "33",
+      "points": "18000",
+      "points_rank": "36",
+      "avg": 1.418,
+      "bank": 23.0,
+      "long": 8.8,
+      "success": 55.8
+    },
+    "2021": {
+      "prize": "19,500,000",
+      "prize_rank": "14",
+      "points": "56000",
+      "points_rank": "13",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2022": {
+      "prize": "7,000,000",
+      "prize_rank": "50",
+      "points": "23500",
+      "points_rank": "52",
+      "avg": 1.593,
+      "bank": 24.9,
+      "long": 9.9,
+      "success": 60.3
+    },
+    "2023": {
+      "prize": "113,000,000",
+      "prize_rank": "6",
+      "points": "147500",
+      "points_rank": "8",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2024": {
+      "prize": "111,500,000",
+      "prize_rank": "6",
+      "points": "137500",
+      "points_rank": "7",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2025": {
+      "prize": "83,000,000",
+      "prize_rank": "9",
+      "points": "149000",
+      "points_rank": "7",
+      "avg": null,
+      "bank": null,
+      "long": null,
+      "success": null
+    },
+    "2026": {
+      "prize": "116,000,000",
+      "prize_rank": "1",
+      "points": "142000",
+      "points_rank": "1",
+      "avg": 1.676,
+      "bank": 23.6,
+      "long": 11.2,
+      "success": 62.0
+    }
+  }
+}
