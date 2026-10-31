@@ -2419,33 +2419,33 @@
           "captain": false
         },
         {
-          "name": "용현지",
-          "mem": "M0017780",
-          "photo": "https://teamfile.billiboard.co.kr/players/M0017780_2026.png?v=20260921",
-          "captain": false
-        },
-        {
-          "name": "최봄이",
-          "mem": "M0025068",
-          "photo": "https://teamfile.billiboard.co.kr/players/M0025068_2026.png?v=20260921",
-          "captain": false
-        },
-        {
-          "name": "최혜미",
-          "mem": "M0017210",
-          "photo": "https://teamfile.billiboard.co.kr/players/M0017210_2026.png?v=20260921",
-          "captain": false
-        },
-        {
           "name": "응우옌쩐타인타오",
-          "mem": "M0025074",
-          "photo": "https://teamfile.billiboard.co.kr/players/M0025074_2026.png",
+          "mem": null,
+          "photo": "https://teamfile.billiboard.co.kr",
           "captain": false
         },
         {
           "name": "강유진",
-          "mem": "M0017198",
-          "photo": "https://teamfile.billiboard.co.kr/players/M0017198_2026.png",
+          "mem": null,
+          "photo": "https://teamfile.billiboard.co.kr",
+          "captain": false
+        },
+        {
+          "name": "용현지",
+          "mem": null,
+          "photo": "https://teamfile.billiboard.co.kr",
+          "captain": false
+        },
+        {
+          "name": "최봄이",
+          "mem": null,
+          "photo": "https://teamfile.billiboard.co.kr",
+          "captain": false
+        },
+        {
+          "name": "최혜미",
+          "mem": null,
+          "photo": "https://teamfile.billiboard.co.kr",
           "captain": false
         }
       ],
