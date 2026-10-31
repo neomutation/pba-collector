@@ -1185,6 +1185,25 @@ function dominanceOf(o, L) {
   if (parts.some(([v, l]) => v == null || isNaN(v) || !l)) return null;
   return 100 * parts.reduce((s, [v, l, w]) => s + w * v / l, 0);
 }
+// 에버 대비 득실비: 기대 득실비 = 내 에버 ÷ 리그 평균 에버 (상대가 리그 평균만큼 쳤을 때의 득실비)
+//  득실비 차이 = 실제 − 기대. + 면 상대 득점이 적었고, − 면 상대 득점이 많았다
+//  고에버·저득실비 = 리그 평균 이상 쳤는데 득실비 1 미만인 경기 / 저에버·고득실비 = 리그 평균보다 낮은데 득실비 1 초과인 경기
+function ratioStats(o, games, L) {
+  if (!L || !L.avg) return o;
+  if (L !== o && !L._rs) { ratioStats(L, L._g || [], L); L._rs = true; }
+  o.expRatio = o.avg != null ? o.avg / L.avg : null;
+  o.ratioGap = o.ptRatio != null && o.expRatio != null ? o.ptRatio - o.expRatio : null;
+  const hi = [], lo = []; let n = 0;
+  games.forEach(g => {
+    if (g.single || !g.sets || g.avg == null) return;
+    const w = g.sets.filter(s => s.opp_pts != null); if (!w.length) return;
+    const a = w.reduce((x, s) => x + (s.pts || 0), 0), b = w.reduce((x, s) => x + s.opp_pts, 0); n++;
+    if (g.avg >= L.avg && a < b) hi.push(g); else if (g.avg < L.avg && a > b) lo.push(g);
+  });
+  o.hiLoN = hi.length; o.hiLoW = hi.filter(g => g.win).length; o.hiLoRate = ratio(hi.length, n);
+  o.loHiN = lo.length; o.loHiW = lo.filter(g => g.win).length; o.loHiRate = ratio(lo.length, n);
+  return o;
+}
 const domSub = o => o.dominance == null ? '' : `점수 ${f3(o.ptRatio)} · 리드 ${o.leadFN}:${o.leadAN} · 유지 ${pct(o.leadKeep)} · 역전 ${pct(o.comeback)}`;
 // 세트 흐름 집계 (개인투어 · 팀리그 공통): xs = 세트들 { win, lf: 1 내가 먼저 리드 / -1 상대가 먼저 / 0 없음, cl: 세트 막판까지 감 }
 function flowStats(o, xs) {
@@ -1224,8 +1243,9 @@ function league(type) {
     gs = gs.filter(g => !isForfeit(g));   // 기권 경기는 리그 평균에서도 뺀다
     const seasons = [...new Set(gs.map(g => g.season))];
     const L = { all: calc(gs), allStates: stateStats(gs), season: {}, states: {}, tour: {}, games: gs };
+    L.all._g = gs;   // 리그 평균은 기권만 빼고 그 종목 전체 경기로 계산한다 (경기 수 제한 없음)
     L.sets = {};
-    seasons.forEach(s => { const x = gs.filter(g => g.season === s); L.season[s] = calc(x); L.states[s] = stateStats(x); L.sets[s] = bySetNo(x); });
+    seasons.forEach(s => { const x = gs.filter(g => g.season === s); L.season[s] = calc(x); L.season[s]._g = x; L.states[s] = stateStats(x); L.sets[s] = bySetNo(x); });
     const tours = {};
     gs.forEach(g => (tours[g.tour] || (tours[g.tour] = [])).push(g));
     Object.entries(tours).forEach(([t, x]) => L.tour[t] = calc(x));
@@ -1307,6 +1327,10 @@ const ROWS = {
   ],
   score: [
     ['ptRatio', '득실비', f3, '내 득점 ÷ 상대 득점. 1보다 크면 넣은 점수가 더 많음, 1보다 작으면 내준 점수가 더 많음', o => `${o.pts}:${o.oppPts}`],
+    ['expRatio', '기대 득실비', f3, '내 에버 ÷ 리그 평균 에버. 상대가 리그 평균만큼 쳤을 때 나올 득실비'],
+    ['ratioGap', '득실비 차이', f3, '실제 득실비 − 기대 득실비. + 면 에버에 비해 상대 득점이 적었고, − 면 상대 득점이 많았다'],
+    ['hiLoRate', '고에버·저득실비', pct, '리그 평균 이상 쳤는데 득실비가 1 미만인 경기 비율 (상대가 더 많이 득점)', o => o.hiLoN != null ? `${o.hiLoN}경기 ${o.hiLoW}승` : '', 'low'],
+    ['loHiRate', '저에버·고득실비', pct, '리그 평균보다 낮게 쳤는데 득실비가 1 초과인 경기 비율 (상대가 더 적게 득점)', o => o.loHiN != null ? `${o.loHiN}경기 ${o.loHiW}승` : ''],
     ['ptsPerSet', '세트당 득점', f2, '세트 평균 내 득점'],
     ['innPerSet', '세트당 이닝', f1, '세트 평균 이닝 (낮을수록 빨리 끝냄)', null, 'low'],
     ['oppPerSet', '세트당 실점', f2, '세트 평균 상대 득점 (낮을수록 상대 공격을 잘 막음)', null, 'low'],
@@ -1328,7 +1352,7 @@ const ROWS = {
 // mode: 'self' = 내 시즌끼리 비교(파랑), 'league' = 리그 평균 대비(초록/빨강). 리그 모드에선 맨 끝에 리그 평균 열.
 function seasonTable(rows, cols, mode = 'self') {
   const calcs = cols.map(c => ({ ...calc(c.games), ...(c.extra || {}) }));
-  calcs.forEach((o, i) => { o.dominance = dominanceOf(o, cols[i].league); });   // 게임 지배력은 그 열의 리그 평균이 있어야 계산된다
+  calcs.forEach((o, i) => { o.dominance = dominanceOf(o, cols[i].league); ratioStats(o, cols[i].games, cols[i].league); });   // 게임 지배력은 그 열의 리그 평균이 있어야 계산된다
   const lg = mode === 'league' && cols[cols.length - 1].league;
   let h = '<div class="tw"><table class="grid"><thead><tr><th class="lab"></th>';
   cols.forEach((c, i) => h += `<th class="${i === cols.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`);
@@ -1639,7 +1663,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
       ['bank', '🎱', '뱅킹·공 색·선후공', hint, () => seasonTable(ROWS.bank, cols, mode)],
       ['fb', '⚡', '초구', hint, () => seasonTable(ROWS.fb, cols, mode) + `<div class="subhead" style="margin-top:8px"><b>대회별 초구</b> · 시즌을 누르면 펼쳐집니다</div>` + this.fbTours(seasons, tours, res, mode)],
       ['score', '📈', '득점 패턴', '득실 · 장타 · 중타 (이닝 기록 기준)', () => seasonTable(ROWS.score, cols, mode) + this.setNoScore(cols)],
-      ['round', '🪜', '라운드별', '탈락 횟수 · 그 라운드 에버 · 비율', () => this.roundTable(cols)],
+      ['round', '🪜', '라운드별', '승률 · 에버리지 · 탈락 횟수', () => this.roundTable(cols, mode)],
       ['hex', '⬡', '육각형 스탯', `${seasonLabel(sNow)} 시즌 · 리그 평균 비교`, () => this.hexSec(sNow)],
       ['opps', '🤝', '자주 만난 상대', '', () => this.oppTable(games)],
       ['games', '📝', '경기 기록', '줄을 누르면 세트 상세', () => this.gameList(seasons, bySeason)],
@@ -2124,7 +2148,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     return h + '</tbody></table></div>';
   }
   // 라운드별 탈락 횟수: 대회마다 마지막 경기를 진 라운드. 아래 작은 글씨 = 그 라운드 에버, 그 기간 대회 중 비율. 마지막 줄은 우승
-  roundTable(cols) {
+  roundTable(cols, mode) {
     const ORDER = ['PPQ', 'PQ', 'Q', '128강', '64강', '조별리그', '32강', '16강', '8강', '4강', '결승'];
     // 대회별 결과: { tour: '128강' | ... | '우승' }  (아직 이기고 올라가 있는 진행 중 대회는 뺌)
     const outOf = gs => {
@@ -2141,20 +2165,25 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const outs = cols.map(c => outOf(c.games));
     const have = new Set(outs.flatMap(o => Object.values(o)));
     const rounds = ORDER.filter(r => have.has(r));
-    let h = '<div class="tw"><table class="grid"><thead><tr><th class="lab"></th>' + cols.map((c, i) => `<th class="${i === cols.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`).join('') + '</tr></thead><tbody>';
+    // 라운드별 승률 · 에버리지 (그 라운드에서 치른 경기 전체)
+    const played = ORDER.filter(r => cols.some(c => c.games.some(g => roundName(g) === r)));
+    const thH = (extra = '') => cols.map((c, i) => `<th class="${i === cols.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`).join('') + extra;
+    const lgOn = mode === 'league' && cols[cols.length - 1].league;
+    const lgAvg = (Lo, r) => { const gs = Lo && Lo._g ? Lo._g.filter(g => roundName(g) === r) : [], i = sum(gs, g => g.inn); return i ? sum(gs, g => g.pts) / i : null; };
+    let top = `<div class="subhead">라운드별 승률</div><div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${thH()}</tr></thead><tbody>${played.map(r => `<tr><th class="lab">${esc(r)}</th>${cols.map((c, i) => { const gs = c.games.filter(g => roundName(g) === r), w = gs.filter(g => g.win).length; return `<td class="${i === cols.length - 1 ? 'tot' : ''}">${gs.length ? `${pct(w / gs.length)}<span class="s">${w}-${gs.length - w}</span>` : ''}</td>`; }).join('')}</tr>`).join('')}</tbody></table></div>`;
+    top += `<div class="subhead" style="margin-top:8px">라운드별 에버리지</div><div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${thH(lgOn ? '<th class="lg">리그 평균</th>' : '')}</tr></thead><tbody>${played.map(r => `<tr><th class="lab">${esc(r)}</th>${cols.map((c, i) => { const gs = c.games.filter(g => roundName(g) === r), inn = sum(gs, g => g.inn), v = inn ? sum(gs, g => g.pts) / inn : null, x = mode === 'league' ? vsLeague(v, lgAvg(c.league, r), f3) : null; return `<td class="${i === cols.length - 1 ? 'tot' : ''}${x ? ' ' + x.cls : ''}" style="${x ? x.style : ''}">${v != null ? `${f3(v)}<span class="s">${gs.length}경기</span>${x ? `<span class="d">${x.txt}</span>` : ''}` : ''}</td>`; }).join('')}${lgOn ? `<td class="lg">${f3(lgAvg(cols[cols.length - 1].league, r))}</td>` : ''}</tr>`).join('')}</tbody></table></div><div class="subhead" style="margin-top:8px">라운드별 탈락 횟수</div>`;
+    let h = top + `<div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${thH()}</tr></thead><tbody>`;
     const line = (label, r, cls = '') => {
       h += `<tr class="${cls}"><th class="lab">${esc(label)}</th>`;
       cols.forEach((c, i) => {
         const o = outs[i], total = Object.keys(o).length, n = Object.values(o).filter(x => x === r).length;
-        const gs = r === '우승' ? [] : c.games.filter(g => roundName(g) === r);
-        const avg = gs.length ? f3(sum(gs, g => g.pts) / sum(gs, g => g.inn)) : '';
-        h += `<td class="${i === cols.length - 1 ? 'tot' : ''}">${n ? `<b>${n}회</b>${avg ? `<span class="s">${avg}</span>` : ''}<span class="s">${pct(n / total)}</span>` : ''}</td>`;
+        h += `<td class="${i === cols.length - 1 ? 'tot' : ''}">${n ? `<b>${n}회</b><span class="s">${pct(n / total)}</span>` : ''}</td>`;
       });
       h += '</tr>';
     };
     rounds.forEach(r => line(r, r));
     if (have.has('우승')) line('우승', '우승', 'sumrow');
-    return h + '</tbody></table></div><div class="note">숫자 = 그 라운드에서 탈락한 횟수. 아래 작은 글씨 = 그 라운드 경기 에버리지, 그 기간 출전 대회 중 비율. 진행 중인 대회에서 아직 살아 있으면 셈에서 뺍니다.</div>';
+    return h + '</tbody></table></div><div class="note">숫자 = 그 라운드에서 탈락한 횟수. 작은 글씨 = 그 기간 출전 대회 중 비율. 진행 중인 대회에서 아직 살아 있으면 셈에서 뺍니다.</div>';
   }
   // ── 세트 흐름: 스코어 분포, 승패 순서, 흐름 요약, 스코어 상황별 승률 (3전 2선승 경기는 뺌) ──
   flowSection(cols, mode) {
@@ -2840,7 +2869,10 @@ async function indivBrief(m) {
 }
 async function renderLive() {
   const el = $('#live');
-  if (!liveData) { el.innerHTML = ''; return; }
+  // 캐스터 버전: 진행 중 경기가 없어도 기록지 버튼이 보이게 한 줄은 남긴다
+  const sheetB = window.Sheet && Sheet.on ? Sheet.btn() : '';
+  const idle = () => { el.innerHTML = sheetB ? `<div class="lhead"><span class="onair dim">LIVE</span><span style="color:var(--sub)">진행 중 경기 없음</span>${sheetB}</div>` : ''; };
+  if (!liveData) { idle(); return; }
   const teamMode = document.body.classList.contains('teammode');
   let cards = [], others = [];
   if (teamMode) {
@@ -2857,11 +2889,11 @@ async function renderLive() {
     }
   }
   const n = teamMode ? (liveData.team || []).length : (liveData.indiv || []).length;
-  if (!n) { el.innerHTML = ''; return; }
+  if (!n) { idle(); return; }
   // 꺼 두면 한 줄 알림만 (진행 중 경기 수 + 다시 켜기)
-  if (liveOff) { el.innerHTML = `<div class="lhead"><span class="onair dim" data-lon>LIVE</span><span style="color:var(--sub)">진행 중 ${n}경기 · 실시간 브리핑 꺼짐 (LIVE 를 누르면 켜집니다)</span></div>`; return; }
+  if (liveOff) { el.innerHTML = `<div class="lhead"><span class="onair dim" data-lon>LIVE</span><span style="color:var(--sub)">진행 중 ${n}경기 · 실시간 브리핑 꺼짐 (LIVE 를 누르면 켜집니다)</span>${sheetB}</div>`; return; }
   el.innerHTML = `<div class="lhead"><span class="onair" data-loff>LIVE</span><b>실시간 브리핑</b><span style="color:var(--sub)">${esc(liveData.at)} 기준 · 30초마다 새로고침</span>
-    ${others.length ? `<span style="color:var(--sub)">· ${cards.length ? '다른 ' : ''}진행 중 경기:</span><span class="lother">${others.join('')}</span>` : ''}</div>${cards.join('')}`;
+    ${others.length ? `<span style="color:var(--sub)">· ${cards.length ? '다른 ' : ''}진행 중 경기:</span><span class="lother">${others.join('')}</span>` : ''}${sheetB}</div>${cards.join('')}`;
 }
 // 브리핑에서 경기를 열면 그 전 화면(두 칸의 선수)을 기억해 두었다가, 브리핑을 끄면 그 화면으로 돌아간다
 // 앱을 켤 때는 항상 꺼진 상태로 시작한다 (LIVE 를 눌러야 30초 새로고침)
@@ -2893,6 +2925,7 @@ function setApp(app) {
 document.querySelector('.apptabs').addEventListener('click', e => { const b = e.target.closest('[data-app]'); if (b) setApp(b.dataset.app); });
 </script>
 <script src="team.js"></script>
+<script src="sheet.js"></script>
 <script>setApp(new URLSearchParams(location.hash.slice(1)).get('app') || localStorageGet('app') || 'indiv');</script>
 </body>
 </html>

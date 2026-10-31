@@ -5,6 +5,9 @@ import WebKit
 
 let projectDir = "/Users/당구/pba-collector"
 let port = 4580
+// 처음 여는 주소와 창 이름 (Info.plist). 캐스터 앱은 PBAPath = /?caster
+let startPath = Bundle.main.object(forInfoDictionaryKey: "PBAPath") as? String ?? "/"
+let appTitle = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? "PBA 선수 비교"
 
 final class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKUIDelegate {
     var window: NSWindow!
@@ -21,10 +24,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, 
         web.uiDelegate = self
         window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 1500, height: 950),
                           styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
-        window.title = "PBA 선수 비교"
+        window.title = appTitle
         window.contentView = web
-        window.setFrameAutosaveName("PBAMain")      // 창 크기·위치 기억
-        if !window.setFrameUsingName("PBAMain") { window.center() }
+        window.setFrameAutosaveName("PBAMain" + startPath)      // 창 크기·위치 기억
+        if !window.setFrameUsingName("PBAMain" + startPath) { window.center() }
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         showMessage("서버를 켜는 중…")
@@ -74,7 +77,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, 
                     // 예전에 받아 둔 화면 파일(캐시)을 지우고 늘 새로 받는다. 화면 설정(localStorage)은 그대로 둔다
                     let types: Set<String> = [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache]
                     WKWebsiteDataStore.default().removeData(ofTypes: types, modifiedSince: Date(timeIntervalSince1970: 0)) {
-                        var req = URLRequest(url: URL(string: "http://127.0.0.1:\(port)/")!)
+                        var req = URLRequest(url: URL(string: "http://127.0.0.1:\(port)\(startPath)")!)
                         req.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
                         self.web.load(req)
                     }
