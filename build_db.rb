@@ -4,6 +4,7 @@
 #   ruby build_db.rb
 require 'json'
 require 'sqlite3'
+require 'set'
 require_relative 'lib/model'
 
 DATA = File.join(PBA::ROOT, 'data')
@@ -47,14 +48,20 @@ Dir[File.join(DATA, 'matches', '*.json')].sort.each do |f|
       # 세트 기록에서 이닝 단위 값(1P/2P, 득점 이닝, 장타 이닝)을 더 뽑는다
       setmap = m['sets'].each_with_object({}) { |s, h| h[Model.set_no(s['label'])] = s }
       sets = r[:sets].map do |s|
-        raw = setmap[s[:no]]; rec = raw && raw['record']; p1 = p2 = nil
+        raw = setmap[s[:no]]; rec = raw && raw['record']; p1 = p2 = bks = bin = nil
         if rec && rec['names'] && (k = rec['names'].index(me['name']))
           key = k.zero? ? 'a' : 'b'
           rows = rec['innings'].map { |x| x[key] }.reject { |x| x[0].nil? }
           p1 = rows.sum { |x| x[0].to_i }; p2 = rows.sum { |x| x[1].to_i }
+          # 연속 뱅크샷: 기록지엔 이닝마다 1P·뱅크샷 개수만 있고 순서가 없다 → 1P 없이 뱅크샷만 2개 이상 친 이닝만 확실한 연속으로 [이닝, 개수]
+          bks = rows.each_with_index.select { |x, _| x[0].to_i.zero? && x[1].to_i >= 2 }.map { |x, i| [i + 1, x[1].to_i] }
+          bks = nil if bks.empty?
+          # 한 이닝 뱅크샷: 1P 섞여도 뱅크샷(2점짜리) 2개 이상 친 이닝 [이닝, 개수]
+          bin = rows.each_with_index.select { |x, _| x[1].to_i >= 2 }.map { |x, i| [i + 1, x[1].to_i] }
+          bin = nil if bin.empty?
         end
         runs = s[:runs]
-        s.merge(p1: p1, p2: p2,
+        s.merge(p1: p1, p2: p2, bks: bks, bin: bin,
                 set_hr: runs && runs.max, scoring: runs && runs.count { |x| x > 0 }, long: runs && runs.count { |x| x >= 5 },
                 opp_pts: raw && (o = raw['players'].find { |x| x['name'] != me['name'] }) && o['pts'],
                 rec_inn: runs && runs.size, long_pts: runs && runs.select { |x| x >= 5 }.sum,
@@ -170,6 +177,27 @@ if File.exist?(tr_path)
     end
   end
   $stderr.puts "톱랭킹 경기 연결 못 함 #{missed.size}건 (서바이벌 시절 등 경기 기록 없음):\n  " + missed.join("\n  ") unless missed.empty?
+end
+# 공식 목록에 없는 대회(예: 24-25 월드챔피언십)는 빌리보드 대회별 톱랭킹 1위로 채운다 (topranking.rb → topranking_bb.json).
+# 1위 에버가 같은 선수가 여럿이면 공식 규칙처럼 그 대회 세컨드 에버(두 번째로 높은 경기 에버)로 가린다
+bb_path = File.join(DATA, 'topranking_bb.json')
+if File.exist?(bb_path)
+  have = db.execute('SELECT DISTINCT tour FROM awards WHERE tour IS NOT NULL').flatten.to_set
+  added = []
+  db.transaction do
+    JSON.parse(File.read(bb_path)).each do |code, x|
+      code = code.to_i; top = x['top']
+      next if have.include?(code) || top.empty? || !tours[code] || tours[code][:status] != '종료'
+      best = top.select { |r| (r[2] - top[0][2]).abs < 0.0006 }
+      second = ->(pid) { (games.select { |g| g[1] == code && g[2] == pid }.map { |g| g[17].to_f }.sort.reverse[1]) || 0 }
+      m, name, v, rd = best.max_by { |r| second.(r[0]) }
+      g = games.find { |gg| gg[1] == code && gg[2] == m && (gg[17].to_f - v).abs < 0.0006 }
+      desc = rd == 2 ? '결승' : rd == 4 ? '준결승' : rd.to_i > 0 ? "#{rd}강" : ''
+      db.execute('INSERT INTO awards VALUES (?,?,?,?,?,?)', [code, m, v, g && g[0], desc, name])
+      added << "#{x['season']} #{x['type']} #{tours[code][:name]} → #{name} #{v}#{best.size > 1 ? " (동률 #{best.size}명, 세컨드 에버)" : ''}"
+    end
+  end
+  $stderr.puts "톱랭킹 빌리보드로 채움 #{added.size}건:\n  " + added.join("\n  ") unless added.empty?
 end
 # pbatour.org 대회별 상금 (prizes.rb)
 pz = File.join(DATA, %q(prizes.json))

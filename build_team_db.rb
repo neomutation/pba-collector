@@ -115,7 +115,7 @@ Dir[File.join(DATA, 'team', '*.json')].sort.each do |f|
           k1 = kind.(players[0]); k2 = kind.(players[1])
           { no: s['no'], label: s['label'], date: s['date'], gp: s['gp'], kind: %w[복식 단식].include?(k1) ? k2 : k1, p: players, pts: sd.map { |x| x['pts'] }, inn: sd.map { |x| x['inn'] }, avg: sd.map { |x| x['avg'] }, hr: sd.map { |x| x['hr'] },
             win: sd[0]['win'] ? 1 : (sd[1]['win'] ? 2 : 0), first: rec['first'], tiebreak: rec['tiebreak'], per: per,
-            runs: inn && inn.map { |a| a.map { |x| x[0] } }, p1: inn && inn.map { |a| a.sum { |x| x[1] } }, p2: inn && inn.map { |a| a.sum { |x| x[2] } } }
+            runs: inn && inn.map { |a| a.map { |x| x[0] } }, hits: inn && inn.map { |a| a.map { |x| x[1].to_i + x[2].to_i } }, p1: inn && inn.map { |a| a.sum { |x| x[1] } }, p2: inn && inn.map { |a| a.sum { |x| x[2] } } }
         end.compact
         s1 = t[0]['sets'] || sets.count { |s| s[:win] == 1 }; s2 = t[1]['sets'] || sets.count { |s| s[:win] == 2 }
         id = "#{league}-#{r['code']}-#{r['post_code'] || 0}-#{g['no']}"
@@ -163,11 +163,15 @@ if File.exist?(rp)
   db.transaction do
     JSON.parse(File.read(rp)).each do |season, teams|
       league = leagues[season.to_i] or next
-      names = db.execute('SELECT code, name FROM teams WHERE league = ?', [league])
+      names = db.execute('SELECT code, name, short FROM teams WHERE league = ?', [league])
       teams.each do |t|
         k = t['name'].to_s.gsub(/\s/, '')
-        code = names.max_by { |_, n| sim.(n.to_s.gsub(/\s/, ''), k) }
-        next unless code && sim.(code[1].to_s.gsub(/\s/, ''), k) >= 0.3
+        # 팀명이 바뀌어도(예: 하림 오드그로서 → 하림 용가리즈) 기업 이름(짧은 이름)이 같으면 같은 팀으로 본다
+        score = ->(n, sh) { s = sim.(n.to_s.gsub(/\s/, ''), k); sh = sh.to_s.gsub(/\s/, ''); sh.size >= 2 && k.start_with?(sh) ? [s, 0.9].max : s }
+        code = names.max_by { |_, n, sh| score.(n, sh) }
+        next unless code && score.(code[1], code[2]) >= 0.3
+        # 홈피 팀 소개의 이름이 다르면 새 팀명으로 바꾼다 (경기 기록 · 팀 코드는 그대로)
+        db.execute('UPDATE teams SET name = ? WHERE code = ? AND league = ?', [t['name'], code[0], league]) if t['name'].to_s.strip != '' && t['name'].to_s.gsub(/\s/, '') != code[1].to_s.gsub(/\s/, '')
         played = db.execute('SELECT name, pid, gender FROM players WHERE team = ? AND league = ?', [code[0], league])
         t['players'].each_with_index do |p, i|
           m = played.find { |_, pd, _| pd && pd == p['mem'] } ||

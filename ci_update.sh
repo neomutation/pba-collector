@@ -11,6 +11,7 @@ r prizes.rb || echo "상금 정보 실패 (계속 진행)"
 r subtours.rb || echo "드림·챌린지 정보 실패 (계속 진행)"
 r topranking.rb || echo "톱랭킹 정보 실패 (계속 진행)"
 r build_db.rb || exit 1
+r model/build_predict.rb || echo "승부 예측 자료 실패 (계속 진행)"
 r team_collect.rb --current || echo "팀리그 수집 실패 (계속 진행)"
 r team_roster.rb --current || echo "팀 명단 실패 (계속 진행)"
 r team_schedule.rb || echo "팀리그 일정 실패 (계속 진행)"

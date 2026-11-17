@@ -99,11 +99,14 @@ module Model
       end
       trow = nil
       if tb
-        p = mine.(tb); r = tb['record']; first = r && r['first'] == me['name']; fb = nil
-        if first
-          idx = r['names'].index(me['name']); fb = runs(r, 99)[idx].first
+        p = mine.(tb); r = tb['record']; first = r && r['first'] == me['name']; fb = nil; tr = th = nil
+        # 승부치기 이닝별 득점(tr) · 성공 횟수(th = 1P + 뱅크샷 개수): 공격 성공률 · 후공 이닝 최다 득점용
+        if r && r['names'] && (idx = r['names'].index(me['name'])) && (rr = runs(r, 99))
+          key = idx.zero? ? 'a' : 'b'
+          tr = rr[idx]; th = r['innings'].map { |x| x[key] }.reject { |x| x.nil? || x[0].nil? }.map { |x| x[0].to_i + x[1].to_i }
         end
-        trow = { inn: tb['players'].map { |x| x['inn'].to_i }.max, pts: p['pts'], win: p['win'], first: first, first_ball: fb }
+        fb = tr.first if first && tr
+        trow = { inn: tb['players'].map { |x| x['inn'].to_i }.max, pts: p['pts'], win: p['win'], first: first, first_ball: fb, runs: tr, hits: th }
       end
       wins = srows.count { |s| s[:win] }
       loses = srows.count { |s| !s[:win] }

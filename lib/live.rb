@@ -11,6 +11,7 @@ module Live
     hit = @cache[key]
     return hit[1] if hit && Time.now - hit[0] < ttl
     v = yield
+    @cache.delete_if { |_, (t, _)| Time.now - t > 600 } if @cache.size > 200   # 끝난 경기 · 지난 세트 기록이 계속 쌓이지 않게
     @cache[key] = [Time.now, v]
     v
   end
@@ -67,15 +68,24 @@ module Live
       out.force_encoding('utf-8')
     end
     return [] if html.include?('해당 내역이 없습니다')
-    blocks = html.split(/<div class="(?:proud_box_set|set_game)"/)[1..-1].to_a
-    blocks.map do |chunk|
-      codes = chunk[/viewRanktOther\('(\w+)','(\w+)'\)/] ? [$1, $2] : nil
-      next nil unless codes
+    # 경기마다 진행 중 세트(set_game) 하나 + 나머지 세트 칸들(set_box). 팀 코드는 로고 파일 이름에 있다
+    html.split(/<div class="set_game"/)[1..-1].to_a.map do |chunk|
+      codes = chunk.scan(%r{/team/(T\d+)_}).flatten.uniq.first(2)
+      next nil unless codes.size == 2
       d = Nokogiri::HTML('<div>' + chunk)
-      rows = d.css('li').reject { |li| li.text.include?('Result') }
-      teams = rows.first(2).map { |li| { short: clean(li.at_css('.t_name')&.text), sets: num(li.at_css('.t_set')&.text) } }
-      { kind: 'team', t1: codes[0], t2: codes[1], teams: teams, tg: chunk.scan(/viewResultDetail\('?(\d+)'?\)/).flatten.map(&:to_i).max,
-        text: clean(d.text)[0, 300] }
+      sets = [clean(d.at_css('.set_point')&.text), clean(d.at_css('.set_point_rgt')&.text)].map(&:to_i)
+      names = d.css('ul.score_01 span.w_80').map { |x| clean(x.text) }
+      cur_no = chunk[/(\d+)\s*Set/, 1].to_i
+      split = ->(s) { clean(s).split(',').map(&:strip).reject(&:empty?) }
+      order = chunk.split('<div class="set_box">')[1..-1].to_a.map do |c|
+        sd = Nokogiri::HTML('<div>' + c)
+        lis = sd.css('ul.win_lost_block01 > li').select { |li| li.at_css('.t_name') && !li.text.include?('Player') && !li.text.include?('Result') }
+        { no: sd.at_css('.no_order')&.text.to_s[/\d+/].to_i, p: lis.first(2).map { |li| split.(li.at_css('.t_name').text) } }
+      end
+      now = d.css('ul.score_01 .n_col').map { |x| split.(x.text) }
+      order << { no: cur_no, p: now } if cur_no > 0 && now.size == 2
+      { kind: 'team', t1: codes[0], t2: codes[1], teams: names.each_with_index.map { |n, i| { short: n, sets: sets[i] } }, cur_set: cur_no,
+        order: order.select { |o| o[:no] > 0 }.sort_by { |o| o[:no] }, text: clean(d.at_css('ul.score_01')&.text)[0, 300] }
     end.compact
   end
 end

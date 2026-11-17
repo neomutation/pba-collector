@@ -13,16 +13,29 @@ if ! mkdir $LOCK 2>/dev/null; then
   if [[ -n $(find $LOCK -mmin +60 2>/dev/null) ]]; then rmdir $LOCK; mkdir $LOCK; else exit 0; fi
 fi
 trap 'rmdir $LOCK 2>/dev/null' EXIT
+source lib/buildsig.sh
 
 if [[ $1 == team ]]; then
   log "빠른 업데이트 시작 (팀리그 경기 끝남)"
   ruby -Eutf-8 team_collect.rb --current >> data/collect_app.log 2>&1 || { log "빠른 업데이트: 팀리그 수집 실패"; exit 1; }
   ruby -Eutf-8 team_schedule.rb >> data/collect_app.log 2>&1 || log "빠른 업데이트: 팀리그 일정 실패 (계속)"
-  ruby -Eutf-8 build_team_db.rb >> data/collect_app.log 2>&1 || { log "빠른 업데이트: 팀리그 DB 실패"; exit 1; }
+  SIG=$(team_sig)
+  if same_sig team $SIG; then log "빠른 업데이트: 팀리그 자료 바뀐 것 없음 → DB 그대로"
+  else
+    rm -f data/.team.sig
+    ruby -Eutf-8 build_team_db.rb >> data/collect_app.log 2>&1 || { log "빠른 업데이트: 팀리그 DB 실패"; exit 1; }
+    echo $SIG > data/.team.sig
+  fi
   log "빠른 업데이트 완료 (팀리그)"
 else
   log "빠른 업데이트 시작 (투어 $2 경기 끝남)"
   ruby -Eutf-8 collect.rb --tours $2 >> data/collect_app.log 2>&1 || { log "빠른 업데이트: 경기 수집 실패"; exit 1; }
-  ruby -Eutf-8 build_db.rb >> data/collect_app.log 2>&1 || { log "빠른 업데이트: DB 만들기 실패"; exit 1; }
+  SIG=$(pba_sig)
+  if same_sig pba $SIG; then log "빠른 업데이트: 개인투어 자료 바뀐 것 없음 → DB 그대로"
+  else
+    rm -f data/.pba.sig
+    ruby -Eutf-8 build_db.rb >> data/collect_app.log 2>&1 || { log "빠른 업데이트: DB 만들기 실패"; exit 1; }
+    ruby -Eutf-8 model/build_predict.rb >> data/collect_app.log 2>&1 && echo $SIG > data/.pba.sig || log "빠른 업데이트: 승부 예측 자료 실패 (계속)"
+  fi
   log "빠른 업데이트 완료: $(sqlite3 data/pba.db 'select count(*)/2 from games')경기, 마지막 경기 $(sqlite3 data/pba.db 'select max(date) from games')"
 fi

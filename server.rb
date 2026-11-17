@@ -24,29 +24,34 @@ end
 
 # 세트 흐름: 선공 → 후공 순서로 이닝 득점을 쌓아 본다
 #  lf: 먼저 N점 차로 앞선 쪽 (1 = 나, -1 = 상대, 0 = 없음) · N = PBA 5점, LPBA 3점
-#  cl: 클러치 상황까지 갔는지 = 두 선수 모두 남은 점수가 N점 이내 (PBA 5점 · LPBA 3점, 세트 목표 점수와 상관없이)
+#  lt: 그렇게 리드가 생긴 뒤 동점이 된 적이 있는지 (리드 유지 판정용)
+#  cl: 클러치 상황까지 갔는지 = 이닝과 상관없이(매 공격 뒤 점수) 둘 다 목표 점수에 못 미친 채 남은 점수가 N점 이내 (PBA 5점 · LPBA 4점)
 LEAD_PTS = { 'PBA' => 5, 'LPBA' => 3 }
-def set_flow(mine, theirs, first, lead, gp)
+CLUTCH_PTS = { 'PBA' => 5, 'LPBA' => 4 }
+def set_flow(mine, theirs, first, lead, gp, cln)
   return nil unless mine.is_a?(Array) && theirs.is_a?(Array) && !first.nil? && lead
-  a = b = lf = 0; cl = false; thr = gp.to_i > lead ? gp.to_i - lead : nil
+  a = b = lf = 0; cl = lt = false; gp = gp.to_i; thr = gp > cln ? gp - cln : nil
   first = mine.size > theirs.size if mine.size != theirs.size   # 이닝 수가 다르면 더 많은 쪽이 선공 (선공 표시가 틀린 옛 기록 보정)
   order = first ? [[mine, 0], [theirs, 1]] : [[theirs, 1], [mine, 0]]
   [mine.size, theirs.size].max.times do |k|
     order.each do |arr, who|
       next unless arr[k]
       who.zero? ? a += arr[k].to_i : b += arr[k].to_i
-      lf = (a - b >= lead ? 1 : b - a >= lead ? -1 : 0) if lf.zero?
-      cl = true if thr && a >= thr && b >= thr
+      if lf.zero? then lf = (a - b >= lead ? 1 : b - a >= lead ? -1 : 0) elsif a == b then lt = true end
+      cl = true if thr && a >= thr && b >= thr && a < gp && b < gp
     end
   end
-  { 'lf' => lf, 'cl' => thr ? cl : nil }
+  { 'lf' => lf, 'cl' => thr ? cl : nil, 'lt' => lt }
 end
 # 상대 쪽 세트 기록(JSON 문자열)과 맞춰 세트마다 lf · cl 을 붙인다
+#  f5: 5+F = 마지막 이닝에 5점 이상 연속 득점으로 목표 점수를 채워 세트를 끝냈으면 그 마지막 이닝 득점 (끝내기 장타 에버 계산용)
 def add_flow!(sets, opp_raw, type)
   opp = (JSON.parse(opp_raw || '[]') rescue [])
   sets.each do |s|
+    r = s['runs_list']
+    s['f5'] = r.last.to_i if r.is_a?(Array) && !r.empty? && r.last.to_i >= 5 && s['gp'].to_i > 0 && r.sum(&:to_i) >= s['gp'].to_i
     o = opp.find { |x| x['no'] == s['no'] } or next
-    f = set_flow(s['runs_list'], o['runs_list'], s['first'], LEAD_PTS[type], s['gp']) or next
+    f = set_flow(s['runs_list'], o['runs_list'], s['first'], LEAD_PTS[type], s['gp'], CLUTCH_PTS[type]) or next
     s.merge!(f)
   end
   sets
@@ -205,14 +210,91 @@ league_cache = {}
 srv.mount_proc('/api/league') do |req, res|
   type = req.query['type'].to_s.force_encoding('utf-8')   # 바이너리 문자열은 SQLite 에 BLOB 으로 넘어가 비교가 안 된다
   key = [type, File.mtime(DB_PATH)]
+  league_cache.delete_if { |k, _| k[0] == type && k != key }   # DB 가 새로 만들어지면 옛 응답(수십 MB)은 버린다
   league_cache[key] ||= begin
-    list = rows('SELECT g.player, g.player_name, g.tour, g.season, g.seq, g.round_raw, g.round_code, g.single, g.win, g.sw, g.sl, g.avg, g.hr, g.pts, g.inn, g.ball, g.shutout, g.tiebreak, g.sets, g.target, o.sets AS opp_raw FROM games g LEFT JOIN games o ON o.pst = g.pst AND o.player = g.opp WHERE g.type = ?', type)
+    list = rows('SELECT g.pst, g.date, g.opp, g.opp_name, g.player, g.player_name, g.tour, g.season, g.seq, g.round_raw, g.round_code, g.single, g.win, g.sw, g.sl, g.avg, g.hr, g.pts, g.inn, g.ball, g.shutout, g.tiebreak, g.sets, g.target, o.sets AS opp_raw FROM games g LEFT JOIN games o ON o.pst = g.pst AND o.player = g.opp WHERE g.type = ?', type)
     list = list.map { |g| raw = g.delete('opp_raw'); g.merge('sets' => add_flow!(JSON.parse(g['sets'] || '[]'), raw, type).map { |s| s.reject { |k, _| k == 'runs_list' } }, 'tiebreak' => g['tiebreak'] && JSON.parse(g['tiebreak'])) }
     $stderr.puts "league #{type}: #{list.size}"
     JSON.generate(list)
   end
   res['Content-Type'] = 'application/json; charset=utf-8'
   res.body = league_cache[key]
+end
+# 상단 순위 창: 그 종목의 대회 · 대회별 포인트/상금 [선수, 대회, 상금, 순위, 포인트] · 선수 이름 · 공식 웰컴톱랭킹
+srv.mount_proc('/api/board') do |req, res|
+  type = req.query['type'].to_s.force_encoding('utf-8')
+  json.(res, { tours: rows('SELECT code, season, seq, name, start, end_date, status, winner FROM tours WHERE type = ? ORDER BY start', type),
+               prizes: db.execute('SELECT z.player, z.tour, z.prize, z.rank, z.points FROM prizes z JOIN tours t ON t.code = z.tour WHERE t.type = ?', [type]).map { |x| x.values_at('player', 'tour', 'prize', 'rank', 'points') },
+               names: db.execute('SELECT id, name FROM players WHERE type = ?', [type]).map { |x| x.values_at('id', 'name') }.to_h,
+               awards: rows('SELECT a.tour, a.pst, a.player, a.avg, COALESCE(p.name, a.site_name) AS player_name FROM awards a JOIN tours t ON t.code = a.tour LEFT JOIN players p ON p.id = a.player WHERE t.type = ?', type) })
+end
+# 팀리그 출전 오더 (캐스터 기록지): 고른 팀의 다음 경기(또는 진행 중 경기)를 일정에서 찾아 홈피 '상세경기'의 세트별 선수 · 점수를 준다. 1분 캐시
+#  /api/team/order?teams=T00020,T00002 → { t1, t2, names, date, time, round, sets: [{ no, gp, kind, p: [[왼쪽 선수들], [오른쪽 선수들]] }] }
+team_order_cache = {}
+team_game_no = {}   # 찾아 둔 경기 번호 (라운드, 두 팀, 날짜)
+team_post = lambda do |path, form|
+  args = ['curl', '-sL', '--max-time', '20', '-A', 'Mozilla/5.0', '-e', 'https://team.pbatour.org/mob/ko/plan.asp']
+  form.each { |k, v| args += ['--data-urlencode', "#{k}=#{v}"] }
+  out, st = Open3.capture2(*args, "https://team.pbatour.org#{path}")
+  st.success? ? out.force_encoding('utf-8') : ''
+end
+srv.mount_proc('/api/team/order') do |req, res|
+  require 'nokogiri'
+  teams = req.query['teams'].to_s.split(',').select { |x| x =~ /\AT\d+\z/ }
+  hit = team_order_cache[teams]
+  if !hit || Time.now - hit[0] > 60
+    sched = JSON.parse(File.read(File.join(ROOT, 'data', 'team_schedule.json'))) rescue []
+    left = sched.reject { |g| g['done'] }.sort_by { |g| [g['date'].to_s, g['time'].to_s] }
+    g = left.find { |x| teams.size >= 2 && teams.all? { |c| [x['t1'], x['t2']].include?(c) } } || left.find { |x| teams.include?(x['t1']) || teams.include?(x['t2']) }
+    v = { sets: [] }
+    allive = (Live.team rescue [])
+    live = allive.find { |m| teams.size >= 2 && teams.all? { |c| [m[:t1], m[:t2]].include?(c) } } || allive.find { |m| teams.include?(m[:t1]) || teams.include?(m[:t2]) }
+    if live && live[:order].any?
+      # 지금 진행 중인 경기: 홈피 '전체보기'(live.asp)에 세트별 오더가 다 있다
+      today = Time.now.strftime('%F'); s = sched.find { |x| [x['t1'], x['t2']].sort == [live[:t1], live[:t2]].sort && (x['date'] == today || !x['done']) } || {}
+      # 진행 중 경기는 일정 수집에서 빠질 수 있어, 없으면 일정의 가장 최근 시즌 · 남은 첫 라운드로 채운다
+      v = { t1: live[:t1], t2: live[:t2], league: s['league'] || sched.map { |x| x['league'] }.compact.max, date: Time.now.strftime('%F'), time: s['time'], round: s['round'] || (left.first || {})['round'], sets: live[:order], live: true }
+    elsif g
+      rn = "#{g['round'][/\d+/]} Round"
+      v = { t1: g['t1'], t2: g['t2'], league: g['league'], date: g['date'], time: g['time'], round: g['round'], sets: [] }
+      memo_key = [g['round_code'], g['t1'], g['t2'], g['date']]
+      no = team_game_no[memo_key]
+      %w[N Y].each do |d|
+        break if no
+        h = team_post.('/mob/code_behind/getPlanDetailEnd_new2.asp', RoundCode: g['round_code'], RoundNumber: rn, LCTCode: '', LangCode: 'ko', IsCompleted: d)
+        blk = h.split(/<div class="proud_box(?:_set)?">/).find { |b| b.include?("viewRanktOther('#{g['t1']}','#{g['t2']}')") }
+        no = blk && blk[/viewResult\('?(\d+)'?\)/, 1]
+      end
+      # 경기가 시작되면 대진표(예정 · 종료)에서 사라진다 → 그 라운드 경기 번호를 차례로 열어 날짜가 같고 두 팀 로고가 있는 경기를 찾는다 (시작 후엔 실제 시각으로 바뀜)
+      unless no
+        (1..sched.count { |x| x['round_code'] == g['round_code'] }).each do |n|
+          h = team_post.('/mob/code_behind/getPlanResult_new.asp', RoundCode: g['round_code'], RoundNumber: rn, TeamGameNO: n, LangCode: 'ko')
+          if h.include?("team/#{g['t1']}_") && h.include?("team/#{g['t2']}_") && h[/<span class="t14">\s*([\d-]+)/, 1] == g['date']
+            no = n.to_s
+            break
+          end
+        end
+      end
+      team_game_no[memo_key] = no if no
+      if no
+        h = team_post.('/mob/code_behind/getPlanResult_new.asp', RoundCode: g['round_code'], RoundNumber: rn, TeamGameNO: no, LangCode: 'ko')
+        v[:names] = Nokogiri::HTML(h).css('th.bg01 .player_name').map { |x| x.text.strip }.first(2)
+        v[:sets] = h.split('<div class="set_box">')[1..-1].to_a.map do |chunk|
+          sd = Nokogiri::HTML('<div>' + chunk)
+          lis = sd.css('ul.win_lost_block01 > li').select { |li| li.at_css('.t_name') && !li.text.include?('Player') && !li.text.include?('Result') }   # 진행 · 종료 세트는 칸 구성이 다르다
+          { no: sd.at_css('.no_order')&.text.to_s[/\d+/].to_i, gp: chunk[/GP\s*(\d+)/, 1]&.to_i,
+            p: begin
+                 names = ->(node) { node.inner_html.split(/<br\s*\/?>/).map { |x| Nokogiri::HTML(x).text.strip }.reject(&:empty?) }
+                 # 진행 중인 세트는 표 대신 현황판(왼쪽 선수 | PLAYER | 오른쪽 선수)으로 나온다
+                 live = sd.at_css('.teamleague-status-box')
+                 live ? live.css('span p').to_a.values_at(0, 2).compact.map(&names) : lis.first(2).map { |li| names.(li.at_css('.t_name')) }
+               end }
+        end.select { |s| s[:no] > 0 }
+      end
+    end
+    team_order_cache[teams] = hit = [Time.now, v]
+  end
+  json.(res, hit[1])
 end
 # ── 실시간: 진행 중인 개인투어 경기(끝난 세트 포함)와 팀리그 경기 ──
 require_relative 'lib/live'

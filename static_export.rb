@@ -33,7 +33,7 @@ FileUtils.rm_rf(OUT)
 FileUtils.mkdir_p(File.join(OUT, 'data', 'player'))
 
 # 화면 파일: index.html 에는 '정적 모드' 표시를 넣는다 (자료를 서버 대신 data/ 파일에서 읽음)
-Dir[File.join(ROOT, 'app', '*')].each { |f| FileUtils.cp(f, OUT) unless File.directory?(f) }
+Dir[File.join(ROOT, 'app', '*')].each { |f| File.directory?(f) ? FileUtils.cp_r(f, OUT) : FileUtils.cp(f, OUT) }   # 폴더(pdata = 승부 예측 자료)도 함께
 idx = File.join(OUT, 'index.html')
 File.write(idx, File.read(idx, encoding: 'utf-8').sub('<head>', "<head>\n<script>window.PBA_STATIC = true;</script>"))
 File.write(File.join(OUT, '.nojekyll'), '')
@@ -57,6 +57,7 @@ $stderr.puts
 %w[PBA LPBA].each do |t|
   save("league_#{t}.json", get("/api/league?type=#{t}"))
   save("awards_#{t}.json", get("/api/awards?type=#{t}"))
+  save("board_#{t}.json", get("/api/board?type=#{t}"))
 end
 save('team_all.json', get('/api/team/all'))
 meta = JSON.parse(get('/api/meta'))

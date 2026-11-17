@@ -39,6 +39,11 @@ seasons.each do |s|
     info = d.css('table tr').map { |tr| [clean.(tr.at_css('th')&.text), clean.(tr.at_css('td')&.text)] }.to_h
     t[:leader] = info['팀리더']
   end
+  # 홈피가 느리거나 빈 응답을 주면 팀·선수가 비어 온다 → 그때는 이전 명단을 그대로 둔다 (비우면 모든 선수가 대체 선수로 보임)
+  if teams.empty? || teams.any? { |t| t[:players].empty? }
+    $stderr.puts "#{s}: 명단 응답이 비어 있음 → 이전 명단 유지"
+    next
+  end
   res[s.to_s] = teams
   $stderr.puts "#{s}: 팀 #{teams.size}, 선수 #{teams.sum { |t| t[:players].size }}"
 end
