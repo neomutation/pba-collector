@@ -299,7 +299,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
   function indId(name, type) {
     const k = name + '|' + type; if (k in indCache) return indCache[k];
     indCache[k] = undefined;
-    fetch('/api/search?q=' + encodeURIComponent(name)).then(r => r.json()).then(list => { const n0 = name.replace(/\s/g, ''); const x = list.filter(p => p.name.replace(/\s/g, '') === n0); const y = x.find(p => p.type === type) || x[0]; indCache[k] = y ? y.id : null; render(); }).catch(() => { indCache[k] = null; });
+    api('/api/search?q=' + encodeURIComponent(name)).then(list => { const n0 = name.replace(/\s/g, ''); const x = list.filter(p => p.name.replace(/\s/g, '') === n0); const y = x.find(p => p.type === type) || x[0]; indCache[k] = y ? y.id : null; render(); }).catch(() => { indCache[k] = null; });
     return undefined;
   }
   // 라운드 짧게: 결승 = 결, 4강 = 4, 8강 = 8 … (그 밖은 홈피 이름 그대로, 조별리그 = 조)
@@ -311,7 +311,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const ids = [indId(o.p[0][0], type), indId(o.p[1][0], type)]; if (ids.includes(undefined)) return undefined; if (ids.includes(null)) return null;
     const k = 'h|' + ids.join('|'); if (k in indCache) return indCache[k];
     indCache[k] = undefined;
-    fetch(`/api/h2h?a=${encodeURIComponent(ids[0])}&b=${encodeURIComponent(ids[1])}`).then(r => r.json()).then(gs => {
+    api(`/api/h2h?a=${encodeURIComponent(ids[0])}&b=${encodeURIComponent(ids[1])}`).then(gs => {
       const last = gs[gs.length - 1];
       indCache[k] = { gs: gs.map(g => ({ season: g.season, seq: g.seq, rc: g.round_code, rr: g.round_raw, win: !!g.win, sw: g.sw, sl: g.sl })), a: o.p[0][0], b: o.p[1][0], games: gs.length, w: gs.filter(g => g.win).length, l: gs.filter(g => !g.win).length, sw: gs.reduce((x, g) => x + (g.sw || 0), 0), sl: gs.reduce((x, g) => x + (g.sl || 0), 0), last: last ? { date: last.date, round: rdShort(last), win: !!last.win, sw: last.sw, sl: last.sl, single: !!last.single } : null };
       render();
@@ -598,7 +598,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
   const open = () => { if (!SHEETWIN && winAlive()) { if (!nativeWin('focus') && popup) popup.focus(); return; } box.hidden = false; fab.hidden = true; if (!SHEETWIN) S.view = 'open'; save(); place(); render(); };
   function tile() { if (!winAlive()) popOut(); nativeWin('tile'); }
   function popOut() {
-    popup = window.open('/?caster&sheetwin' + location.hash, 'pbasheet', 'width=1180,height=820');
+    popup = window.open('?caster&sheetwin' + location.hash, 'pbasheet', 'width=1180,height=820');
     if (!popup) { notice = '새 창을 열지 못했습니다. 바탕화면의 프바 캐스터 앱을 껐다가 다시 켜 주세요.'; render(); return; }
     minimize();
   }
@@ -670,8 +670,9 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const sel0 = window.TeamApp && TeamApp.selected ? TeamApp.selected().filter(Boolean) : [];
     if (!sel0.length) { notice = '팀을 먼저 고르면 그 팀 경기의 출전 오더를 불러옵니다.'; render(); return; }
     notice = '출전 오더를 불러오는 중…'; render();
-    const o = await fetch('/api/team/order?teams=' + sel0.join(',')).then(r => r.json()).catch(() => null);
+    const o = await api('/api/team/order?teams=' + sel0.join(',')).catch(() => null);   // api = 휴대폰·아이패드용 사이트에서는 사이트 자료(오더는 없음)
     notice = '';
+    if (!o && typeof STATIC !== 'undefined' && STATIC) { notice = '휴대폰·아이패드용 사이트에서는 출전 오더를 불러올 수 없습니다. 선수와 세트 점수를 직접 넣어 주세요.'; render(); return; }
     if (!o || !o.t1) { notice = '이 팀의 남은 경기 일정을 찾지 못했습니다.'; render(); return; }
     const flip = sel0[0] === o.t2, codes = flip ? [o.t2, o.t1] : [o.t1, o.t2];
     const names = codes.map(c => TeamApp.shortName ? TeamApp.shortName(c) : c);
