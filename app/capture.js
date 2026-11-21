@@ -1,5 +1,6 @@
 // 앱 영역 캡쳐 (맥 앱에서만 · 프바 앱 · 캐스터 앱 모두): 찍은 그림은 클립보드로 → 다른 앱에 ⌘V
 //   ⌘C  커서가 있는 칩·항목 (바로 다시 누르면 한 단계 위 항목)   글자를 골라 놓았거나 입력칸에서는 원래 복사
+//       커서가 떠 있는 말풍선 안이면 그 말풍선 (바로 다시 누르면 말풍선 + 아래 항목)
 //   ⌘1 / ⌘2  지금 보이는 1번 / 2번 선수(팀) 영역 전체
 //   ⌘A  지금 앱 화면 전체   입력칸에서는 원래 전체 선택
 //   찍은 그림은 /Users/당구/캡쳐 폴더에도 PNG 로 저장 (맥 앱이 저장)
@@ -65,8 +66,19 @@
       const sel = getSelection(); if (typing || (sel && !sel.isCollapsed && String(sel).trim())) return;   // 글자 복사는 그대로
       const at = document.elementFromPoint(mx, my); if (!at) return;
       e.preventDefault();
+      // 커서가 떠 있는 말풍선(.rkbub · .tipbox, 마우스가 통과해 elementFromPoint 로는 안 잡힘) 안이면 그 말풍선을 찍는다
+      //  같은 자리에서 바로 다시 누르면 말풍선 + 그 아래 항목을 한 장에
+      const bub = [...document.querySelectorAll('.rkbub, .tipbox')].find(b => { if (b.hidden) return false; const r = b.getBoundingClientRect(); return r.width > 0 && mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom; });
+      if (bub) {
+        const again = last && last.bub === bub && Date.now() - last.t < 2500 && last.x === mx && last.y === my;
+        let rc = visRect(bub); const under = again && boxAt(at), ur = under && visRect(under === document.body ? document.documentElement : under);
+        if (rc && ur) { const l = Math.min(rc.l, ur.l), t = Math.min(rc.t, ur.t); rc = { l, t, w: Math.max(rc.l + rc.w, ur.l + ur.w) - l, h: Math.max(rc.t + rc.h, ur.t + ur.h) - t }; }
+        last = again ? null : { bub, t: Date.now(), x: mx, y: my };
+        shoot(rc, again ? '말풍선 + 항목' : '말풍선');
+        return;
+      }
       // 같은 자리에서 바로 다시 누르면 한 단계 위 항목
-      let box = last && Date.now() - last.t < 2500 && last.x === mx && last.y === my && last.el.isConnected ? boxAbove(last.el) : boxAt(at);
+      let box = last && Date.now() - last.t < 2500 && last.x === mx && last.y === my && last.el && last.el.isConnected ? boxAbove(last.el) : boxAt(at);
       if (!box) box = boxAt(at);
       last = { el: box, t: Date.now(), x: mx, y: my };
       shoot(box === document.body ? visRect(document.documentElement) : visRect(box), '항목');

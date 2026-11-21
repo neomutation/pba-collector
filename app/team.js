@@ -771,9 +771,6 @@
       this.playerView = localStorageGet('tplview') || 'base';
       try { this.roundShow = JSON.parse(localStorageGet('troundshow')) || { wl: true, pt: true, rk: true, avg: true }; } catch (e) { this.roundShow = { wl: true, pt: true, rk: true, avg: true }; }
       window.addEventListener('chiporder', () => { if (this.code && this.secs) this.renderSecs(); });
-      this.fbChart = localStorageGet('fbchart') || 'num';
-      this.el.addEventListener('mouseover', e => { const c = e.target.closest('[data-fbt]'); if (c) showRkBub(c, this._fbTips[+c.dataset.fbt]); });
-      this.el.addEventListener('mouseout', e => { if (e.target.closest('[data-fbt]')) hideRkBub(); });
       this.opened = JSON.parse(localStorageGet('ttiles_' + key) || '[]');
       el.addEventListener('change', e => {
         const t = e.target;
@@ -819,8 +816,6 @@
         if (tsm) { const [id, v] = tsm.dataset.tsmode.split('|'); this.secModes[id] = v; localStorageSet('tsmodes_' + this.key, JSON.stringify(this.secModes)); this.render(); return; }
         const tpv = e.target.closest('[data-tpv]');
         if (tpv) { this.playerView = tpv.dataset.tpv; localStorageSet('tplview', this.playerView); hideRkBub(); this.renderSecs(); return; }
-        const fbc = e.target.closest('[data-fbc]');
-        if (fbc) { this.fbChart = fbc.dataset.fbc; localStorageSet('fbchart', this.fbChart); hideRkBub(); this.renderSecs(); return; }
         const rsb = e.target.closest('[data-trs]');
         if (rsb) { const k = rsb.dataset.trs; if (this.roundShow[k] && Object.values(this.roundShow).filter(Boolean).length < 2) return; this.roundShow[k] = !this.roundShow[k]; localStorageSet('troundshow', JSON.stringify(this.roundShow)); this.renderSecs(); return; }
         const trg = e.target.closest('[data-trg]'); if (trg) { toggleFold('row', trg.dataset.trg); return; }
@@ -938,8 +933,8 @@
         ['sum', '📊', '세부 기록', '정규리그 · 시즌별', () => this.seasonSummary(code)],
         // 이번 시즌(실선 · 큰 숫자) + 통산(점선 · 아랫줄)을 한 그림에, 항목 이름 왼쪽 = 시즌 순위 · 오른쪽 = 통산 순위 (방송 요약 '이번 시즌-통산'과 같은 그림)
         ['hex', '⬡', '육각형 스탯', '이번 시즌 · 통산 · 리그 평균 비교', () => { const me = { id: code, name: teamShort[code] || code, color: tcolor(code) || 'var(--accent)' };
-          // 득실성향 키워드: 시즌 · 통산 따로 (누르면 전체 · 승세트 · 패세트 → 그래프 말풍선)
-          const kw = styleKw('득실성향 · 시즌', styleTableT(lg), [me], '그 시즌 팀들') + styleKw('득실성향 · 통산', styleTableT(null), [me], '역대 팀들');
+          // 득실성향 키워드 하나: 전체 · 승세트 · 패세트를 누르면 이번 시즌(실선 점) + 통산(점선 점)을 한 그래프 말풍선에 (개인투어와 같음)
+          const kw = styleKwDuo('득실성향', [{ tag: '이번 시즌', SS: styleTableT(lg), pool: '그 시즌 팀들' }, { tag: '통산', SS: styleTableT(null), pool: '역대 팀들', dash: true }], me);
           return `<div class="fbhead" style="padding:0 14px 4px;gap:6px;flex-direction:column;align-items:flex-start">${kw}</div>` + hexChart(HEX, [{ t: hexStats(code, lg), ...me, tag: '이번 시즌' }, { t: hexStats(code, null), ...me, tag: '통산', dash: true }], [hexLeague(lg), hexLeague(null)], '그 시즌 · 역대 팀들', { ranks: true, overlay: true }); }],
         ['round', '🗓', '라운드별 성적', '이번 시즌 · 전체 시즌', () => this.roundTable(code, lg)],
         // 세트별 기록: 하위 키워드 세트별 승률 · 세트 흐름 (묶음마다 안에 또 키워드 줄, 개인투어와 같음)
@@ -1206,9 +1201,7 @@
         ['초구 성공률', o => pct(o.fbSuccess), o => `${o.fbN}회`, '', o => o.fbSuccess, pct],
         ['초구 성공 시 승률', ...wl(o => o.fbHitWL)], ['초구 실패 시 승률', ...wl(o => o.fbMissWL)],
       ];
-      const fbRows = ordBy(this.seasonCols(code).filter(c => !c.tot), c => leagueOf[c.league].season).map(c => ({ label: c.label, n: c.o.fbN, v: c.o.fbN ? c.o.fbSuccess : null, lv: c.L && c.L.fbSuccess != null ? c.L.fbSuccess : null }));
-      const fbH = fbSeasonsHtml(fbRows, teamShort[code] || code, this.fbChart, this);
-      return '<div class="bankt">' + grid(rows, this.seasonCols(code), this.sm('bank'), { league: true }) + '</div>' + fbH + '<div class="note">뱅킹 승률은 경기당 한 번, 1세트 기준입니다 (1세트 선공 = 뱅킹 승). 흰공 · 노란공 줄은 전체 세트의 선공 · 후공 기록이고, 홈피에 공 색 표시가 없어 선공을 흰공으로 봅니다.</div>';
+      return '<div class="bankt">' + grid(rows, this.seasonCols(code), this.sm('bank'), { league: true }) + '</div><div class="note">뱅킹 승률은 경기당 한 번, 1세트 기준입니다 (1세트 선공 = 뱅킹 승). 흰공 · 노란공 줄은 전체 세트의 선공 · 후공 기록이고, 홈피에 공 색 표시가 없어 선공을 흰공으로 봅니다.</div>';
     }
     distTable(code) {
       const cols = this.seasonCols(code);

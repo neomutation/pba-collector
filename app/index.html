@@ -1639,7 +1639,7 @@ function avgShareRank(L, k, scope, season, pid) {
 //  손가락을 뗄 때(touchend) 직접 mouseout → mouseover 를 보내 말풍선 처리기를 그대로 쓴다
 let touchAt = 0, touchMoved = false, touchXY = null, touchOpen = null;
 const isTouch = () => Date.now() - touchAt < 1000;
-const touchTipEl = t => t && t.closest && (tipOwner(t) || t.closest('[data-hex], [data-cg], [data-fbt], [title], [data-tip]'));
+const touchTipEl = t => t && t.closest && (tipOwner(t) || t.closest('[data-hex], [data-cg], [title], [data-tip]'));
 const touchOnTip = t => isTouch() && !!touchTipEl(t);
 const bubOpen = () => !rkBub.hidden || !tipBox.hidden;
 addEventListener('touchstart', e => { touchAt = Date.now(); touchMoved = false; const p = e.touches[0]; touchXY = p && { x: p.clientX, y: p.clientY }; }, { capture: true, passive: true });
@@ -1847,7 +1847,7 @@ const IHEX = [
   { n: '득실비', main: t => f3(t.o.ptRatio), lgMain: X => f3(X.o.ptRatio),
     rows: [['득점 ÷ 실점', t => f3(t.o.ptRatio), X => f3(X.o.ptRatio)], ['세트당 득점', t => t.o.ptsPerSet != null ? t.o.ptsPerSet.toFixed(1) : '–', X => X.o.ptsPerSet != null ? X.o.ptsPerSet.toFixed(1) : ''], ['세트당 실점', t => t.o.oppPerSet != null ? t.o.oppPerSet.toFixed(1) : '–', X => X.o.oppPerSet != null ? X.o.oppPerSet.toFixed(1) : ''], ['상대 에버', t => f3(t.o.oppAvg), X => f3(X.o.avgAll)]], note: '내 득점 ÷ 상대 득점 (1보다 크면 더 많이 넣음).' },
 ];
-// 개인투어 리그 묶음: 그 시즌 리그 평균 + 그 시즌 10경기 이상 선수들 (L 이 없으면 null)
+// 개인투어 리그 묶음: 그 시즌 리그 평균 + 그 시즌 5경기 이상 선수들 (L 이 없으면 null)
 function hexLeagueI(L, season) {
   if (!L) return null;
   const k = 'hex' + season; if (L[k]) return L[k];
@@ -1942,6 +1942,9 @@ const styleLab = (r, num) => !r || !r.type ? '–' : `<span class="sttype">${r.t
 const styleTip = r => !r || r.x == null ? '' : `세트당 득점 ${fpt(r.x)} · 실점 ${fpt(r.y)}`;
 // 전체 = XY 그래프 (가로 득점 · 오른쪽 많음, 세로 실점 · 위가 적음, 원점 = 리그 평균). 승세트 · 패세트 = 한 축 그래프 (오른쪽 = 좋음)
 //  눈금은 실제 세트당 점수 (맞대결 = 평소와의 차이)
+//  이번 시즌 + 통산 한 그림(stylePop duo): 표시마다 m.S = 자기 기간 묶음, m.dash = 점선 테두리 점. 기간마다 리그 평균 · σ 가 달라 S.zAxis 면 눈금을 σ 로 쓴다
+const styleZTk = z => z ? `${z > 0 ? '+' : '−'}${Math.abs(z)}σ` : '평균';
+const styleDot = (m, x, y, title) => `<circle class="stme" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" ${m.dash ? `style="fill:var(--panel);stroke:${m.color};stroke-width:2.2;stroke-dasharray:3 2"` : `fill="${m.color}"`} title="${title}"/>`;
 function styleChart(S, marks) {
   if (S.kind !== 'all') return styleStrip(S, marks);
   const W = 300, H = 262, l = 36, r = 8, t = 6, b = 30, Z = 2.6, pw = W - l - r, ph = H - t - b;
@@ -1952,13 +1955,15 @@ function styleChart(S, marks) {
   [-2, -1, 1, 2].forEach(z => { s += `<line class="stgrid" x1="${X(z)}" y1="${t}" x2="${X(z)}" y2="${t + ph}"/><line class="stgrid" x1="${l}" y1="${Y(z)}" x2="${l + pw}" y2="${Y(z)}"/>`; });
   s += `<line class="stax" x1="${X(0)}" y1="${t}" x2="${X(0)}" y2="${t + ph}"/><line class="stax" x1="${l}" y1="${Y(0)}" x2="${l + pw}" y2="${Y(0)}"/><rect class="stframe" x="${l}" y="${t}" width="${pw}" height="${ph}"/>`;
   const tk = v => S.h2h && v > 0 ? '+' + v.toFixed(1) : v.toFixed(1), pre = S.h2h ? '평소보다 ' : '';   // 맞대결 = 평소와의 차이
-  [-2, 0, 2].forEach(z => { s += `<text x="${X(z)}" y="${t + ph + 12}" text-anchor="middle">${tk(S.lgx + z * S.sx)}</text><text x="${l - 3}" y="${Y(z) + 3}" text-anchor="end">${tk(S.lgy + z * S.sy)}</text>`; });
+  [-2, 0, 2].forEach(z => { s += `<text x="${X(z)}" y="${t + ph + 12}" text-anchor="middle">${S.zAxis ? styleZTk(z) : tk(S.lgx + z * S.sx)}</text><text x="${l - 3}" y="${Y(z) + 3}" text-anchor="end">${S.zAxis ? styleZTk(-z) : tk(S.lgy + z * S.sy)}</text>`; });
   s += `<text class="sttl" x="${l + pw}" y="${H - 3}" text-anchor="end">${pre}득점 많음 →</text><text class="sttl" transform="translate(10 ${t}) rotate(-90)" text-anchor="end">${pre}실점 적음 →</text>`;
   s += [[1, l + pw - 4, t + 12, 'end'], [2, l + 4, t + 12, 'start'], [3, l + 4, t + ph - 5, 'start'], [4, l + pw - 4, t + ph - 5, 'end']]
     .map(([q, x, y, a]) => `<text class="stq" x="${x}" y="${y}" text-anchor="${a}">${STYLE_QN[q]}</text>`).join('');
   S.ok.forEach(r => { if (!ids.has(r.id)) s += `<circle class="stdot" cx="${X(r.zx).toFixed(1)}" cy="${Y(r.zy).toFixed(1)}" r="2.6" title="${tip(r)}"/>`; });
-  marks.forEach(m => { const q = S.byId[m.id]; if (!q || q.zx == null) return; const x = X(q.zx), y = Y(q.zy), lf = x > l + pw * .62;
-    s += `<circle class="stme" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="${m.color}" title="${tip(q)}"/><text class="stnm" x="${(lf ? x - 8 : x + 8).toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${lf ? 'end' : 'start'}" fill="${m.color}">${esc(m.name)}</text>`; });
+  marks.forEach((m, i) => { const q = (m.S || S).byId[m.id]; if (!q || q.zx == null) return; const x = X(q.zx), y = Y(q.zy), lf = x > l + pw * .62;
+    // 이번 시즌 + 통산(m.S): 두 점이 가까워도 이름이 겹치지 않게 첫째는 점 위, 둘째는 점 아래
+    const ty = m.S ? (i ? Math.min(t + ph - 2, y + 18) : Math.max(t + 12, y - 9)) : y + 4, tx = m.S ? x : lf ? x - 8 : x + 8, ta = m.S ? (x < l + 45 ? 'start' : x > l + pw - 45 ? 'end' : 'middle') : lf ? 'end' : 'start';
+    s += styleDot(m, x, y, m.S ? esc(`${m.name} · ${q.type} · ${styleTip(q)}`) : tip(q)) + `<text class="stnm" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${ta}" fill="${m.color}">${esc(m.name)}</text>`; });
   return s + '</svg>';
 }
 // 한 축 그래프: 승세트 = 세트당 실점 (오른쪽 = 적게 내줌), 패세트 = 세트당 득점 (오른쪽 = 많이 침)
@@ -1969,12 +1974,12 @@ function styleStrip(S, marks) {
   const tk = v => S.h2h && v > 0 ? '+' + v.toFixed(1) : v.toFixed(1), tip = q => esc(`${q.name} · ${q.type} · ${styleTip(q)}`), ids = new Set(marks.map(m => m.id));
   let s = `<svg class="stysvg" viewBox="0 0 ${W} ${H}"><rect class="stq3" x="${l}" y="${cy - 15}" width="${X(0) - l}" height="30"/><rect class="stq1" x="${X(0)}" y="${cy - 15}" width="${l + pw - X(0)}" height="30"/>`;
   s += `<rect class="stband" x="${X(-.5)}" y="${cy - 15}" width="${X(.5) - X(-.5)}" height="30"/><line class="stgrid" x1="${l}" y1="${cy}" x2="${l + pw}" y2="${cy}"/><line class="stax" x1="${X(0)}" y1="${cy - 19}" x2="${X(0)}" y2="${cy + 19}"/>`;
-  [-2, -1, 0, 1, 2].forEach(z => { s += `<text x="${X(z)}" y="${cy + 31}" text-anchor="middle">${tk(val(z))}</text>`; });
+  [-2, -1, 0, 1, 2].forEach(z => { s += `<text x="${X(z)}" y="${cy + 31}" text-anchor="middle">${S.zAxis ? styleZTk(z) : tk(val(z))}</text>`; });
   s += `<text class="stq" x="${l}" y="12">${win ? '고실' : '저득'}</text><text class="stq" x="${l + pw}" y="12" text-anchor="end">${win ? '저실' : '고득'}</text>`;
   s += `<text class="sttl" x="${W / 2}" y="${H - 3}" text-anchor="middle">${S.h2h ? '평소보다 ' : ''}${win ? `세트당 실점 (득점 ${S.bl}) · 오른쪽 = 적게 내줌` : `세트당 득점 (실점 ${S.bl}) · 오른쪽 = 많이 침`}</text>`;
   S.ok.forEach((q, i) => { if (!ids.has(q.id)) s += `<circle class="stdot" cx="${X(pos(q)).toFixed(1)}" cy="${(cy + ((i * 37) % 11 - 5) * 1.8).toFixed(1)}" r="2.6" title="${tip(q)}"/>`; });
-  marks.forEach((m, i) => { const q = S.byId[m.id]; if (!q || q.type == null) return; const x = X(pos(q)), a = x < l + 40 ? 'start' : x > l + pw - 40 ? 'end' : 'middle';
-    s += `<circle class="stme" cx="${x.toFixed(1)}" cy="${cy}" r="5.5" fill="${m.color}" title="${tip(q)}"/><text class="stnm" x="${x.toFixed(1)}" y="${i ? cy + 22 : cy - 12}" text-anchor="${a}" fill="${m.color}">${esc(m.name)}</text>`; });
+  marks.forEach((m, i) => { const q = (m.S || S).byId[m.id]; if (!q || q.type == null) return; const x = X(pos(q)), a = x < l + 40 ? 'start' : x > l + pw - 40 ? 'end' : 'middle';
+    s += styleDot(m, x, cy, m.S ? esc(`${m.name} · ${q.type} · ${styleTip(q)}`) : tip(q)) + `<text class="stnm" x="${x.toFixed(1)}" y="${i ? cy + 22 : cy - 12}" text-anchor="${a}" fill="${m.color}">${esc(m.name)}</text>`; });
   return s + '</svg>';
 }
 // 묶음별 숫자 줄: 전체 = 득점 : 실점, 승세트 = 득점 고정 : 실점, 패세트 = 득점 : 실점 고정
@@ -2029,8 +2034,27 @@ function styleKw(label, SS, marks, poolName) {
   if (stylePopN > 400) delete STYLE_POP['sp' + (stylePopN - 400)];   // 다시 그릴 때마다 쌓이지 않게 오래된 것은 버린다
   return `<span class="stkw"><button class="kwb" data-stkw>${label} ▸</button><span class="stsub" hidden>${STYLE_KINDS.map(([k, n]) => `<button class="kwb sm" data-stp="${id}|${k}">${n}</button>`).join('')}</span></span>`;
 }
-function stylePop({ SS, marks, poolName }, k) {
-  const S = SS[k], n = STYLE_KINDS.find(x => x[0] === k)[1];
+// 이번 시즌 + 통산 하나의 키워드 (육각형 칩): ps = [{ tag, SS, pool, dash }] (기간 묶음이 없으면 SS = null), me = { id, name, color }
+function styleKwDuo(label, ps, me) {
+  const id = 'sp' + (++stylePopN); STYLE_POP[id] = { duo: ps.filter(p => p.SS && p.SS.all.byId[me.id]), me };
+  if (stylePopN > 400) delete STYLE_POP['sp' + (stylePopN - 400)];
+  return `<span class="stkw"><button class="kwb" data-stkw>${label} ▸</button><span class="stsub" hidden>${STYLE_KINDS.map(([k, n]) => `<button class="kwb sm" data-stp="${id}|${k}">${n}</button>`).join('')}</span></span>`;
+}
+//  그래프: 기간마다 자기 리그 평균 대비 위치(σ)라 눈금도 σ, 배경 점 = 첫 기간(이번 시즌) 선수들
+function stylePopDuo({ duo, me }, k) {
+  const n = STYLE_KINDS.find(x => x[0] === k)[1], base = duo[0].SS[k];
+  // 수치 밑 리그 평균: 승세트 = 실점, 패세트 = 득점 (고정 쪽 · 전체의 득점 = 실점은 늘 같은 값이라 뺀다)
+  const lgSub = S => k === 'win' ? `<span class="stnum">리그 실점 ${fpt(S.lgy)}</span>` : k === 'lose' ? `<span class="stnum">리그 득점 ${fpt(S.lgx)}</span>` : '';
+  const rows = duo.map(p => { const S = p.SS[k], r = S.byId[me.id] || {};
+    return `<tr><th style="color:${me.color}">${p.dash ? '◌' : '●'} ${esc(p.tag)}</th><td>${styleLab(r)}</td><td>${r.x != null ? styleVals(S, r) : '–'}${lgSub(S)}</td><td>${r.n ?? '–'}</td></tr>`; }).join('');
+  const what = k === 'win' ? `득점 ${base.bl} 고정 · 실점 비교` : k === 'lose' ? `실점 ${base.bl} 고정 · 득점 비교` : `${base.bl} 세트 기준`;
+  const marks = duo.map(p => ({ id: me.id, name: p.tag, color: me.color, S: p.SS[k], dash: p.dash }));
+  return `<div class="stpop"><div class="rkh0">득실 성향 · ${n}<small>${esc(me.name)}</small></div><table class="stsum"><thead><tr><th></th><th>유형</th><th>세트당 득점 : 실점</th><th>경기</th></tr></thead><tbody>${rows}
+    <tr class="stlgr"><td colspan="4" style="white-space:normal" title="${esc(duo.map(p => `${p.tag}: ${p.pool}`).join(' · '))}">${what} · 원점 = 각 기간 리그 평균</td></tr></tbody></table>${styleChart({ ...base, zAxis: true }, marks)}</div>`;
+}
+function stylePop(P, k) {
+  if (P.duo) return P.duo.length ? stylePopDuo(P, k) : '<div class="stpop"><div class="note">득실 기록이 없습니다.</div></div>';
+  const { SS, marks, poolName } = P, S = SS[k], n = STYLE_KINDS.find(x => x[0] === k)[1];
   const rows = marks.map(m => { const r = S.byId[m.id] || {};
     return `<tr><th style="color:${m.color}">${esc(m.name)}</th><td>${S.h2h ? `<span class="sth">${styleLab(r)}</span>${r.u && r.u.type ? `<span class="stnum">평소 ${styleLab(r.u)}</span>` : ''}` : styleLab(r)}</td><td>${styleVals(S, r, S.h2h)}</td><td>${r.n ?? '–'}</td></tr>`; }).join('');
   const what = k === 'win' ? `득점 ${S.bl} 고정 · 실점 비교` : k === 'lose' ? `실점 ${S.bl} 고정 · 득점 비교` : `${S.bl} 세트 기준`;
@@ -2097,7 +2121,7 @@ const hideRkBub = () => { rkBub.hidden = true; };
 // 커서 말풍선은 글자(수치 · 순위 · 이름) 위에서만 뜬다: 칸 · 상자의 빈 곳에서는 안 뜸 (모든 말풍선 공통)
 //  글자 밖에서 온 mouseover 는 말풍선 처리기에 안 보내고, 같은 칸 안에서 글자에 들어가고 나갈 때 mouseover / mouseout 을 대신 보낸다
 //  글자가 없는 것(막대 그래프 · 육각형 그림)과 단추 · 타일은 그대로 전체
-const TIP_SEL = '[data-rtip], [data-rkh], [data-fbt], [data-bkh], [data-stip], [data-h2hp], [data-tip], [title], [data-rnd], [data-pst], [data-xtt], [data-srk], [data-srkp], [data-snr], [data-tip2], [data-pl], [data-bk], [data-stp], [data-stkw]';
+const TIP_SEL = '[data-rtip], [data-rkh], [data-bkh], [data-stip], [data-h2hp], [data-tip], [title], [data-rnd], [data-pst], [data-xtt], [data-srk], [data-srkp], [data-snr], [data-tip2], [data-pl], [data-bk], [data-stp], [data-stkw]';
 const tipOwner = t => { const c = t && t.closest && t.closest(TIP_SEL); return c && !c.closest('button, input, select, textarea, label, svg, .tile, .apptabs') && /\S/.test(c.textContent) ? c : null; };
 function onInk(c, x, y) {
   const r = document.caretRangeFromPoint && document.caretRangeFromPoint(x, y); if (!r) return true;
@@ -2125,10 +2149,10 @@ addEventListener('mousemove', e => {
   else if (!ok && inkFor === c) { inkFor = null; inkFire('mouseout', e); }
 }, true);
 // 커서 말풍선도 말풍선을 띄우는 칸이 아닌 곳을 누르면 닫힌다
-document.addEventListener('click', e => { if (touchOnTip(e.target)) return; if (e.target.closest && e.target.closest('[data-stp], [data-stkw], [data-rnd], [data-rkh], [data-tip2], [data-cg], [data-fbt], [data-pl], [data-bk], [data-bkh], [data-srk], [data-snr]')) return; hideRkBub(); if (typeof hideTip === 'function') hideTip(); });
+document.addEventListener('click', e => { if (touchOnTip(e.target)) return; if (e.target.closest && e.target.closest('[data-stp], [data-stkw], [data-rnd], [data-rkh], [data-tip2], [data-cg], [data-pl], [data-bk], [data-bkh], [data-srk], [data-snr]')) return; hideRkBub(); if (typeof hideTip === 'function') hideTip(); });
 addEventListener('scroll', scrollHide(hideRkBub), true); document.addEventListener('mousedown', e => { if (!touchOnTip(e.target)) hideRkBub(); });
-// ── 기록 순위: 같은 종목 선수별 통산(30경기 이상) / 시즌(10경기 이상) 기록 ──────────
-const RANK_MIN = { all: 30, season: 10 };
+// ── 기록 순위: 같은 종목 선수별 통산(30경기 이상) / 시즌(5경기 이상) 기록 ──────────
+const RANK_MIN = { all: 30, season: 5 };
 const RANK_MIN_S = { all: 20, season: 5 };   // 25점 단판 보기 순위 자격 (단판은 한 경기가 한 세트라 기준을 낮춤)
 const rankMin = kind => kind === 'single' ? RANK_MIN_S : RANK_MIN;
 // 보기별 경기: all = 세트제 + 25점 단판 모두(단판도 한 세트로) · set = 세트제만 · single = 25점 단판만 (calc 는 단판을 빼므로 세트처럼 바꿔 센다)
@@ -2262,7 +2286,7 @@ const ROWS = {
 
 // 시즌별 표를 만든다. cols: [{label, games}] (마지막은 통산)
 // mode: 'self' = 내 시즌끼리 비교(파랑), 'league' = 리그 평균 대비(초록/빨강). 리그 모드에선 맨 끝에 리그 평균 열.
-// 시즌 요약 칸 말풍선: 그 열(시즌 · 통산)의 리그 평균 + 같은 종목 선수 중 순위 (통산 30경기 · 시즌 10경기 이상, 같으면 같은 순위)
+// 시즌 요약 칸 말풍선: 그 열(시즌 · 통산)의 리그 평균 + 같은 종목 선수 중 순위 (통산 30경기 · 시즌 5경기 이상, 같으면 같은 순위)
 function summaryTip(rk, col, i, key, v, better, fmt, hasLg) {
   if (!rk.L || v == null || isNaN(v)) return '';
   const tot = i >= rk.seasons.length, scope = tot ? 'all' : 'season', season = tot ? null : rk.seasons[i];
@@ -2385,8 +2409,6 @@ class Pane {
       if (ssb) { const k = ssb.dataset.ss, on = Object.keys(this.setShow).filter(x => this.setShow[x]); if (this.setShow[k] && on.length < 2) return; this.setShow[k] = !this.setShow[k]; localStorageSet('setshow', JSON.stringify(this.setShow)); this.renderSecs(); return; }
       const rsb = e.target.closest('[data-rs]');
       if (rsb) { const k = rsb.dataset.rs, on = Object.keys(this.roundShow).filter(x => this.roundShow[x]); if (this.roundShow[k] && on.length < 2) return; this.roundShow[k] = !this.roundShow[k]; localStorageSet('roundshow', JSON.stringify(this.roundShow)); this.renderSecs(); return; }
-      const fbc = e.target.closest('[data-fbc]');
-      if (fbc) { this.fbChart = fbc.dataset.fbc; localStorageSet('fbchart', this.fbChart); hideRkBub(); this.renderSecs(); return; }
       // 펼친 세부 기록: 그 안의 누를 수 없는 곳을 누르면 접힌다 (팀리그와 같게)
       const sec = e.target.closest('.sec[data-sec]');
       if (sec && !e.target.closest(POP_CLICKABLE + ', [data-close], [data-hex], [data-gpst], [data-tchip], th[data-totk], tr.tourrow, .rkclick, details')) { this.toggleSec(sec.dataset.sec); return; }
@@ -2405,12 +2427,9 @@ class Pane {
     // 기본 기록 칸 순위 말풍선: 커서를 올리면 그 칸 오른쪽에, 벗어나면 사라짐
     el.addEventListener('mouseover', e => { const c = e.target.closest('[data-rkh]'); if (!c || c === this._rkFor) return; this._rkFor = c; const h = this.rkBubble(c.dataset.rkh); if (h) showRkBub(c, h); });
     el.addEventListener('mouseout', e => { const c = e.target.closest('[data-rkh]'); if (c && !c.contains(e.relatedTarget)) { this._rkFor = null; hideRkBub(); } });
-    el.addEventListener('mouseover', e => { const c = e.target.closest('[data-fbt]'); if (c) showRkBub(c, this._fbTips[+c.dataset.fbt]); });
-    el.addEventListener('mouseout', e => { if (e.target.closest('[data-fbt]')) hideRkBub(); });
     this.mode = localStorageGet('mode_' + key) || 'self';
     try { this.secModes = JSON.parse(localStorageGet('smodes_' + key)) || {}; } catch (e) { this.secModes = {}; }
     window.addEventListener('chiporder', () => { if (this.data) this.renderSecs(); });
-    this.fbChart = localStorageGet('fbchart') || 'num';
     try { this.roundShow = JSON.parse(localStorageGet('roundshow')) || { win: true, avg: true, out: true }; } catch (e) { this.roundShow = { win: true, avg: true, out: true }; }
     try { this.setShow = JSON.parse(localStorageGet('setshow')) || { avg: true, win: true, fb: true }; } catch (e) { this.setShow = { avg: true, win: true, fb: true }; }
   }
@@ -2606,7 +2625,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const must = `<div class="must"><div class="mtitle">기본 기록</div>${mBtns}<div class="tw"><table class="musttab" data-mkind="all"${mKind === 'all' ? '' : ' hidden'}>${mHead}<tbody>
       ${MUST.map(([key, label, fmt, ok, ork, sk]) => {
         const s1 = ofv(OS, ok, ork, fmt, '시즌'), t1 = ct && OT && OT.TourTitle ? ofv(OT, ok, ork, fmt, '대회') : null;
-        // 뱅크샷 비율: 홈피 '뱅크샷비율순위'는 비율 순위가 아니다(뱅크샷 개수 순으로 보임) → 시즌 순위는 직접 계산 (10경기 이상), 대회 순위는 뺀다
+        // 뱅크샷 비율: 홈피 '뱅크샷비율순위'는 비율 순위가 아니다(뱅크샷 개수 순으로 보임) → 시즌 순위는 직접 계산 (5경기 이상), 대회 순위는 뺀다
         if (key === 'bank') {
           const lst = L ? rankTable(L, 'season', sNow).filter(x => x.bank != null).sort((a, b) => b.bank - a.bank) : [], i = lst.findIndex(x => x.id === p.id);
           if (s1) s1[1] = i >= 0 ? `시즌 ${i + 1}위` : '';
@@ -2641,7 +2660,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
       ['sets', '🎯', '세트별 기록', '세트 번호별 · 스코어 상황별 에버 · 승률 · 초구, 세트 흐름', () =>
         `<div data-plabel="세트 번호별">${this.setNoGrid(cols, sm('sets'))}</div><div data-plabel="스코어 상황별">${this.stateGrid(cols, sm('sets'))}</div><div data-plabel="세트 흐름" data-psub data-pbox>${this.flowSummary(cols) + this.flowSection(cols, sm('sets'))}</div>`],
       ['bank', '🎱', '뱅킹·공 색·선후공', hint('bank'), () => seasonTable(ROWS.bank, cols, sm('bank'))],
-      ['fb', '⚡', '초구', hint('fb'), () => seasonTable(ROWS.fb, cols, sm('fb')) + `<div class="subhead" style="margin-top:8px"><b>대회별 초구</b> · 시즌을 누르면 펼쳐집니다</div>` + this.fbTours(seasons, tours, res, sm('fb')) + this.fbSeasons(seasons)],
+      ['fb', '⚡', '초구', hint('fb'), () => seasonTable(ROWS.fb, cols, sm('fb')) + `<div class="subhead" style="margin-top:8px"><b>대회별 초구</b> · 시즌을 누르면 펼쳐집니다</div>` + this.fbTours(seasons, tours, res, sm('fb'))],
       ['score', '📈', '득점 패턴', '득실 · 장타 · 중타 (이닝 기록 기준)', () => seasonTable(ROWS.score, cols, sm('score')) + this.setNoScore(cols) + this.ratioTop(sNow)],
       ['round', '🪜', '라운드별', '승률 · 에버리지 · 탈락 횟수', () => this.roundTable(cols, sm('round'))],
       ['hex', '⬡', '육각형 스탯', '이번 시즌 · 통산 · 리그 평균 비교', () => this.hexSec(sNow)],
@@ -2717,22 +2736,34 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     });
     return h + '</tbody></table>';
   }
-  // 세트 번호별 평균 득점·이닝·실점·득실비 (이번 시즌 · 통산)
+  // 세트별 득실비: 줄 = 세트 번호, 열 = cols(시즌 + 통산, 통산 자리 · 테두리는 applyTotPos). 칸 = 득실비 + 작게 순위 (리그 평균은 늘 1.000 이라 뺌)
+  //  득실비 말풍선 = 득점 · 실점, 순위 말풍선 = 그 기간 그 세트 득실비 TOP20 (자격 = 그 기간 순위 자격 경기 수 + 그 세트 SETNO_MIN번 이상)
   setNoScore(cols) {
-    const cur = lastSeason(this.data);
-    const curCol = cols.find(c => c.label === seasonLabel(cur));
-    const A = bySetNo(this.data.games), C = curCol ? bySetNo(curCol.games) : {};
-    const nos = Object.keys(A).map(Number).sort((a, b) => a - b);
-    const cell = (o, last) => {
-      if (!o || !o.n) return `<td${last ? ' class="tot"' : ''}></td>`.repeat(4);
-      const t = last ? ' class="tot"' : '';
-      return `<td${t}>${f2(o.p / o.n)}</td><td>${f1(o.i / o.n)}</td><td>${o.on ? f2(o.op / o.on) : ''}</td><td><b>${o.op ? f3(o.p / o.op) : ''}</b></td>`;
+    const L = this.league, me = this.data.player.id, SETNO_MIN = 5;
+    const B = cols.map(c => setNoRatio(c.games)), nos = Object.keys(B[B.length - 1]).map(Number).sort((a, b) => a - b);
+    const R = c => {   // 그 열 기간의 리그 평균 · 선수별 순위 (리그 자료에 기간마다 한 번)
+      if (!L) return null;
+      const tot = c.label === '통산', s = tot ? null : Object.keys(L.season).map(Number).find(x => seasonLabel(x) === c.label);
+      if (!tot && s == null) return null;
+      const C = L._snr || (L._snr = {}), k = tot ? 'all' : s; if (C[k]) return C[k];
+      const by = {};
+      rankTable(L, tot ? 'all' : 'season', s, 'set').forEach(x => Object.entries(setNoRatio(x.gs)).forEach(([no, o]) => { if (o.n >= SETNO_MIN && o.op) (by[no] || (by[no] = [])).push({ id: x.id, name: x.name, v: o.p / o.op, o }); }));
+      Object.values(by).forEach(l => l.sort((a, b) => b.v - a.v));
+      return (C[k] = { by, scope: tot ? 'all' : 'season' });
     };
-    let h = `<div class="subhead">세트 번호별 평균 득점 · 이닝 · 실점</div><div class="tw"><table class="grid"><thead>
-      <tr><th class="lab"></th><th colspan="4">${curCol ? seasonLabel(cur) : ''}</th><th colspan="4" class="tot">통산</th></tr>
-      <tr><th class="lab">세트</th><th>득점</th><th>이닝</th><th>실점</th><th>득실비</th><th class="tot">득점</th><th>이닝</th><th>실점</th><th>득실비</th></tr></thead><tbody>`;
-    nos.forEach(k => { h += `<tr><th class="lab">${k}세트</th>${cell(C[k], false)}${cell(A[k], true)}</tr>`; });
-    return h + '</tbody></table></div><div class="note">득실비 = 득점 ÷ 실점. 1보다 크면 그 세트에서 넣은 점수가 더 많음.</div>';
+    const cell = (c, i, no) => {
+      const o = B[i][no]; if (!o || !o.op) return '<td></td>';
+      const r = R(c), list = r && r.by[no] || [], v = o.p / o.op;
+      const mi = list.findIndex(x => x.id === me), rank = mi >= 0 ? 1 + list.filter(x => x.v > v + 1e-9).length : null;
+      const rkOf = x => 1 + list.filter(y => y.v > x.v + 1e-9).length;
+      const row = (x, cls) => `<tr class="${cls || ''}"><td>${rkOf(x)}</td><td>${esc(x.name)}</td><td>${f3(x.v)} <small>${x.o.p}:${x.o.op}</small></td></tr>`;
+      const tip = rank ? `<div class="rkh0">${esc(c.label)}${c.label === '통산' ? '' : ' 시즌'} ${no}세트 득실비 순위 <small>${list.length}명 · 높은 순</small></div><table>${row(list[mi], 'me')}${list.slice(0, 20).map(x => row(x, x.id === me ? 'mine' : '')).join('')}</table>` : '';
+      const rkH = rank ? `<span class="s" data-rtip="${esc(tip)}" style="cursor:help">${rank}위</span>` : r ? `<span class="s">${o.n < SETNO_MIN ? `${SETNO_MIN}세트 미만` : `${RANK_MIN[r.scope]}경기 미만`}</span>` : '';
+      return `<td><b title="득점 ${o.p} · 실점 ${o.op} (${o.n}세트)" style="cursor:help">${f3(v)}</b>${rkH}</td>`;
+    };
+    let h = `<div class="subhead">세트별 득실비</div><div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${cols.map(c => `<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>`;
+    nos.forEach(no => { h += `<tr><th class="lab">${no}세트</th>${cols.map((c, i) => cell(c, i, no)).join('')}</tr>`; });
+    return h + `</tbody></table></div><div class="note">득실비 = 득점 ÷ 실점 (1보다 크면 그 세트에서 넣은 점수가 더 많음, 25점 단판 제외, 리그 전체 평균은 늘 1.000이라 싣지 않음). 순위 = 그 기간 순위 자격(시즌 ${RANK_MIN.season} · 통산 ${RANK_MIN.all}경기)이 있고 그 세트를 ${SETNO_MIN}번 이상 친 선수 중.</div>`;
   }
   // 세트별 기록 칩 표 (세트 번호별 · 스코어 상황별 공통): 줄 = 세트 묶음, 열 = 시즌 + 통산
   //  칸 안 3줄 = 에버 · 세트 승률(승-패) · 초구 성공률(성공/시도). 위 버튼으로 줄을 넣고 빼도 칸 크기는 그대로 (라운드별 칩처럼)
@@ -2785,7 +2816,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     ], '');
   }
   // 이번 시즌 주요 지표: 시즌 요약과 같은 항목(이번 시즌 · 통산) + 세트 번호별 에버·승률
-  // 육각형 스탯: 그 시즌 기록 (시즌 10경기 이상 선수들 사이에서 위치)
+  // 육각형 스탯: 그 시즌 기록 (시즌 5경기 이상 선수들 사이에서 위치)
   // 이번 시즌(실선 · 큰 숫자) + 통산(점선 · 아랫줄)을 한 그림에, 항목 이름 왼쪽 = 시즌 순위 · 오른쪽 = 통산 순위 (방송 요약 '이번 시즌-통산'과 같은 그림)
   hexSec(s) {
     const L = this.league, d = this.data, me = { id: d.player.id, name: d.player.name, color: '#4f9dff' };
@@ -2795,9 +2826,9 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     if (!Xa) return '<div class="note">리그 평균 계산 중…</div>';
     const pS = `${seasonLabel(s)} 시즌 ${RANK_MIN.season}경기 이상 선수들`, pA = `통산 ${RANK_MIN.all}경기 이상 선수들`;
     const tA = hexT(d.games, Xa), gS = d.games.filter(g => g.season === s), tS = Xs && calc(gS).games ? hexT(gS, Xs) : null;
-    // 득실성향 키워드: 시즌 · 통산 따로
-    const kw = styleKw('득실성향 · 시즌', styleTableI(L, 'season', s), [me], pS) + styleKw('득실성향 · 통산', styleTableI(L, 'all', s), [me], pA);
-    const head = `<div class="fbhead" style="padding:0 14px 4px;gap:6px;flex-direction:column;align-items:flex-start">${kw}</div>`;   // 시즌 키워드 아래 통산 키워드
+    // 득실성향 키워드 하나: 전체 · 승세트 · 패세트를 누르면 이번 시즌(실선 점) + 통산(점선 점)을 한 그래프에
+    const kw = styleKwDuo('득실성향', [{ tag: '이번 시즌', SS: styleTableI(L, 'season', s), pool: pS }, { tag: '통산', SS: styleTableI(L, 'all', s), pool: pA, dash: true }], me);
+    const head = `<div class="fbhead" style="padding:0 14px 4px;gap:6px;flex-direction:column;align-items:flex-start">${kw}</div>`;
     // 이번 시즌 세트제 경기가 없으면 통산만
     return head + (tS ? hexChart(IHEX, [{ t: tS, ...me, tag: '이번 시즌' }, { t: tA, ...me, tag: '통산', dash: true }], [Xs, Xa], `${pS} · ${pA}`, { ranks: true, overlay: true })
       : hexChart(IHEX, [{ t: tA, ...me, tag: '통산' }], [Xa], pA, { ranks: true }));
@@ -3235,11 +3266,6 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const L = this.league, cur = lastSeason(this.data);
     return flowSummaryHtml(this.data.games, this.data.games.filter(g => g.season === cur), L && L.games, L || {}, '5·7세트제', '통산 10경기', this.data.player.id);
   }
-  fbSeasons(seasons) {
-    const L = this.league;
-    const rows = ordS(seasons).map(s => { const o = calc(this.data.games.filter(g => g.season === s)), l = L && L.season[s]; return { label: seasonLabel(s), n: o.fbN, v: o.fbN ? o.fbSuccess : null, lv: l && l.fbSuccess != null ? l.fbSuccess : null }; });
-    return fbSeasonsHtml(rows, this.data.player.name, this.fbChart, this);
-  }
   // 득점 패턴 칩 맨 아래: 득실비 TOP20 (이번 시즌 · 통산)
   ratioTop(sNow) {
     const L = this.league, me = this.data.player.id;
@@ -3530,31 +3556,6 @@ function flowSummaryHtml(allG, seasonG, lgG, holder, fmtNote, fewNote, meId, sfO
   // 세트 = 세트 안 점수 흐름(P), 게임 = 세트스코어 흐름(G) + 풀세트 · 세트 상황별 승리 (세트/게임 버튼, 화면 전체 data-funit)
   return `<div class="fsumu" data-u="set">${top('P')}</div><div class="fsumu" data-u="game">${top('G')}${grps(GROUPS_GAME)}</div>`;
 }
-// 초구 칩 맨 아래: 시즌별 초구 성공률 (숫자 / 선형)
-function fbSeasonsHtml(rows, name, mode, store) {
-  const seg = `<span class="bcseg">${[['num', '숫자'], ['line', '선형']].map(([m, t]) => `<button data-fbc="${m}" class="${mode === m ? 'on' : ''}">${t}</button>`).join('')}</span>`;
-  const head = `<div class="subhead fbhead"><b>시즌별 초구 성공률</b>${seg}</div>`;
-  const gapT = x => x.v != null && x.lv != null ? `${x.v >= x.lv ? '+' : ''}${((x.v - x.lv) * 100).toFixed(1)}%p` : '–';
-  if (mode !== 'line') return head + `<div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${rows.map(x => `<th>${x.label}</th>`).join('')}</tr></thead><tbody>
-    <tr><th class="lab">${esc(name)}</th>${rows.map(x => `<td>${x.v != null ? `<b>${pct(x.v)}</b><span class="s">${x.n}회</span>` : ''}</td>`).join('')}</tr>
-    <tr><th class="lab">리그 평균</th>${rows.map(x => `<td>${x.lv != null ? pct(x.lv) : ''}</td>`).join('')}</tr>
-    <tr><th class="lab">리그 대비</th>${rows.map(x => `<td class="${x.v != null && x.lv != null ? (x.v >= x.lv ? 'w' : 'l') : ''}">${x.v != null && x.lv != null ? gapT(x) : ''}</td>`).join('')}</tr></tbody></table></div>`;
-  const vs = rows.flatMap(x => [x.v, x.lv]).filter(x => x != null);
-  if (!vs.length) return head + '<div class="note">초구 기록이 없습니다.</div>';
-  let lo = Math.min(...vs), hi = Math.max(...vs); const step = hi - lo <= .3 ? .05 : hi - lo <= .6 ? .1 : .25;
-  lo = Math.floor(lo / step + 1e-9) * step; hi = Math.ceil(hi / step - 1e-9) * step; if (lo === hi) { lo = Math.max(0, lo - step); hi = Math.min(1, hi + step); }
-  const W = 600, ph = 170, T = 12, L0 = 38, R = 14, H = T + ph + 24, gw = (W - L0 - R) / rows.length, cx = i => L0 + gw * (i + .5), y = v => T + ph * (1 - (v - lo) / (hi - lo));
-  let g = '';
-  for (let v = lo; v <= hi + 1e-9; v += step) g += `<line x1="${L0}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" opacity=".7"/><text x="${L0 - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="var(--sub)">${Math.round(v * 100)}%</text>`;
-  const path = k => { let d = '', pen = false; rows.forEach((x, i) => { if (x[k] == null) { pen = false; return; } d += `${pen ? 'L' : 'M'}${cx(i)} ${y(x[k])} `; pen = true; }); return d; };
-  g += `<path d="${path('lv')}" fill="none" stroke="var(--sub)" stroke-width="2" stroke-dasharray="7 4" stroke-linecap="round"/><path d="${path('v')}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
-  const ptLab = (i, v, up, col) => `<text x="${cx(i)}" y="${up ? Math.max(11, y(v) - 8) : Math.min(T + ph - 2, y(v) + 15)}" text-anchor="middle" font-size="10.5" font-weight="700" fill="${col}" stroke="var(--panel)" stroke-width="3" paint-order="stroke">${pct(v)}</text>`;
-  rows.forEach((x, i) => { if (x.v != null) g += ptLab(i, x.v, x.lv == null || x.v >= x.lv, 'var(--ink)'); if (x.lv != null) g += ptLab(i, x.lv, x.v != null && x.lv > x.v, 'var(--sub)'); });
-  rows.forEach((x, i) => { if (x.lv != null) g += `<circle cx="${cx(i)}" cy="${y(x.lv)}" r="3" fill="var(--panel)" stroke="var(--sub)" stroke-width="1.5"/>`; if (x.v != null) g += `<circle cx="${cx(i)}" cy="${y(x.v)}" r="4" fill="var(--accent)"/>`; });
-  store._fbTips = rows.map(x => `<div class="rkh0">${x.label} 시즌 초구 성공률</div><table><tr><td>${esc(name)}</td><td></td><td>${x.v != null ? `${pct(x.v)} <small>${x.n}회</small>` : '–'}</td></tr><tr><td>리그 평균</td><td></td><td>${x.lv != null ? pct(x.lv) : '–'}</td></tr><tr><td>리그 대비</td><td></td><td>${gapT(x)}</td></tr></table>`);
-  rows.forEach((x, i) => { g += `<text x="${cx(i)}" y="${T + ph + 16}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">${x.label}</text><rect class="chit" data-fbt="${i}" x="${L0 + gw * i}" y="${T}" width="${gw}" height="${H - T}" fill="transparent"/>`; });
-  return head + `<div class="bclegend" style="padding:0 14px"><span><i style="background:var(--accent)"></i>${esc(name)}</span><span><i style="background:var(--sub)"></i>리그 평균 (점선)</span></div><div style="padding:0 14px 10px"><svg class="bcchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="시즌별 초구 성공률 그래프. 숫자 보기로 표를 볼 수 있습니다">${g}</svg></div>`;
-}
 function setsHtml(g, oppSets) {
   return '<div class="setline">' + g.sets.map((s, i) => {
     const o = oppSets && oppSets[i];
@@ -3741,6 +3742,12 @@ function bySetNo(gs) {
   }));
   return by;
 }
+// 세트 번호별 득점 · 실점 (상대 점수가 있는 세트만, 25점 단판 제외) → { 번호: { p, op, n } }
+function setNoRatio(gs) {
+  const by = {};
+  gs.filter(g => !g.single).forEach(g => g.sets.forEach(s => { if (s.opp_pts == null) return; const o = by[s.no] || (by[s.no] = { p: 0, op: 0, n: 0 }); o.p += s.pts || 0; o.op += s.opp_pts; o.n++; }));
+  return by;
+}
 const lastSeason = d => Math.max(...d.tours.map(t => t.season));
 function scopeGames(d, scope) {
   const cur = lastSeason(d);
@@ -3781,7 +3788,7 @@ function josa(name) {
 function talkingPoints(A, B, h2h, L) {
   const pts = [], an = A.player.name, bn = B.player.name, cur = lastSeason(A);
   const kw = t => `<span class="kw">${t}</span>`;
-  // 승률 · 기록에는 순위를 붙인다: 같은 종목 그 기간 선수들(rankTable: 시즌 10경기 · 통산 30경기 이상) 중 이 값보다 높은 선수 수 + 1
+  // 승률 · 기록에는 순위를 붙인다: 같은 종목 그 기간 선수들(rankTable: 시즌 5경기 · 통산 30경기 이상) 중 이 값보다 높은 선수 수 + 1
   const rk = (scope, k, v) => { if (!L || v == null) return ''; const xs = rankTable(L, scope, cur, 'set').map(x => x.o[k]).filter(x => x != null); return xs.length ? ` <span class="tprk">${xs.filter(x => x > v).length + 1}위</span>` : ''; };
   // 상대 전적
   if (h2h.length) {
