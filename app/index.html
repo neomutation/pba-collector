@@ -65,6 +65,7 @@ header.top .meta { font-size: 10.5px; line-height: 1.25; opacity: .7; margin-lef
 .pid { display: flex; flex-wrap: nowrap; gap: 8px; align-items: flex-start; } .profile .who { white-space: nowrap; }
 .pid > div:not(.rkchip) { min-width: 0; } .pid .rkchip { flex: none; }   /* 순위 칩은 항상 이름 옆 (이름 칸이 줄어듦) */
 .pid h2, .pid .who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pid > div.rkcol { flex: none; min-width: auto; margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; } .rkcol .mybtn { margin-left: 0; }   /* 맞춤요약 버튼: 순위 칩 아래 오른쪽 (이름이 잘리지 않게) */
 .pid .modes { flex-wrap: nowrap; white-space: nowrap; }   /* 짧은 이름(내 시즌·리그 평균)으로 한 줄 */
 .pid .who + .who { font-size: 11px; letter-spacing: -.2px; }   /* 생년월일·만 나이 줄은 조금 작게 (잘리지 않게) */
 .rkchip .rkh, .rkchip .rkg { justify-content: center; text-align: center; } .rkchip .rkg > div { align-items: center; }
@@ -96,6 +97,28 @@ table.qatab .qseq { letter-spacing: 1px; font-size: 11px; } table.qatab .qseq .w
 .qasub { margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--line); } .qasub > b { font-size: 11px; color: var(--sub); margin: 0 4px 0 2px; }
 .parts { display: flex; flex-wrap: wrap; gap: 3px; padding: 2px 14px 8px; } .popbody > .parts { padding: 0 0 8px; }
 .parts button { font-size: 11.5px; padding: 2px 9px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--sub); cursor: pointer; }
+.parts .pswitch { position: relative; width: 46px; height: 20px; padding: 0 !important; border-radius: 10px !important; border: 1px solid var(--line); background: var(--chip) !important; cursor: pointer; flex: none; align-self: center; } .parts .pswitch i { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--sub); transition: left .15s, background .15s; }
+.parts .pswitch::after { content: "OFF"; position: absolute; right: 6px; top: 0; line-height: 18px; font-size: 9px; font-weight: 800; letter-spacing: .3px; color: var(--sub); }
+.parts .pswitch.on { border-color: var(--accent); background: var(--accent) !important; } .parts .pswitch.on i { left: 28px; background: #fff; } .parts .pswitch.on::after { content: "ON"; right: auto; left: 8px; color: #fff; }   /* 키워드 모두 켜기 · 끄기 스위치 (키워드 줄 맨 앞) */
+/* 세부 칩 머리줄: 이름 · 내 시즌/리그 평균 · 키워드 · 최신부터 · 모두 끄기/켜기 · ✕ (키워드 줄은 머리줄 안에 풀어 놓는다) */
+.sechead > .parts.phead { display: contents; }
+.sechead > b, .sechead > .fbtn { order: 0; } .sechead > .bcseg { order: 1; } .sechead > .parts.phead > * { order: 2; } .sechead > .ordbtn { order: 3; } .sechead:has(> .parts.phead) > .ordbtn { margin-left: 0; } .sechead > .secx, .sechead > .ordbtn + .secx { order: 5; margin-left: auto; }
+.sechead > .parts.phead > .pup { font-size: 11px; font-weight: 700; color: var(--sub); margin-left: 4px; align-self: center; white-space: nowrap; }   /* 안쪽 키워드 묶음 꼬리표 '세트 흐름 ›' */
+.sechead > .parts.phead button:not(.secx) { font-size: 11.5px; padding: 2px 9px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--sub); cursor: pointer; }
+.sechead > .parts.phead button.on { color: var(--ink); font-weight: 600; border-color: var(--accent); background: rgba(var(--heat), .15); }
+/* 서로 독립인 키워드 내용은 테두리 상자 (안쪽 테두리와 바깥 테두리 사이 간격은 7px, 겹친 상자 규칙) */
+.pbox { border: 1px solid var(--line); border-radius: 8px; margin: 0 7px 7px; padding: 7px 0 2px; } .pbox > .subhead:first-child { margin-top: 0 !important; }
+[data-psub] > .parts { padding-top: 0; } [data-psub] > .parts button:not(.pswitch) { font-size: 11px; padding: 1px 8px; }   /* 안쪽(2단) 키워드 줄은 조금 작게 */
+/* 세트 스코어 분포 표 · 그래프 (distViewBtns) */
+html[data-dview="chart"] .dv-t, html:not([data-dview="chart"]) .dv-c { display: none !important; }
+.subhead .dview { margin-left: 8px; vertical-align: middle; } .subhead .dview button { padding: 1px 9px; font-size: 11.5px; }
+.dvrow { padding: 0 14px 6px; } .dvrow .bcseg button { padding: 1px 9px; font-size: 11.5px; }
+.dv-c { padding: 2px 14px 8px; } .dleg { display: flex; gap: 12px; font-size: 11.5px; color: var(--sub); margin-bottom: 4px; } .dleg i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.dc0 { background: var(--accent); } .dc1 { background: #d4a72c; }
+.dgrp { margin-bottom: 8px; } .dgt { font-size: 12px; font-weight: 700; color: var(--sub); margin: 4px 0 3px; }
+.drow { display: grid; grid-template-columns: 3.2em minmax(0, 1fr); align-items: center; gap: 6px; padding: 2px 0; border-bottom: 1px solid var(--line); } .drow > b { font-size: 13px; text-align: center; }
+.dbars { display: flex; flex-direction: column; gap: 2px; } .dbar { display: grid; grid-template-columns: minmax(0, 1fr) 6.8em; align-items: center; gap: 6px; height: 13px; }
+.dbar i { display: block; height: 100%; border-radius: 0 3px 3px 0; min-width: 1px; } .dbar span { font-size: 11.5px; font-weight: 600; white-space: nowrap; } .dbar small { font-weight: 400; color: var(--sub); font-size: 10.5px; }
 .parts button:hover { color: var(--ink); border-color: var(--accent); } .parts button.on { color: var(--ink); font-weight: 600; border-color: var(--accent); background: rgba(var(--heat), .15); }
 .qaout:empty { display: none; } .qaout { margin-top: 8px; }
 .qahead { font-size: 12px; color: var(--sub); margin-bottom: 3px; } .qahead b { color: var(--ink); }
@@ -237,6 +260,11 @@ table.games.medal tr.wcmed > td { background: rgba(var(--heat), .14); } .wcmedke
 .tiles > .tile, .kpis > .kpi { -webkit-user-drag: none; } .chipmoving, .chipmoving * { user-select: none; cursor: grabbing !important; } .chiplift { outline: 2px solid var(--accent); outline-offset: 1px; opacity: .75; box-shadow: 0 6px 18px rgba(0,0,0,.35); position: relative; z-index: 3; }
 .rtip { display: flex; gap: 7px; } .rtip > div { text-align: center; line-height: 1.25; } .rtip b, .rtip span, .rtip small { display: block; white-space: nowrap; } .rtip b { font-size: 12px; } .rtip span { font-size: 12px; font-weight: 800; } .rtip small { font-size: 10px; color: var(--sub); }
 .qaf .qax { flex: none; background: transparent; color: var(--sub); border: 1px solid var(--line); }
+/* 세트별 기록 표 (setRowsGrid): 칸 간격은 세부 기록 표(table.grid 기본)와 같게, 칸 안 3줄은 숨겨도 자리 유지 */
+table.grid.stab td { vertical-align: top; line-height: 1.3; } table.grid.stab th, table.grid.stab td { padding: 3px 3px; letter-spacing: -.3px; } table.grid.stab th.lab { vertical-align: top; min-width: 0; padding-right: 4px; }
+.stab .sv b { font-size: 12.5px; } .stab .sv small, .stab .sv em.dd { font-size: 10px; margin-left: 2px; } table.grid.stab th.lab small { color: var(--sub); font-weight: 400; font-size: 10.5px; margin-left: 3px; }
+.stab .sv { display: block; white-space: nowrap; } .stab .sv b { font-weight: 700; } .stab .sv small { color: var(--sub); }
+.stab .sv em.dd { font-style: normal; font-weight: 600; } .stab td.up em.dd { color: var(--win); } .stab td.down em.dd { color: var(--lose); }
 .rtab .sl1 { display: block; font-weight: 700; } .rshow { padding: 0 14px; } .rshow .bcpers { margin-left: 0; } table.grid.rtab { width: 100%; } table.grid.rtab td { vertical-align: top; line-height: 1.25; padding: 3px; letter-spacing: -.3px; } table.grid.rtab th.lab { vertical-align: top; min-width: 0; padding-right: 3px; }
 .fbhead { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
 .rt20s { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0 14px 10px; } table.grid.rt20 { width: 100%; } .rt20 td.rtc { text-align: center; color: var(--sub); } .rt20 td.rtn { text-align: left; font-weight: 600; } @media (max-width: 900px) { .rt20s { padding: 0 6px 10px; gap: 6px; } .rt20 td { padding: 3px 2px; } .rt20 td.rtn { max-width: 62px; overflow: hidden; text-overflow: ellipsis; } } .rt20 tr.rkme td { background: rgba(var(--heat), .16); } .rt20 td .s { display: inline; margin-left: 5px; } @media (max-width: 520px) { .rt20s { grid-template-columns: 1fr; } }
@@ -646,11 +674,27 @@ body.pdfmode, html:has(body.pdfmode) { height: auto !important; } body.pdfmode {
 .bcscope { display: flex; gap: 5px; align-items: center; color: var(--sub); font-size: 13px; }
 .bcscope button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
 .bchead { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 8px 0 16px; }
-/* 방송 요약 레시피: VS 아래 버튼 → 상위 키워드(섹션) · 하위 키워드(표 줄) · 검색 · 고른 항목 */
+/* 맞춤요약 (선수 · 팀 칸): 이름 옆 버튼 → 칩 모양 버튼 · 키워드 · 고른 항목(끌어서 순서) · 모은 내용 */
+.mybtn { margin-left: 8px; vertical-align: middle; border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 12px; padding: 2px 9px; font-size: 11.5px; font-weight: 700; cursor: pointer; white-space: nowrap; } .mybtn.on { border-color: var(--accent); background: rgba(var(--heat), .18); }
+@container (max-width: 420px) { .mybtn .mbt { display: none; } .mybtn { padding: 2px 6px; margin-left: 5px; } }   /* 좁은 칸: 아이콘만 (이름 옆 순위 칸이 밀리지 않게) */
+.mysum[hidden] { display: none !important; }   /* 닫힌 맞춤요약: display:flex 가 hidden 을 이겨 빈 테두리가 보였음 */
+.mysum { margin: 0 7px 7px; padding: 7px; border: 1px solid var(--accent); border-radius: 9px; display: flex; flex-direction: column; gap: 7px; }
+.myhead { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; } .myhead small { color: var(--sub); font-size: 11px; } .myhead .myedit { margin-left: auto; border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 6px; height: 26px; padding: 0 9px; font-size: 11.5px; font-weight: 600; cursor: pointer; } .myhead .myedit.on { border-color: var(--accent); } .myhead .secx { margin-left: 0; }
+.mytiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 5px; }
+@container (min-width: 621px) { .mytiles { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); } }
+.mytiles > button { min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 4px 3px; border: 1px solid transparent; border-radius: 9px; background: var(--chip); color: var(--ink); font-size: 11.5px; font-weight: 600; line-height: 1.25; word-break: keep-all; overflow-wrap: anywhere; letter-spacing: -.3px; cursor: pointer; white-space: normal; }
+.mytiles > button:hover { border-color: var(--line); } .mytiles > button.on { border-color: var(--accent); background: rgba(var(--heat), .18); } .mytiles > button small { color: var(--accent); font-size: 10.5px; font-weight: 700; }
+.mykws { display: flex; flex-direction: column; gap: 5px; padding: 7px; border: 1px solid var(--line); border-radius: 8px; } .mykrow { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; } .myup { font-size: 11.5px; font-weight: 700; color: var(--sub); margin-right: 2px; } .mykws .rcpk.sm { font-size: 11px; padding: 2px 8px; }
+.mysel { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; } .mysel > [data-di], .rcpsel > [data-di] { cursor: grab; touch-action: none; } .rcpl small { font-weight: 400; color: var(--sub); font-size: 10.5px; }
+.myout:empty { display: none; } .mybox { margin: 0 0 7px; } .mybox:last-child { margin-bottom: 0; } .mybt { font-size: 12px; font-weight: 700; color: var(--accent); padding: 0 14px 4px; }
+/* 방송 요약 맞춤요약(옛 레시피): VS 아래 버튼 → 상위 키워드(섹션, 칩 모양) · 하위 키워드(표 줄) · 검색 · 고른 항목(끌어서 순서) */
 .rcp { margin: -8px 0 12px; } .rcpbar { display: flex; justify-content: center; } .rcpbtn { border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 16px; padding: 4px 14px; font-size: 13px; font-weight: 700; cursor: pointer; } .rcpbtn.on, .rcpbtn:hover { border-color: var(--accent); } .rcpbtn b { color: var(--accent); margin-left: 2px; }
 .rcppanel { margin: 8px 7px 0; padding: 8px; border: 1px solid var(--accent); border-radius: 8px; display: flex; flex-direction: column; gap: 7px; } .rcptop, .rcpsub, .rcphits, .rcpsel { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; } .rcpsub { padding: 6px; border-radius: 6px; background: color-mix(in srgb, var(--chip) 55%, transparent); }
 .rcpg, .rcpk, .rcpclr { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 14px; padding: 3px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; } .rcpg { font-weight: 700; } .rcpg small { color: var(--accent); font-weight: 800; } .rcpg.on { border-color: var(--accent); background: rgba(var(--heat), .15); } .rcpk.on { border-color: var(--accent); background: var(--accent); color: #fff; } .rcpk small { opacity: .7; font-size: 10.5px; } .rcpclr { color: var(--lose); }
 .rcpfind { display: flex; flex-direction: column; gap: 5px; } .rcpq { width: 100%; box-sizing: border-box; padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--ink); font-size: 12.5px; } .rcphits:empty { display: none; } .rcphint { color: var(--sub); font-size: 12px; } .rcpl { font-size: 12px; font-weight: 700; color: var(--sub); margin-right: 2px; }
+.rcpsave { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; justify-content: flex-end; padding-top: 7px; border-top: 1px solid var(--line); } .rcpsave .rcphint { margin-right: auto; } .rcpok, .rcpcancel { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 7px; padding: 4px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer; white-space: nowrap; } .rcpok { background: var(--accent); border-color: var(--accent); color: #fff; } .rcpok:disabled { opacity: .45; cursor: default; }
+/* 방송 요약 맞춤요약 상위 키워드는 세부 칩 모양으로 */
+.rcptop.mytiles { display: grid; } .rcptop.mytiles > .rcpg { border-radius: 9px; border-color: transparent; background: var(--chip); white-space: normal; font-weight: 600; } .rcptop.mytiles > .rcpg.on { border-color: var(--accent); background: rgba(var(--heat), .18); }
 .bp { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 800; }
 .bp.a { justify-content: flex-end; } .bp img { width: 70px; height: 86px; object-fit: cover; border-radius: 8px; }
 .bvs { font-size: 22px; font-weight: 900; color: var(--sub); }
@@ -734,6 +778,13 @@ body.capshot .tile:not(.on):hover { border-color: transparent; }
   .tile i { display: inline; font-size: 14px; }
   .tile span { display: inline; margin: 0; font-size: 11.5px; white-space: nowrap; }
 }
+/* 넓은 칸(전체 화면): 아이콘 없이 칩 전부 한 줄, 높이는 그대로 · 긴 이름은 두 줄 */
+@container (min-width: 621px) {
+  .tiles { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 5px; }
+  .tile { height: 63px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 4px 3px; }
+  .tile i { display: none; }
+  .tile span { margin: 0; white-space: normal; word-break: keep-all; overflow-wrap: anywhere; letter-spacing: -.3px; }
+}
 .sechead { display: flex; align-items: center; gap: 8px; padding: 10px 14px; flex-wrap: wrap; }
 .sechead small { color: var(--sub); }
 .ordbtn { margin-left: auto; border: 0; background: var(--chip); color: var(--sub); border-radius: 6px; height: 26px; padding: 0 8px; font-size: 11.5px; font-weight: 600; cursor: pointer; white-space: nowrap; }
@@ -782,6 +833,19 @@ table.grid thead th { position: sticky; top: 0; background: var(--sticky); color
 table.grid th.lab { text-align: left; position: sticky; left: 0; background: var(--sticky); z-index: 1; font-weight: 600; color: var(--ink); min-width: 92px; }
 table.grid thead th.lab { z-index: 2; }
 table.grid td.tot, table.grid th.tot { border-left: 2px solid var(--line); font-weight: 700; }
+table.grid.totfirst td.tot, table.grid.totfirst th.tot { border-left: 0; border-right: 2px solid var(--line); }
+/* 열 테두리: 통산 회색 · 이번 시즌 노란색 (applyTotPos). 통산 칸의 굵은 구분선은 테두리로 바꾼다 */
+table.grid.colmk .cbt { --cb: #8b93a1; border-left: 0; border-right: 0; } table.grid.colmk .cbc { --cb: #ffd60a; }
+table.grid.colmk .cbt, table.grid.colmk .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb) !important; }
+table.grid.colmk thead .cbt, table.grid.colmk thead .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 2px var(--cb) !important; border-radius: 7px 7px 0 0; }
+table.grid.colmk .cbt.cbot, table.grid.colmk .cbc.cbot { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 -2px var(--cb) !important; border-radius: 0 0 7px 7px; }
+table.grid.colmk thead .cbc { color: #ffd60a; }
+/* 커서가 머문 줄의 가로 테두리(accent)도 통산 · 이번 시즌 칸에 함께 (열 테두리 위에 겹쳐 그림) */
+.pane table.grid.colmk tbody tr:hover > .cbt, .pane table.grid.colmk tbody tr:hover > .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 1px 0 var(--accent), inset 0 -1px 0 var(--accent) !important; }
+.pane table.grid.colmk tbody tr:hover > .cbt.cbot, .pane table.grid.colmk tbody tr:hover > .cbc.cbot { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 -2px var(--cb), inset 0 1px 0 var(--accent) !important; }
+/* 캐스터 캡쳐 중에는 커서 줄 표시만 빼고 열 테두리는 남긴다 */
+body.capshot .pane table.grid.colmk tbody tr:hover > .cbt, body.capshot .pane table.grid.colmk tbody tr:hover > .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb) !important; }
+body.capshot .pane table.grid.colmk tbody tr:hover > .cbt.cbot, body.capshot .pane table.grid.colmk tbody tr:hover > .cbc.cbot { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 -2px var(--cb) !important; } table.grid th[data-totk] { cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }   /* 통산 칸 맨 앞 (applyTotPos) */
 table.grid tr.grp th { text-align: left; background: var(--chip); color: var(--sub); font-size: 11px; padding: 3px 8px; }
 table.grid td .s { display: block; font-size: 10px; color: var(--sub); line-height: 1.1; }
 td.best { font-weight: 800; box-shadow: inset 0 -2px 0 var(--accent); }
@@ -829,7 +893,7 @@ table.games tr.ff td { color: var(--sub); }   /* 기권 경기 줄 (기록 계�
 .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--sub); padding: 0 14px 8px; }
 .modes { display: flex; gap: 3px; margin-top: 6px; font-size: 10px; align-items: center; color: var(--sub); }
 .modes button { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 4px; padding: 1px 5px; font-size: 10px; cursor: pointer; }
-.modes button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.modes button.on { background: var(--accent); border-color: var(--accent); color: #fff; } .modes .mybtn { margin-left: 6px; font-weight: 700; }   /* 팀 칸 맞춤요약 버튼: 팀 시즌 · 리그 평균 옆 */
 /* 최고 성적 D-day (모드 버튼 아래): 우승 금 · 결승 은 · 준결 동 */
 .ddays { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
 .ddays .dd { font-size: 10.5px; color: var(--sub); background: var(--chip); border-radius: 4px; padding: 1px 5px; border-left: 3px solid var(--line); white-space: nowrap; }
@@ -1164,21 +1228,6 @@ function stateDesc(a, b, T) {
   else if (a === T - 1) d += ' · 한 세트 남음(매치 포인트)';
   else if (b === T - 1) d += ' · 상대 매치 포인트';
   return d;
-}
-function stateRows(T) {
-  const rows = [];
-  for (let n = 1; n <= 2 * T - 2; n++) {
-    for (let a = Math.min(n, T - 1); a >= 0; a--) {
-      const b = n - a; if (b > T - 1) continue;
-      if (a === 1 && b === 1) {
-        rows.push([stateKey(T, 1, 1, '1:0'), '1:1 → 승', '1세트 이기고']);
-        rows.push([stateKey(T, 1, 1, '0:1'), '1:1 → 승', '1세트 지고']);
-        continue;
-      }
-      rows.push([stateKey(T, a, b), `${a}:${b} → 승`, '']);
-    }
-  }
-  return rows;
 }
 const FORMAT_NAME = { 2: '3세트제 (2세트 선승)', 3: '5세트제 (3세트 선승)', 4: '7세트제 (4세트 선승)' };
 
@@ -1572,6 +1621,22 @@ function avgShareRank(L, k, scope, season, pid) {
   const X = C[ck], me = X.sh[pid];
   return { avg: X.avg, of: X.vals.length, rank: me == null ? null : 1 + X.vals.filter(v => k === 'hi' ? v > me : v < me).length };
 }
+// 터치(휴대폰 · 패드): 누르면 말풍선이 뜨고, 다른 곳을 누르거나 스크롤할 때까지 남는다
+//  손가락으로 누르면 mouseover → mousedown → click 이 연달아 와서 띄우자마자 닫혔다 → 터치 뒤 1초 안에 말풍선 칸을 누른 것이면 닫지 않음
+let touchAt = 0;
+addEventListener('touchstart', () => { touchAt = Date.now(); }, { capture: true, passive: true });
+const isTouch = () => Date.now() - touchAt < 1000;
+const touchTipEl = t => t && t.closest && (tipOwner(t) || t.closest('[data-hex], [data-cg], [data-fbt], [title], [data-tip]'));
+const touchOnTip = t => isTouch() && !!touchTipEl(t);
+//  스크롤 등으로 닫힌 뒤 같은 칸을 다시 누르면 기기가 mouseover 를 다시 안 보내서 안 떴다 → 닫혀 있으면 mouseout · mouseover 를 직접 보냄
+let touchLast = null;
+addEventListener('touchstart', e => {
+  const c = touchTipEl(e.target), prev = touchLast; touchLast = c;
+  if (!c || c !== prev || !rkBub.hidden || !tipBox.hidden) return;
+  const p = e.touches[0] || {}; bubMouse.x = p.clientX; bubMouse.y = p.clientY;
+  const o = { bubbles: true, cancelable: true, clientX: p.clientX, clientY: p.clientY, relatedTarget: null };
+  e.target.dispatchEvent(new MouseEvent('mouseout', o)); e.target.dispatchEvent(new MouseEvent('mouseover', o));
+}, { capture: true, passive: true });
 // 마우스를 올리면 뜨는 말풍선: title 을 data-tip 으로 옮겨 앱이 직접 그린다 (바탕화면 앱은 기본 말풍선이 안 뜸)
 const tipBox = document.createElement('div'); tipBox.className = 'tipbox'; tipBox.hidden = true;
 document.addEventListener('DOMContentLoaded', () => document.body.appendChild(tipBox)); if (document.body) document.body.appendChild(tipBox);
@@ -1590,10 +1655,10 @@ document.addEventListener('mouseover', e => {
   tipBox.style.left = x + 'px'; tipBox.style.top = y + 'px';
 });
 document.addEventListener('mouseout', e => { if (tipFor && (!e.relatedTarget || !tipFor.contains(e.relatedTarget))) hideTip(); });
-addEventListener('scroll', hideTip, true); document.addEventListener('mousedown', hideTip);
+addEventListener('scroll', hideTip, true); document.addEventListener('mousedown', e => { if (!touchOnTip(e.target)) hideTip(); });
 // 시즌 순서 버튼을 붙이는 세부 기록 칸 (개인투어)
-const ORD_SECS = new Set(['summary', 'tours', 'tourrec', 'flow', 'bank', 'fb', 'score', 'round', 'games']);
-const MODE_SECS = new Set(['summary', 'tourrec', 'flow', 'bank', 'fb', 'score', 'round']);
+const ORD_SECS = new Set(['summary', 'tours', 'sets', 'bank', 'fb', 'score', 'round', 'games']);
+const MODE_SECS = new Set(['summary', 'tours', 'sets', 'bank', 'fb', 'score', 'round']);
 // 여러 시즌 표의 시즌 열 순서 (개인투어 · 팀리그 공통): 기본은 왼쪽부터 최신 → 과거, 칸 제목의 ⇄ 버튼으로 바꾼다 (통산 · 리그 평균 열 자리는 그대로)
 let SEASON_NEW_LEFT = localStorageGet('season_order') !== 'old';
 const sDir = (a, b) => SEASON_NEW_LEFT ? b - a : a - b;   // 시즌 비교 (⇄ 설정 따라)
@@ -1768,10 +1833,10 @@ function hexLeagueI(L, season) {
   if (!L) return null;
   const k = 'hex' + season; if (L[k]) return L[k];
   const o = L.season[season]; if (!o) return null;
-  return (L[k] = { o, v: hexVals(o), pool: rankTable(L, 'season', season).map(x => x.hv), min: RANK_MIN.season });   // min = 순위 자격(세트제 경기 수)
+  return (L[k] = { o, v: hexVals(o), pool: rankTable(L, 'season', season, 'set').map(x => x.hv), min: RANK_MIN.season });   // min = 순위 자격(세트제 경기 수)
 }
 // 개인투어 리그 묶음 (통산): 리그 전체 평균 + 통산 30경기 이상 선수들
-const hexAllI = L => L && (L.hexAll || (L.hexAll = { o: L.all, v: hexVals(L.all), pool: rankTable(L, 'all').map(x => x.hv), min: RANK_MIN.all }));
+const hexAllI = L => L && (L.hexAll || (L.hexAll = { o: L.all, v: hexVals(L.all), pool: rankTable(L, 'all', null, 'set').map(x => x.hv), min: RANK_MIN.all }));
 // 게임 지배력 (개인투어 · 팀리그 공통): 리그 평균 = 100
 //  점수득실비 40% · 선제 리드 비율(먼저 리드한 세트 ÷ 전체 세트) 30% · 리드 유지율(동점 없이 이김) 15% · 역전률 15%, 각각 같은 기간 리그 평균 대비. 10세트 미만은 표시하지 않음
 //  (2026-11 바꿈: 예전 '선제 리드 ÷ 허용' 비율은 허용이 적으면 3배까지 커져 이 항목 하나가 지배력을 좌우했다)
@@ -1994,6 +2059,7 @@ function flowStats(o, xs) {
 const rkBub = document.createElement('div'); rkBub.className = 'rkbub'; rkBub.hidden = true; document.body.appendChild(rkBub);
 //  짧은 말풍선(가로 420 · 세로 170 이하)은 커서 바로 위에 띄운다 (위가 모자라면 커서 아래)
 const bubMouse = { x: 0, y: 0 }; document.addEventListener('mousemove', e => { bubMouse.x = e.clientX; bubMouse.y = e.clientY; }, true);
+addEventListener('touchstart', e => { const p = e.touches[0]; if (p) { bubMouse.x = p.clientX; bubMouse.y = p.clientY; } }, { capture: true, passive: true });   // 터치는 mousemove 가 mouseover 뒤에 와서 손가락 자리를 먼저 잡아 둔다
 function showRkBub(cell, html) {
   rkBub.innerHTML = html; rkBub.hidden = false;
   const w = rkBub.offsetWidth, h = rkBub.offsetHeight;
@@ -2029,23 +2095,26 @@ const inkFire = (type, e) => e.target.dispatchEvent(new MouseEvent(type, { bubbl
 addEventListener('mouseover', e => {
   if (!e.isTrusted) return;
   const c = tipOwner(e.target); if (!c) { inkFor = null; return; }
+  if (isTouch()) { inkFor = c; return; }   // 터치는 글자 판정 없이 칸을 누르면 뜸
   if (onInk(c, e.clientX, e.clientY)) inkFor = c; else { inkFor = null; e.stopImmediatePropagation(); }
 }, true);
 addEventListener('mousemove', e => {
+  if (isTouch()) return;
   const c = tipOwner(e.target); if (!c) return;
   const ok = onInk(c, e.clientX, e.clientY);
   if (ok && inkFor !== c) { inkFor = c; inkFire('mouseover', e); }
   else if (!ok && inkFor === c) { inkFor = null; inkFire('mouseout', e); }
 }, true);
 // 커서 말풍선도 말풍선을 띄우는 칸이 아닌 곳을 누르면 닫힌다
-document.addEventListener('click', e => { if (e.target.closest && e.target.closest('[data-stp], [data-stkw], [data-rnd], [data-rkh], [data-tip2], [data-cg], [data-fbt], [data-pl], [data-bk], [data-bkh], [data-srk], [data-snr]')) return; hideRkBub(); if (typeof hideTip === 'function') hideTip(); });
-addEventListener('scroll', hideRkBub, true); document.addEventListener('mousedown', hideRkBub);
+document.addEventListener('click', e => { if (touchOnTip(e.target)) return; if (e.target.closest && e.target.closest('[data-stp], [data-stkw], [data-rnd], [data-rkh], [data-tip2], [data-cg], [data-fbt], [data-pl], [data-bk], [data-bkh], [data-srk], [data-snr]')) return; hideRkBub(); if (typeof hideTip === 'function') hideTip(); });
+addEventListener('scroll', hideRkBub, true); document.addEventListener('mousedown', e => { if (!touchOnTip(e.target)) hideRkBub(); });
 // ── 기록 순위: 같은 종목 선수별 통산(30경기 이상) / 시즌(10경기 이상) 기록 ──────────
 const RANK_MIN = { all: 30, season: 10 };
 const RANK_MIN_S = { all: 20, season: 5 };   // 25점 단판 보기 순위 자격 (단판은 한 경기가 한 세트라 기준을 낮춤)
 const rankMin = kind => kind === 'single' ? RANK_MIN_S : RANK_MIN;
-// 기본 기록 보기별 경기: all = 그대로 · set = 세트제만 · single = 25점 단판만(calc 가 단판을 빼므로 세트처럼 바꿔 센다)
-const kindGames = (gs, kind) => kind === 'set' ? gs.filter(g => !g.single) : kind === 'single' ? gs.filter(g => g.single).map(g => ({ ...g, single: false })) : gs;
+// 보기별 경기: all = 세트제 + 25점 단판 모두(단판도 한 세트로) · set = 세트제만 · single = 25점 단판만 (calc 는 단판을 빼므로 세트처럼 바꿔 센다)
+//  세트 · 단판 단서가 없는 순위는 all — 모든 경기로 계산하고 자격(경기 수)도 모든 경기로 센다
+const kindGames = (gs, kind) => kind === 'set' ? gs.filter(g => !g.single) : kind === 'single' ? gs.filter(g => g.single).map(g => ({ ...g, single: false })) : gs.map(g => g.single ? { ...g, single: false } : g);
 // scope: all = 통산 · season = 그 시즌(season) · tour = 그 대회(season 자리에 대회 코드, 자격 없이 그 대회 뛴 선수 모두)
 function rankTable(L, scope, season, kind = 'all') {
   const ck = (kind === 'all' ? '' : kind + '|') + (scope === 'all' ? 'all' : (scope === 'tour' ? 't' : 's') + season);
@@ -2053,8 +2122,8 @@ function rankTable(L, scope, season, kind = 'all') {
   if (L.ranks[ck]) return L.ranks[ck];
   const by = {};
   L.games.forEach(g => { if (scope === 'all' || (scope === 'tour' ? g.tour === season : g.season === season)) (by[g.player] || (by[g.player] = [])).push(g); });
-  // 자격 = 세트제 경기 수(o.games, 25점 단판 · 기권 제외) — 순위 창(board.js)과 같은 기준. 전체 경기 수로 세면 단판 위주 선수가 적은 표본으로 순위에 든다
-  //  세트 · 단판 보기는 그 경기만으로 계산 (에버도 그 경기만)
+  // 자격 = 그 보기 경기 수(o.games, 기권 제외). all = 세트제 + 단판 모두, 세트 · 단판 보기는 그 경기만으로 계산 (에버도 그 경기만)
+  //  세트제 값만 보여주는 곳(육각형 · 시즌 요약 표 · 관전 포인트 · 방송요약 순위)은 값과 맞게 kind 'set' 으로 부른다
   const min = scope === 'tour' ? 1 : rankMin(kind)[scope];
   return (L.ranks[ck] = Object.entries(by).map(([id, gs0]) => { const gs = kindGames(gs0, kind), o = calc(gs); return { id, name: gs0[gs0.length - 1].player_name, n: gs.length, avg: kind === 'all' ? o.avgAll : o.avg, long: o.long, success: o.success, bank: o.bank, bankN: o.bankN, hv: hexVals(o), o, gs }; })
     .filter(x => x.o.games >= min));
@@ -2066,10 +2135,10 @@ function league(type) {
   return leagueCache[type] || (leagueCache[type] = api('/api/league?type=' + encodeURIComponent(type)).then(gs => {
     gs = gs.filter(g => !isForfeit(g));   // 기권 경기는 리그 평균에서도 뺀다
     const seasons = [...new Set(gs.map(g => g.season))];
-    const L = { all: calc(gs), allStates: stateStats(gs), season: {}, states: {}, tour: {}, games: gs };
+    const L = { all: calc(gs), season: {}, tour: {}, games: gs };
     L.all._g = gs;   // 리그 평균은 기권만 빼고 그 종목 전체 경기로 계산한다 (경기 수 제한 없음)
     L.sets = {};
-    seasons.forEach(s => { const x = gs.filter(g => g.season === s); L.season[s] = calc(x); L.season[s]._g = x; L.states[s] = stateStats(x); L.sets[s] = bySetNo(x); });
+    seasons.forEach(s => { const x = gs.filter(g => g.season === s); L.season[s] = calc(x); L.season[s]._g = x; L.sets[s] = bySetNo(x); });
     const tours = {};
     gs.forEach(g => (tours[g.tour] || (tours[g.tour] = [])).push(g));
     Object.entries(tours).forEach(([t, x]) => L.tour[t] = calc(x));
@@ -2179,7 +2248,7 @@ function summaryTip(rk, col, i, key, v, better, fmt, hasLg) {
   if (!rk.L || v == null || isNaN(v)) return '';
   const tot = i >= rk.seasons.length, scope = tot ? 'all' : 'season', season = tot ? null : rk.seasons[i];
   const lgv = hasLg && col.league ? col.league[key] : null;
-  const list = rankTable(rk.L, scope, season), C = list._kv || (list._kv = {});
+  const list = rankTable(rk.L, scope, season, 'set'), C = list._kv || (list._kv = {});
   if (!C[key]) C[key] = list.map(x => { if (key === 'dominance' && x.o.dominance === undefined) x.o.dominance = dominanceOf(x.o, tot ? rk.L.all : rk.L.season[season]); return [x.id, x.o[key]]; }).filter(([, y]) => y != null && !isNaN(y) && isFinite(y));
   const kv = C[key], me = kv.find(([id]) => id === rk.pid);
   const rank = me ? 1 + kv.filter(([, y]) => better === 'low' ? y < me[1] : y > me[1]).length : null;
@@ -2229,36 +2298,6 @@ function seasonTable(rows, cols, mode = 'self', rk) {
     });
     if (lg) h += `<td class="lg">${isRate && !NO_LEAGUE.has(key) ? lg50(fmt(lg[key])) : ''}</td>`;
     h += '</tr>';
-  });
-  return h + '</tbody></table></div>';
-}
-
-// 세트 스코어 상황별 승률 표 (경기 방식별로 묶음)
-function stateTable(cols, mode) {
-  const st = cols.map(c => stateStats(c.games));
-  const Ts = [...new Set(cols[cols.length - 1].games.filter(g => !g.single).map(g => g.target).filter(t => t >= 3))].sort();
-  const lgCol = mode === 'league' && cols[cols.length - 1].leagueStates;
-  let h = '<div class="tw"><table class="grid"><thead><tr><th class="lab">스코어</th>' + cols.map((c, i) => `<th class="${i === cols.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`).join('') + (lgCol ? '<th class="lg">리그 평균</th>' : '') + '</tr></thead><tbody>';
-  Ts.forEach(T => {
-    h += `<tr class="grp"><th colspan="${cols.length + (lgCol ? 2 : 1)}">${FORMAT_NAME[T] || T + '세트 선승'}</th></tr>`;
-    stateRows(T).forEach(([k, label, note]) => {
-      const tot = st[st.length - 1][k];
-      if (!tot) return;
-      h += `<tr><th class="lab">${esc(label)}${note ? `<span class="s" style="font-weight:400">${esc(note)}</span>` : ''}</th>`;
-      st.forEach((s, i) => {
-        const o = s[k]; const last = i === cols.length - 1;
-        if (!o) { h += `<td class="${last ? 'tot' : ''}"></td>`; return; }
-        const v = o.w / o.n; let cls = last ? 'tot' : '', style = '', diff = '';
-        if (mode === 'league') {
-          const L = cols[i].leagueStates && cols[i].leagueStates[k];
-          const c = L && L.n ? vsLeague(v, L.w / L.n, pct) : null;
-          if (c && o.n >= 3) { cls += ' ' + c.cls; style = c.style; diff = `<span class="d">${c.txt}</span>`; }
-        } else if (!last) style = `background: rgba(var(--heat), ${(0.05 + v * 0.33).toFixed(2)})`;
-        h += `<td class="${cls}" style="${style}" title="${o.w}승 ${o.n - o.w}패">${pct(v)}<span class="s">${o.w}/${o.n}</span>${diff}</td>`;
-      });
-      if (lgCol) { const L = lgCol[k]; h += `<td class="lg">${L ? lg50(pct(L.w / L.n)) : ''}</td>`; }
-      h += '</tr>';
-    });
   });
   return h + '</tbody></table></div>';
 }
@@ -2322,13 +2361,16 @@ class Pane {
       const qc = e.target.closest('[data-qcat]'); if (qc) { e.preventDefault(); qaToggle(this.qaCats(), this.qaTyped, this.qaSt || (this.qaSt = qaSt()), qc.dataset.qcat); this.qaPickUpd(); return; }
       const smb = e.target.closest('[data-smode]');
       if (smb) { const [id, v] = smb.dataset.smode.split('|'); this.secModes[id] = v; localStorageSet('smodes_' + this.key, JSON.stringify(this.secModes)); this.render(); return; }
+      // 세트별 기록 표 칸 안 항목 (에버 · 세트 승률 · 초구), 하나는 남긴다
+      const ssb = e.target.closest('[data-ss]');
+      if (ssb) { const k = ssb.dataset.ss, on = Object.keys(this.setShow).filter(x => this.setShow[x]); if (this.setShow[k] && on.length < 2) return; this.setShow[k] = !this.setShow[k]; localStorageSet('setshow', JSON.stringify(this.setShow)); this.renderSecs(); return; }
       const rsb = e.target.closest('[data-rs]');
       if (rsb) { const k = rsb.dataset.rs, on = Object.keys(this.roundShow).filter(x => this.roundShow[x]); if (this.roundShow[k] && on.length < 2) return; this.roundShow[k] = !this.roundShow[k]; localStorageSet('roundshow', JSON.stringify(this.roundShow)); this.renderSecs(); return; }
       const fbc = e.target.closest('[data-fbc]');
       if (fbc) { this.fbChart = fbc.dataset.fbc; localStorageSet('fbchart', this.fbChart); hideRkBub(); this.renderSecs(); return; }
       // 펼친 세부 기록: 그 안의 누를 수 없는 곳을 누르면 접힌다 (팀리그와 같게)
       const sec = e.target.closest('.sec[data-sec]');
-      if (sec && !e.target.closest(POP_CLICKABLE + ', [data-close], [data-hex], [data-gpst], [data-tchip], tr.tourrow, .rkclick, details')) { this.toggleSec(sec.dataset.sec); return; }
+      if (sec && !e.target.closest(POP_CLICKABLE + ', [data-close], [data-hex], [data-gpst], [data-tchip], th[data-totk], tr.tourrow, .rkclick, details')) { this.toggleSec(sec.dataset.sec); return; }
       const rkc = e.target.closest('[data-rank]');
       if (rkc) { this.openRankPop(rkc.dataset.rank); return; }
       const gp = e.target.closest('[data-gpst]');
@@ -2351,6 +2393,7 @@ class Pane {
     window.addEventListener('chiporder', () => { if (this.data) this.renderSecs(); });
     this.fbChart = localStorageGet('fbchart') || 'num';
     try { this.roundShow = JSON.parse(localStorageGet('roundshow')) || { win: true, avg: true, out: true }; } catch (e) { this.roundShow = { win: true, avg: true, out: true }; }
+    try { this.setShow = JSON.parse(localStorageGet('setshow')) || { avg: true, win: true, fb: true }; } catch (e) { this.setShow = { avg: true, win: true, fb: true }; }
   }
   clear() {
     closePop(); this.loading = (this.loading || 0) + 1; this.data = null; this.input.value = '';
@@ -2393,9 +2436,9 @@ class Pane {
     cols.push({ label: '통산', games, extra: { ...extra(results), ...ff(this.data.forfeits), ...ent(seasons), awards: awards.length } });
     const L = this.league;
     if (L) {
-      colSeasons.forEach((s, i) => { cols[i].league = L.season[s]; cols[i].leagueStates = L.states[s]; });
+      colSeasons.forEach((s, i) => { cols[i].league = L.season[s]; });
       // 통산 열의 기준은 이 선수가 뛴 시즌들의 리그 기록 (이 선수 기간에 맞춘 평균)
-      cols[cols.length - 1].league = L.all; cols[cols.length - 1].leagueStates = L.allStates;
+      cols[cols.length - 1].league = L.all;
     }
     const mode = this.mode;
     const all = calc(games), st = p.stats || {};
@@ -2560,9 +2603,10 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const ddays = DD.some(x => x[1]) ? `<div class="ddays">${DD.filter(x => x[1]).map(([lab, x, c]) => `<span class="dd ${c}" title="${esc(`${seasonLabel(x.g.season)} ${tourShort(x.g.seq)} ${roundName(x.g)} · vs ${x.g.opp_name || ''} · ${x.g.win ? '승' : '패'} ${x.g.single ? '' : `${x.g.sw}:${x.g.sl}`}`.trim())}">${lab} <b>D+${x.n}</b></span>`).join('')}</div>` : '';
     let h = `<div class="card"><div class="profile"><div class="pleft"><div class="pid"><div class="pcol">${p.photo ? `<img src="${esc(p.photo)}" alt="">` : '<img alt="">'}<button class="qabtn${this.qaOpen ? ' on' : ''}" data-qa title="이 선수 기록 질문하기">🔍</button></div><div>
       <h2>${esc(p.name)}</h2><div class="who">${esc(p.nation || '')}</div><div class="who">${p.birth ? esc(p.birth.slice(2).replace(/-/g, '.')) : '생년월일 없음'}${age ? ` (만 ${age}세)` : ''}</div>
-      <div class="modes"><button data-mode="self" class="${mode === 'self' ? 'on' : ''}">내 시즌</button><button data-mode="league" class="${mode === 'league' ? 'on' : ''}">리그 평균</button>${mode === 'league' && !L ? ' 리그 평균 계산 중…' : ''}</div></div>${rkChip}</div>${must.replace('<div class="mtitle">기본 기록</div>', `<div class="mtitle"><span>기본 기록</span>${ddays}</div>`)}</div>${side}</div>${seasonBoxes ? `<div class="tboxes">${seasonBoxes}</div>` : ''}
+      <div class="modes"><button data-mode="self" class="${mode === 'self' ? 'on' : ''}">내 시즌</button><button data-mode="league" class="${mode === 'league' ? 'on' : ''}">리그 평균</button>${mode === 'league' && !L ? ' 리그 평균 계산 중…' : ''}</div></div><div class="rkcol">${rkChip}<button type="button" class="mybtn${myOpen('indiv') ? ' on' : ''}" data-myopen="indiv" title="맞춤요약: 세부 칩 키워드를 골라 모아 보기">🧩<span class="mbt"> 맞춤요약</span></button></div></div>${must.replace('<div class="mtitle">기본 기록</div>', `<div class="mtitle"><span>기본 기록</span>${ddays}</div>`)}</div>${side}</div>${seasonBoxes ? `<div class="tboxes">${seasonBoxes}</div>` : ''}
       <div class="qa"${this.qaOpen ? '' : ' hidden'}><form class="qaf"><input class="qain" placeholder="${esc(p.name)} 기록에 대해 물어보세요 (예: 하이런 12점 이상, 조재호 상대 전적)" value="${esc(this.qaText || '')}" autocomplete="off"><button type="submit">검색</button><button type="button" class="qax" data-qaclose title="닫기">✕</button></form>
         <div class="qaex">${qaPick(qaCatsOf(this.data, this.qaText), this.qaTyped, this.qaSt || (this.qaSt = qaSt()))}</div><div class="qaout">${this.qaHtml || ''}</div></div>
+      <div class="mysum" hidden></div>
       <div class="kpis"><div class="kpi click medal" data-kpi="medal" data-label="입상 기록"><b><i>🥇</i>${rc(results, '1')}<i>🥈</i>${rc(results, '2')}<i>🥉</i>${rc(results, '3')}</b><span>우승 · 준우승 · 4강 ▾</span></div>
       ${kd([awards.length, '웰컴톱랭킹', 'award'], [all.perfect ?? 0, '퍼펙트큐', 'perfect'])}${kt([st.hr ?? all.hr, '하이런', 'hrtop'], [pctS(avgShare(games, 'hi')), '2.0+', 'avg20', shTip('hi')], [pctS(avgShare(games, 'lo')), '1.0-', 'avg10', shTip('lo')])}${kd([f3(st.best_avg ?? all.bestAvg), '베스트 에버', 'best'], [f3(all.worstAvg), '워스트 에버', 'worst'])}
       ${kj([pct(all.winRate), '경기 승률'], [pct(all.setRate), '세트 승률'], ['winset', '경기 / 세트 승률'])}${kj([pct(all.bankWinRate), '뱅킹 승률'], [pct(all.fbSuccess), '초구 성공률'], ['bankfb', '뱅킹 승률 / 초구 성공률'])}</div></div>`;
@@ -2571,10 +2615,12 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const sm = id => this.secModes[id] || mode;
     const hint = id => sm(id) === 'league' ? '초록 = 리그 평균보다 좋음, 빨강 = 나쁨' : '색이 진할수록 그 선수의 좋은 시즌';
     this.secs = [
-      ['summary', '📊', '시즌 요약', hint('summary'), () => seasonTable(ROWS.summary, cols, sm('summary'), { L: this.league, pid: p.id, seasons: colSeasons })],
-      ['tours', '🏆', '투어별 성적', '우승 · 준우승 · 3위, 그 밖에는 탈락 라운드', () => this.tourGrid(seasons, tours, res)],
-      ['tourrec', '📋', '대회별 기록', '줄을 누르면 그 대회 경기 목록', () => this.tourRecords(seasons, tours, res, sm('tourrec'))],
-      ['flow', '🔀', '세트 흐름', '스코어 분포 · 승패 순서 · 상황별 승률 (5·7세트제)', () => this.flowSummary(cols) + this.flowSection(cols, sm('flow'))],
+      ['summary', '📊', '세부 기록', hint('summary'), () => seasonTable(ROWS.summary, cols, sm('summary'), { L: this.league, pid: p.id, seasons: colSeasons })],
+      // 하위 키워드(data-psub 묶음)마다 안에 또 키워드 줄이 생긴다 (renderSecs)
+      ['tours', '🏆', '투어별 성적·기록', '성적 = 우승 · 준우승 · 3위, 그 밖에는 탈락 라운드 · 기록 = 줄을 누르면 그 대회 경기 목록', () =>
+        `<div data-plabel="성적" data-psub>${this.tourGrid(seasons, tours, res)}</div><div data-plabel="기록" data-psub>${this.tourRecords(seasons, tours, res, sm('tours'))}</div>`],
+      ['sets', '🎯', '세트별 기록', '세트 번호별 · 스코어 상황별 에버 · 승률 · 초구, 세트 흐름', () =>
+        `<div data-plabel="세트 번호별">${this.setNoGrid(cols, sm('sets'))}</div><div data-plabel="스코어 상황별">${this.stateGrid(cols, sm('sets'))}</div><div data-plabel="세트 흐름" data-psub data-pbox>${this.flowSummary(cols) + this.flowSection(cols, sm('sets'))}</div>`],
       ['bank', '🎱', '뱅킹·공 색·선후공', hint('bank'), () => seasonTable(ROWS.bank, cols, sm('bank'))],
       ['fb', '⚡', '초구', hint('fb'), () => seasonTable(ROWS.fb, cols, sm('fb')) + `<div class="subhead" style="margin-top:8px"><b>대회별 초구</b> · 시즌을 누르면 펼쳐집니다</div>` + this.fbTours(seasons, tours, res, sm('fb')) + this.fbSeasons(seasons)],
       ['score', '📈', '득점 패턴', '득실 · 장타 · 중타 (이닝 기록 기준)', () => seasonTable(ROWS.score, cols, sm('score')) + this.setNoScore(cols) + this.ratioTop(sNow)],
@@ -2587,6 +2633,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     h += `<div class="card tilecard"><div class="tiles">${this.secs.map(([id, ic, t]) => `<div class="tile${this.opened.includes(id) ? ' on' : ''}" data-tile="${id}"><i>${ic}</i><span>${t.replace('뱅킹·공 색·선후공', '뱅킹·선후공')}</span></div>`).join('')}</div></div><div class="secs"></div>`;
     this.content.innerHTML = h;
     applyChipOrders(this.content);
+    myMount(this.content.querySelector('.mysum'), 'indiv', this.secs, (id, body) => body());
     // 질문 칸: 검색(엔터)하면 이 선수 기록에서 답을 찾는다. 다시 그려도 질문·답은 남긴다
     const qf = this.content.querySelector('.qaf');
     if (qf) qf.addEventListener('submit', e => { e.preventDefault(); this.ask(qf.querySelector('.qain').value); });
@@ -2601,15 +2648,14 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const box = $('.secs', this.content); if (!box) return;
     this.content.querySelectorAll('[data-tile]').forEach(x => x.classList.toggle('on', this.opened.includes(x.dataset.tile)));
     box.innerHTML = chipSort('chiporder_indiv_tiles', this.secs.filter(s => this.opened.includes(s[0])), s => s[0]).map(([id, ic, t, sub, body]) =>
-      `<div class="card sec" data-sec="${id}"><div class="sechead"><b>${ic} ${t}</b>${sub ? `<small>${sub}</small>` : ''}${id === 'flow' ? funitBtns() : ''}${MODE_SECS.has(id) ? `<span class="bcseg smode"><button data-smode="${id}|self" class="${(this.secModes[id] || this.mode) === 'self' ? 'on' : ''}">내 시즌</button><button data-smode="${id}|league" class="${(this.secModes[id] || this.mode) === 'league' ? 'on' : ''}">리그 평균</button></span>` : ''}${ORD_SECS.has(id) ? ordBtnH() : ''}<button class="secx" data-close="${id}" title="접기">✕</button></div>${body()}</div>`).join('');
+      `<div class="card sec" data-sec="${id}"><div class="sechead"><b${sub ? ` title="${esc(sub.replace(/<[^>]*>/g, ''))}"` : ''}>${ic} ${t}</b>${id === 'sets' ? funitBtns() : ''}${MODE_SECS.has(id) ? `<span class="bcseg smode"><button data-smode="${id}|self" class="${(this.secModes[id] || this.mode) === 'self' ? 'on' : ''}">내 시즌</button><button data-smode="${id}|league" class="${(this.secModes[id] || this.mode) === 'league' ? 'on' : ''}">리그 평균</button></span>` : ''}${ORD_SECS.has(id) ? ordBtnH() : ''}<button class="secx" data-close="${id}" title="접기">✕</button></div>${body()}</div>`).join('');
     // 칸마다 맨 위에 하위 항목 키워드 줄 (누른 것만 보인다)
-    box.querySelectorAll(':scope > .sec[data-sec]').forEach(sec => partify(sec, partSel('i:' + sec.dataset.sec), sel => partSave('i:' + sec.dataset.sec, sel)));
+    box.querySelectorAll(':scope > .sec[data-sec]').forEach(sec => { applyTotPos(sec, 'i:' + sec.dataset.sec, seasonLabel(lastSeason(this.data))); partifyNested(sec, 'i:' + sec.dataset.sec); });
   }
   toggleSec(id) {
     this.opened = this.opened.includes(id) ? this.opened.filter(x => x !== id) : this.opened.concat(id);
     localStorageSet('tiles_' + this.key, JSON.stringify(this.opened));
     this.renderSecs();
-    if (this.opened.includes(id)) { const s = this.content.querySelector(`.secs [data-sec="${id}"]`); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
   tourGrid(seasons, tours, res) {
     const avgByTour = {};
@@ -2668,6 +2714,56 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
       <tr><th class="lab">세트</th><th>득점</th><th>이닝</th><th>실점</th><th>득실비</th><th class="tot">득점</th><th>이닝</th><th>실점</th><th>득실비</th></tr></thead><tbody>`;
     nos.forEach(k => { h += `<tr><th class="lab">${k}세트</th>${cell(C[k], false)}${cell(A[k], true)}</tr>`; });
     return h + '</tbody></table></div><div class="note">득실비 = 득점 ÷ 실점. 1보다 크면 그 세트에서 넣은 점수가 더 많음.</div>';
+  }
+  // 세트별 기록 칩 표 (세트 번호별 · 스코어 상황별 공통): 줄 = 세트 묶음, 열 = 시즌 + 통산
+  //  칸 안 3줄 = 에버 · 세트 승률(승-패) · 초구 성공률(성공/시도). 위 버튼으로 줄을 넣고 빼도 칸 크기는 그대로 (라운드별 칩처럼)
+  //  색: 내 시즌 = 시즌끼리 에버, 리그 평균 = 그 시즌 리그의 같은 묶음 에버와 비교 (작은 글씨 차이)
+  //  rows = [['__grp', 이름] | [이름, x => 이 줄에 넣을 세트인가, { noWin, tip }]]  (x = setsWithScore 한 칸)
+  setRowsGrid(cols, mode, rows, note) {
+    const L = this.league, lgOn = mode === 'league' && L, show = this.setShow;
+    const W = cols.map(c => setsWithScore(c.games));
+    const lgW = c => { const C = L._sw || (L._sw = {}); if (!C[c.label]) { const s = Object.keys(L.season).find(x => seasonLabel(+x) === c.label); C[c.label] = setsWithScore(c.label === '통산' ? L.games : s ? L.season[s]._g : []); } return C[c.label]; };
+    const avgOf = o => o && o.i ? o.p / o.i : null;
+    const labels = [['avg', '에버'], ['win', '세트 승률'], ['fb', '초구 성공률']];
+    const btns = `<div class="bclegend rshow"><span class="bcpers">${labels.map(([k, l]) => `<button data-ss="${k}" class="${show[k] ? 'on' : ''}" aria-pressed="${!!show[k]}">${l}</button>`).join('')}</span></div>`;
+    const line = (on, v, sub) => `<span class="sv"${on ? '' : ' style="visibility:hidden"'}>${v ? `<b>${v}</b>${sub ? `<small>${sub}</small>` : ''}` : '&nbsp;'}</span>`;
+    let h = btns + `<div class="tw"><table class="grid stab"><thead><tr><th class="lab"></th>${cols.map((c, i) => `<th class="${i === cols.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`).join('')}</tr></thead><tbody>`;
+    rows.forEach(([lab, f, opt = {}]) => {
+      if (lab === '__grp') { h += `<tr class="grp"><th colspan="${cols.length + 1}">${f}</th></tr>`; return; }
+      const A = W.map(ws => setAgg(ws.filter(f).map(x => x.s))), vs = A.map(avgOf);
+      if (!A.some(o => o.n)) return;
+      const sv = vs.slice(0, -1).filter(v => v != null), lo = Math.min(...sv), hi = Math.max(...sv);
+      h += `<tr><th class="lab"${opt.tip ? ` title="${esc(opt.tip)}"` : ''}>${lab}</th>` + cols.map((c, i) => {
+        const o = A[i], v = vs[i], last = i === cols.length - 1; let cls = last ? 'tot' : '', style = '', diff = '';
+        if (!o.n) return `<td class="${cls}"></td>`;
+        if (lgOn && show.avg) { const x = vsLeague(v, avgOf(setAgg(lgW(c).filter(f).map(y => y.s))), f3); if (x) { cls += ' ' + x.cls; style = x.style; diff = `<em class="dd">${x.txt}</em>`; } }
+        else if (!lgOn && show.avg && !last && sv.length > 1 && hi > lo && v != null) { const t = (v - lo) / (hi - lo); style = `background: rgba(var(--heat), ${(0.06 + t * 0.32).toFixed(2)})`; if (t === 1) cls += ' best'; }
+        return `<td class="${cls}" style="${style}">${line(show.avg, v != null ? f3(v) : '', diff)}${line(show.win && !opt.noWin, pct(o.w / o.n), `${o.w}-${o.n - o.w}`)}${line(show.fb, o.fbN ? pct(o.fbH / o.fbN) : '', o.fbN ? `${o.fbH}/${o.fbN}` : '')}</td>`;
+      }).join('') + '</tr>';
+    });
+    return h + `</tbody></table></div><div class="note">칸 안 순서: 에버 · 세트 승률(승-패) · 초구 성공률(성공/선공 세트). ${note || ''} 25점 단판 경기는 뺍니다.</div>`;
+  }
+  setNoGrid(cols, mode) {
+    const nos = [...new Set(setsWithScore(cols[cols.length - 1].games).map(x => x.s.no))].filter(n => n <= 7).sort((a, b) => a - b);
+    if (!nos.length) return '<div class="note">세트제 경기가 없습니다.</div>';
+    return this.setRowsGrid(cols, mode, nos.map(n => [`${n}세트`, x => x.s.no === n]), '');
+  }
+  // 세트 스코어 상황별: 그 세트를 시작할 때 세트 스코어. 우세 · 접전 · 열세 = 5·7세트제, 스코어별 줄 = 5세트제(3세트 선승)만
+  //  'a:b → c:d' = 세트 스코어가 a:b 에서 c:d 가 된 뒤 친 다음 세트 (예 2:0 → 2:1 = 4세트)
+  stateGrid(cols, mode) {
+    const big = x => x.T >= 3, f5 = (a, b, pa, pb) => x => x.T === 3 && x.a === a && x.b === b && (pa == null || (x.pa === pa && x.pb === pb));
+    const path = (pa, pb, a, b) => [`${pa}:${pb} → ${a}:${b} <small>${a + b + 1}세트</small>`, f5(a, b, pa, pb), { tip: `세트 스코어 ${pa}:${pb} 에서 ${a}:${b} 가 된 뒤 친 ${a + b + 1}세트` }];
+    return this.setRowsGrid(cols, mode, [
+      ['__grp', '세트 스코어 상황 (5·7세트제)'],
+      ['우세', x => big(x) && x.a > x.b, { tip: '세트 스코어에서 앞선 채 시작한 세트' }],
+      ['접전', x => big(x) && x.a === x.b && x.a > 0, { tip: '세트 스코어 동점(1:1 이상)에서 시작한 세트' }],
+      ['열세', x => big(x) && x.a < x.b, { tip: '세트 스코어에서 뒤진 채 시작한 세트' }],
+      ['__grp', '스코어별 다음 세트 (5세트제)'],
+      ['1:0 <small>2세트</small>', f5(1, 0), { tip: '1세트를 이겨 1:0 에서 친 2세트' }],
+      ['0:1 <small>2세트</small>', f5(0, 1), { tip: '1세트를 져서 0:1 에서 친 2세트' }],
+      path(1, 0, 2, 0), path(1, 0, 1, 1), path(0, 1, 1, 1), path(0, 1, 0, 2),
+      path(1, 1, 2, 1), path(1, 1, 1, 2), path(2, 0, 2, 1), path(0, 2, 1, 2), path(1, 2, 2, 2), path(2, 1, 2, 2),
+    ], '');
   }
   // 이번 시즌 주요 지표: 시즌 요약과 같은 항목(이번 시즌 · 통산) + 세트 번호별 에버·승률
   // 육각형 스탯: 그 시즌 기록 (시즌 10경기 이상 선수들 사이에서 위치)
@@ -3115,7 +3211,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     };
     return btns + `<div class="tw"><table class="grid rtab"><thead><tr><th class="lab"></th>${thH(lgOn ? '<th class="lg">리그 평균</th>' : '')}</tr></thead><tbody>${rows.map(r => `<tr class="${r === '우승' ? 'sumrow' : ''}"><th class="lab">${esc(r)}</th>${cols.map((c, i) => cell(c, i, r)).join('')}${lgOn ? `<td class="lg">${f3(lgAvg(cols[cols.length - 1].league, r)) || ''}</td>` : ''}</tr>`).join('')}</tbody></table></div><div class="note">칸 안 순서: 승률 · 승패 · 에버 · 탈락 횟수. 탈락 비율 = 그 기간 출전 대회 중 비율. 진행 중인 대회에서 아직 살아 있으면 셈에서 뺍니다.</div>`;
   }
-  // ── 세트 흐름: 스코어 분포, 승패 순서, 흐름 요약, 스코어 상황별 승률 (3전 2선승 경기는 뺌) ──
+  // ── 세트 흐름: 스코어 분포(표 · 그래프), 승패 순서 (3전 2선승 경기는 뺌) ──
   flowSummary(cols) {
     const L = this.league, cur = lastSeason(this.data);
     return flowSummaryHtml(this.data.games, this.data.games.filter(g => g.season === cur), L && L.games, L || {}, '5·7세트제', '통산 10경기', this.data.player.id);
@@ -3143,7 +3239,15 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
     const th = C.map((c, i) => `<th class="${i === C.length - 1 ? 'tot' : ''}">${esc(c.label)}</th>`).join('');
     // 1) 스코어 분포 (횟수 + 비율)
     const fmts = [...new Set(C[C.length - 1].games.map(g => g.target))].sort();
-    let h = `<div class="subhead">세트 스코어 분포 <small>(횟수 · 그 시즌 경기 중 비율)</small></div><div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${th}</tr></thead><tbody>`;
+    // 표 · 그래프 버튼 (distViewBtns): 둘 다 그려 두고 CSS 로 바꾼다
+    const cur = lastSeason(this.data), sC = C.find(c => c.label === seasonLabel(cur)), tC = C[C.length - 1];
+    const chart = distChartHtml(fmts.map(T => {
+      const keys = [...new Set(tC.games.filter(g => g.target === T).map(g => `${g.sw}:${g.sl}`))].sort(distSort);
+      const of = c => { const gs = c ? c.games.filter(g => g.target === T) : []; return k => ({ n: gs.filter(g => `${g.sw}:${g.sl}` === k).length, N: gs.length }); };
+      const fS = of(sC), fT = of(tC);
+      return { title: FORMAT_NAME[T] || T + '세트 선승', rows: keys.map(k => { const [a, b] = k.split(':').map(Number); return { k, cls: a > b ? 'w' : a < b ? 'l' : '', vals: [sC ? { tag: sC.label, ...fS(k) } : null, { tag: '통산', ...fT(k) }].filter(Boolean) }; }) };
+    }));
+    let h = `<div class="subhead">세트 스코어 분포 <small>(횟수 · 그 시즌 경기 중 비율)</small>${distViewBtns()}</div><div class="dv-c">${chart}</div><div class="tw dv-t"><table class="grid"><thead><tr><th class="lab"></th>${th}</tr></thead><tbody>`;
     fmts.forEach(T => {
       const keys = [...new Set(C[C.length - 1].games.filter(g => g.target === T).map(g => `${g.sw}:${g.sl}`))]
         .sort((a, b) => { const [a1, a2] = a.split(':').map(Number), [b1, b2] = b.split(':').map(Number); return (b1 > b2) - (a1 > a2) || b1 - a1 || a2 - b2; });
@@ -3157,21 +3261,7 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
       });
     });
     h += '</tbody></table></div>';
-    // 2) 흐름 요약
-    const CATS = [['완승', '한 세트도 안 내주고 승리', 'w'], ['리드 지켜 승', '한 번도 뒤지지 않고 승리 (동점은 있음)', 'w'], ['역전승', '세트 스코어에서 뒤지다가 뒤집어 승리', 'w'], ['리버스 스윕', `0:2(7세트제 0:3)로 몰렸다가 승리`, 'w'],
-      ['완패', '한 세트도 못 따고 패배', 'l'], ['리드 못 잡고 패', '한 번도 앞서지 못하고 패배', 'l'], ['역전패', '세트 스코어에서 앞서다가 뒤집혀 패배', 'l'], ['리버스 스윕 허용', '2:0(7세트제 3:0)으로 앞서다 패배', 'l'],
-      ['풀세트', '마지막 세트(또는 승부치기)까지 간 경기', ''], ['난타전', '세트 스코어 동점이 2번 이상 나온 경기', '']];
     const flows = C.map(c => c.games.map(flowOf));
-    h += `<div class="subhead" style="margin-top:6px">흐름 요약 <small>(위 4개·아래 4개는 서로 겹치지 않음)</small></div><div class="tw"><table class="grid"><thead><tr><th class="lab"></th>${th}</tr></thead><tbody>`;
-    CATS.forEach(([cat, desc, cls]) => {
-      h += `<tr><th class="lab ${cls}"><abbr title="${esc(desc)}">${cat}</abbr><span class="s" style="font-weight:400">${esc(desc)}</span></th>` + flows.map((fs, i) => {
-        const n = fs.filter(f => cat === '풀세트' ? f.full : cat === '난타전' ? f.ties >= 2 : f.cat === cat).length;
-        const rg = /리버스/.test(cat) && n ? C[i].games.filter((g, j) => fs[j].cat === cat) : null;
-        const rtip = rg ? ` data-rtip="${esc(`<div class="rkh0">${esc(cat)} <small>${rg.length}경기</small></div><table class="rdtip">${rg.slice().reverse().map(g => `<tr><td>${esc(String(g.date || '').slice(2, 10).replace(/-/g, '.'))}</td><td>${esc(tourShort(g.seq))} ${esc(roundName(g))}</td><td><b>vs ${esc(g.opp_name || '')}</b></td><td>${g.sw}:${g.sl}${g.tiebreak ? ' 승부치기' : ''}</td></tr>`).join('')}</table>`)}" style="cursor:help"` : '';
-        return `<td class="${i === C.length - 1 ? 'tot' : ''}"${rtip}>${n ? `${n}<span class="s">${pct(n / fs.length)}</span>` : ''}</td>`;
-      }).join('') + '</tr>';
-    });
-    h += '</tbody></table></div>';
     // 3) 세트 승패 순서: 시즌마다 (최신 → 최초) + 통산
     const all = flows[flows.length - 1];
     h += `<div class="subhead" style="margin-top:6px">세트 승패 순서 <small>(통산 많이 나온 순)</small></div><div class="tw"><table class="grid"><thead><tr><th class="lab">순서</th><th>흐름</th>${th}</tr></thead><tbody>`;
@@ -3185,9 +3275,6 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
       });
     });
     h += '</tbody></table></div><div class="note">괄호 안은 승부치기 결과. 3세트제(2세트 선승) 경기는 뺐습니다.</div>';
-    // 4) 스코어 상황별 승률
-    h += `<div class="subhead" style="margin-top:10px">세트 스코어 상황별 최종 승률</div>
-      <div class="note" style="padding:0 14px 6px"><b>2:1 → 승</b> = 세트 스코어가 2:1이 된 적 있는 경기 중 이긴 비율 (작은 글씨 이긴 경기/도달한 경기).</div>` + stateTable(C, mode);
     return h;
   }
   oppTable(games) {
@@ -3209,6 +3296,71 @@ const rkTable = !rkSeasons.length && !p.prize ? '' : `<div class="tw"><table cla
   }
 }
 
+// 세트 스코어 분포 표 · 그래프 버튼 (개인 세트 흐름 · 팀 스코어 분포 공통, 화면 전체에 한 값: <html data-dview>, localStorage pba_dview)
+//  둘 다 그려 두고 CSS 로만 바꿔서 스크롤 그대로. .dv-t = 표, .dv-c = 그래프
+const distSort = (a, b) => { const [a1, a2] = a.split(':').map(Number), [b1, b2] = b.split(':').map(Number); return (b1 > b2) - (a1 > a2) || b1 - a1 || a2 - b2; };
+function dviewNow() { try { return localStorage.getItem('pba_dview') === 'chart' ? 'chart' : 'table'; } catch (e) { return 'table'; } }
+document.documentElement.dataset.dview = dviewNow();
+function distViewBtns() { const v = dviewNow(); return `<span class="bcseg dview"><button data-dview="table" class="${v === 'table' ? 'on' : ''}">표</button><button data-dview="chart" class="${v === 'chart' ? 'on' : ''}">그래프</button></span>`; }
+document.addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('button[data-dview]'); if (!b) return;
+  e.stopPropagation(); e.preventDefault();
+  const v = b.dataset.dview; try { localStorage.setItem('pba_dview', v); } catch (x) {}
+  document.documentElement.dataset.dview = v;
+  document.querySelectorAll('button[data-dview]').forEach(x => x.classList.toggle('on', x.dataset.dview === v));
+}, true);
+// 분포도 그래프: groups = [{ title, rows: [{ k: '3:1', cls: 'w'|'l'|'', vals: [{ tag, n, N }] }] }] — 스코어마다 시즌(파랑) · 통산(금색) 가로 막대, 길이 = 그 경기 중 비율
+function distChartHtml(groups) {
+  const tags = [...new Set(groups.flatMap(g => g.rows.flatMap(r => r.vals.map(v => v.tag))))];
+  const leg = `<div class="dleg">${tags.map((t, i) => `<span><i class="dc${i}"></i>${esc(t)}</span>`).join('')}</div>`;
+  return leg + groups.map(g => {
+    const mx = Math.max(...g.rows.flatMap(r => r.vals.map(v => v.N ? v.n / v.N : 0)), 0.01);
+    return `<div class="dgrp"><div class="dgt">${esc(g.title)}</div>${g.rows.map(r => `<div class="drow"><b class="${r.cls}">${esc(r.k)}</b><div class="dbars">${r.vals.map(v => { const p = v.N ? v.n / v.N : 0, i = tags.indexOf(v.tag);
+      return `<div class="dbar" title="${esc(`${v.tag} ${v.n}/${v.N}`)}"><i class="dc${i}" style="width:${(p / mx * 100).toFixed(1)}%"></i><span>${v.N ? pct(p) : ''}<small>${v.n ? ` ${v.n}회` : ''}</small></span></div>`; }).join('')}</div></div>`).join('')}</div>`;
+  }).join('');
+}
+// 세부 칩 하위 키워드 2단: 칸(root)에 키워드 줄, 그 안 data-psub 묶음마다 또 키워드 줄. key = 'i:tours' 처럼 (묶음은 'i:tours/성적')
+function partifyNested(root, key) {
+  const ds = [...root.querySelectorAll(':scope > [data-psub]')];
+  const subs = ds.map(d => { const k = key + '/' + d.dataset.plabel; return partify(d, partSel(k), sel => partSave(k, sel), { inner: true, box: d.hasAttribute('data-pbox') }); });
+  // 안쪽 키워드 줄도 머리줄로 올린다 (바깥 키워드 바로 뒤, '세트 흐름 ›' 꼬리표). 그 묶음을 켰을 때만 보인다
+  const vis = sel => subs.forEach((s, i) => { if (s && s.bar.classList.contains('pin')) s.bar.style.display = sel.includes(ds[i].dataset.plabel) ? '' : 'none'; });
+  const top = partify(root, partSel(key), sel => partSave(key, sel), { subs, head: true, onApply: vis });
+  if (!top || !top.bar.parentElement.matches('.sechead')) return;
+  let ref = top.bar;
+  subs.forEach((s, i) => { if (!s) return; s.bar.classList.add('phead', 'pin'); s.bar.insertAdjacentHTML('afterbegin', `<span class="pup">${esc(ds[i].dataset.plabel)} ›</span>`); ref.after(s.bar); ref = s.bar; });
+  vis(partSel(key));
+}
+// 시즌별 표의 '통산' 칸 자리: 머리줄 '통산' 글자를 누르면 맨 앞 ↔ 맨 뒤 (칩마다 기억, localStorage pba_totpos = { 'i:sets': 'first', … })
+//  세트별 기록 칩은 처음부터 맨 앞. 표는 그대로 그리고 그린 뒤 칸만 옮긴다 (머리줄에 합친 칸이 없는 표만, 묶음 줄 colspan 은 그대로)
+const TOT_DEF = { 'i:sets': 'first', 't:sets': 'first' };
+const totPos = key => { try { return (JSON.parse(localStorageGet('totpos')) || {})[key] || TOT_DEF[key] || 'last'; } catch (e) { return TOT_DEF[key] || 'last'; } };
+//  열 테두리: 통산 = 회색, 이번 시즌(cur = '26-27') = 노란색 (칸마다 안쪽 그림자, 맨 위 · 맨 아래 칸은 colBottoms 가 마감)
+function applyTotPos(root, key, cur) {
+  const first = totPos(key) === 'first';
+  root.querySelectorAll('table.grid').forEach(t => {
+    const H = t.tHead && [...t.tHead.rows], hr = H && H[H.length - 1]; if (!hr || H.some(r => [...r.cells].some(c => c.colSpan > 1))) return;
+    const n = hr.cells.length, ti = [...hr.cells].findIndex(c => c.textContent.trim() === '통산'); if (ti < 2) return;
+    const th = hr.cells[ti]; th.dataset.totk = key; th.title = first ? '누르면 통산 칸을 맨 뒤로' : '누르면 통산 칸을 맨 앞으로';
+    if (first) { t.classList.add('totfirst'); [...t.rows].forEach(r => { if (r.cells.length === n) r.insertBefore(r.cells[ti], r.cells[1]); }); }
+    const hs = [...hr.cells], it = hs.findIndex(c => c.textContent.trim() === '통산'), ic = cur ? hs.findIndex(c => c.textContent.trim().startsWith(cur)) : -1;
+    t.classList.add('colmk');
+    [...t.rows].forEach(r => { if (r.cells.length !== n) return; r.cells[it].classList.add('cbt'); if (ic > 0) r.cells[ic].classList.add('cbc'); });
+    colBottoms(t);
+  });
+}
+// 열 테두리 맨 아래 칸: 보이는 마지막 줄 (키워드로 줄을 숨기면 다시 맞춘다 — partify apply 에서 부름)
+function colBottoms(t) {
+  t.querySelectorAll('.cbot').forEach(c => c.classList.remove('cbot'));
+  const rows = [...t.rows].filter(r => r.style.display !== 'none' && r.querySelector('.cbt'));
+  const last = rows[rows.length - 1]; if (last) last.querySelectorAll('.cbt, .cbc').forEach(c => c.classList.add('cbot'));
+}
+document.addEventListener('click', e => {
+  const th = e.target.closest && e.target.closest('th[data-totk]'); if (!th) return;
+  const k = th.dataset.totk; let o = {}; try { o = JSON.parse(localStorageGet('totpos')) || {}; } catch (x) {}
+  o[k] = totPos(k) === 'first' ? 'last' : 'first'; localStorageSet('totpos', JSON.stringify(o));
+  window.dispatchEvent(new Event('chiporder'));   // 펼친 세부 칩 다시 그리기 (개인 · 팀)
+});
 // 세트 흐름 특징 요약의 게임/세트 버튼 (개인 · 팀 공통, 화면 전체에 한 값: <html data-funit>, localStorage pba_funit)
 //  세트 = 세트 안 점수 흐름 + 리드 · 난타전 · 열세 · 풀세트, 게임 = 세트스코어 흐름 + 세트 상황별 승리. 다시 그리지 않고 CSS 로 바꿔서 스크롤 그대로
 function funitNow() { try { return localStorage.getItem('pba_funit') === 'set' ? 'set' : 'game'; } catch (e) { return 'game'; } }
@@ -3234,7 +3386,9 @@ function flowSummaryHtml(allG, seasonG, lgG, holder, fmtNote, fewNote, meId, sfO
     const kind = (lf, lt, win) => lf === 1 ? (win && lt ? 'close' : 'lead') : lf === -1 ? (!win && lt ? 'close' : 'trail') : 'close';
     // 점수 유형 (세트 단위, 겹치지 않음): 먼저 N점(PBA·남자 5 · LPBA·여자·혼복 3) 앞서면 리드, 상대가 먼저면 열세, 아무도 못 앞서면 접전
     //  승률: 리드 = 그 뒤 동점 없이 이김(리드 유지), 열세 = 뒤집어 이김(역전), 접전 = 이김
-    gs.forEach(g => g.sets.forEach(x => { const f = sfOf(x); if (!f || f.lf == null) return; cat(o.P, kind(f.lf, f.lt, x.win), x.win); }));
+    //  세트 단위(P)는 세트제 경기만 (25점 단판 제외), pg = 세트 흐름이 잡힌 세트제 경기 수 (순위 자격: 시즌 5경기 · 통산 20경기)
+    o.pg = 0;
+    gs.forEach(g => { if (g.single) return; let any = false; g.sets.forEach(x => { const f = sfOf(x); if (!f || f.lf == null) return; cat(o.P, kind(f.lf, f.lt, x.win), x.win); any = true; }); if (any) o.pg++; });
     big.forEach(g => {
       const f = flowOf(g), s0 = g.sets[0], s1 = g.sets[1];
       // 세트스코어 유형 (경기 단위, 겹치지 않음): 게임(점수)과 같은 규칙, 리드 차이 = 2세트
@@ -3307,10 +3461,10 @@ function flowSummaryHtml(allG, seasonG, lgG, holder, fmtNote, fewNote, meId, sfO
   //  게임 = 세트 안 점수 흐름(세트 단위, P), 세트 = 세트스코어 흐름(경기 단위, G). 특징 글 = 셋 중 비율이 가장 큰 유형 + 그 승률이 리그보다 나은지
   //  전체화면 = 왼쪽 시즌 · 오른쪽 통산, 절반 화면 = 위 시즌 · 아래 통산
   const UNIT = {
-    P: { u: '세트', min: [30, 10], desc: {
+    P: { u: '세트', min: [30, 10], rmin: [20, 5], desc: {
       lead: '먼저 N점(PBA·남자 5점, LPBA·여자·혼복 3점) 앞선 세트 — 리드승: 그 뒤 동점 없이 이김, 리드패: 결국 짐', close: '아무도 N점 차를 못 만든 세트 + 리드 뒤 동점이 됐다가 리드한 쪽이 이긴 세트 + 리드를 내준 뒤 동점을 만들었지만 진 세트', trail: '상대가 먼저 N점 앞선 세트 — 열세승: 뒤집어 이김(역전), 열세패: 동점 한 번 못 만들고 짐',
       leadW: '리드승 ÷ (리드승 + 리드패)', closeW: '접전승 ÷ (접전승 + 접전패)', trailW: '열세승 ÷ (열세승 + 열세패)' } },
-    G: { u: '경기', min: [10, 5], desc: {
+    G: { u: '경기', min: [10, 5], rmin: [10, 5], desc: {
       lead: '세트스코어에서 먼저 2세트 차로 앞선 경기 — 리드승: 그 뒤 동점 없이 이김, 리드패: 결국 짐', close: '아무도 2세트 차를 못 만든 경기 + 리드 뒤 동점이 됐다가 리드한 쪽이 이긴 경기 + 리드를 내준 뒤 동점을 만들었지만 진 경기', trail: '상대가 먼저 2세트 차로 앞선 경기 — 열세승: 뒤집어 이김(역전), 열세패: 동점 한 번 못 만들고 짐',
       leadW: '리드승 ÷ (리드승 + 리드패)', closeW: '접전승 ÷ (접전승 + 접전패)', trailW: '열세승 ÷ (열세승 + 열세패)' } },
   };
@@ -3320,9 +3474,10 @@ function flowSummaryHtml(allG, seasonG, lgG, holder, fmtNote, fewNote, meId, sfO
   // 유형 비율 순위 (높은 순) + 커서 말풍선용 TOP20 (이 선수·팀 줄 맨 위)
   const nameOf = id => (holder._fnm || (holder._fnm = Object.fromEntries((lgG || []).filter(g => g.player).map(g => [g.player, g.player_name]))))[id] || (holder.teamName && holder.teamName(id)) || id;
   const rankU = (m, k, season) => {
-    const Pm = season ? sc && sc.per : per, mb = UNIT[m].min[season ? 1 : 0];
+    const Pm = season ? sc && sc.per : per, mb = UNIT[m].rmin[season ? 1 : 0];
     if (!Pm || meId == null) return null;
-    const ok = p => p && p[m].lead.n >= mb, mine = Pm[meId];
+    // 자격: 세트(P) = 세트제 경기 수 (시즌 5 · 통산 20), 경기(G) = 리드·접전·열세 분류된 경기 수
+    const ok = p => p && (m === 'P' ? p.pg : p[m].lead.n) >= mb, mine = Pm[meId];
     if (!ok(mine)) return null;
     const list = Object.entries(Pm).filter(([, p]) => ok(p)).map(([id, p]) => ({ id, v: r(p[m][k]), x: p[m][k] })).sort((a, b) => b.v - a.v);
     const me = r(mine[m][k]), rank = 1 + list.filter(x => x.v > me + 1e-9).length;
@@ -3406,11 +3561,29 @@ function gameRow(g, h2h) {
     <tr class="det" hidden><td colspan="7"><div style="margin-bottom:4px;color:var(--sub)">${esc(g.tour_name)}</div>${setsHtml(g, g.opp_sets)}</td></tr>`;
 }
 
-// 칩 순서: 세부 칩(.tiles)과 위쪽 칩(.kpis)을 길게 눌러 옮긴다. 개인투어 · 팀리그 따로, 양쪽 선수(팀) 화면은 같은 순서로 기억
+// 칩 순서: 세부 칩(.tiles)과 위쪽 칩(.kpis)을 끌거나 길게 눌러 옮긴다 (같은 줄 묶음 안에서만). 개인투어 · 팀리그 따로, 양쪽 선수(팀) 화면은 같은 순서로 기억
 const CHIP_SEL = { tiles: '.tile', kpis: '.kpi' };
 const chipId = el => el.dataset.tile || el.dataset.ttile || el.dataset.kpi || el.dataset.tkpi || ((el.querySelector('[data-kpi],[data-tkpi]') || {}).dataset || {}).kpi || ((el.querySelector('[data-tkpi]') || {}).dataset || {}).tkpi || (el.querySelector('span') || el).textContent.trim();
 const chipKey = box => `chiporder_${box.closest('[id^="tpane"]') ? 'team' : 'indiv'}_${box.classList.contains('tiles') ? 'tiles' : 'kpis'}`;
 const chipSaved = key => { try { return JSON.parse(localStorageGet(key)) || []; } catch (e) { return []; } };
+// 2026-11-18 세부 칩 재구성 (한 번만): 개인 대회별 기록 → 투어별 성적·기록, 세트 흐름 → 세트별 기록(대회별 기록 자리) / 팀 세트별 승률 · 세트 흐름 → 세트별 기록
+//  저장된 칩 순서 · 펼친 칩 · 켠 키워드를 새 id 로 옮긴다
+(() => {
+  if (localStorageGet('mig_tiles1118')) return;
+  const J = k => { try { return JSON.parse(localStorageGet(k)); } catch (e) { return null; } };
+  const mapIds = (list, m) => [...new Set(list.map(x => m[x] || x).filter(x => x !== '-'))];
+  const IM = { tourrec: 'sets', flow: '-' }, TM = { setno: 'sets', flow: '-' };
+  const o1 = J('chiporder_indiv_tiles'); if (o1) localStorageSet('chiporder_indiv_tiles', JSON.stringify(mapIds(o1, IM)));
+  const o2 = J('chiporder_team_tiles'); if (o2) localStorageSet('chiporder_team_tiles', JSON.stringify(mapIds(o2, TM)));
+  try { Object.keys(localStorage).filter(k => k.startsWith('pba_tiles_') || k.startsWith('pba_ttiles_')).forEach(k => {
+    const t = k.startsWith('pba_ttiles_'), v = J(k.slice(4)) || [];
+    localStorageSet(k.slice(4), JSON.stringify(mapIds(v.map(x => t ? (x === 'flow' || x === 'setno' ? 'sets' : x) : (x === 'tourrec' ? 'tours' : x === 'flow' ? 'sets' : x)), {})));
+  }); } catch (e) {}
+  const P = J('secparts') || {}, mv = (from, to) => { if (P[from]) { P[to] = P[from]; delete P[from]; } };
+  mv('i:tours', 'i:tours/성적'); mv('i:tourrec', 'i:tours/기록'); mv('i:flow', 'i:sets/세트 흐름'); mv('t:setno', 't:sets/세트별 승률'); mv('t:flow', 't:sets/세트 흐름');
+  localStorageSet('secparts', JSON.stringify(P));
+  localStorageSet('mig_tiles1118', '1');
+})();
 // 저장된 순서대로 정렬 (저장에 없는 새 칩은 원래 순서로 뒤에)
 const chipSort = (key, list, id) => { const o = chipSaved(key), at = x => { const i = o.indexOf(id(x)); return i < 0 ? o.length + list.indexOf(x) : i; }; return list.slice().sort((a, b) => at(a) - at(b)); };
 function applyChipOrders(root) {
@@ -3431,7 +3604,8 @@ function applyChipOrders(root) {
   });
   document.addEventListener('pointermove', e => {
     if (!st) return;
-    if (!st.on) { if (Math.hypot(e.clientX - st.x, e.clientY - st.y) > 6) end(); return; }
+    // 누른 채 끌면 바로 옮기기 시작 (길게 누르기도 그대로)
+    if (!st.on) { if (Math.hypot(e.clientX - st.x, e.clientY - st.y) <= 6) return; clearTimeout(timer); timer = null; st.on = true; st.el.classList.add('chiplift'); st.box.classList.add('chipmoving'); hideRkBub(); getSelection().removeAllRanges(); }
     e.preventDefault();
     const sel = st.box.classList.contains('tiles') ? CHIP_SEL.tiles : CHIP_SEL.kpis;
     const hit = document.elementFromPoint(e.clientX, e.clientY), t = hit && hit.closest(sel);
@@ -3460,7 +3634,7 @@ function applyChipOrders(root) {
   document.addEventListener('dragstart', e => { if (st && st.on) e.preventDefault(); });
 })();
 // 앱 전체 규칙: 버튼 · 선택 칸으로 항목을 바꿔도 스크롤은 그대로. 다시 그리면서 위로 튀지 않게, 누른 버튼이 화면의 같은 자리에 남도록 맞춘다
-//  (화면 자체가 바뀌는 앱 탭 · 방송 요약 전환은 뺀다. 세부 칩(tile)은 버튼이 아니라 해당 없음)
+//  (화면 자체가 바뀌는 앱 탭 · 방송 요약 전환은 뺀다. 세부 칩(tile)도 켜고 끌 때 화면이 움직이지 않게 포함 — 칩 줄은 위에 붙어 있어 그 자리 그대로)
 (() => {
   const SCROLLERS = '.pane, #bc, #tbc, #board .bbody, #sheet .sbody, .popbody';
   const SKIP = '.apptabs button, #bcBtn, #tbcBtn, .tbcback';
@@ -3481,7 +3655,7 @@ function applyChipOrders(root) {
     }
   };
   const after = () => { const s = snap; snap = null; put(s); requestAnimationFrame(() => put(s)); };
-  window.addEventListener('click', e => take(e.target.closest && e.target.closest('button')), true);
+  window.addEventListener('click', e => take(e.target.closest && e.target.closest('button, .tiles > .tile')), true);
   window.addEventListener('click', after);
   window.addEventListener('change', e => { if (e.target.closest && e.target.closest('select')) { take(e.target); after(); } });
 })();
@@ -3524,6 +3698,20 @@ async function renderH2H() {
 let bcScope = localStorageGet('bc_scope') || 'season';
 const BC_SCOPES = [['season', '이번 시즌'], ['two', '최근 2시즌'], ['all', '통산']];
 
+// 세트 묶음 집계: 득점 · 이닝 · 승 · 세트 수 · 초구(선공 세트의 첫 이닝 득점, 승부치기 제외)
+function setAgg(sets) {
+  const o = { p: 0, i: 0, w: 0, n: 0, fbN: 0, fbH: 0 };
+  sets.forEach(s => { o.p += s.pts || 0; o.i += s.inn || 0; o.n++; if (s.win) o.w++; if (s.first && s.first_ball != null) { o.fbN++; if (s.first_ball > 0) o.fbH++; } });
+  return o;
+}
+// 세트제 경기의 세트마다 시작 때 세트 스코어(a:b) · 한 세트 전 스코어(pa:pb) · 선승 세트 수 T 를 붙인다 (경기 목록이 같으면 다시 쓰기)
+const SWS = new WeakMap();
+function setsWithScore(gs) {
+  if (SWS.has(gs)) return SWS.get(gs);
+  const out = [];
+  gs.filter(g => !g.single).forEach(g => { let a = 0, b = 0, pa = null, pb = null; g.sets.slice().sort((x, y) => x.no - y.no).forEach(s => { out.push({ s, a, b, pa, pb, T: g.target || 0 }); pa = a; pb = b; s.win ? a++ : b++; }); });
+  SWS.set(gs, out); return out;
+}
 // 세트 번호별 에버·승률
 function bySetNo(gs) {
   const by = {};
@@ -3575,7 +3763,7 @@ function talkingPoints(A, B, h2h, L) {
   const pts = [], an = A.player.name, bn = B.player.name, cur = lastSeason(A);
   const kw = t => `<span class="kw">${t}</span>`;
   // 승률 · 기록에는 순위를 붙인다: 같은 종목 그 기간 선수들(rankTable: 시즌 10경기 · 통산 30경기 이상) 중 이 값보다 높은 선수 수 + 1
-  const rk = (scope, k, v) => { if (!L || v == null) return ''; const xs = rankTable(L, scope, cur).map(x => x.o[k]).filter(x => x != null); return xs.length ? ` <span class="tprk">${xs.filter(x => x > v).length + 1}위</span>` : ''; };
+  const rk = (scope, k, v) => { if (!L || v == null) return ''; const xs = rankTable(L, scope, cur, 'set').map(x => x.o[k]).filter(x => x != null); return xs.length ? ` <span class="tprk">${xs.filter(x => x > v).length + 1}위</span>` : ''; };
   // 상대 전적
   if (h2h.length) {
     const w = h2h.filter(g => g.win).length, l = h2h.length - w, last = h2h[h2h.length - 1];
@@ -3836,7 +4024,7 @@ const BC_FMT = {};
 function bcRankBubble(key, scope, me, meName, name, low, games) {
   const L = bcL; if (!L) return '';
   const isSet = key.startsWith('set:'), isSt = key.startsWith('st:'), fmt = isSet ? f3 : isSt ? pct : BC_FMT[key] || f3;
-  const lg = scope === 'all' ? L.all : L.season[bcSeason], all = rankTable(L, scope, bcSeason);
+  const lg = scope === 'all' ? L.all : L.season[bcSeason], all = rankTable(L, scope, bcSeason, 'set');
   // 값: 계산 기록(o) · 게임 지배력 · 세트별 에버(10세트 이상) · 세트 스코어별 최종 승률(5번 이상) — 선수마다 한 번만 계산해 둔다
   const val = x => {
     const c = x._v || (x._v = {}); if (key in c) return c[key];
@@ -3897,13 +4085,12 @@ window.addEventListener('resize', closePop);
 //   · 시즌 표(table.grid)의 줄(줄 이름, 묶음 줄 tr.grp 가 있으면 묶음 이름) · 접기(details: 시즌 접기는 시즌, 그 밖은 제목)
 //   그 밖(설명 · 보기 버튼)은 늘 보인다. 나눌 게 2개 미만이면 그대로 둔다
 //  sel = 켜진 키워드 이름 목록, save(sel) = 바뀔 때마다 (기억용)
-function partify(root, sel, save) {
-  if (!root) return;
-  root.querySelectorAll(':scope > .parts').forEach(x => x.remove());
+// 칸(root) 바로 아래 내용을 하위 항목으로 나눈다 → [{ label, els, rows, box }] (partify · 맞춤요약 공용)
+function partsOf(root) {
   const nameOf = el => { const c = el.cloneNode(true); c.querySelectorAll('button, .s, small, .bcseg').forEach(x => x.remove()); return c.textContent.replace(/\s+/g, ' ').trim().split(/ · |\s*\(/)[0].trim(); };
   const parts = []; let cur = null;
   const put = (label, p) => { if (!label) return null; const o = parts.find(x => x.label === label) || (parts.push({ label, els: [], rows: [] }), parts[parts.length - 1]); o.els.push(...(p.els || [])); o.rows.push(...(p.rows || [])); return o; };
-  [...root.children].filter(c => !c.matches('.sechead, .pophead')).forEach(c => {
+  [...root.children].filter(c => !c.matches('.sechead, .pophead, .parts')).forEach(c => {
     if (c.dataset.plabel) { cur = null; put(c.dataset.plabel, { els: [c] }); return; }
     if (c.matches('.subhead')) { cur = put(nameOf(c), { els: [c] }); return; }
     if (cur) { cur.els.push(c); return; }
@@ -3918,11 +4105,28 @@ function partify(root, sel, save) {
       g = put(b ? b.textContent.replace(/\s+/g, ' ').trim() : tr.cells[0] ? nameOf(tr.cells[0]) : '', { rows: [tr] }); if (g) g.box = c;
     });
   });
-  if (parts.length < 2) return;
-  const bar = document.createElement('div'); bar.className = 'parts';
-  bar.innerHTML = parts.map(p => `<button type="button" data-part="${esc(p.label)}" class="${sel.includes(p.label) ? 'on' : ''}">${esc(p.label)}</button>`).join('');
+  return parts;
+}
+//  opts.inner = 안쪽(2단) 키워드 줄: 모두 끄기 · 모두 켜기 없음 (바깥 줄 버튼이 안쪽까지 함께 바꾼다)
+//  opts.subs = 안쪽 줄들(partify 가 돌려준 것), opts.head = 키워드를 칸 머리줄(.sechead) 안에 둔다
+//  opts.box = 키워드 내용마다 테두리 상자(.pbox)로 묶는다 (서로 독립인 내용)
+//  돌려주는 값: { all(on) } — 모두 켜기(on=true) · 모두 끄기(false)
+function partify(root, sel, save, opts = {}) {
+  if (!root) return null;
+  root.querySelectorAll(':scope > .parts, :scope > .sechead > .parts').forEach(x => x.remove());
+  root.querySelectorAll(':scope > .pbox').forEach(w => { while (w.firstChild) w.before(w.firstChild); w.remove(); });
+  const parts = partsOf(root);
+  if (parts.length < 2) return null;
+  if (opts.box) parts.forEach(p => { if (p.rows.length || !p.els.length) return; const w = document.createElement('div'); w.className = 'pbox'; p.els[0].before(w); p.els.forEach(el => w.appendChild(el)); p.els = [w]; });
+  const subs = opts.subs || [];
+  const bar = document.createElement('div'); bar.className = 'parts' + (opts.head ? ' phead' : '');
+  bar.innerHTML = (opts.inner ? '' : '<button type="button" class="pswitch" data-pswitch role="switch" title="키워드 모두 켜기 · 끄기"><i></i></button>')
+    + parts.map(p => `<button type="button" data-part="${esc(p.label)}" class="${sel.includes(p.label) ? 'on' : ''}">${esc(p.label)}</button>`).join('');
   const head = root.querySelector(':scope > .sechead');
-  head ? head.after(bar) : root.prepend(bar);
+  if (opts.head && head) {
+    const ref = head.querySelector(':scope > .ordbtn, :scope > .secx, :scope > .fgrp'); ref ? ref.before(bar) : head.appendChild(bar);
+  }
+  else head ? head.after(bar) : root.prepend(bar);
   const show = (el, on) => { el.style.display = on ? '' : 'none'; };
   // 켠 키워드는 누른 순서대로 (sel 순서): 같은 부모(칸 · 표 몸통)마다 첫 자리에 표시 노드를 두고 그 앞에 차례로 다시 넣는다
   //  표 줄은 표 안에서 정렬, 표 덩어리(p.box)는 그 안에서 가장 먼저 누른 키워드 자리로
@@ -3936,20 +4140,27 @@ function partify(root, sel, save) {
     const m = document.createComment('parts'); first.n.parentNode.insertBefore(m, first.n); items.mk = m; return m;
   });
   const order = () => slots.forEach(items => items.map(x => [x, x.r()]).sort((a, b) => a[1] - b[1]).forEach(([x]) => items.mk.parentNode.insertBefore(x.n, items.mk)));
+  const sync = () => { bar.querySelectorAll('[data-part]').forEach(x => x.classList.toggle('on', sel.includes(x.dataset.part))); const w = bar.querySelector('[data-pswitch]'), any = parts.some(p => sel.includes(p.label)); if (w) { w.classList.toggle('on', any); w.setAttribute('aria-checked', any); } };
   const apply = () => {
-    order();
+    order(); sync();
     const boxes = new Map();
     parts.forEach(p => { const on = sel.includes(p.label); p.els.forEach(el => { show(el, on); if (on && el.matches('details')) el.open = true; }); p.rows.forEach(tr => show(tr, on)); if (p.box) boxes.set(p.box, boxes.get(p.box) || on); });
     boxes.forEach((on, box) => show(box, on));
+    if (opts.onApply) opts.onApply(sel);
+    root.querySelectorAll('table.colmk').forEach(colBottoms);
   };
+  const all = on => { sel.splice(0); if (on) parts.forEach(p => sel.push(p.label)); apply(); if (save) save(sel); subs.forEach(s => s && s.all(on)); };
   bar.addEventListener('click', e => {
+    if (e.target.closest('.secx')) return;   // 칸 닫기는 원래 처리로
     e.stopPropagation();   // 칸 접기 · 팝업 닫기로 넘어가지 않게
+    if (e.target.closest('[data-pswitch]')) { all(!parts.some(p => sel.includes(p.label))); return; }   // 켠 게 있으면 모두 끄기, 없으면 모두 켜기
     const b = e.target.closest('[data-part]'); if (!b) return;
     const k = b.dataset.part, i = sel.indexOf(k);
     if (i >= 0) sel.splice(i, 1); else sel.push(k);
-    b.classList.toggle('on', i < 0); apply(); if (save) save(sel);
+    apply(); if (save) save(sel);
   });
   apply();
+  return { all, bar };
 }
 // 세부 항목 칸마다 켠 키워드 기억 (두 선수 칸 공통). id 앞에 i: 개인 · t: 팀
 function partSel(id) { try { return JSON.parse(localStorageGet('secparts') || '{}')[id] || []; } catch (e) { return []; } }
@@ -3964,11 +4175,18 @@ const FOLDS = (() => { try { return new Set(JSON.parse(localStorageGet('folds'))
 const foldKey = b => (b.hasAttribute('data-fdef') ? '+' : '') + b.dataset.fk;
 const isFolded = b => b.hasAttribute('data-fdef') !== FOLDS.has(foldKey(b));
 // 방송 요약 레시피 (개인 bc · 팀 tbc 공통): VS 아래 '레시피' 버튼 → 상위 키워드(섹션) → 하위 키워드(표 줄)를 골라 ② 레시피 표로 모아 본다
-//  검색칸에 글자를 쓰면 모든 섹션의 항목 중 맞는 것을 바로 고를 수 있다. 고른 순서대로 표에 나오고 localStorage pba_recipe_<area> 에 기억
+//  검색칸에 글자를 쓰면 모든 섹션의 항목 중 맞는 것을 바로 고를 수 있다.
+//  고르는 동안은 임시 설정(RCP_UI.draft)만 바뀌고, '설정 저장'을 눌러야 localStorage pba_recipe_<area> 에 기억되어 ② 표에 올라간다.
+//  저장한 뒤엔 '레시피 수정' 버튼으로 다시 열어 고친다 ('취소' · 버튼 다시 누르기 = 고친 것 버리기)
 //  RCP[area] = { groups: [{ t, items: [{ k, txt, row }] }], table: rows => 표 html } — 각 방송 요약이 그릴 때 채운다
-const RCP = {}, RCP_UI = {};   // RCP_UI[area] = { open, g } (패널 열림 · 펼친 상위 키워드)
+const RCP = {}, RCP_UI = {};   // RCP_UI[area] = { open, g, draft } (패널 열림 · 펼친 상위 키워드 · 저장 전 임시 설정)
 const rcpGet = area => { try { return JSON.parse(localStorage.getItem('pba_recipe_' + area)) || []; } catch (e) { return []; } };
 const rcpSet = (area, v) => { try { localStorage.setItem('pba_recipe_' + area, JSON.stringify(v)); } catch (e) {} };
+const rcpUi = area => RCP_UI[area] || (RCP_UI[area] = { open: false, g: null, draft: null });
+const rcpCur = area => rcpUi(area).draft || rcpGet(area);   // 패널에 보이는 설정 (편집 중이면 임시 설정)
+const rcpDirty = area => JSON.stringify(rcpCur(area)) !== JSON.stringify(rcpGet(area));
+// 레시피 버튼: 저장한 설정이 있으면 '수정', 없으면 '만들기', 열려 있으면 '편집 중'(누르면 취소)
+const rcpBtnHtml = area => { const n = rcpGet(area).length; return rcpUi(area).open ? '🧩 맞춤요약 편집 중' : n ? `✏️ 맞춤요약 수정 <b>${n}</b>` : '🧩 맞춤요약 만들기'; };
 const rcpPlain = l => String(l).replace(/<small>.*?<\/small>/g, '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 // [[섹션 제목, 표 줄들]] → 키 붙인 묶음. '#' 줄은 소제목: 같은 이름 항목이 또 나오면 소제목을 붙여 구분 (5전 · 7전 세트 스코어)
 function rcpNorm(defs) {
@@ -3989,47 +4207,51 @@ function rcpNorm(defs) {
 }
 const rcpAll = area => (RCP[area] ? RCP[area].groups.flatMap(g => g.items.map(x => ({ ...x, g: g.t }))) : []);
 function rcpPanel(area) {
-  const ui = RCP_UI[area] || (RCP_UI[area] = { open: false, g: null }), n = rcpGet(area).length;
-  return `<div class="rcp" data-rcp="${area}"><div class="rcpbar"><button type="button" class="rcpbtn${ui.open ? ' on' : ''}" data-rcpopen="${area}">🧪 레시피${n ? ` <b>${n}</b>` : ''}</button></div><div class="rcppanel"${ui.open ? '' : ' hidden'}>${rcpInner(area)}</div></div>`;
+  const ui = rcpUi(area);
+  return `<div class="rcp" data-rcp="${area}"><div class="rcpbar"><button type="button" class="rcpbtn${ui.open ? ' on' : ''}" data-rcpopen="${area}">${rcpBtnHtml(area)}</button></div><div class="rcppanel"${ui.open ? '' : ' hidden'}>${rcpInner(area)}</div></div>`;
 }
 function rcpInner(area) {
   const R = RCP[area]; if (!R) return '';
-  const ui = RCP_UI[area] || {}, on = new Set(rcpGet(area)), G = R.groups.find(g => g.t === ui.g);
+  const ui = rcpUi(area), on = new Set(rcpCur(area)), G = R.groups.find(g => g.t === ui.g);
   const chip = x => `<button type="button" class="rcpk${on.has(x.k) ? ' on' : ''}" data-rcpk="${esc(x.k)}" data-rcpa="${area}">${esc(x.txt)}</button>`;
-  const sel = rcpGet(area).map(k => rcpAll(area).find(x => x.k === k)).filter(Boolean);
-  return `<div class="rcptop">${R.groups.map(g => `<button type="button" class="rcpg${g.t === ui.g ? ' on' : ''}" data-rcpg="${esc(g.t)}" data-rcpa="${area}">${esc(g.t)} <small>${g.items.filter(x => on.has(x.k)).length || ''}</small></button>`).join('')}</div>`
+  const sel = rcpCur(area).map(k => rcpAll(area).find(x => x.k === k)).filter(Boolean), dirty = rcpDirty(area);
+  return `<div class="rcptop mytiles">${R.groups.map(g => `<button type="button" class="rcpg${g.t === ui.g ? ' on' : ''}" data-rcpg="${esc(g.t)}" data-rcpa="${area}">${esc(g.t)} <small>${g.items.filter(x => on.has(x.k)).length || ''}</small></button>`).join('')}</div>`
     + (G ? `<div class="rcpsub">${G.items.map(chip).join('')}</div>` : '<div class="rcphint">위 키워드를 누르면 항목이 나옵니다</div>')
     + `<div class="rcpfind"><input type="search" class="rcpq" data-rcpa="${area}" placeholder="항목 검색해서 추가 (예: 초구, 역전, 3세트)" value="${esc(ui.q || '')}"><div class="rcphits">${rcpHits(area)}</div></div>`
-    + `<div class="rcpsel"><span class="rcpl">고른 항목</span>${sel.length ? sel.map(x => `<button type="button" class="rcpk on" data-rcpk="${esc(x.k)}" data-rcpa="${area}" title="${esc(x.g)}">${esc(x.txt)} ✕</button>`).join('') + `<button type="button" class="rcpclr" data-rcpclr="${area}">모두 빼기</button>` : '<span class="rcphint">아직 없음</span>'}</div>`;
+    + `<div class="rcpsel" data-dlist="rcp:${area}"><span class="rcpl">고른 항목 <small>끌어서 순서 바꾸기</small></span>${sel.length ? sel.map(x => `<button type="button" class="rcpk on" data-di="${esc(x.k)}" data-rcpk="${esc(x.k)}" data-rcpa="${area}" title="${esc(x.g)}">${esc(x.txt)} ✕</button>`).join('') + `<button type="button" class="rcpclr" data-rcpclr="${area}">모두 빼기</button>` : '<span class="rcphint">아직 없음</span>'}</div>`
+    + `<div class="rcpsave"><span class="rcphint">${dirty ? '바뀐 내용은 <b>설정 저장</b>을 눌러야 ② 맞춤요약에 올라갑니다' : '저장한 설정 그대로입니다'}</span><button type="button" class="rcpcancel" data-rcpcancel="${area}">취소</button><button type="button" class="rcpok" data-rcpsave="${area}"${dirty ? '' : ' disabled'}>💾 설정 저장</button></div>`;
 }
 function rcpHits(area) {
   const q = ((RCP_UI[area] || {}).q || '').replace(/\s/g, ''); if (!q) return '';
-  const on = new Set(rcpGet(area)), hits = rcpAll(area).filter(x => (x.g + x.txt).replace(/\s/g, '').includes(q)).slice(0, 24);
+  const on = new Set(rcpCur(area)), hits = rcpAll(area).filter(x => (x.g + x.txt).replace(/\s/g, '').includes(q)).slice(0, 24);
   return hits.length ? hits.map(x => `<button type="button" class="rcpk${on.has(x.k) ? ' on' : ''}" data-rcpk="${esc(x.k)}" data-rcpa="${area}" title="${esc(x.g)}">${esc(x.txt)} <small>${esc(x.g)}</small></button>`).join('') : '<span class="rcphint">맞는 항목 없음</span>';
 }
-// ② 레시피 섹션 (처음부터 펼침). 고른 항목이 없으면 안내만
+// ② 레시피 섹션 (처음부터 펼침): 저장한 설정만 보여 준다. 저장한 항목이 없으면 안내만
 function rcpBody(area) {
   const sel = rcpGet(area).map(k => rcpAll(area).find(x => x.k === k)).filter(Boolean);
-  return sel.length ? RCP[area].table(sel.map(x => x.row)) : '<div class="note" style="padding:10px 14px">위 <b>🧪 레시피</b> 버튼으로 비교할 항목을 고르세요. 고른 순서대로 여기에 모입니다.</div>';
+  return sel.length ? RCP[area].table(sel.map(x => x.row)) : '<div class="note" style="padding:10px 14px">위 <b>🧩 맞춤요약 만들기</b> 버튼으로 비교할 항목을 고르고 <b>설정 저장</b>을 누르세요. 고른 순서대로 여기에 모입니다.</div>';
 }
-const rcpSection = area => `<section class="bcsec rcpsec" data-rcpsec="${area}"><h3><span class="n">2</span>레시피<small>내가 고른 항목만</small></h3><div class="rcpbody">${rcpBody(area)}</div></section>`;
+const rcpSection = area => `<section class="bcsec rcpsec" data-rcpsec="${area}"><h3><span class="n">2</span>맞춤요약<small>내가 고른 항목만 · 고른 순서대로</small></h3><div class="rcpbody">${rcpBody(area)}</div></section>`;
 // 고르기 · 빼기 · 열기: 패널과 ② 표만 그 자리에서 바꾼다 (방송 요약 전체를 다시 그리지 않아 스크롤 그대로)
 function rcpRefresh(area, inner = true) {
   document.querySelectorAll(`[data-rcp="${area}"]`).forEach(w => {
-    const ui = RCP_UI[area], n = rcpGet(area).length, b = w.querySelector('.rcpbtn');
-    b.classList.toggle('on', ui.open); b.innerHTML = `🧪 레시피${n ? ` <b>${n}</b>` : ''}`;
+    const ui = rcpUi(area), b = w.querySelector('.rcpbtn');
+    b.classList.toggle('on', ui.open); b.innerHTML = rcpBtnHtml(area);
     const p = w.querySelector('.rcppanel'); p.hidden = !ui.open;
     if (inner && ui.open) { const q = p.querySelector('.rcpq'), had = q && document.activeElement === q, pos = had ? q.selectionStart : 0; p.innerHTML = rcpInner(area); if (had) { const q2 = p.querySelector('.rcpq'); q2.focus(); q2.setSelectionRange(pos, pos); } }
   });
   document.querySelectorAll(`[data-rcpsec="${area}"] .rcpbody`).forEach(b => { b.innerHTML = rcpBody(area); if (typeof fitBc3 === 'function') fitBc3(b); });
 }
 document.addEventListener('click', e => {
-  const t = e.target.closest && e.target.closest('[data-rcpopen], [data-rcpg], [data-rcpk], [data-rcpclr]'); if (!t) return;
-  const area = t.dataset.rcpopen || t.dataset.rcpa || t.dataset.rcpclr, ui = RCP_UI[area] || (RCP_UI[area] = { open: false, g: null });
-  if (t.dataset.rcpopen) ui.open = !ui.open;
+  const t = e.target.closest && e.target.closest('[data-rcpopen], [data-rcpg], [data-rcpk], [data-rcpclr], [data-rcpsave], [data-rcpcancel]'); if (!t) return;
+  const area = t.dataset.rcpopen || t.dataset.rcpa || t.dataset.rcpclr || t.dataset.rcpsave || t.dataset.rcpcancel, ui = rcpUi(area);
+  const close = () => { ui.open = false; ui.draft = null; ui.q = ''; };
+  if (t.dataset.rcpopen) { if (ui.open) close(); else { ui.open = true; ui.draft = rcpGet(area).slice(); } }   // 열 때 저장한 설정을 복사해 고친다
+  else if (t.dataset.rcpsave) { rcpSet(area, rcpCur(area)); close(); }
+  else if (t.dataset.rcpcancel) close();
   else if (t.dataset.rcpg != null) ui.g = ui.g === t.dataset.rcpg ? null : t.dataset.rcpg;
-  else if (t.dataset.rcpclr) rcpSet(area, []);
-  else { const k = t.dataset.rcpk, cur = rcpGet(area); rcpSet(area, cur.includes(k) ? cur.filter(x => x !== k) : [...cur, k]); }
+  else if (t.dataset.rcpclr) ui.draft = [];
+  else { const k = t.dataset.rcpk, cur = rcpCur(area); ui.draft = cur.includes(k) ? cur.filter(x => x !== k) : [...cur, k]; }
   rcpRefresh(area);
 });
 document.addEventListener('input', e => {
@@ -4040,6 +4262,107 @@ document.addEventListener('input', e => {
 document.addEventListener('keydown', e => {   // 검색칸에서 Enter = 첫 번째 맞는 항목 추가
   const q = e.target.closest && e.target.closest('.rcpq'); if (!q || e.key !== 'Enter') return;
   const b = q.parentElement.querySelector('.rcphits .rcpk:not(.on)'); if (b) b.click();
+});
+// ── 끌어서 순서 바꾸기 목록 (맞춤요약 고른 항목 · 방송 요약 맞춤요약 고른 항목 공통) ──
+//  [data-dlist] 안 [data-di] 항목을 누른 채 끌면 옮겨지고, 놓으면 그 목록에 'dlist' 이벤트(detail: { key, order })
+//  끈 뒤의 클릭(✕ 빼기)은 막는다
+(() => {
+  let st = null, dragged = false;
+  document.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    const el = e.target.closest && e.target.closest('[data-dlist] > [data-di]'); if (!el) return;
+    st = { el, box: el.parentElement, x: e.clientX, y: e.clientY, on: false };
+  });
+  document.addEventListener('pointermove', e => {
+    if (!st) return;
+    if (!st.on) { if (Math.hypot(e.clientX - st.x, e.clientY - st.y) <= 6) return; st.on = true; st.el.classList.add('chiplift'); st.box.classList.add('chipmoving'); getSelection().removeAllRanges(); }
+    e.preventDefault();
+    const hit = document.elementFromPoint(e.clientX, e.clientY), t = hit && hit.closest('[data-di]');
+    if (!t || t === st.el || t.parentElement !== st.box) return;
+    const r = t.getBoundingClientRect(), after = Math.abs(r.top - st.el.getBoundingClientRect().top) < r.height / 2 ? e.clientX > r.left + r.width / 2 : e.clientY > r.top + r.height / 2;
+    st.box.insertBefore(st.el, after ? t.nextElementSibling : t);
+  });
+  const finish = () => {
+    if (!st) return; const s = st; st = null; if (!s.on) return;
+    dragged = true; setTimeout(() => { dragged = false; }, 300);
+    s.el.classList.remove('chiplift'); s.box.classList.remove('chipmoving');
+    s.box.dispatchEvent(new CustomEvent('dlist', { bubbles: true, detail: { key: s.box.dataset.dlist, order: [...s.box.querySelectorAll(':scope > [data-di]')].map(x => x.dataset.di) } }));
+  };
+  document.addEventListener('pointerup', finish); document.addEventListener('pointercancel', finish);
+  window.addEventListener('click', e => { if (dragged && e.target.closest && e.target.closest('[data-dlist]')) { dragged = false; e.stopPropagation(); e.preventDefault(); } }, true);
+})();
+// ── 맞춤요약 (개인 선수 칸 · 팀 칸 공통): 세부 칩의 하위 키워드(안쪽 2단 키워드 포함)를 골라 그 칸에 고른 순서대로 모아 본다 ──
+//  이름 옆 '맞춤요약' 버튼으로 연다. 위쪽 = 세부 칩 모양 버튼 → 누르면 그 칩의 키워드 전부, 고른 항목은 끌어서 순서 바꾸기
+//  저장: localStorage pba_mysum_<area> = ['칩id|키워드' | '칩id|키워드|안쪽 키워드' | '칩id|*'(칩 전체)] (두 칸 공통), 열림 pba_myopen_<area>
+//  el.__my = { area, secs, run }: secs = 세부 칩 정의(this.secs), run(id, body) = 그 칩 내용 html
+const myGet = area => { try { return JSON.parse(localStorageGet('mysum_' + area)) || []; } catch (e) { return []; } };
+const mySet = (area, v) => localStorageSet('mysum_' + area, JSON.stringify(v));
+const myOpen = area => localStorageGet('myopen_' + area) === '1';
+const MY_UI = {};   // MY_UI[area] = { edit, chip } (고르기 패널 열림 · 펼친 칩)
+const myUi = area => MY_UI[area] || (MY_UI[area] = { edit: !myGet(area).length, chip: null });
+const isPsub = el => el && el.hasAttribute && el.hasAttribute('data-psub');
+function myBody(m, id) {   // 그 칩 내용 (그릴 때마다 한 번만 만든다)
+  const c = m.cache || (m.cache = {});
+  if (!c[id]) { const s = m.secs.find(x => x[0] === id), d = document.createElement('div'); d.innerHTML = s ? m.run(id, s[4]) : ''; c[id] = d; }
+  return c[id];
+}
+// 칩의 고를 수 있는 키워드: 바깥 키워드 + 안쪽(2단) 키워드. 키워드가 없는 칩은 '전체' 하나
+function myKeys(m, id) {
+  const ps = partsOf(myBody(m, id));
+  if (ps.length < 2) return [{ k: `${id}|*`, txt: '전체' }];
+  return ps.flatMap(p => { const sub = p.els.length === 1 && isPsub(p.els[0]) ? partsOf(p.els[0]) : []; return [{ k: `${id}|${p.label}`, txt: p.label, sub: sub.length > 1 ? sub.map(q => ({ k: `${id}|${p.label}|${q.label}`, txt: q.label })) : [] }]; });
+}
+// 키워드 하나의 내용 노드 (칩 내용을 복사해서 그 부분만): 표 줄 키워드는 그 줄만 남긴 표
+function myNodes(m, key) {
+  const [id, ...path] = key.split('|'), root = myBody(m, id).cloneNode(true);
+  if (path[0] === '*') return [...root.childNodes];
+  let p = partsOf(root).find(x => x.label === path[0]);
+  if (p && path[1]) { const ps = p.els[0]; p = isPsub(ps) ? partsOf(ps).find(x => x.label === path[1]) : null; }
+  if (!p) return null;
+  if (!p.rows.length) return p.els;
+  const keep = new Set(p.rows); p.box.querySelectorAll('tbody > tr').forEach(tr => { if (!keep.has(tr)) tr.remove(); });
+  return [p.box];
+}
+function myRender(el) {
+  const m = el.__my; if (!m) return; m.cache = {};
+  const area = m.area, sel = myGet(area), ui = myUi(area);
+  const chipName = id => ((m.secs.find(x => x[0] === id) || [])[2] || id).replace('뱅킹·공 색·선후공', '뱅킹·선후공');
+  const lab = k => { const [id, ...p] = k.split('|'); return `${chipName(id)} › ${p[0] === '*' ? '전체' : p.join(' › ')}`; };
+  const on = new Set(sel), kb = (x, cls = '') => `<button type="button" class="rcpk${cls}${on.has(x.k) ? ' on' : ''}" data-myk="${esc(x.k)}" data-mya="${area}">${esc(x.txt)}</button>`;
+  let h = `<div class="myhead"><b>🧩 맞춤요약</b><small>세부 칩의 키워드를 골라 고른 순서대로 모아 봅니다 · 고른 항목은 끌어서 순서 바꾸기</small><button type="button" class="myedit${ui.edit ? ' on' : ''}" data-myedit="${area}">${ui.edit ? '고르기 접기' : '✏️ 고르기'}</button><button type="button" class="secx" data-myopen="${area}" title="닫기">✕</button></div>`;
+  if (ui.edit) {
+    h += `<div class="mytiles">${m.secs.map(([id, , t]) => { const n = sel.filter(k => k.startsWith(id + '|')).length; return `<button type="button" data-mychip="${id}" data-mya="${area}" class="${ui.chip === id ? 'on' : ''}"><span>${esc(chipName(id))}</span>${n ? `<small>${n}</small>` : ''}</button>`; }).join('')}</div>`;
+    if (ui.chip) {
+      const ks = myKeys(m, ui.chip);
+      h += `<div class="mykws"><div class="mykrow">${ks.map(x => kb(x)).join('')}</div>${ks.filter(x => x.sub && x.sub.length).map(x => `<div class="mykrow"><span class="myup">${esc(x.txt)} ›</span>${x.sub.map(y => kb(y, ' sm')).join('')}</div>`).join('')}</div>`;
+    } else h += '<div class="rcphint" style="padding:0 2px">위 칩을 누르면 그 칩의 키워드가 모두 나옵니다</div>';
+  }
+  h += `<div class="mysel" data-dlist="my:${area}"><span class="rcpl">고른 항목</span>${sel.length ? sel.map(k => `<button type="button" class="rcpk on" data-di="${esc(k)}" data-myk="${esc(k)}" data-mya="${area}">${esc(lab(k))} ✕</button>`).join('') + `<button type="button" class="rcpclr" data-myclr="${area}">모두 빼기</button>` : '<span class="rcphint">아직 없음</span>'}</div><div class="myout"></div>`;
+  el.innerHTML = h;
+  const out = el.querySelector('.myout');
+  sel.forEach(k => { const ns = myNodes(m, k); if (!ns) return; const b = document.createElement('div'); b.className = 'pbox mybox'; b.innerHTML = `<div class="mybt">${esc(lab(k))}</div>`; ns.forEach(n => { if (n.style) n.style.display = ''; b.appendChild(n); }); out.appendChild(b); });
+}
+// 칸을 그릴 때 부른다: 열려 있으면 바로 채운다
+function myMount(el, area, secs, run) {
+  if (!el) return;
+  el.__my = { area, secs, run }; el.dataset.area = area; el.hidden = !myOpen(area);
+  if (!el.hidden) myRender(el);
+}
+const myAll = area => document.querySelectorAll(`.mysum[data-area="${area}"]`);
+document.addEventListener('click', e => {
+  const t = e.target.closest && e.target.closest('[data-myopen], [data-myedit], [data-mychip], [data-myk], [data-myclr]'); if (!t) return;
+  const area = t.dataset.myopen || t.dataset.myedit || t.dataset.mya || t.dataset.myclr, ui = myUi(area);
+  if (t.dataset.myopen) { const o = !myOpen(area); localStorageSet('myopen_' + area, o ? '1' : '0'); myAll(area).forEach(el => { el.hidden = !o; if (o) myRender(el); }); document.querySelectorAll(`.mybtn[data-myopen="${area}"]`).forEach(b => b.classList.toggle('on', o)); return; }
+  if (t.dataset.myedit) ui.edit = !ui.edit;
+  else if (t.dataset.mychip) ui.chip = ui.chip === t.dataset.mychip ? null : t.dataset.mychip;
+  else if (t.dataset.myclr) mySet(area, []);
+  else { const k = t.dataset.myk, cur = myGet(area); mySet(area, cur.includes(k) ? cur.filter(x => x !== k) : [...cur, k]); }
+  myAll(area).forEach(el => { if (!el.hidden) myRender(el); });
+});
+document.addEventListener('dlist', e => {
+  const k = e.detail.key || '';
+  if (k.startsWith('my:')) { const area = k.slice(3); mySet(area, e.detail.order); myAll(area).forEach(el => { if (!el.hidden) myRender(el); }); }
+  else if (k.startsWith('rcp:')) { const area = k.slice(4); rcpUi(area).draft = e.detail.order; rcpRefresh(area); }
 });
 // 방송 요약 ① 주요 특징 키워드 블록: 키워드를 누르면 접기 · 펼치기 (area = bc · tbc, closed = 처음엔 접힘)
 // 관전포인트 목록: 키워드 칸이 그 선수(팀) 이름이거나 '이름 …' 인 줄끼리 얇은 테두리로 묶는다 (상대 전적 등 공통 줄은 테두리 없이)

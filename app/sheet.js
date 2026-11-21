@@ -31,7 +31,9 @@
   let S; try { S = JSON.parse(localStorage.getItem(SKEY)) || null; } catch (e) { S = null; }
   if (!S || !S.sets) S = fresh();
   S.input = S.input || 'direct'; S.orders = S.orders || [];
-  let pending = null, notice = '';   // 다른 경기 오더가 왔을 때 / 안내 문구
+  let notice = '';   // 안내 문구
+  // 기록 중인 경기가 있는데 다른 경기를 불렀을 때 묻는 것은 S.pend 에 둔다 (본 창에서 눌러도 별도 기록지 창에 보이게): 팀 = 오더, 개인 = { ind, names, type, title }
+  const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
   let sel = null;   // 고친다고 고른 칸 { set, turn }
   const save = () => { try { localStorage.setItem(SKEY, JSON.stringify(S)); } catch (e) {} };
 
@@ -97,7 +99,7 @@
     if (matchOver()) return;
     const set = liveSet(); let t = set.turns[set.turns.length - 1];
     if (set.tb && set.first == null) return;   // 승부치기: 선공을 먼저 고른다
-    S.started = true; set.fc = true;
+    S.started = true; set.fc = true; S.day = todayStr();   // 마지막으로 기록한 날 (다른 경기를 부를 때 지난 기록인지 본다)
     if (!t || t.closed) { t = { e: [], closed: false }; set.turns.push(t); }
     t.e.push(x);
     if (isFoul(x)) { t.closed = 'miss'; finishIfWon(set); }
@@ -126,7 +128,7 @@
     if (matchOver()) return;
     const set = liveSet(); let t = set.turns[set.turns.length - 1];
     if (set.tb && set.first == null) return;
-    S.started = true; set.fc = true;
+    S.started = true; set.fc = true; S.day = todayStr();   // 마지막으로 기록한 날 (다른 경기를 부를 때 지난 기록인지 본다)
     if (!t || t.closed) { t = { e: [], closed: false }; set.turns.push(t); }   // 공격 기록 없이 넘긴 이닝 = 0점
     closeTurn('miss');
   }
@@ -196,6 +198,7 @@ body.sheetwin #sheet { left: 0; top: 0; transform: none; width: 100vw; height: 1
 #sheet .pad button.fin { opacity: .4; cursor: default; } #sheet .pad button.fin.on { opacity: 1; cursor: pointer; background: var(--accent); color: #fff; }
 .rkbub table.ptip th { font-size: 11px; font-weight: 800; padding: 0 5px 2px; color: var(--ink); text-align: right; border-bottom: 1px solid var(--line); } .rkbub table.ptip td { padding: 0 5px; } @media (max-width: 900px) { .rkbub { max-width: calc(100vw - 12px); box-sizing: border-box; } .rkbub .ptip { font-size: 10px; letter-spacing: -.3px; } .rkbub .ptip td { padding: 0 2px; } .ptip td.pv, .ptip td.pa { padding-left: 4px !important; } .ptip td.px { padding-left: 2px !important; } .rkbub .ptip td.tl { white-space: normal; min-width: 4.5em; max-width: 6.5em; line-height: 1.15; } .rkbub .ptip small { font-size: 9px; } .rkbub .ptip th { padding-left: 4px; } }   /* 절반화면: 선수 말풍선이 화면 폭을 넘지 않게 */ .ptip { border-collapse: separate; border-spacing: 0; } .ptip tr.wr > td { border-left: 0; border-right: 0; } .ptip tr.wr > td:first-child { border-left: 1px solid var(--line); } .ptip tr.wr > td:last-child { border-right: 1px solid var(--line); } .ptip tr.wr0 > td { border-top: 1px solid var(--line); padding-top: 1px; } .ptip tr.wr1 > td { border-bottom: 1px solid var(--line); padding-bottom: 1px; } .ptip tr.wr0 > td:first-child { border-top-left-radius: 6px; } .ptip tr.wr0 > td:last-child { border-top-right-radius: 6px; } .ptip tr.wr1 > td:first-child { border-bottom-left-radius: 6px; } .ptip tr.wr1 > td:last-child { border-bottom-right-radius: 6px; } .ptip tr.now > td, .ptip tr.now > td small { color: var(--ny, #fde047) !important; font-weight: 800; } .rkbub table.ptip th.pc, .rkbub table.ptip td.pc { text-align: center; white-space: nowrap; padding: 0 6px; } .rkbub table.ptip tr.pn > * { padding-top: 5px; border-top: 2px solid var(--sub); } .rkbub table.ptip .p2 { border-left: 1px solid var(--sub) !important; }   /* 복식 말풍선: 공통 칸 · 선수별 칸 가운데 */   /* 선수 말풍선: 승률 묶음 테두리 · 이번 세트 종목 노란 강조 */ .ptip td.pv, .ptip td.pa { text-align: left; padding: 0 0 0 8px; white-space: nowrap; } .ptip td.px { text-align: left; padding: 0 0 0 3px; white-space: nowrap; } .ptip th { text-align: left; padding-left: 8px; } .rkbub table.ptip td.tl { text-align: left; color: var(--sub); } .rkbub table.ptip td.tg { text-align: left; font-weight: 800; color: var(--ink); padding: 3px 5px 0; border-bottom: 1px solid var(--line); } .rkbub table.ptip small { color: var(--sub); }
 #sheet .snote.ask { color: var(--ink); font-weight: 700; } #sheet .pfqline { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin: 2px 0 3px; } #sheet .pfqline.l { justify-content: flex-start; } #sheet .pfqline.r { justify-content: flex-end; }   /* 퍼펙트큐 알림: 세트 기록 표 위 한 줄 (도전하는 쪽으로) */ #sheet .snote.pend { color: var(--ink); font-weight: 600; padding: 6px 10px; border: 1.5px solid #ffd60a; border-radius: 8px; background: color-mix(in srgb, #ffd60a 14%, transparent); }   /* 다른 경기 오더가 왔을 때: 눈에 띄게 */
+#sheet .tinfo .ti.fbp > small { color: var(--sub) !important; font-weight: 500; text-align: right; } #sheet .tflw .tfl.tfx > small:first-child, #sheet .frg .frw.frx > small:first-child { text-align: right; } #sheet .tsr.sx .lv { white-space: nowrap; overflow: hidden; gap: 4px; } #sheet .sqw { color: var(--win) !important; font-weight: 800; } #sheet .sql { color: var(--lose) !important; font-weight: 800; }   /* 세트 결과 순서 줄('패승'): 이름 칸 오른쪽 끝에 붙임(세트 승률 칸과 같게) · 승 / 패 글자 색 (이름 옆 최근 5경기와 같은 색) */
 #sheet .snote { margin-top: 6px; font-size: 12.5px; color: var(--sub); }
 #sheet .sbody { padding: 8px 14px 16px; }
 #sheet details { border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; }
@@ -420,8 +423,16 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
       const v = Math.max(0, ...[...x.querySelectorAll('.ti b .vs')].map(s => s.getBoundingClientRect().width));
       if (v) x.style.setProperty('--vsw', Math.ceil(v) + 'px');
     });
+    // 초구 묶음의 세트 결과 순서 칩('승패')은 'a:b 초구 성공률' 바로 아래 칸: 두 칸 이상이면 둘째 칸에 두고 빈자리는 다음 칩이 채운다 (한 칸이면 그대로 바로 아래). 칸 수는 부모에서 (.xgb 는 subgrid)
+    box.querySelectorAll('.tinfo.ext .xgb').forEach(g => { const f = g.querySelector('.ti.fbp'); if (!f) return;
+      const two = getComputedStyle(g.parentElement).gridTemplateColumns.split(' ').length > 1; f.style.gridColumn = two ? '2' : ''; g.style.gridAutoFlow = two ? 'row dense' : ''; });
+    // 이닝 위 라이브 셋째 줄('승패 에버 · 승률 · 초성')은 한 줄로: 칸보다 길면 글자를 0.5px씩 줄인다 (최소 8px)
+    box.querySelectorAll('.tsr.sx .lv').forEach(c => { const ss = [c, ...c.querySelectorAll('small')]; ss.forEach(x => x.style.removeProperty('font-size'));
+      const col = c.closest('.tcol'), pad = el => { const cs = getComputedStyle(el); return parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight); }, room = col ? col.clientWidth - pad(col) - pad(c.parentElement) : c.clientWidth;   // 칸 폭 - 줄(.tsr) 여백
+      let fs = parseFloat(getComputedStyle(c).fontSize); while (fs > 8 && c.getBoundingClientRect().width > room + 0.5) { fs -= 0.5; ss.forEach(x => { x.style.fontSize = (x === c ? fs : Math.max(7.5, fs - 1)) + 'px'; }); } });
   }
-  let alignW = 0; new ResizeObserver(() => { if (box.hidden || box.offsetWidth === alignW) return; alignW = box.offsetWidth; alignExt(); }).observe(box);   // 기록지 창 폭이 바뀌면 (짧은 이름으로 바뀔 수 있어) 다시
+  let alignW = 0, alignT = 0; const realign = () => { clearTimeout(alignT); alignT = setTimeout(() => { if (box.hidden || box.offsetWidth === alignW) return; alignW = box.offsetWidth; alignExt(); }, 60); };   // 창 폭이 바뀌면 칸 맞춤 다시 (끄는 동안엔 마지막 한 번만)
+  new ResizeObserver(realign).observe(box); addEventListener('resize', realign);   // 기록지 창 폭이 바뀌면 (짧은 이름으로 바뀔 수 있어) 다시
   // 단식 세트가 시작되면 개인투어 화면에 두 선수를 불러와 띄운다 (세트마다 한 번, key = 경기 + 세트). 기록지가 별도 창이면 원래 창에 띄운다
   //  선수는 이름으로 찾는다: 이름이 같고 종목(남자단식 = PBA · 여자단식 = LPBA)이 맞는 선수, 여럿이면 가장 최근에 뛴 선수
   async function showIndiv(key, names, kind) {
@@ -443,7 +454,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     // 개인투어 경기: 브리핑 · 라이브 정보는 indsheet.js (같은 종목 전체 경기를 받으면 다시 그린다)
     const ind = !isTeam && window.IndSheet ? S.type : null;
     if (ind && !IndSheet.get(ind)) IndSheet.load(ind).then(d => { if (d) render(); });
-    const prevOf = p => { const lw = si > 0 ? S.sets[si - 1].winner : null; return lw == null ? null : lw === p ? [won[p] - 1, won[1 - p]] : [won[p], won[1 - p] - 1]; };
+    const seqOf = p => S.sets.slice(0, si).filter(x => x.winner != null).map(x => x.winner === p ? '승' : '패').join('');   // 지금까지 세트 결과 순서 ('패승')
     // 이번 세트 선수 이름 (점수는 가운데 스코어와 이닝 표에서 본다)
     // 이름 옆: 그 선수 · 콤비의 이번 세트 번호 승률 (팀리그)
     // 세트 선수 이름 + 그 선수(콤비) 최근 5세트 (왼쪽 팀은 이름 앞, 오른쪽 팀은 이름 뒤)
@@ -451,8 +462,8 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     // 팀리그: 지금 세트 스코어에서 그 팀의 시즌 승률
     // 팀리그: 지금 세트 스코어에서 그 팀의 경기 승률 (시즌(통산)) + 그 스코어가 될 수 있는 앞 스코어 둘에서 온 경우 (실제로 온 쪽 강조)
     const rate = p => { if (set.tb) return '';   // 승부치기: 세트 번호 승률 줄은 맞지 않아 뺀다 (승부치기 정보는 라이브 정보에)
-      if (ind && !over) return IndSheet.flow(S.names[p], ind, S.toWin || 3, won[p], won[1 - p], prevOf(p), 'tf' + p, !!S.open['tf' + p]);
-      if (!isTeam || over || !S.codes || !window.TeamApp) return ''; const lw = si > 0 ? S.sets[si - 1].winner : null; return TeamApp.sheetTeamFlow(S.codes[p], S.league, won[p], won[1 - p], lw == null ? null : lw === p ? [won[p] - 1, won[1 - p]] : [won[p], won[1 - p] - 1], 'tf' + p, !!S.open['tf' + p]); };
+      if (ind && !over) return IndSheet.flow(S.names[p], ind, S.toWin || 3, won[p], won[1 - p], seqOf(p), 'tf' + p, !!S.open['tf' + p]);
+      if (!isTeam || over || !S.codes || !window.TeamApp) return ''; return TeamApp.sheetTeamFlow(S.codes[p], S.league, won[p], won[1 - p], seqOf(p), 'tf' + p, !!S.open['tf' + p]); };
     const cfgs = isTeam ? '' : `<select data-cfg="target">${[15, 11, 9, 25].map(v => `<option value="${v}" ${S.target === v ? 'selected' : ''}>세트 ${v}점</option>`).join('')}</select>
       <select data-cfg="lastTarget">${[11, 9, 15].map(v => `<option value="${v}" ${S.lastTarget === v ? 'selected' : ''}>마지막 세트 ${v}점</option>`).join('')}</select>
       <select data-cfg="toWin">${[2, 3, 4].map(v => `<option value="${v}" ${S.toWin === v ? 'selected' : ''}>${v}세트 선승</option>`).join('')}</select>`;
@@ -470,11 +481,11 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     // 라이브 정보는 선공을 정하면 바로(세트 시작) 뜬다. fresh = 아직 끝난 이닝이 없음: 이때 새로 뜬 정보(초구 · 비율 · 스코어별 승률)가 노란색, 이닝이 끝나면 지금 상황 승률만 노란색
     const closedN = set.turns.filter(t => t.closed).length, timingOn = (isTeam || ind) && !over && stage === 2 && !set.tb, fresh = closedN < 2;   // 첫 이닝(양 팀 한 번씩)이 끝나면 노란색을 뗀다
     const extra = p => { if (set.tb && ind) return IndSheet.tbInfo(S.names[p], ind, set.first == null || !set.fc && !set.turns.length ? null : set.first === p ? 'first' : 'second', set.first !== p && set.turns[0] && set.turns[0].closed ? ptsOf(set.turns[0]) : null);
-      if (brief && ind) return stage === 1 ? IndSheet.bankInfo(S.names[p], ind) : stage !== 2 ? '' : set.first === p ? IndSheet.firstInfo(S.names[p], ind, fresh, `${won[p]}:${won[1 - p]}`, p) : IndSheet.secondInfo(S.names[p], ind, fresh, p);
-      if (!brief || !window.TeamApp) return ''; if (stage === 1) return TeamApp.sheetBankInfo(psOf(p), hitter(p), S.league); if (stage !== 2) return ''; return set.first === p ? TeamApp.sheetFirstInfo(psOf(p), hitter(p), S.league, fresh, `${won[p]}:${won[1 - p]}`, p) : TeamApp.sheetSecondInfo(psOf(p), S.league, fresh, p); };
+      if (brief && ind) return stage === 1 ? IndSheet.bankInfo(S.names[p], ind) : stage !== 2 ? '' : set.first === p ? IndSheet.firstInfo(S.names[p], ind, fresh, `${won[p]}:${won[1 - p]}`, p, seqOf(p), S.toWin || 3) : IndSheet.secondInfo(S.names[p], ind, fresh, p);
+      if (!brief || !window.TeamApp) return ''; if (stage === 1) return TeamApp.sheetBankInfo(psOf(p), hitter(p), S.league); if (stage !== 2) return ''; return set.first === p ? TeamApp.sheetFirstInfo(psOf(p), hitter(p), S.league, fresh, `${won[p]}:${won[1 - p]}`, p, seqOf(p)) : TeamApp.sheetSecondInfo(psOf(p), S.league, fresh, p); };
     // 이름 옆 두 줄: 지금 세트 스코어에서의 승률, 앞 세트 스코어에서 지금 스코어가 됐을 때의 승률 (그 선수 · 콤비, 이번 시즌(통산), 앞 = 시즌 순위 · 뒤 = 통산 순위)
-    const stRate = p => { if (set.tb) return ''; if (ind && !over) { const last = si > 0 ? S.sets[si - 1] : null; return IndSheet.state(S.names[p], ind, S.toWin || 3, won[p], won[1 - p], last ? won[p] - (last.winner === p ? 1 : 0) : null, last ? won[1 - p] - (last.winner === 1 - p ? 1 : 0) : null, fresh, 'pf' + p, !!S.open['pf' + p]); }
-      if (!isTeam || over || !psOf(p).length || !window.TeamApp) return ''; const last = si > 0 ? S.sets[si - 1] : null; return `<div class="frg${S.open['pf' + p] ? ' open' : ''}">` + TeamApp.sheetSetNoInfo(psOf(p), S.league, si + 1, fresh, won[0] + won[1] ? 'pf' + p : '', !!S.open['pf' + p]) + TeamApp.sheetStateInfo(psOf(p), S.league, won[p], won[1 - p], last ? won[p] - (last.winner === p ? 1 : 0) : null, last ? won[1 - p] - (last.winner === 1 - p ? 1 : 0) : null, fresh) + '</div>'; };
+    const stRate = p => { if (set.tb) return ''; if (ind && !over) { return IndSheet.state(S.names[p], ind, S.toWin || 3, won[p], won[1 - p], seqOf(p), fresh, 'pf' + p, !!S.open['pf' + p]); }
+      if (!isTeam || over || !psOf(p).length || !window.TeamApp) return ''; return `<div class="frg${S.open['pf' + p] ? ' open' : ''}">` + TeamApp.sheetSetNoInfo(psOf(p), S.league, si + 1, fresh, seqOf(p).length > 1 ? 'pf' + p : '', !!S.open['pf' + p]) + TeamApp.sheetStateInfo(psOf(p), S.league, won[p], won[1 - p], seqOf(p), fresh) + '</div>'; };
         // 묶음 버튼으로 펼친 것: 팀 칩 o-gtw, 라이브 정보 o-gfb · o-gwr
     //  경기 시작 전(pre): 남자 · 여자 · 흰공 · 노란공 · 뱅킹 승률을 펼쳐 두고 항목 이름만 노란색
     const pre = isTeam && !over && !started;
@@ -517,10 +528,10 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
       const ab = [0, 0]; let cl = false;
       set.turns.forEach((t, i) => { ab[sideOf(set, i)] += ptsOf(t); if (t.closed && tgt > cln && ab.every(v => v < tgt && tgt - v <= cln)) cl = true; });
       const d = ab[0] - ab[1], stOf = p => Math.abs(d) < lead ? 'tie' : (p ? -d : d) > 0 ? 'up' : 'dn';
-      const T = [0, 1].map(p => ind ? IndSheet.timing(S.names[p], ind, stOf(p), cl, fresh) : TeamApp.sheetTiming(psOf(p), S.league, stOf(p), cl, fresh));
+      const T = [0, 1].map(p => ind ? IndSheet.timing(S.names[p], ind, stOf(p), cl, fresh, { T: S.toWin || 3, seq: seqOf(p), first: set.first === p }) : TeamApp.sheetTiming(psOf(p), S.league, stOf(p), cl, fresh));
       // 팀마다 윗줄 = 우세 · 박빙 · 열세 비율, 아랫줄 = 지금 상황의 승률. 왼쪽 팀은 오른쪽으로, 오른쪽 팀은 왼쪽으로 붙인다
       // 아랫줄(지금 상황 승률)은 노란 테두리로 강조. 끝내기 장타 줄은 클러치 스코어가 된 뒤에만
-      return `<div class="tmg"><div class="tmgb"><div class="tcol l">${T[0].ratio}<div class="tsr sr">${T[0].state}</div></div><div class="tcol r">${T[1].ratio}<div class="tsr sr">${T[1].state}</div></div></div>` + (!cl || ind ? '</div>' : `<div class="f5row"><div class="tcol l">${T[0].f5}</div><b class="f5c" title="마지막 이닝 5점 이상 연속 득점으로 세트를 끝낸 것. 친 순간 점수 차로 우세(3점 이상 앞섬) · 박빙(±2점) · 열세(3점 이상 뒤짐) 비율">끝내기 장타</b><div class="tcol r">${T[1].f5}</div></div></div>`);
+      return `<div class="tmg"><div class="tmgb"><div class="tcol l">${T[0].ratio}<div class="tsr sr">${T[0].state}</div>${T[0].sx ? `<div class="tsr sx">${T[0].sx}</div>` : ''}</div><div class="tcol r">${T[1].ratio}<div class="tsr sr">${T[1].state}</div>${T[1].sx ? `<div class="tsr sx">${T[1].sx}</div>` : ''}</div></div>` + (!cl || ind ? '</div>' : `<div class="f5row"><div class="tcol l">${T[0].f5}</div><b class="f5c" title="마지막 이닝 5점 이상 연속 득점으로 세트를 끝낸 것. 친 순간 점수 차로 우세(3점 이상 앞섬) · 박빙(±2점) · 열세(3점 이상 뒤짐) 비율">끝내기 장타</b><div class="tcol r">${T[1].f5}</div></div></div>`);
     };
     // 가운데 표: 왼쪽 값 | 항목 | 오른쪽 값 (끝난 이닝 기준, 더 좋은 쪽 강조)
     //  pre: 가운데 윗부분 데칼코마니 (왼쪽 (괄호)값 · 오른쪽 값(괄호))
@@ -549,7 +560,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
       <select data-cfg="type">${['PBA', 'LPBA', '팀리그'].map(v => `<option ${S.type === v ? 'selected' : ''}>${v}</option>`).join('')}</select>${cfgs}
       <select data-cfg="input"><option value="direct" ${direct ? 'selected' : ''}>직접 입력</option><option value="btn" ${direct ? '' : 'selected'}>버튼 입력</option></select>
       <button class="sbtn" data-brief>${S.brief === false ? '브리핑 펼치기' : '브리핑 접기'}</button><button class="sbtn" data-new>새 경기</button>${SHEETWIN ? (HAS_NATIVE ? '<button class="sbtn" data-win="left">◧ 왼쪽 절반</button><button class="sbtn" data-win="right">◨ 오른쪽 절반</button><button class="sbtn" data-win="full">⛶ 전용 화면</button><button class="sbtn" data-win="tile">앱과 나란히</button>' : '') : `<button class="sbtn" data-popout>↗ 새 창으로</button>${HAS_NATIVE ? '<button class="sbtn" data-tile>◧ 앱과 나란히</button>' : ''}`}<button class="sbtn min" data-min>${SHEETWIN ? '창 닫기' : '최소화 ▁'}</button></div>
-      ${sel ? `<div class="snote ask">${sel.set + 1}세트 ${Math.floor(sel.turn / 2) + 1}이닝 ${esc(S.names[sideOf(S.sets[sel.set], sel.turn)] || '')} 고치는 중 · 글자 입력 / Backspace 지우기 · Tab으로 끝</div>` : ''}${pending ? `<div class="snote pend">지금 기록지는 <b>${esc(S.names.join(' vs '))}</b> 경기(진행 중)입니다. <b>${esc(pending.title)}</b> 오더가 있습니다. <button class="sbtn" data-apply>이 경기로 새 기록 시작 (지금 기록 지움)</button></div>` : notice ? `<div class="snote">${esc(notice)}</div>` : ''}
+      ${sel ? `<div class="snote ask">${sel.set + 1}세트 ${Math.floor(sel.turn / 2) + 1}이닝 ${esc(S.names[sideOf(S.sets[sel.set], sel.turn)] || '')} 고치는 중 · 글자 입력 / Backspace 지우기 · Tab으로 끝</div>` : ''}${S.pend ? `<div class="snote pend">지금 기록지는 <b>${esc(S.names.join(' vs '))}</b> 경기(진행 중)입니다. <b>${esc(S.pend.title)}</b> ${S.pend.ind ? '경기를 불렀습니다.' : '오더가 있습니다.'} <button class="sbtn" data-apply>이 경기로 새 기록 시작 (지금 기록 지움)</button></div>` : notice ? `<div class="snote">${esc(notice)}</div>` : ''}
       <div class="board">${plCol(0, ' a')}${gwpH}<div class="mid">${topT}<div class="mscore"><b>${sc[0]}</b><span class="msets">(${won[0]})</span><b class="colon">:</b><span class="msets">(${won[1]})</span><b>${sc[1]}</b></div>${over ? '<small>경기 끝</small>' : ''}${luT}</div>${plCol(1, '')}</div>
       <div class="pad${direct ? ' dir' : ''}">${direct ? `<span class="hint">키보드로 바로 입력 · 숫자 1·2·3 = 뱅크샷 · Shift+T·O·W·H = 파울</span>` : `${TECH.map(k => `<button data-k="${esc(k)}">${esc(k)}</button>`).join('')}<span class="gap"></span>${BANK.map(k => `<button class="bk" data-k="${k}">${k}</button>`).join('')}<span class="gap"></span>${FOUL.map(k => `<button class="fl" data-k="${k}">${k}</button>`).join('')}`}
         <span class="gap"></span><button class="act" data-enter>${sel ? '⇥ 고치기 끝 <small class="kh">(Tab)</small>' : '⇥ 이닝 끝 · 실패 <small class="kh">(Tab)</small>'}</button><button class="act fin${canFinish() ? ' on' : ''}" data-endok ${canFinish() ? '' : 'disabled'}>↵ 세트 끝 · 성공 <small class="kh">(Enter)</small></button><button class="act" data-back>⌫ 지우기</button>${(isTeam || ind) && !started ? '<button class="act go" data-start>▶ 경기 시작</button>' : (isTeam || ind || set.tb) && !over && !fcDone ? `<button class="act go" data-fc="0">◀ ${nm(0)} ${set.tb ? '승치 ' : ''}선공</button><button class="act go" data-fc="1">${nm(1)} ${set.tb ? '승치 ' : ''}선공 ▶</button>` : !set.turns.length && !over ? `<button class="act" data-swap>선공 바꾸기</button>${!isTeam && !set.tb && si > 0 && won[0] === won[1] && won[0] === (S.toWin || 3) - 1 ? '<button class="act go" data-tb>⚔ 승부치기</button>' : ''}` : ''}</div></div>
@@ -651,7 +662,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     if ((S.type === '팀리그') === (k === 'team')) return;
     const back = stashOf(k), keep = { input: S.input, open: S.open };
     try { localStorage.setItem(STASH[k === 'team' ? 'ind' : 'team'], JSON.stringify(S)); localStorage.removeItem(STASH[k]); } catch (e) {}
-    S = back || { ...fresh(), ...(k === 'team' ? { type: '팀리그', toWin: 4 } : {}), input: keep.input, open: keep.open }; sel = null; pending = null;
+    S = back || { ...fresh(), ...(k === 'team' ? { type: '팀리그', toWin: 4 } : {}), input: keep.input, open: keep.open }; sel = null;
   }
   function indivSheet() {
     const P = typeof panes !== 'undefined' ? [panes.a.data, panes.b.data] : [];
@@ -659,11 +670,17 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const ids = P.map(d => d.player.id), names = P.map(d => d.player.name);
     if (S.type === '팀리그' && !matchOver() && S.indivIds && S.indivIds.join() === ids.join()) return;
     swapTo('ind');
-    if (names.join() === S.names.join()) return;
+    if (names.join() === S.names.join()) { if (S.pend) { delete S.pend; save(); } return; }
     const has = S.sets.some(s => s.turns.length);
-    if (has && !matchOver()) { notice = `기록 중인 경기(${S.names.join(' vs ')})가 있습니다. '새 경기'를 누르면 ${names.join(' vs ')} 기록지로 바뀝니다.`; return; }
-    if (has) { const keep = { type: S.type, target: S.target, lastTarget: S.lastTarget, toWin: S.toWin, input: S.input }; S = { ...fresh(), ...keep }; }
-    fillNames();
+    // 기록 중인 경기가 오늘(또는 날짜 모름) 진행 중이면 기록지 창 위에 묻는다. 끝났거나 지난 날 기록이면 묻지 않고 새 경기로
+    if (has && !matchOver() && (!S.day || S.day === todayStr())) { S.pend = { ind: true, names, type: P[0].player.type, title: names.join(' vs ') }; save(); render(); return; }
+    if (has) newInd(names, P[0].player.type); else fillNames();
+  }
+  // 개인 기록지를 새 경기로: 세트 점수 · 입력 방식은 그대로, 종목이 바뀌면 그 종목 기본 점수
+  function newInd(names, type) {
+    const keep = { type: S.type, target: S.target, lastTarget: S.lastTarget, toWin: S.toWin, input: S.input }; S = { ...fresh(), ...keep, names: names.slice() }; sel = null;
+    if (type && type !== S.type) { S.type = type; S.target = type === 'LPBA' ? 11 : 15; S.lastTarget = type === 'LPBA' ? 9 : 11; }
+    save(); render();
   }
   // 팀리그: 고른 팀의 다음(또는 진행 중) 경기 오더를 홈피에서 받아 세트마다 선수 · 점수를 붙인다. 고른 왼쪽 팀이 왼쪽에 오게 맞춘다
   async function loadOrder() {
@@ -684,7 +701,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const [gd, g0, g1] = String(S.gameKey || '').split('|'), d0 = new Date(), today = `${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}`;
     const X = TeamApp.boardData && TeamApp.boardData();
     const oldDone = !gd || gd < today || matchOver() || !!(X && X.D.games.some(g => String(g.date || '').startsWith(gd) && [g.t1, g.t2].sort().join() === [g0, g1].sort().join()));
-    if (S.gameKey === next.key || !has || oldDone) applyOrder(next, S.gameKey !== next.key); else { pending = next; render(); }
+    if (S.gameKey === next.key || !has || oldDone) applyOrder(next, S.gameKey !== next.key); else { S.pend = next; save(); render(); }
   }
   // 홈피 오더 없이 직접: 고른 두 팀으로 7세트 빈 오더를 만들고 바로 고치기
   function makeOrders() {
@@ -706,7 +723,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const merged = n.orders.map(o => { const x = old.find(y => y.no === o.no); return x && (x.home || x.manual) && (x.p || []).some(a => a.length) && !sameP(x.p, o.p) ? { ...o, p: x.p, home: o.p } : o; })
       .concat(old.filter(x => (x.home || x.manual) && !n.orders.some(o => o.no === x.no)));
     S.type = '팀리그'; S.toWin = 4; S.names = n.names; if (n.orders.length || reset) S.orders = merged; S.gameKey = n.key;   // 홈피에서 못 받았을 때 이미 받은 오더를 지우지 않는다
-     S.codes = n.codes; S.league = n.league; pending = null; sel = null; save(); render();
+     S.codes = n.codes; S.league = n.league; delete S.pend; sel = null; save(); render();
   }
   document.addEventListener('click', e => {
     // 맥 앱에서는 '기록지' 버튼이 기본으로 새 창을 연다 (⌥ 누르고 누르면 이 창 안에서)
@@ -731,7 +748,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     if (e.target.closest('[data-swap]')) { const s = liveSet(); s.first = 1 - s.first; save(); render(); return; }
     if (e.target.closest('[data-min]')) { minimize(); return; }
     const sw = e.target.closest('[data-plsw]'); if (sw) { const [swS, p] = sw.dataset.plsw.split('|').map(Number), s = S.sets[swS]; s.pw = s.pw || [0, 0]; s.pw[p] = 1 - s.pw[p]; save(); render(); return; }
-    if (e.target.closest('[data-apply]')) { if (pending) applyOrder(pending, true); return; }
+    if (e.target.closest('[data-apply]')) { const p = S.pend; if (p && p.ind) newInd(p.names, p.type); else if (p) applyOrder(p, true); return; }
     if (e.target.closest('[data-fill]')) { if (S.type === '팀리그') loadOrder(); else fillNames(); return; }
     if (e.target.closest('[data-oedit]')) { e.preventDefault(); editOrd = !editOrd; S.open.lineup = true; save(); render(); return; }   // 제목(summary) 안 버튼: 라인업이 접히지 않게
     if (e.target.closest('[data-oreset]')) { S.orders.forEach(o => { if (o.home) { o.p = o.home; delete o.home; } }); save(); render(); return; }
@@ -739,7 +756,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     // 새 경기: 실수로 지우지 않게 3초 안에 한 번 더 눌러야 지운다
     const nb = e.target.closest('[data-new]');
     if (nb) { if (!nb.classList.contains('arm')) { nb.classList.add('arm'); nb.textContent = '한 번 더 누르면 지움'; setTimeout(() => { if (nb.isConnected) { nb.classList.remove('arm'); nb.textContent = '새 경기'; } }, 3000); return; }
-      const keep = { type: S.type, target: S.target, lastTarget: S.lastTarget, toWin: S.toWin, input: S.input }; S = { ...fresh(), ...keep }; sel = null; pending = null; if (S.type === '팀리그') { save(); loadOrder(); } else fillNames(); return; }
+      const keep = { type: S.type, target: S.target, lastTarget: S.lastTarget, toWin: S.toWin, input: S.input }; S = { ...fresh(), ...keep }; sel = null; if (S.type === '팀리그') { save(); loadOrder(); } else fillNames(); return; }
     const c = e.target.closest('td.seq[data-st]');
     if (c) { const [s, t] = c.dataset.st.split('|'); if (t === '') return; const same = sel && sel.set === +s && sel.turn === +t; const liveT = +s === S.sets.length - 1 && +t === liveSet().turns.length - 1 && !liveSet().turns[+t].closed; sel = same || liveT ? null : { set: +s, turn: +t }; render(); return; }
     // 고치는 중에 표 밖을 누르면 고치기 끝

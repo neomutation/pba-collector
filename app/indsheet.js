@@ -4,7 +4,9 @@
 (function () {
   const C = {}, P = {};   // 종목 → 집계 / 불러오는 중
   const z = () => ({ w: 0, n: 0 }), add = (x, w) => { x.n++; if (w) x.w++; }, addK = (m, k, w) => add(m[k] || (m[k] = z()), w);
-  const blank = () => ({ st: {}, tr: {}, no: {}, gs: {}, gtr: {}, fbSt: {}, game: z(), set: z(), fst: z(), snd: z(), fb: z(), fbN: 0, fbP: 0, fbM: 0, fbOk: z(), fbMiss: z(), fb3: z(),
+  // 세트 결과 순서별 다음 세트 기록: 에버 · 세트 승률 · 초구 성공률
+  const addX = (m, k, s) => { const o = m[k] || (m[k] = { w: 0, n: 0, p: 0, i: 0, fbN: 0, fbH: 0 }); add(o, s.win); o.p += s.pts || 0; o.i += s.inn || 0; if (s.first && s.first_ball != null) { o.fbN++; if (s.first_ball > 0) o.fbH++; } };
+  const blank = () => ({ st: {}, tr: {}, sq: {}, gsq: {}, no: {}, gs: {}, gtr: {}, fbSt: {}, game: z(), set: z(), fst: z(), snd: z(), fb: z(), fbN: 0, fbP: 0, fbM: 0, fbOk: z(), fbMiss: z(), fb3: z(),
     ofbOk: z(), ofbMiss: z(), al3: z(), tie: z(), keep: z(), back: z(), cl: z(), bank: z(), wh: z(), ye: z(), pts: 0, inn: 0, recent: [], tb: tbNew(), sh: 0, sa: 0, tfb: z(), tfbOk: z(), tfbMiss: z(), tofbOk: z(), tofbMiss: z() });
   const FB_KEYS = new Set(['fb', 'avg', 'multi', 'fbOk', 'fbMiss', 'fb3', 'ofbOk', 'ofbMiss', 'al3']), FB_MIN = [5, 20];
   const rt = x => x && x.n ? x.w / x.n : null, cn = x => x ? x.n : 0;
@@ -29,12 +31,13 @@
       if (g.tiebreak) { const t0 = g.tiebreak, ofb = og && og.tiebreak ? og.tiebreak.first_ball : null;
         xs.forEach(x => { if (t0.first && t0.first_ball != null) { add(x.tfb, t0.first_ball > 0); add(t0.first_ball > 0 ? x.tfbOk : x.tfbMiss, t0.win); } if (!t0.first && ofb != null) add(ofb > 0 ? x.tofbOk : x.tofbMiss, t0.win); }); }
       if (g.tiebreak) { xs.forEach(x => tbAdd(x.tb, g)); const t = g.tiebreak; if (t.first) { add(lg.fst, t.win); if (t.first_ball != null) addK(lg.after, Math.min(t.first_ball, 5), !t.win); } }
-      let a = 0, b = 0, prev = null;
+      let a = 0, b = 0, prev = null, sq = '';   // sq = 앞 세트 결과 순서 ('패승' = 1세트 패 · 2세트 승)
       g.sets.forEach((s, i) => {
-        const sk = `${a}:${b}`, tk = prev ? `${prev}>${sk}` : null; prev = sk; s.win ? a++ : b++;
+        const sk = `${a}:${b}`, tk = prev ? `${prev}>${sk}` : null, sq0 = sq; prev = sk; s.win ? a++ : b++; sq += s.win ? '승' : '패';
         const os = og && og.sets[i];
         xs.forEach(x => {
-          add(x.set, s.win); addK(x.st, `${T}|${sk}`, s.win); if (tk) addK(x.tr, `${T}|${tk}`, s.win); addK(x.no, s.no, s.win);
+          add(x.set, s.win); addK(x.st, `${T}|${sk}`, s.win); if (tk) addK(x.tr, `${T}|${tk}`, s.win);
+          if (sq0) addX(x.sq, `${T}|${sq0}`, s); if (sq.length > 1) addK(x.gsq, `${T}|${sq}`, g.win); addK(x.no, s.no, s.win);   // 세트 결과 순서별: 다음 세트 승패 · 초구 / 경기 승패
           addK(x.gs, `${T}|${a}:${b}`, g.win); addK(x.gtr, `${T}|${sk}>${a}:${b}`, g.win);
           x.pts += s.pts || 0; x.inn += s.inn || 0;
           if (s.p1 != null && s.inn) { const h = s.p1 + (s.p2 || 0); x.sh += h; x.sa += h + s.inn - (s.win ? 1 : 0); }   // 일반 세트 공격 성공률 (승부치기 성공률과 비교)
@@ -69,11 +72,12 @@
       met(me, '세트 승률', 'set'),
       met(me, '에버', 'pts', (v, x) => x.inn ? f3(x.pts / x.inn) : '–', avgOf, x => x.set.n, () => ''),
       met(me, '흰공 승률', 'wh'),
+      // 두 칸씩이라 노란공은 흰공 바로 아래: 왼쪽 칸 = 뱅킹 (선공을 정하면 빠지고 빈칸)
+      hideBank ? null : met(me, '뱅킹 승률', 'bank'),
       met(me, '노란공 승률', 'ye'),
-      ...(hideBank ? [] : [met(me, '뱅킹 승률', 'bank')]),
     ];
     const I = M.map(items);
-    const chips = (mine, other) => mine.map((x, i) => { const v = x[3], w = other[i][3], hi = v != null && w != null && v > w;
+    const chips = (mine, other) => mine.map((x, i) => { if (!x) return '<span class="ti" style="visibility:hidden"></span>'; const v = x[3], w = other[i][3], hi = v != null && w != null && v > w;
       return `<span class="ti${hi ? ' hi' : ''}" data-stip="${esc(x[4])}"><small>${x[0]}</small><b>${x[1]}</b>${x[2] ? `<i>${x[2]}</i>` : ''}</span>`; }).join('');
     // 최근 5경기 (이번 시즌 아니어도 가장 최근 5경기): 말풍선 = 날짜 · 대회 · 라운드 · 상대 · 세트 스코어
     const recent = me => { const xs = me.a.recent.slice(-5); if (!xs.length) return '';
@@ -85,37 +89,43 @@
     return { kind: type === 'LPBA' ? '여자단식' : '남자단식', recent: M.map(recent), stars: ['', ''], h2hRows, h2hPost: false, teams: [chips(I[0], I[1]), chips(I[1], I[0])] };
   }
 
-  // ── 이름 아랫줄 1: 지금 세트 스코어 a:b 의 게임 승률 + 'N세트 승률' 버튼(펴면 지금 스코어가 된 두 길의 게임 승률) ── (팀 sheetTeamFlow 와 같은 모양)
-  function flow(name, type, T, a, b, prev, btn, open) {
+  // ── 이름 아랫줄 1: 지금 세트 스코어 a:b 의 게임 승률(버튼, 펴면 지금 스코어가 된 두 길의 게임 승률). 1세트 전엔 없음 ── (팀 sheetTeamFlow 와 같은 모양)
+  //  seq = 지금까지 세트 결과 순서 ('패승'). 펼친 줄 = 그 순서를 지난 경기의 게임 승률 (2세트가 끝난 뒤부터, 오른쪽 들여쓰기)
+  function flow(name, type, T, a, b, seq, btn, open) {
     const D = get(type), me = who(D, name); if (!me) return '';
     const n = a + b, no = n + 1, r = x => x && x.n ? `${Math.round(x.w / x.n * 100)}%` : '–', d = x => x && x.n ? `${x.w}-${x.n - x.w}` : '';
     const line = (l, m, kk, cls = '', lab = '') => { const s = me.s[m][kk], A = me.a[m][kk], rk = rk2(D, me, x => rt(x[m][kk]), x => cn(x[m][kk]));
       return `<span class="tfl${cls}">${lab || `<small>${l}</small>`}<b>${r(s)}${rk[0] ? `<small class="rkn">(${rk[0]})</small>` : ''}</b><small>${d(s)}</small><em>(${r(A)}${rk[1] ? `<small class="rkn">(${rk[1]})</small>` : ''}</em><small>${d(A)}<em class="frp">)</em></small></span>`; };
-    const head = n && btn ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${no}세트 승률 <span class="dni"></span></small>` : '';
-    const br = n ? sheetBranch(a, b, prev ? prev[0] : null, prev ? prev[1] : null).map(([tk, l, now]) => line(l, 'gtr', `${T}|${tk}`, ' tfx' + (now ? ' now' : ''))).join('') : '';
-    const gs = n ? line(`${a}:${b} 게임 승률`, 'gs', `${T}|${a}:${b}`) : '';
-    return `<div class="tflw${open ? ' open' : ''}">` + gs + line(`${no}세트 승률`, 'no', no, '', head) + br + '</div>';
+    if (!n) return '';
+    const head = btn && seq.length > 1 ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${a}:${b} 게임 승률 <span class="dni"></span></small>` : '';
+    const br = seq.length > 1 ? line(seqH(seq), 'gsq', `${T}|${seq}`, ' tfx now') : '';
+    return `<div class="tflw${open ? ' open' : ''}">` + line(`${a}:${b} 게임 승률`, 'gs', `${T}|${a}:${b}`, '', head) + br + '</div>';
   }
-  // ── 이름 아랫줄 2: 지금 세트 스코어로 시작한 세트 승률 + 버튼(펴면 그 스코어가 된 두 길의 세트 승률) ── (팀 sheetSetNoInfo · sheetStateInfo 자리)
-  function state(name, type, T, a, b, pa, pb, ny, btn, open) {
-    const D = get(type), me = who(D, name); if (!me || !(a + b)) return '';
+  // ── 이름 아랫줄 2: N세트 승률(버튼) > 지금 세트 스코어로 시작한 세트 승률 > (펴면) 지금까지 세트 결과 순서('패승')로 시작한 세트 승률 ── (팀 sheetSetNoInfo · sheetStateInfo 자리)
+  function state(name, type, T, a, b, seq, ny, btn, open) {
+    const D = get(type), me = who(D, name); if (!me) return '';
+    const no = a + b + 1;
     const row = (l, m, k, lab = '', cls = '') => frRow(l, me.s[m][k], me.a[m][k], rk2(D, me, x => rt(x[m][k]), x => cn(x[m][k])), ny, lab, cls);
-    const lab = btn ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${a}:${b} 세트 승률 <span class="dni"></span></small>` : '';
-    return `<div class="frg${open ? ' open' : ''}">` + row(`${a}:${b} 세트 승률`, 'st', `${T}|${a}:${b}`, lab)
-      + sheetBranch(a, b, pa, pb).map(([tk, l, now]) => row(l, 'tr', `${T}|${tk}`, '', ' frx' + (now ? ' now' : ''))).join('') + '</div>';
+    const lab = btn && seq.length > 1 ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${no}세트 승률 <span class="dni"></span></small>` : '';
+    return `<div class="frg${open ? ' open' : ''}">` + row(`${no}세트 승률`, 'no', no, lab) + (a + b ? row(`${a}:${b} 세트 승률`, 'st', `${T}|${a}:${b}`)
+      + (seq.length > 1 ? row(seqH(seq), 'sq', `${T}|${seq}`, '', ' frx now') : '') : '') + '</div>';
   }
   // ── 이름 아랫줄 3: ① 경기 시작 = 뱅킹 승률 ② 선공 = 초구 묶음 · 초구 뒤 승률 ③ 후공 = 상대 초구 뒤 승률 ──
   function bankInfo(name, type) {
     const D = get(type), me = who(D, name), U = UI(); if (!me || !U) return '';
     return U.xtHead(`뱅킹 ${esc(me.name)}`) + U.xtChip('뱅킹 승률', me.s.bank, me.a.bank, true, rk2(D, me, x => rt(x.bank), x => cn(x.bank)));
   }
-  function firstInfo(name, type, ny, sc, p) {
+  //  sc = 지금 세트 스코어 'a:b', seq = 지금까지 세트 결과 순서, T = 선승 세트 수 → 'a:b 초구 성공률' 아래 '패승' 줄 (3세트부터)
+  function firstInfo(name, type, ny, sc, p, seq, T) {
     const D = get(type), me = who(D, name), U = UI(); if (!me || !U) return '';
     const c = (l, k) => U.xtChip(l, me.s[k], me.a[k], ny, rk2(D, me, x => rt(x[k]), x => cn(x[k]), FB_KEYS.has(k) ? FB_MIN : undefined));
     const avgV = x => x.fbN ? f3(x.fbP / x.fbN) : '–', avgR = rk2(D, me, x => x.fbN ? x.fbP / x.fbN : null, x => x.fbN, FB_MIN);
     const multi = x => ({ w: x.fbM, n: x.fbN });
     const scChip = sc ? U.xtChip(`${sc} 초구 성공률`, me.s.fbSt[sc], me.a.fbSt[sc], ny, rk2(D, me, x => rt(x.fbSt[sc]), x => cn(x.fbSt[sc]))) : '';
-    return U.grp([c('초구 성공률', 'fb'), scChip,
+    const pk = seq && seq.length > 1 ? `${T}|${seq}` : '';
+    const fbX = x => x && x.fbN ? { w: x.fbH, n: x.fbN } : null;
+    const pathChip = pk ? U.xtChip(seqH(seq), fbX(me.s.sq[pk]), fbX(me.a.sq[pk]), ny, rk2(D, me, x => rt(fbX(x.sq[pk])), x => x.sq[pk] ? x.sq[pk].fbN : 0)).replace('<span class="ti xt', '<span class="ti xt fbp') : '';
+    return U.grp([c('초구 성공률', 'fb'), scChip, pathChip,
       `<span class="ti xt${ny ? ' ny' : ''}"><small>초구 에버</small><b>${U.xtVal(avgV(me.s), avgV(me.a), avgR)}</b><i>${me.s.fbN} / ${me.a.fbN}회</i></span>`,
       U.xtChip('초구 다득률', multi(me.s), multi(me.a), ny, rk2(D, me, x => rt(multi(x)), x => x.fbN, FB_MIN))], 'gfb', 'gfb' + p)
       + U.grp([c('초성 승률', 'fbOk'), c('초실 승률', 'fbMiss'), c('초3+ 승률', 'fb3'), c('선공 세트 승률', 'fst')], 'gwr', 'gwr' + p);
@@ -126,8 +136,9 @@
     return U.grp([c('상대 초성 승률', 'ofbOk'), c('상대 초실 승률', 'ofbMiss'), c('초3+ 허용 승률', 'al3'), c('후공 세트 승률', 'snd')], 'gwr', 'gwr' + p);
   }
   // ── 이닝 위 라이브 정보 { ratio, state }: 우세 · 박빙 · 열세 비율 (지금 상황 강조) + 지금 상황 승률 · 클러치 승률 ── (팀 sheetTiming 과 같은 모양, 끝내기 장타 줄 없음)
-  function timing(name, type, st, cl, fresh) {
-    const D = get(type), me = who(D, name); if (!me) return { ratio: '', state: '', f5: '' };
+  //  sc = { T, seq, first }: 지금까지 세트 결과 순서(seq '승패')로 시작한 세트의 에버 · 세트 승률 · 초성(초구 성공률, 이번 세트 선공일 때만) 한 줄 (sx 줄)
+  function timing(name, type, st, cl, fresh, sc) {
+    const D = get(type), me = who(D, name); if (!me) return { ratio: '', state: '', f5: '', sx: '' };
     const S2 = me.s, A = me.a, lead = type === 'LPBA' ? 3 : 5, cln = type === 'LPBA' ? 4 : 5;
     const lv = (l, v, sub, ny, tip = '') => `<span class="lv${ny ? ' ny' : ''}"${tip ? ` data-stip="${esc(tip)}"` : ''}><small>${l}</small><b>${v}</b>${sub ? `<i>${sub}</i>` : ''}</span>`;
     const DESC = { keep: `이닝과 상관없이 점수로 먼저 ${lead}점 이상 앞선 세트`, tie: `끝까지 ${lead}점 차가 나지 않은 세트`, back: `이닝과 상관없이 점수로 먼저 ${lead}점 이상 뒤진 세트`, cl: `둘 다 목표 점수까지 ${cln}점 이내로 남은 채 이어진 세트` };
@@ -141,7 +152,16 @@
       ratio: `<span class="tsr rt">${[['우세', 'keep'], ['박빙', 'tie'], ['열세', 'back']].map(([l, k]) => `<span class="lv${k === { up: 'keep', dn: 'back' }[st] || (st === 'tie' && k === 'tie') ? ' on' : ''}" data-stip="${esc(tipOf(l, k))}"><b>${l}(${sa(r0(S2, k), r0(A, k))})</b></span>`).join('')}</span>`,
       state: (st === 'up' ? wr('우세 승률', 'keep') : st === 'dn' ? wr('열세 승률', 'back') : wr('박빙 승률', 'tie')) + (cl ? wr('클러치 승률', 'cl') : ''),
       f5: '',
+      sx: scoreX(me, sc, lv, sa, fresh),
     };
+  }
+  function scoreX(me, sc, lv, sa, ny) {
+    if (!sc || !sc.seq) return '';
+    const { T, seq, first } = sc, k = `${T}|${seq}`, S2 = me.s.sq[k], A = me.a.sq[k];
+    if (!A) return '';
+    const av = x => x && x.i ? f3(x.p / x.i) : '–', wr = x => x && x.n ? pct(x.w / x.n) : '–', wl = x => x && x.n ? `${x.w}-${x.n - x.w}` : '–', fb = x => x && x.fbN ? pct(x.fbH / x.fbN) : '–', fbs = x => x && x.fbN ? `${x.fbH}/${x.fbN}` : '–';
+    const tip = `<div class="rkh0">${seqH(seq)} <small>세트 결과가 ${seq} 순서로 온 뒤 친 ${seq.length + 1}세트</small></div><table class="rdtip">${[['이번 시즌', S2], ['통산', A]].map(([l, x]) => `<tr><td>${l}</td><td>${x ? x.n : 0}세트 · 에버 ${av(x)} · ${wl(x)}${first ? ` · 초성 ${fbs(x)}` : ''}</td></tr>`).join('')}</table>`;
+    return `<span class="lv${ny ? ' ny' : ''}" data-stip="${esc(tip)}"><small>${seqH(seq)}</small><small>에버</small><b>${sa(av(S2), av(A))}</b><small>승률</small><b>${sa(wr(S2), wr(A))}</b>${first ? `<small>초성</small><b>${sa(fb(S2), fb(A))}</b>` : ''}</span>`;
   }
   // ── 승부치기 (기록지에서 '승부치기'로 돌입한 세트): role = null(선공 고르기 전) · 'first' · 'second', oppFb = 상대(선공) 1이닝 득점(끝났으면) ──
   //  선공: 승부치기 승률 · 선공 승률 · 초구(평균 · 최다) · 평균 득점 · 공격 성공률(본인 일반 세트 평균 대비)

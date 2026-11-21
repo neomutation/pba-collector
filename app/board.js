@@ -141,33 +141,35 @@
 
   // ── 개인투어 세부 순위: 항목 버튼 16개 × 블록(통산 → 이번 시즌(노란 테두리) → 지난 시즌). 통산 버튼 = 통산 블록만 크게, 시즌별 = 모든 블록 ──
   //  min: 순위 자격 [시즌, 통산] (경기 수 등), 없으면 1번 이상. 기권 경기 제외
+  //  세트 · 단판 단서가 없는 항목은 세트제 + 25점 단판 모든 경기로 계산(o, 단판은 한 세트로) — 자격 경기 수도 모든 경기. 세트 승리 · 세트 득실비만 세트제(oS)
   const isFinal = g => g.round_code === 2 || g.round_raw === '결승';
   const I_METRICS = [
     { k: 'champ', l: '우승 횟수', v: x => x.champ || null, f: v => `${v}회`, c: x => `${x.fin - x.champ}회`, e: x => pct(x.champ / x.fin), tie: x => x.fin, note: '결승에서 이긴 횟수. 괄호 = 준우승 횟수, 뒤 = 결승 승률.' },
     { k: 'apps', l: '출전 횟수', v: x => x.tours.size, f: v => `${v}개`, c: x => `${x.o.games}경기`, tie: x => x.o.games, note: '경기를 치른 대회 수. 괄호 = 경기 수.' },
-    { k: 'winRate', l: '승률', v: x => x.o.winRate, f: pct, c: x => `${x.o.win}-${x.o.lose}`, n: x => x.o.games, min: [10, 30], tie: x => x.o.win, note: '경기 승률. 시즌 10경기 · 통산 30경기 이상.' },
+    { k: 'winRate', l: '승률', v: x => x.o.winRate, f: pct, c: x => `${x.o.win}-${x.o.lose}`, n: x => x.o.games, min: [10, 30], tie: x => x.o.win, note: '경기 승률. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'win', l: '승리', v: x => x.o.win || null, f: v => `${v}승`, c: x => pct(x.o.winRate), tie: x => x.o.winRate || 0, note: '경기 승수. 괄호 = 경기 승률.' },
-    { k: 'setW', l: '세트 승리', v: x => x.o.setW || null, f: v => `${v}승`, c: x => pct(x.o.setRate), tie: x => x.o.setRate || 0, note: '세트 승수. 괄호 = 세트 승률.' },
-    { k: 'avg', l: '에버', v: x => x.o.avgAll, f: f3, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '세트제 경기 에버리지. 시즌 10경기 · 통산 30경기 이상.' },
-    { k: 'long', l: '장타율', v: x => x.o.long, f: pct, c: x => `${x.o.longN}회`, n: x => x.o.games, min: [10, 30], note: '한 이닝 5점 이상 친 이닝 비율. 시즌 10경기 · 통산 30경기 이상.' },
-    { k: 'success', l: '공격성공률', v: x => x.o.success, f: pct, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '샷 기준: 성공(1점 + 뱅크샷 개수) ÷ 시도(성공 + 실패로 끝난 이닝). 시즌 10경기 · 통산 30경기 이상.' },
+    { k: 'setW', l: '세트 승리', v: x => x.oS.setW || null, f: v => `${v}승`, c: x => pct(x.oS.setRate), tie: x => x.oS.setRate || 0, note: '세트제 경기 세트 승수. 괄호 = 세트 승률.' },
+    { k: 'avg', l: '에버', v: x => x.o.avgAll, f: f3, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '에버리지. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
+    { k: 'long', l: '장타율', v: x => x.o.long, f: pct, c: x => `${x.o.longN}회`, n: x => x.o.games, min: [10, 30], note: '한 이닝 5점 이상 친 이닝 비율. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
+    { k: 'success', l: '공격성공률', v: x => x.o.success, f: pct, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '샷 기준: 성공(1점 + 뱅크샷 개수) ÷ 시도(성공 + 실패로 끝난 이닝). 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'bpts', l: '뱅크샷 총득점', v: x => x.o.bankN ? x.o.bankN * 2 : null, f: v => `${v}점`, c: x => `${x.o.bankN}개`, tie: x => x.o.bank || 0, note: '뱅크샷으로 낸 득점 합계 (1개 = 2점). 괄호 = 뱅크샷 성공 개수.' },
-    { k: 'bank', l: '뱅크샷 득점 비율', v: x => x.o.bank, f: pct, c: x => `${x.o.bankN}개`, n: x => x.o.games, min: [10, 30], note: '득점 중 뱅크샷 득점 비율 (개인투어 자료에는 뱅크샷 시도 수가 없어 성공률 대신). 시즌 10경기 · 통산 30경기 이상.' },
-    { k: 'setRatio', l: '세트 득실비', v: x => x.o.setRatio, f: f3, c: x => `${x.o.setW}-${x.o.setL}`, n: x => x.o.games, min: [10, 30], note: '딴 세트 ÷ 내준 세트. 시즌 10경기 · 통산 30경기 이상.' },
-    { k: 'ptRatio', l: '점수득실비', v: x => x.o.ptRatio, f: f3, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '득점 ÷ 실점. 시즌 10경기 · 통산 30경기 이상.' },
+    { k: 'bank', l: '뱅크샷 득점 비율', v: x => x.o.bank, f: pct, c: x => `${x.o.bankN}개`, n: x => x.o.games, min: [10, 30], note: '득점 중 뱅크샷 득점 비율 (개인투어 자료에는 뱅크샷 시도 수가 없어 성공률 대신). 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
+    { k: 'setRatio', l: '세트 득실비', v: x => x.oS.setRatio, f: f3, c: x => `${x.oS.setW}-${x.oS.setL}`, n: x => x.oS.games, min: [10, 30], note: '세트제 경기의 딴 세트 ÷ 내준 세트 (25점 단판 제외). 시즌 10경기 · 통산 30경기 이상 (세트제 경기 수).' },
+    { k: 'ptRatio', l: '점수득실비', v: x => x.o.ptRatio, f: f3, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '득점 ÷ 실점. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'clutch', l: '클러치 승률', v: x => x.o.setClutch, f: pct, c: x => `${x.o.lateW}/${x.o.lateN}`, n: x => x.o.lateN, min: [5, 15], note: '이닝과 상관없이 두 선수 모두 목표 점수까지 PBA 5점 · LPBA 4점 이내로 남은 채 이어진 세트의 승률. 시즌 5세트 · 통산 15세트 이상.' },
-    { k: 'dom', l: '게임 지배력', v: x => x.dom, f: f1, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '리그 평균 = 100. 점수득실비 40% · 선제 리드 우위 30% · 리드 유지율 15% · 역전률 15%. 시즌 10경기 · 통산 30경기 이상.' },
-    { k: 'bankWin', l: '뱅킹 승률', v: x => x.o.bankWinRate, f: pct, c: x => `${x.o.bankWin}-${x.o.bankLose}`, n: x => x.o.bankWin + x.o.bankLose, min: [10, 30], note: '뱅킹(선공 결정)을 이긴 비율. 시즌 10경기 · 통산 30경기 이상.' },
+    { k: 'dom', l: '게임 지배력', v: x => x.dom, f: f1, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '리그 평균 = 100. 점수득실비 40% · 선제 리드 우위 30% · 리드 유지율 15% · 역전률 15%. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
+    { k: 'bankWin', l: '뱅킹 승률', v: x => x.o.bankWinRate, f: pct, c: x => `${x.o.bankWin}-${x.o.bankLose}`, n: x => x.o.bankWin + x.o.bankLose, min: [10, 30], note: '뱅킹(선공 결정)을 이긴 비율. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'fb', l: '초구 성공률', v: x => x.o.fbSuccess, f: pct, c: x => `${x.o.fbN}번`, n: x => x.o.fbN, min: [10, 30], note: '초구로 득점한 비율. 괄호 = 초구 수. 시즌 10번 · 통산 30번 이상.' },
   ];
   // 선수 × 기간 묶음 (종목마다 한 번)
   const iAggCache = {};
   function iAgg(type, L) {
     if (iAggCache[type] && iAggCache[type].L === L) return iAggCache[type];
+    const asSets = gs => gs.map(g => g.single ? { ...g, single: false } : g);   // calc 는 단판을 빼므로 단판도 세트처럼
     const mk = (gs, lg) => { const m = {}; gs.forEach(g => { (m[g.player] || (m[g.player] = { id: g.player, name: g.player_name, gs: [] })).gs.push(g); });
-      return Object.values(m).map(x => { const o = calc(x.gs); return { id: x.id, name: x.name, o, tours: new Set(x.gs.map(g => g.tour)), fin: x.gs.filter(isFinal).length, champ: x.gs.filter(g => isFinal(g) && g.win).length, dom: lg ? dominanceOf(o, lg) : null }; }); };
-    const seasons = [...new Set(L.games.map(g => g.season))].sort((a, b) => b - a), by = { all: mk(L.games, L.all) };
-    seasons.forEach(s => { by['s' + s] = mk(L.games.filter(g => g.season === s), L.season[s]); });
+      return Object.values(m).map(x => { const o = calc(asSets(x.gs)); return { id: x.id, name: x.name, o, oS: calc(x.gs), tours: new Set(x.gs.map(g => g.tour)), fin: x.gs.filter(isFinal).length, champ: x.gs.filter(g => isFinal(g) && g.win).length, dom: lg ? dominanceOf(o, lg) : null }; }); };
+    const seasons = [...new Set(L.games.map(g => g.season))].sort((a, b) => b - a), by = { all: mk(L.games, calc(asSets(L.games))) };   // 지배력 기준 리그 평균도 모든 경기
+    seasons.forEach(s => { const gs = L.games.filter(g => g.season === s); by['s' + s] = mk(gs, calc(asSets(gs))); });
     return (iAggCache[type] = { L, seasons, by });
   }
   // 통산 보기 줄: 순위 | 이름(4글자까지, 넘으면 말풍선에 전체 이름) 두 칸 띄고 값
@@ -191,7 +193,7 @@
   function irecTip(key, id) {
     const x = (V._irec && V._irec[key] || []).find(y => y.id === id); if (!x) return '';
     const o = x.o, row = (l, v) => `<tr><td>${l}</td><td></td><td>${v}</td></tr>`;
-    return `<div class="rkh0">${esc(x.name)} <small>${key === 'all' ? '통산' : `${seasonLabel(+key.slice(1))} 시즌`}</small></div><table>${row('우승', `${x.champ}회 (결승 ${x.fin})`)}${row('출전', `${x.tours.size}개 대회 · ${o.games}경기`)}${row('승패', `${o.win}-${o.lose} (${pct(o.winRate)})`)}${row('세트', `${o.setW}-${o.setL} (${pct(o.setRate)})`)}${row('에버', f3(o.avgAll))}${row('장타율', pct(o.long))}${row('공격성공률', pct(o.success))}${row('뱅크샷', `${o.bankN * 2}점 (${pct(o.bank)})`)}${row('클러치', `${pct(o.setClutch)} (${o.lateW}/${o.lateN})`)}${row('게임 지배력', f1(x.dom) || '–')}${row('뱅킹 승률', pct(o.bankWinRate))}${row('초구 성공률', `${pct(o.fbSuccess)} (${o.fbHit}/${o.fbN})`)}</table>`;
+    return `<div class="rkh0">${esc(x.name)} <small>${key === 'all' ? '통산' : `${seasonLabel(+key.slice(1))} 시즌`}</small></div><table>${row('우승', `${x.champ}회 (결승 ${x.fin})`)}${row('출전', `${x.tours.size}개 대회 · ${o.games}경기`)}${row('승패', `${o.win}-${o.lose} (${pct(o.winRate)})`)}${row('세트', `${x.oS.setW}-${x.oS.setL} (${pct(x.oS.setRate)})`)}${row('에버', f3(o.avgAll))}${row('장타율', pct(o.long))}${row('공격성공률', pct(o.success))}${row('뱅크샷', `${o.bankN * 2}점 (${pct(o.bank)})`)}${row('클러치', `${pct(o.setClutch)} (${o.lateW}/${o.lateN})`)}${row('게임 지배력', f1(x.dom) || '–')}${row('뱅킹 승률', pct(o.bankWinRate))}${row('초구 성공률', `${pct(o.fbSuccess)} (${o.fbHit}/${o.fbN})`)}</table>`;
   }
   // ── 웰컴톱랭킹: 시즌 × 대회 수상자 표 · 최다 수상 TOP10 · 역대 최고 에버 TOP10 ──
   function topTab(B, L, A) {

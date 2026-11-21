@@ -187,8 +187,8 @@
   document.addEventListener('mouseout', e => { const c = e.target.closest && e.target.closest('[data-xtt]'); if (c && !c.contains(e.relatedTarget)) hideRkBub(); });
   const flowLgHolder = { teamName: c => teamName[c] };   // 특징 요약 순위 말풍선의 팀 이름
   document.addEventListener('click', e => { if (!isBlankClick(e)) return; for (const p of Object.values(panes)) if (p.qaOpen) p.setQa(false); });   // 질문 창: 빈 곳을 누르면 닫힘
-  const TMODE_SECS = new Set(['sum', 'setno', 'kind', 'dist', 'bank', 'flow']);
-  const TORD_SECS = new Set(['sum', 'setno', 'kind', 'bank', 'dist', 'flow', 'round', 'opp']);
+  const TMODE_SECS = new Set(['sum', 'sets', 'kind', 'dist', 'bank']);
+  const TORD_SECS = new Set(['sum', 'sets', 'kind', 'bank', 'dist', 'round', 'opp']);
   document.addEventListener('click', e => { if (e.target.closest('[data-sord]')) Object.values(panes).forEach(p => { if (p.code) p.render(); }); });
   // 팀 시즌 기록 (정규시즌 기준)
   function tcalc(gs) {
@@ -826,7 +826,7 @@
         const trg = e.target.closest('[data-trg]'); if (trg) { toggleFold('row', trg.dataset.trg); return; }
         const tcf = e.target.closest('[data-tcf]'); if (tcf) { toggleFold('col', tcf.dataset.tcf); return; }
         const sec = e.target.closest('.sec');
-        if (sec &&!e.target.closest(POP_CLICKABLE + ', [data-tclose], [data-tsec], [data-fold]')) { const id = sec.querySelector('[data-tclose]').dataset.tclose; this.opened = this.opened.filter(x => x !== id); localStorageSet('ttiles_' + this.key, JSON.stringify(this.opened)); this.renderSecs(); return; }
+        if (sec &&!e.target.closest(POP_CLICKABLE + ', [data-tclose], [data-tsec], [data-fold], th[data-totk]')) { const id = sec.querySelector('[data-tclose]').dataset.tclose; this.opened = this.opened.filter(x => x !== id); localStorageSet('ttiles_' + this.key, JSON.stringify(this.opened)); this.renderSecs(); return; }
         const kp = e.target.closest('[data-tkpi]'); if (kp) { this.openPop(kp); return; }
         const m = e.target.closest('[data-tmode]'); if (m) { this.mode = m.dataset.tmode; this.secModes = {}; localStorageSet('tmode_' + this.key, this.mode); localStorageSet('tsmodes_' + this.key, '{}'); this.render(); return; }
         const tl = e.target.closest('[data-ttile]') || e.target.closest('[data-tclose]');
@@ -927,25 +927,26 @@
         <tr><th>최종</th>${sRows.map(x => x.in && x.fin ? rkTd(x.fin, ` data-srkp="${x.l.league}" data-tkpi="post" data-tlg="${x.l.league}" data-label="${esc(seasonLabel(x.l.season))} 포스트시즌" data-val="최종 ${x.fin}위" style="cursor:pointer"`) : `<td>${x.in ? '<span class="s">진행</span>' : '–'}</td>`).join('')}</tr></tbody></table></div>`;
       h += `<div class="content"><div class="card"><div class="teamhead"><div><div class="teamid"><div class="pcol">${logo ? `<img src="${esc(logo)}">` : '<img alt="">'}<button class="qabtn${this.qaOpen ? ' on' : ''}" data-tqa title="이 팀 기록 질문하기">🔍</button></div><div>
         <h2>${name2(code, lg)}</h2><div class="who">${esc(seasonLabel(leagueOf[lg].season))} 시즌 · 정규리그 ${st ? rkH(st.rank) : ''}${ps ? ` · 포스트시즌 ${esc(ps)}` : ''}</div>
-        <div class="modes"><button data-tmode="self" class="${mode === 'self' ? 'on' : ''}">팀 시즌</button><button data-tmode="league" class="${mode === 'league' ? 'on' : ''}">리그 평균</button></div></div><div class="trk">${roundTbl}${seasonRankTbl}</div></div>${formBox}</div>
+        <div class="modes"><button data-tmode="self" class="${mode === 'self' ? 'on' : ''}">팀 시즌</button><button data-tmode="league" class="${mode === 'league' ? 'on' : ''}">리그 평균</button><button type="button" class="mybtn${myOpen('team') ? ' on' : ''}" data-myopen="team" title="맞춤요약: 세부 칩 키워드를 골라 모아 보기">🧩<span class="mbt"> 맞춤요약</span></button></div></div><div class="trk">${roundTbl}${seasonRankTbl}</div></div>${formBox}</div>
         <div class="rosterbox">${cap.map(prow).join('')}<div class="rcols"><div class="fblk" data-fk="tm:men"><div class="rhead fhd">남자</div>${men.map(prow).join('')}</div><div class="fblk" data-fk="tm:women"><div class="rhead fhd">여자</div>${women.map(prow).join('')}</div></div></div></div>
         <div class="qa"${this.qaOpen ? '' : ' hidden'}><form class="qaf"><input class="qain" placeholder="${esc(teamShort[code] || code)} 기록에 대해 물어보세요 (예: 풀세트 경기, 크라운해태 상대)" value="${esc(this.qaText || '')}" autocomplete="off"><button type="submit">검색</button><button type="button" class="qax" data-qaclose title="닫기">✕</button></form>
           <div class="qaex">${qaPick(tqaCatsOf(code, this.qaText), this.qaTyped, this.qaSt || (this.qaSt = qaSt()))}</div><div class="qaout">${this.qaHtml || ''}</div></div>
+        <div class="mysum" hidden></div>
         <div class="kpis">${k(st ? rkH(st.rank) : '', '순위', 'rank')}${k(o.points == null ? null : `${o.points}${lgAvgPts(lg) != null ? dsm(o.points - lgAvgPts(lg), 1) : ''}`, '승점', 'points')}${k(`${o.wl}${dsm(o.winRate - leagueCalc(lg).winRate, 'pct')}`, o.draw ? '승-무-패' : '승패', 'wl')}
         ${k(`${f3(o.setRatio)}${dsm(o.setRatio - leagueCalc(lg).setRatio)}`, `세트득실 ${o.setW}-${o.setL}`, 'set')}${k(`${f3(o.ptRatio)}${dsm(o.ptRatio - leagueCalc(lg).ptRatio)}`, `점수득실 ${o.pts}:${o.opp}`, 'pt')}<div class="kpi duo tri tavg">${kh([`${f3(o.avg)}${dsm(o.avg - leagueCalc(lg).avg)}`, '팀 에버', 'avg'])}<i class="dsep">/</i>${kh([f3(o.bestAvg), '베스트<em class="ev"> 에버</em>', 'best'])}<i class="dsep">/</i>${kh([f3(o.worstAvg), '워스트<em class="ev"> 에버</em>', 'worst'])}</div></div></div>`;
       this.secs = [
-        ['sum', '📊', '시즌 요약', '정규리그 · 시즌별', () => this.seasonSummary(code)],
+        ['sum', '📊', '세부 기록', '정규리그 · 시즌별', () => this.seasonSummary(code)],
         // 이번 시즌(실선 · 큰 숫자) + 통산(점선 · 아랫줄)을 한 그림에, 항목 이름 왼쪽 = 시즌 순위 · 오른쪽 = 통산 순위 (방송 요약 '이번 시즌-통산'과 같은 그림)
         ['hex', '⬡', '육각형 스탯', '이번 시즌 · 통산 · 리그 평균 비교', () => { const me = { id: code, name: teamShort[code] || code, color: tcolor(code) || 'var(--accent)' };
           // 득실성향 키워드: 시즌 · 통산 따로 (누르면 전체 · 승세트 · 패세트 → 그래프 말풍선)
           const kw = styleKw('득실성향 · 시즌', styleTableT(lg), [me], '그 시즌 팀들') + styleKw('득실성향 · 통산', styleTableT(null), [me], '역대 팀들');
           return `<div class="fbhead" style="padding:0 14px 4px;gap:6px;flex-direction:column;align-items:flex-start">${kw}</div>` + hexChart(HEX, [{ t: hexStats(code, lg), ...me, tag: '이번 시즌' }, { t: hexStats(code, null), ...me, tag: '통산', dash: true }], [hexLeague(lg), hexLeague(null)], '그 시즌 · 역대 팀들', { ranks: true, overlay: true }); }],
         ['round', '🗓', '라운드별 성적', '이번 시즌 · 전체 시즌', () => this.roundTable(code, lg)],
-        ['setno', '🎯', '세트별 승률', '팀 시즌별 · 선수별', () => this.setNoTable(code, lg)],
+        // 세트별 기록: 하위 키워드 세트별 승률 · 세트 흐름 (묶음마다 안에 또 키워드 줄, 개인투어와 같음)
+        ['sets', '🎯', '세트별 기록', '세트별 승률(팀 시즌별 · 선수별) · 세트 흐름', () => `<div data-plabel="세트별 승률" data-psub>${this.setNoTable(code, lg)}</div><div data-plabel="세트 흐름" data-psub data-pbox>${this.flowTable(code)}</div>`],
         ['kind', '👥', '종목별 승률', '종목 · 복식 조합', () => this.kindTable(code, lg)],
         ['dist', '📐', '세트 스코어 분포', '4:0 ~ 0:4 · 리그 평균', () => this.distTable(code)],
         ['bank', '🎱', '뱅킹·공 색·선후공', '정규리그 · 시즌별', () => this.bankTable(code)],
-        ['flow', '🔀', '세트 흐름', '상황별 승률 · 리버스 스윕 · 리그 평균', () => this.flowTable(code)],
         ['players', '🧑', '선수 기록', `${seasonLabel(leagueOf[lg].season)} · 홈피 소개 순서`, () => this.playerTable(code, lg, reg, gamesOf(code, g => g.league === lg && g.post))],
         ['opp', '🆚', '상대 팀별', '창단 순 · 시즌별', () => this.oppTable(code, lg)],
         ['games', '📝', '경기 기록', '줄을 누르면 세트 상세', () => this.gameList(code, lg)],
@@ -957,6 +958,7 @@
       if (typeof fitRch === 'function') fitRch(this.el);
       applyChipOrders(this.el);
       this.renderSecs();
+      myMount(this.el.querySelector('.mysum'), 'team', this.secs, (id, body) => this.secBody(id, body));
       const qf = this.el.querySelector('.qaf');
       if (qf) qf.addEventListener('submit', e => { e.preventDefault(); this.ask(qf.querySelector('.qain').value); });
       if (qf) qf.querySelector('.qain').addEventListener('input', e => { this.qaTyped = e.target.value; this.qaSt = qaSt(); this.qaPickUpd(); });   // 쓰는 대로 맞는 하위 항목
@@ -989,10 +991,10 @@
       const box = $('.secs', this.el); if (!box) return;
       this.el.querySelectorAll('[data-ttile]').forEach(x => x.classList.toggle('on', this.opened.includes(x.dataset.ttile)));
       box.innerHTML = chipSort('chiporder_team_tiles', this.secs.filter(s => this.opened.includes(s[0])), s => s[0]).map(([id, ic, t, sub, body]) =>
-        `<div class="card sec fblk" data-fk="tsec:${id}" data-fsec="${id}"><div class="sechead fhd"><b>${ic} ${t}</b>${sub ? `<small>${esc(sub)}</small>` : ''}${id === 'flow' ? funitBtns() : ''}${TMODE_SECS.has(id) ? `<span class="bcseg smode"><button data-tsmode="${id}|self" class="${this.sm(id) === 'self' ? 'on' : ''}">팀 시즌</button><button data-tsmode="${id}|league" class="${this.sm(id) === 'league' ? 'on' : ''}">리그 평균</button></span>` : ''}${TORD_SECS.has(id) ? ordBtnH() : ''}<button class="secx" data-tclose="${id}">✕</button></div>${this.secBody(id, body)}</div>`).join('');
+        `<div class="card sec fblk" data-fk="tsec:${id}" data-fsec="${id}"><div class="sechead fhd"><b${sub ? ` title="${esc(sub)}"` : ''}>${ic} ${t}</b>${id === 'sets' ? funitBtns() : ''}${TMODE_SECS.has(id) ? `<span class="bcseg smode"><button data-tsmode="${id}|self" class="${this.sm(id) === 'self' ? 'on' : ''}">팀 시즌</button><button data-tsmode="${id}|league" class="${this.sm(id) === 'league' ? 'on' : ''}">리그 평균</button></span>` : ''}${TORD_SECS.has(id) ? ordBtnH() : ''}<button class="secx" data-tclose="${id}">✕</button></div>${this.secBody(id, body)}</div>`).join('');
       applyFolds(this.el);
       // 칸마다 맨 위에 하위 항목 키워드 줄 (누른 것만 보인다, 개인투어와 같은 방식)
-      box.querySelectorAll(':scope > .sec[data-fsec]').forEach(sec => partify(sec, partSel('t:' + sec.dataset.fsec), sel => partSave('t:' + sec.dataset.fsec, sel)));
+      box.querySelectorAll(':scope > .sec[data-fsec]').forEach(sec => { applyTotPos(sec, 't:' + sec.dataset.fsec, leagueLabel(this.league)); partifyNested(sec, 't:' + sec.dataset.fsec); });
     }
     // 항목 내용: 그리는 동안 gridSec = 항목 id (묶음 · 열 접기 상태 키)
     secBody(id, body) {
@@ -1101,7 +1103,7 @@
       const kinds = cols[cols.length - 1].o.byNo;
       const kindLine = Object.keys(kinds).map(n => `${n}세트 ${Object.entries(kinds[n].kinds).sort((a, b) => b[1] - a[1])[0][0]}`).join(' · ');
       // 칸에 커서: 그 세트 전체 팀 순위 말풍선
-      let h = `<div class="subhead">팀 세트 번호별 승률 (시즌별)</div>` + grid(rows, cols, this.sm('setno'), { tdAttr: (label, c) => ` data-snr="${parseInt(label, 10)}|${c.league || 'all'}" style="cursor:help"` }) + `<div class="note">주로 나오는 종목: ${esc(kindLine)}</div>`;
+      let h = `<div class="subhead">팀 세트 번호별 승률 (시즌별)</div>` + grid(rows, cols, this.sm('sets'), { tdAttr: (label, c) => ` data-snr="${parseInt(label, 10)}|${c.league || 'all'}" style="cursor:help"` }) + `<div class="note">주로 나오는 종목: ${esc(kindLine)}</div>`;
       // 세트별 선수 승률 (이번 시즌): 그 세트에서 누가 가장 잘하나
       const reg = gamesOf(code, g => g.league === lg && !g.post), roster = rosterOf(code, lg, reg).filter(p => p.st);
       const nos = [1, 2, 3, 4, 5, 6, 7].filter(n => roster.some(p => p.st.byNo[n]));
@@ -1215,7 +1217,11 @@
       const rs = [['__grp', '리버스 스윕'],
         ['0:3 → 4:3 승', o => { const x = o.state['0:3']; return x && x.w ? `${x.w}회` : (x ? '0회' : ''); }, o => { const x = o.state['0:3']; return x ? `(${x.w}/${x.n})` : ''; }, '', o => { const x = o.state['0:3']; return x ? x.w / x.n : null; }, pct],
         ['3:0 → 3:4 패', o => { const x = o.state['3:0']; return x ? `${x.n - x.w}회` : ''; }, o => { const x = o.state['3:0']; return x ? `(${x.n - x.w}/${x.n})` : ''; }, '', o => { const x = o.state['3:0']; return x ? (x.n - x.w) / x.n : null; }, pct, 'low']];
-      return grid(keys.flatMap(k => [...(k === '4:0' ? [['__grp', '이긴 경기']] : k === '3:3' ? [['__grp', '무승부 · 진 경기']] : []), [k, o => o.dist[k] || '', o => o.dist[k] ? pct(o.dist[k] / o.games) : '', '', o => ratio(o.dist[k] || 0, o.games), pct]]).concat(rs), cols, this.sm('dist'), { league: true, tdAttr: (l, c) => /^0:3 → 4:3/.test(l) ? revTip(code, c, true) : /^3:0 → 3:4/.test(l) ? revTip(code, c, false) : '' }) + '<div class="note">작은 글씨 = 그 시즌 경기 중 비율. 리그 평균 = 그 스코어가 나온 비율(모든 팀), 리버스 스윕은 그 상황에서 뒤집은 비율.</div>';
+      // 표 · 그래프 버튼 (개인 세트 흐름 스코어 분포와 같은 distViewBtns · distChartHtml): 그래프 = 이번 시즌 · 통산 막대
+      const sC = cols.length > 1 ? cols[cols.length - 2] : null, tC = cols[cols.length - 1];
+      const btns = `<div class="dvrow">${distViewBtns()}</div>`;
+      const chart = `<div class="dv-c">${distChartHtml([{ title: '7전 4선승 (정규리그)', rows: keys.filter(k => tC.o.dist[k] || (sC && sC.o.dist[k])).map(k => { const [x, y] = k.split(':').map(Number); return { k, cls: x > y ? 'w' : x < y ? 'l' : '', vals: [sC ? { tag: sC.label, n: sC.o.dist[k] || 0, N: sC.o.games } : null, { tag: '통산', n: tC.o.dist[k] || 0, N: tC.o.games }].filter(Boolean) }; }) }])}</div>`;
+      return btns + chart + '<div class="dv-t">' + grid(keys.flatMap(k => [...(k === '4:0' ? [['__grp', '이긴 경기']] : k === '3:3' ? [['__grp', '무승부 · 진 경기']] : []), [k, o => o.dist[k] || '', o => o.dist[k] ? pct(o.dist[k] / o.games) : '', '', o => ratio(o.dist[k] || 0, o.games), pct]]).concat(rs), cols, this.sm('dist'), { league: true, tdAttr: (l, c) => /^0:3 → 4:3/.test(l) ? revTip(code, c, true) : /^3:0 → 3:4/.test(l) ? revTip(code, c, false) : '' }) + '<div class="note">작은 글씨 = 그 시즌 경기 중 비율. 리그 평균 = 그 스코어가 나온 비율(모든 팀), 리버스 스윕은 그 상황에서 뒤집은 비율.</div></div>';
     }
     flowTable(code) {
       const cols = this.seasonCols(code);
@@ -1239,7 +1245,7 @@
       if (!flowLgHolder.games) flowLgHolder.games = t4(D.games.filter(g => !g.post).flatMap(g => [persp(g, g.t1), persp(g, g.t2)]));
       const summary = flowSummaryHtml(t4(gamesOf(code, g => !g.post)), t4(gamesOf(code, g => g.league === curLg && !g.post)), flowLgHolder.games, flowLgHolder, '정규리그', '통산 10경기', code, setFlowT);
       return summary + `<div class="subhead" style="margin-top:8px">상황별 승률 · 리버스 스윕</div><div class="note" style="padding:6px 14px 0"><b>2:1 → 승</b> = 세트 스코어가 2:1이 된 적 있는 경기 중 이긴 비율 (작은 글씨 이긴 경기/도달한 경기).</div><div class="flowtab">` +
-        grid(rows, cols, this.sm('flow'), { league: true }) + grid(rev, cols, this.sm('flow'), { league: true, tdAttr: (l, c) => l === '0:3 → 승' ? revTip(code, c, true) : l === '3:0 → 패' ? revTip(code, c, false) : '' }) + '</div>';
+        grid(rows, cols, this.sm('sets'), { league: true }) + grid(rev, cols, this.sm('sets'), { league: true, tdAttr: (l, c) => l === '0:3 → 승' ? revTip(code, c, true) : l === '3:0 → 패' ? revTip(code, c, false) : '' }) + '</div>';
     }
     playerTable(code, lg, reg, post) {
       const roster = rosterOf(code, lg, reg).filter(p => p.st);
@@ -2085,20 +2091,20 @@
   const xtChip = (l, s, a, ny = true, rk = ['', ''], tip = '') => { const r = x => x && x.n ? pct(x.w / x.n) : '–', d = x => x && x.n ? `${x.w}-${x.n - x.w}` : '–'; return `<span class="ti xt${ny ? ' ny' : ''}"${tip ? ` data-xtt="${esc(tip)}"` : ''}><small>${l}</small><b>${xtVal(r(s), r(a), rk)}</b><i>${d(s)} / ${d(a)}</i></span>`; };
   // 단식이면 그 선수, 복식이면 그 콤비의 같은 종목 세트 기록 (시즌 · 통산): 선공 · 후공 · 초구 · 점수 상황
   //  sheetEnt: 모든 선수 · 콤비를 한 번에 세어 둔다 (순위용). E = 단식 선수 · 복식 콤비, F = 초구를 직접 친 선수(종목별), B = 뱅킹 (선수 · 콤비)
-  const entBlank = () => { const z = () => ({ w: 0, n: 0 }); return { st: {}, tr: {}, no: {}, ofbOk: z(), ofbMiss: z(), fst: z(), snd: z(), fbN: 0, fbP: 0, fbM: 0, fbOk: z(), fbMiss: z(), fb3: z(), al3: z(), tie: z(), up: z(), dn: z(), keep: z(), back: z(), cl: z(), f5: { keep: 0, tie: 0, back: 0 } }; };
+  const entBlank = () => { const z = () => ({ w: 0, n: 0 }); return { st: {}, tr: {}, sq: {}, no: {}, ofbOk: z(), ofbMiss: z(), fst: z(), snd: z(), fbN: 0, fbP: 0, fbM: 0, fbOk: z(), fbMiss: z(), fb3: z(), al3: z(), tie: z(), up: z(), dn: z(), keep: z(), back: z(), cl: z(), f5: { keep: 0, tie: 0, back: 0 } }; };
   function sheetEnt(lg) {
     const key = 'en|' + lg; if (sheetTipCache[key]) return sheetTipCache[key];
     const add = (x, win) => { x.n++; if (win) x.w++; }, two = () => ({ s: { w: 0, n: 0 }, a: { w: 0, n: 0 } });
     const E = {}, F = {}, B = {};
     const addK = (m, k, win) => add(m[k] || (m[k] = { w: 0, n: 0 }), win);
     // 세트 스코어(st, 'a:b') · 앞 세트 스코어에서 온 경우(tr, '1:0>1:1')별 승률도 센다
-    D.games.filter(g => !g.post).forEach(raw => [raw.t1, raw.t2].forEach(side => { let a = 0, b = 0, prev = null; persp(raw, side).sets.forEach(s => {
-      const sk = `${a}:${b}`, tk = prev ? `${prev}>${sk}` : null; prev = sk; s.win ? a++ : b++;
+    D.games.filter(g => !g.post).forEach(raw => [raw.t1, raw.t2].forEach(side => { let a = 0, b = 0, prev = null, sq = ''; persp(raw, side).sets.forEach(s => {
+      const sk = `${a}:${b}`, tk = prev ? `${prev}>${sk}` : null, sq0 = sq; prev = sk; s.win ? a++ : b++; sq += s.win ? '승' : '패';   // sq0 = 앞 세트 결과 순서 ('패승')
       if (!s.players.length) return;
       const solo = s.players.length < 2, k = (solo ? '1|' : '2|') + comboKey(s.players), cur = raw.league === lg, f = setFlowT(s, true);
       const e = E[k] || (E[k] = { solo, kind: s.kind, s: entBlank(), a: entBlank() });
       (cur ? [e.s, e.a] : [e.a]).forEach(x => {
-        addK(x.st, sk, s.win); if (tk) addK(x.tr, tk, s.win); addK(x.no, s.no, s.win);
+        addK(x.st, sk, s.win); if (tk) addK(x.tr, tk, s.win); if (sq0.length > 1) addK(x.sq, sq0, s.win); addK(x.no, s.no, s.win);
         if (s.first === false && s.oruns && s.oruns.length) add(s.oruns[0] > 0 ? x.ofbOk : x.ofbMiss, s.win);
         if (s.first === true) add(x.fst, s.win); else if (s.first === false) add(x.snd, s.win);
         if (s.first && s.runs && s.runs.length) { const r = s.runs[0]; x.fbN++; x.fbP += r; if (r >= 2) x.fbM++; add(r > 0 ? x.fbOk : x.fbMiss, s.win); if (r >= 3) add(x.fb3, s.win); }
@@ -2106,7 +2112,7 @@
         if (f) { if (f.lf === 0) add(x.tie, s.win); if (f.up) add(x.up, s.win); if (f.dn) add(x.dn, s.win); if (f.lf === 1) add(x.keep, s.win); if (f.lf === -1) add(x.back, s.win); if (f.cl) add(x.cl, s.win); }
         if (isF5(s)) x.f5[f5Sit(s)]++;
       });
-      if (s.first && s.runs && s.runs.length) { const fk = (solo ? '1|' : '2|') + s.players[0], x = F[fk] || (F[fk] = { solo, ...two(), st: { s: {}, a: {} } }); add(x.a, s.runs[0] > 0); if (cur) add(x.s, s.runs[0] > 0); addK(x.st.a, sk, s.runs[0] > 0); if (cur) addK(x.st.s, sk, s.runs[0] > 0); }
+      if (s.first && s.runs && s.runs.length) { const fk = (solo ? '1|' : '2|') + s.players[0], x = F[fk] || (F[fk] = { solo, ...two(), st: { s: {}, a: {} }, sq: { s: {}, a: {} } }); add(x.a, s.runs[0] > 0); if (cur) add(x.s, s.runs[0] > 0); addK(x.st.a, sk, s.runs[0] > 0); if (cur) addK(x.st.s, sk, s.runs[0] > 0); if (sq0.length > 1) { addK(x.sq.a, sq0, s.runs[0] > 0); if (cur) addK(x.sq.s, sq0, s.runs[0] > 0); } }
       if (s.no === 1 && s.first != null) [['p|' + s.players[0]], solo ? [] : ['c|' + comboKey(s.players)]].flat().forEach(bk => { const x = B[bk] || (B[bk] = two()); add(x.a, s.first); if (cur) add(x.s, s.first); });
     }); }));
     return (sheetTipCache[key] = { E, F, B });
@@ -2119,21 +2125,17 @@
   const rankIn = (pool, me, sc, val, cnt, mins = [3, 5]) => { const mv = me ? val(me[sc]) : null; if (mv == null) return ''; const min = sc === 's' ? mins[0] : mins[1]; return `${1 + pool.filter(x => x !== me && cnt(x[sc]) >= min && val(x[sc]) != null && val(x[sc]) > mv).length}위`; };
   const rt2 = x => x && x.n ? x.w / x.n : null, cn = x => x ? x.n : 0;
   // 기록지 선수 흐름 승률 한 줄 = 칸 7개 (이름 | 시즌 순위 | 시즌 승률 | 승패 | (통산 승률 | 승패) | 통산 순위). 감싸는 .frg 격자가 줄끼리 칸을 맞춘다
-  // 기록지 세트 승률 펼침: 지금 스코어 a:b 가 될 수 있는 두 길 [기록 키 '앞>지금', 이름, 실제로 온 길인지]. 실제 길(pa:pb)이 윗줄
-  //  이름 '3:1에서 패'. 예) 3:2 = 3:1 에서 패 (윗줄, 실제) · 2:2 에서 승 (아랫줄). 0 인 쪽은 길이 하나. 앞 스코어를 모르면 두 길 모두 (승 먼저)
-const sheetBranch = (a, b, pa, pb) => {
-  const k = `${a}:${b}`, ps = [a ? [a - 1, b, '승'] : null, b ? [a, b - 1, '패'] : null].filter(Boolean).map(([x, y, w]) => [`${x}:${y}>${k}`, `${x}:${y}에서 ${w}`, x === pa && y === pb]);
-  return ps.sort((p, q) => q[2] - p[2]);
-};
 //  순위는 다른 칩처럼 값 바로 뒤: 시즌 % 순위 승패 (통산 % 순위 승패). tip = 커서 말풍선 키 (data-xtt)
 // 기록지 팀 흐름 집계 (팀 하나, 정규리그): st = 세트 시작 스코어별 세트 승패, no = 세트 번호별, tr = '앞>지금' 스코어를 지난 경기의 경기 승패(무 d), gs = 그 세트 스코어를 지난 경기의 경기 승패. s = 이번 시즌 · a = 통산
-const teamFlowOf = (code, lg) => { const key = 'tf3|' + code + '|' + lg;
-  return sheetTipCache[key] || (sheetTipCache[key] = (() => { const z = () => ({ st: {}, no: {}, tr: {}, gs: {} }), m = { s: z(), a: z() }, add = (o, k, w, dr) => { const x = o[k] || (o[k] = { w: 0, n: 0, d: 0 }); x.n++; if (w) x.w++; if (dr) x.d++; };
-        gamesOf(code, g => !g.post).forEach(g => { let x = 0, y = 0; g.sets.slice().sort((p, q) => p.no - q.no).forEach(s => { const k = `${x}:${y}`; s.win ? x++ : y++; const tk = `${k}>${x}:${y}`; (g.league === lg ? [m.s, m.a] : [m.a]).forEach(o => { add(o.st, k, s.win); add(o.no, s.no, s.win); add(o.tr, tk, g.win, g.draw); add(o.gs, `${x}:${y}`, g.win, g.draw); }); }); });
+const teamFlowOf = (code, lg) => { const key = 'tf4|' + code + '|' + lg;
+  return sheetTipCache[key] || (sheetTipCache[key] = (() => { const z = () => ({ st: {}, no: {}, tr: {}, gs: {}, gsq: {} }), m = { s: z(), a: z() }, add = (o, k, w, dr) => { const x = o[k] || (o[k] = { w: 0, n: 0, d: 0 }); x.n++; if (w) x.w++; if (dr) x.d++; };
+        gamesOf(code, g => !g.post).forEach(g => { let x = 0, y = 0, sq = ''; g.sets.slice().sort((p, q) => p.no - q.no).forEach(s => { const k = `${x}:${y}`; s.win ? x++ : y++; sq += s.win ? '승' : '패'; const tk = `${k}>${x}:${y}`; (g.league === lg ? [m.s, m.a] : [m.a]).forEach(o => { add(o.st, k, s.win); add(o.no, s.no, s.win); add(o.tr, tk, g.win, g.draw); add(o.gs, `${x}:${y}`, g.win, g.draw); if (sq.length > 1) add(o.gsq, sq, g.win, g.draw); }); }); });
         return m; })());
 };
 const frRow = (l, s, a, rk, ny, lab = '', cls = '', tip = '') => { const r = x => x && x.n ? `${Math.round(x.w / x.n * 100)}%` : '–', d = x => x && x.n ? `${x.w}-${x.n - x.w}` : ''; const rkS = x => x ? `<small class="rkn">(${x})</small>` : ''; return `<span class="frw${ny ? ' ny' : ''}${cls}"${tip ? ` data-xtt="${esc(tip)}"` : ''}>${lab || `<small>${l}</small>`}<b>${r(s)}${rkS(rk[0])}</b><small>${d(s)}</small><i>(${r(a)}${rkS(rk[1])}</i><small>${d(a)}<i class="frp">)</i></small></span>`; };
-window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(indsheet.js)도 같은 줄 모양을 쓴다 (이 파일은 함수로 감싸여 있어 밖에서 보이게)
+// 세트 결과 순서 '패승' → 승 / 패 글자 색 (기록지 흐름 줄 이름)
+const seqH = q => q.replace(/[승패]/g, c => `<span class="${c === '승' ? 'sqw' : 'sql'}">${c}</span>`);
+window.frRow = frRow; window.seqH = seqH;   // 개인 기록지(indsheet.js)도 같은 줄 모양을 쓴다 (이 파일은 함수로 감싸여 있어 밖에서 보이게)
   // 전체 콤비 표 (시즌 · 통산). 순위 대상: 시즌 3세트 · 통산 5세트 이상 콤비 (본인 콤비는 모자라도 넣어 순위를 보여 준다)
   const comboKey = ns => ns.slice().sort().join('|');
   function sheetComboTable(lg) {
@@ -2200,7 +2202,7 @@ window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(in
       if (!D || !window.Predict || !kind) return null;
       const M = Predict.teamModel(D, canonName); return Predict.setProb(M.dist(n0, kind), M.dist(n1, kind), ga, gb, leftNext);
     },
-    sheetTeamFlow: (code, lg, a, b, prev, btn, open) => {
+    sheetTeamFlow: (code, lg, a, b, seq, btn, open) => {
       if (!D || !code) return '';
       const M = teamFlowOf(code, lg), codes = sheetTipCache.tcodes || (sheetTipCache.tcodes = [...new Set(D.games.flatMap(g => [g.t1, g.t2]))]);
       const rkOf = (m, kk) => { const pool = codes.map(c => { const X = c === code ? M : teamFlowOf(c, lg); return { c, s: X.s[m][kk], a: X.a[m][kk] }; }), me = pool.find(x => x.c === code); return ['s', 'a'].map(sc => rankIn(pool, me, sc, rt2, cn)); };
@@ -2210,9 +2212,9 @@ window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(in
         const rows = Object.entries(P).sort((a, b) => b[1].n - a[1].n || b[1].w / b[1].n - a[1].w / a[1].n);
         return rows.length ? `<div class="rkh0">${no}세트 출전 선수 <small>${esc(teamShort[code] || code)} · 이번 시즌</small></div><table class="rdtip">${rows.map(([k, x]) => `<tr><td>${esc(x.nm)}</td><td><b>${pct(x.w / x.n)}</b></td><td>${x.w}승 ${x.n - x.w}패</td></tr>`).join('')}</table>` : ''; };
       const line = (l, m, kk, cls = '', lab = '') => { const s = M.s[m][kk], A = M.a[m][kk], rk = rkOf(m, kk), tip = m === 'no' ? noTip() : ''; return `<span class="tfl${cls}"${tip ? ` data-stip="${esc(tip)}"` : ''}>${lab || `<small>${l}</small>`}<b>${r(s)}${rk[0] ? `<small class="rkn">(${rk[0]})</small>` : ''}</b><small>${d(s)}</small><em>(${r(A)}${rk[1] ? `<small class="rkn">(${rk[1]})</small>` : ''}</em><small>${d(A)}<em class="frp">)</em></small></span>`; };
-      const head = n && btn ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${no}세트 승률 <span class="dni"></span></small>` : '';
-      // 펼친 줄 = 그 길로 지금 스코어가 된 경기의 경기 승률 (승-패, 무승부가 있으면 승-무-패)
-      const br = n ? sheetBranch(a, b, prev ? prev[0] : null, prev ? prev[1] : null).map(([tk, l, now]) => line(l, 'tr', tk, ' tfx' + (now ? ' now' : ''))).join('') : '';
+      const head = seq.length > 1 && btn ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${no}세트 승률 <span class="dni"></span></small>` : '';
+      // 펼친 줄 = 지금까지 세트 결과 순서('패승')를 지난 경기의 경기 승률 (승-패, 무승부가 있으면 승-무-패). 2세트가 끝난 뒤부터
+      const br = seq.length > 1 ? line(seqH(seq), 'gsq', seq, ' tfx now') : '';
       // 지금 세트 스코어 a:b 에서의 경기 승률 (접어도 보이는 줄). 경기 시작 전 0:0 은 빼고
       const gs = n ? line(`${a}:${b} 게임 승률`, 'gs', `${a}:${b}`) : '';
       return `<div class="tflw${open ? ' open' : ''}">` + gs + line(`${no}세트 승률`, 'no', no, '', head) + br + '</div>';
@@ -2486,7 +2488,8 @@ window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(in
       return xtHead(`뱅킹 주자 ${esc(n)}`) + xtChip(`뱅킹 승률 ${esc(n)}`, me.s, me.a, true, rk(me, 'p|')) + (ns.length === 2 ? xtChip('뱅킹 승률 콤비', co.s, co.a, true, rk(co, 'c|')) : '');
     },
     // ② 선공 입력 뒤: 초구 성공률은 치는 선수 개인, 나머지는 단식이면 그 선수 · 복식이면 그 콤비. ny = 지금 가장 새로운 정보인지
-    sheetFirstInfo: (names, shooter, lg, ny, sc, p = 0) => {
+    //  seq = 지금까지 팀 세트 결과 순서: 'a:b 초구 성공률' 아래 '패승' 줄 (3세트부터, 이름 회색 · 들여쓰기)
+    sheetFirstInfo: (names, shooter, lg, ny, sc, p = 0, seq = '') => {
       if (!D || !names || !names.length || !shooter) return '';
       const solo = names.length < 2, n = canonName(shooter), EN = sheetEnt(lg), ns = names.map(canonName);
       const me = EN.E[(solo ? '1|' : '2|') + comboKey(ns)], pool = kindPool(EN.E, me, solo), S2 = me ? me.s : entBlank(), A = me ? me.a : entBlank();
@@ -2499,8 +2502,11 @@ window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(in
       const scS = sc && fm ? fm.st.s[sc] : null, scA = sc && fm ? fm.st.a[sc] : null;
       const at = x => ({ s: x.st.s[sc], a: x.st.a[sc] }), spool = fpool.map(at), sme = fm ? at(fm) : null; if (sme) spool[fpool.indexOf(fm)] = sme;
       const scChip = sc ? xtChip(`${sc} 초구 성공률`, scS, scA, ny, ['s', 'a'].map(k2 => rankIn(spool, sme, k2, rt2, cn)), `${(solo ? '1|' : '2|') + n}~Fst:${sc}~${lg}~${sc} 초구 성공률`) : '';
-      // 묶음 두 개: 초구(성공률 · 스코어별 · 에버 · 다득률), 초구 뒤 승률(초성 · 초실 · 초3+ · 선공 세트)
-      return grp([xtChip('초구 성공률', fm && fm.s, fm && fm.a, ny, ['s', 'a'].map(sc => rankIn(fpool, fm, sc, rt2, cn)), `${(solo ? '1|' : '2|') + n}~F~${lg}~초구 성공률`), scChip,
+      const pk = seq && seq.length > 1 ? seq : '';
+      const atp = x => ({ s: x.sq.s[pk], a: x.sq.a[pk] }), ppool = fpool.map(atp), pme = fm ? atp(fm) : null; if (pme) ppool[fpool.indexOf(fm)] = pme;
+      const pathChip = pk ? xtChip(seqH(seq), pme && pme.s, pme && pme.a, ny, ['s', 'a'].map(k2 => rankIn(ppool, pme, k2, rt2, cn))).replace('<span class="ti xt', '<span class="ti xt fbp') : '';
+      // 묶음 두 개: 초구(성공률 · 스코어별 · 흐름별 · 에버 · 다득률), 초구 뒤 승률(초성 · 초실 · 초3+ · 선공 세트)
+      return grp([xtChip('초구 성공률', fm && fm.s, fm && fm.a, ny, ['s', 'a'].map(sc => rankIn(fpool, fm, sc, rt2, cn)), `${(solo ? '1|' : '2|') + n}~F~${lg}~초구 성공률`), scChip, pathChip,
         `<span class="ti xt${ny ? ' ny' : ''}" data-xtt="${esc(`${ek}~avg~${lg}~초구 에버`)}"><small>초구 에버</small><b>${xtVal(avgV(S2), avgV(A), avgR)}</b><i>${S2.fbN} / ${A.fbN}회</i></span>`,
         xtChip('초구 다득률', multi(S2), multi(A), ny, rk(x => rt2(multi(x)), fbCnt, FB_MIN), `${ek}~multi~${lg}~초구 다득률`)], 'gfb', 'gfb' + p)
         + grp([c('초성 승률', 'fbOk'), c('초실 승률', 'fbMiss'), c('초3+ 승률', 'fb3'), c('선공 세트 승률', 'fst')], 'gwr', 'gwr' + p);
@@ -2543,13 +2549,14 @@ window.sheetBranch = sheetBranch; window.frRow = frRow;   // 개인 기록지(in
       const rk = ['s', 'a'].map(sc => rankIn(pool, me, sc, x => rt2(x.no[no]), x => cn(x.no[no])));
       return frRow(`${no}세트 승률`, me && me.s.no[no], me && me.a.no[no], rk, ny, btn ? `<small class="flb${open ? ' on' : ''}" data-flt="${btn}">${no}세트 승률 <span class="dni"></span></small>` : '', '', `${(solo ? '1|' : '2|') + comboKey(names.map(canonName))}~no:${no}~${lg}~${no}세트 승률`);
     },
-    sheetStateInfo: (names, lg, a, b, pa, pb, ny) => {
+    sheetStateInfo: (names, lg, a, b, seq, ny) => {
       if (!D || !names || !names.length) return '';
       const solo = names.length < 2, EN = sheetEnt(lg), me = EN.E[(solo ? '1|' : '2|') + comboKey(names.map(canonName))], pool = kindPool(EN.E, me, solo);
-      const line = (l, m, k, cls = '') => frRow(l, me && me.s[m][k], me && me.a[m][k], ['s', 'a'].map(sc => rankIn(pool, me, sc, x => rt2(x[m][k]), x => cn(x[m][k]))), ny, '', cls, `${(solo ? '1|' : '2|') + comboKey(names.map(canonName))}~${m}:${k}~${lg}~${l} → ${a}:${b} 세트 승률`);
+      const line = (l, m, k, cls = '', tt = `${l} → ${a}:${b} 세트 승률`) => frRow(l, me && me.s[m][k], me && me.a[m][k], ['s', 'a'].map(sc => rankIn(pool, me, sc, x => rt2(x[m][k]), x => cn(x[m][k]))), ny, '', cls, `${(solo ? '1|' : '2|') + comboKey(names.map(canonName))}~${m}:${k}~${lg}~${tt}`);
       // 'N세트 승률' 버튼 아래: 지금 스코어가 된 두 길(실제 길이 윗줄, 강조). 접으면 숨김 .frx
       // 펼친 줄 = 그 길로 지금 스코어가 된 뒤 이 선수(콤비)가 친 세트 승률 (tr)
-      return a + b ? sheetBranch(a, b, pa, pb).map(([tk, l, now]) => line(l, 'tr', tk, ' frx' + (now ? ' now' : ''))).join('') : '';
+      // N세트 승률(sheetSetNoInfo, 버튼) 아래: 지금 스코어로 시작한 세트 승률 (st), 그 아래 접는 두 길
+      return a + b ? line(`${a}:${b} 세트 승률`, 'st', `${a}:${b}`, '', `${a}:${b} 세트 승률`) + (seq.length > 1 ? line(seqH(seq), 'sq', seq, ' frx now', `${seq} 뒤 세트 승률`) : '') : '';
     },
     // 상단 일정에서 경기를 누르면: 왼쪽 · 오른쪽 칸에 두 팀 (그 시즌)
     selectPair: (a, b, lg) => { if (!D) return; panes.a.league = lg; panes.a.code = a; panes.b.league = lg; panes.b.code = b; panes.a.render(); panes.b.render(); saveTeamHash(); renderTeamH2H(); },
