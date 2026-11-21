@@ -1,11 +1,11 @@
-// 캐스터용 경기 기록지 (주소에 ?caster 가 있을 때만: 바탕화면 '프바 캐스터' 앱)
+// 경기 기록지 (2026-11-21부터 프바 앱 · 캐스터 앱 · 휴대폰 사이트 모두. 방송 요약 새 창(?bcwin)만 뺀다)
 //  엑셀 기록지와 같은 방식: 이닝마다 공격을 하나씩 적고, 이닝의 마지막 공격 = 실패(공수 교대). 뱅크샷(1·2·3)은 성공하면 2점
 //  기호: 어떤 글자든 기술로 받는다 (버튼 입력은 ㄷ ㅏ ㅕ ㅂ ㅐ ㅎ ㅅ ㄸ + ㅋ ㄹ ㅁ) · 뱅크샷 1 2 3 · 파울 T O W H (넣으면 이닝 끝)
 //  세트는 목표 점수에 닿은 뒤 '이닝 끝'을 눌러야 끝난다. 팀리그는 세트 점수와 선수를 홈피 출전 오더에서 받는다
 //  키보드: 한글 자판 그대로 글자가 들어간다 (받침 조합 없이 한 글자씩), 1·2·3 = 뱅크샷, Shift+T·O·W·H = 파울,
 //          Enter = 이닝 끝(마지막 공격 실패), Backspace = 지우기, Esc = 최소화
 (function () {
-  const CASTER = new URLSearchParams(location.search).has('caster');
+  const CASTER = !new URLSearchParams(location.search).has('bcwin');
   window.Sheet = { on: CASTER, btn: () => '' };
   if (!CASTER) return;
   const HAS_NATIVE = !!(window.webkit && webkit.messageHandlers && webkit.messageHandlers.pba);

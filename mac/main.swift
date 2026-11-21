@@ -131,13 +131,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, 
         view.addItem(withTitle: "작게", action: #selector(zoomOut), keyEquivalent: "-")
         view.addItem(withTitle: "원래 크기", action: #selector(zoomReset), keyEquivalent: "0")
         view.addItem(.separator())
-        // 캐스터 앱: ⌘F = 캡쳐 폴더 열기, 전체 화면은 ⌃⌘F 로
-        let caster = startPath.contains("caster")
+        // ⌘F = 캡쳐 폴더 열기, 전체 화면은 ⌃⌘F 로 (프바 앱 · 캐스터 앱 모두)
         let fs = view.addItem(withTitle: "전체 화면", action: #selector(NSWindow.toggleFullScreen(_:)), keyEquivalent: "f")
-        if caster {
-            fs.keyEquivalentModifierMask = [.command, .control]
-            view.addItem(withTitle: "캡쳐 폴더 열기", action: #selector(openCaptures), keyEquivalent: "f")
-        }
+        fs.keyEquivalentModifierMask = [.command, .control]
+        view.addItem(withTitle: "캡쳐 폴더 열기", action: #selector(openCaptures), keyEquivalent: "f")
         view.addItem(withTitle: "기록지 창 항상 위 켜기·끄기", action: #selector(toggleSheetTop), keyEquivalent: "")
         viewItem.submenu = view
         let winItem = NSMenuItem(); main.addItem(winItem)

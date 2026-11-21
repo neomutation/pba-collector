@@ -1,10 +1,10 @@
-// 캐스터 앱 영역 캡쳐 (맥 앱에서만): 찍은 그림은 클립보드로 → 다른 앱에 ⌘V
+// 앱 영역 캡쳐 (맥 앱에서만 · 프바 앱 · 캐스터 앱 모두): 찍은 그림은 클립보드로 → 다른 앱에 ⌘V
 //   ⌘C  커서가 있는 칩·항목 (바로 다시 누르면 한 단계 위 항목)   글자를 골라 놓았거나 입력칸에서는 원래 복사
 //   ⌘1 / ⌘2  지금 보이는 1번 / 2번 선수(팀) 영역 전체
 //   ⌘A  지금 앱 화면 전체   입력칸에서는 원래 전체 선택
 //   찍은 그림은 /Users/당구/캡쳐 폴더에도 PNG 로 저장 (맥 앱이 저장)
 (() => {
-  if (!new URLSearchParams(location.search).has('caster')) return;
+  if (new URLSearchParams(location.search).has('bcwin')) return;
   if (!(window.webkit && webkit.messageHandlers && webkit.messageHandlers.pba)) return;
   let mx = -1, my = -1, last = null;   // last: 바로 전 ⌘C 로 찍은 항목 (다시 누르면 그 위 항목)
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, true);
