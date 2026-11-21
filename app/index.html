@@ -1008,11 +1008,24 @@ const STATIC = !!window.PBA_STATIC;
 const api = p => STATIC ? staticApi(p) : fetch(p).then(r => r.json());
 const sjson = u => fetch(u, { cache: u.includes('meta') ? 'no-store' : 'default' }).then(r => { if (!r.ok) throw new Error(u); return r.json(); });
 let staticPlayers = null;
+// 이름 검색: 글자 또는 초성이 이어서 맞으면 찾음 (ㅈㄱㅎ, 조ㄱㅎ, 건휘 모두) — board.js · server.rb 와 같은 규칙
+const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+const choOf = c => { const n = c.charCodeAt(0) - 0xAC00; return n >= 0 && n < 11172 ? CHO[Math.floor(n / 588)] : c; };
+function nameHit(name, q) {
+  const n = String(name || '').replace(/\s/g, '').toLowerCase(), s = String(q || '').replace(/\s/g, '').toLowerCase();
+  if (!s) return true;
+  for (let i = 0; i + s.length <= n.length; i++) {
+    let ok = true;
+    for (let j = 0; j < s.length && ok; j++) ok = CHO.includes(s[j]) ? choOf(n[i + j]) === s[j] : n[i + j] === s[j];
+    if (ok) return true;
+  }
+  return false;
+}
 const stamp = () => (window.__metaBuilt ? '?v=' + encodeURIComponent(window.__metaBuilt) : '');   // 새 자료가 올라오면 옛 파일을 다시 쓰지 않게
 function staticApi(p) {
   const u = new URL(p, location.href), q = u.searchParams;
   switch (u.pathname.replace(/^.*\/api\//, '/api/')) {
-    case '/api/search': { const s = (q.get('q') || '').replace(/\s/g, ''); return (staticPlayers || (staticPlayers = sjson('data/players.json' + stamp()))).then(l => l.filter(x => x.name.replace(/\s/g, '').includes(s)).slice(0, 20)); }
+    case '/api/search': { const s = (q.get('q') || '').trim(); return (staticPlayers || (staticPlayers = sjson('data/players.json' + stamp()))).then(l => s ? l.filter(x => nameHit(x.name, s)).slice(0, 20) : []); }
     case '/api/player': return sjson(`data/player/${q.get('id')}.json${stamp()}`);
     case '/api/league': return sjson(`data/league_${q.get('type')}.json${stamp()}`);
     case '/api/board': return sjson(`data/board_${q.get('type')}.json${stamp()}`);
@@ -2313,7 +2326,7 @@ const panes = {}; window.indivPanes = panes;   // 기록지 별도 창에서 단
 class Pane {
   constructor(el, key) {
     this.el = el; this.key = key; this.data = null;
-    el.innerHTML = `<div class="search"><input placeholder="선수 이름 검색 (예: 강동궁)" autocomplete="off"><div class="suggest" hidden></div></div><div class="content"><div class="empty">선수를 검색하세요.<br><small>경기 목록에서 상대 이름을 누르면 반대쪽 화면에 열립니다.</small></div></div>`;
+    el.innerHTML = `<div class="search"><input placeholder="선수 이름 검색 (예: 강동궁 · ㄱㄷㄱ)" autocomplete="off"><div class="suggest" hidden></div></div><div class="content"><div class="empty">선수를 검색하세요.<br><small>경기 목록에서 상대 이름을 누르면 반대쪽 화면에 열립니다.</small></div></div>`;
     this.input = $('input', el); this.sug = $('.suggest', el); this.content = $('.content', el);
     let timer, items = [], on = -1, seq = 0, pendingEnter = false;
     const show = () => { this.sug.hidden = !items.length; this.sug.innerHTML = items.map((p, i) => `<div data-i="${i}" class="${i === on ? 'on' : ''}"><b>${esc(p.name)}</b><small>${esc(p.type)} · ${esc(p.birth || '')} · ${p.n}경기${p.last ? ' · 최근 ' + seasonLabel(p.last) : ''}</small></div>`).join(''); };

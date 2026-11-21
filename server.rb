@@ -154,13 +154,21 @@ end
 srv = WEBrick::HTTPServer.new(Port: PORT, BindAddress: '127.0.0.1', AccessLog: [], Logger: WEBrick::Log.new($stderr, WEBrick::Log::WARN))
 json = ->(res, obj) { res['Content-Type'] = 'application/json; charset=utf-8'; res.body = JSON.generate(obj) }
 
+# 이름 검색: 글자 또는 초성이 이어서 맞으면 찾음 (ㅈㄱㅎ, 조ㄱㅎ, 건휘 모두) — 화면(index.html · board.js)과 같은 규칙
+CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'.chars
+cho_of = ->(c) { n = c.ord - 0xAC00; n >= 0 && n < 11172 ? CHO[n / 588] : c }
+name_hit = lambda do |name, q|
+  n = name.to_s.gsub(/\s/, '').downcase.chars; s = q.gsub(/\s/, '').downcase.chars
+  (0..n.length - s.length).any? { |i| s.each_with_index.all? { |c, j| CHO.include?(c) ? cho_of.(n[i + j]) == c : n[i + j] == c } }
+end
 srv.mount_proc('/api/search') do |req, res|
   q = req.query['q'].to_s.strip.force_encoding('utf-8')
-  list = q.empty? ? [] : rows(<<~SQL, "%#{q.gsub(/\s/, '')}%")
-    SELECT p.id, p.name, p.type, p.birth, p.photo, COUNT(g.pst) AS n, MAX(g.season) AS last
-    FROM players p LEFT JOIN games g ON g.player = p.id
-    WHERE REPLACE(p.name, ' ', '') LIKE ? GROUP BY p.id ORDER BY n DESC LIMIT 20
-  SQL
+  sel = 'SELECT p.id, p.name, p.type, p.birth, p.photo, COUNT(g.pst) AS n, MAX(g.season) AS last FROM players p LEFT JOIN games g ON g.player = p.id'
+  list = if q.empty? then []
+         elsif q.chars.any? { |c| CHO.include?(c) }   # 초성이 섞이면 모든 선수에서 골라낸다
+           rows("#{sel} GROUP BY p.id ORDER BY n DESC").select { |p| name_hit.(p['name'], q) }.first(20)
+         else rows("#{sel} WHERE REPLACE(p.name, ' ', '') LIKE ? GROUP BY p.id ORDER BY n DESC LIMIT 20", "%#{q.gsub(/\s/, '')}%")
+         end
   json.(res, list)
 end
 srv.mount_proc('/api/player') { |req, res| json.(res, player(req.query['id'].to_s.force_encoding('utf-8'))) }
