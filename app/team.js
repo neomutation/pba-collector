@@ -417,7 +417,7 @@
         // click: 누르면 팝업 (베스트·워스트 에버, 초구) — 그 열의 시즌(통산은 all)
         const ck = click && v !== '' && v != null ? click(c.o, c) : null;
         const ca = ck ? ` data-tkpi="${ck}" data-tlg="${c.league || 'all'}" data-label="${esc(`${c.label} ${label}`)}" data-val="${esc(String(v).replace(/<[^>]*>/g, ''))}"` : '';
-        return `<td class="${cls}${ck ? ' gpop' : ''}" style="${style}"${ca}${opt.tdAttr && v !== '' && v != null ? opt.tdAttr(label, c) : ''}>${v ?? ''}${v !== '' && v != null && s ? `<span class="s">${s}</span>` : ''}${d}</td>`;
+        return `<td class="${cls}${ck ? ' gpop' : ''}" style="${style}"${ca}${opt.tdAttr && v !== '' && v != null ? opt.tdAttr(label, c) : ''}>${v ?? ''}${v !== '' && v != null && s ? `<span class="s">${s}</span>` : ''}${d}${opt.rank && num && v !== '' && v != null ? opt.rank(num, c) : ''}</td>`;
       }).join('') + '</tr>';
     });
     return h + '</tbody></table></div>';
@@ -1201,7 +1201,15 @@
         ['초구 성공률', o => pct(o.fbSuccess), o => `${o.fbN}회`, '', o => o.fbSuccess, pct],
         ['초구 성공 시 승률', ...wl(o => o.fbHitWL)], ['초구 실패 시 승률', ...wl(o => o.fbMissWL)],
       ];
-      return '<div class="bankt">' + grid(rows, this.seasonCols(code), this.sm('bank'), { league: true }) + '</div><div class="note">뱅킹 승률은 경기당 한 번, 1세트 기준입니다 (1세트 선공 = 뱅킹 승). 흰공 · 노란공 줄은 전체 세트의 선공 · 후공 기록이고, 홈피에 공 색 표시가 없어 선공을 흰공으로 봅니다.</div>';
+      // 칸 순위: 그 열(시즌 · 통산 정규리그) 팀끼리, 같으면 같은 순위 (시즌 요약 말풍선과 같은 기준)
+      const pool = new Map();
+      const rank = (num, c) => {
+        const me = num(c.o); if (me == null || isNaN(me)) return '';
+        if (!pool.has(c)) pool.set(c, teamRankStats(c.league || null));
+        const vals = pool.get(c).map(x => num(x.o)).filter(v => v != null && !isNaN(v));
+        return vals.length ? rankTag(1 + vals.filter(v => v > me).length, vals.length, '팀') : '';
+      };
+      return '<div class="bankt">' + grid(rows, this.seasonCols(code), this.sm('bank'), { league: true, rank }) + '</div><div class="note">뱅킹 승률은 경기당 한 번, 1세트 기준입니다 (1세트 선공 = 뱅킹 승). 흰공 · 노란공 줄은 전체 세트의 선공 · 후공 기록이고, 홈피에 공 색 표시가 없어 선공을 흰공으로 봅니다.</div>';
     }
     distTable(code) {
       const cols = this.seasonCols(code);
