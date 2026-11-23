@@ -4337,7 +4337,7 @@
     "tour": 273,
     "round_code": "128",
     "round_name": "128강",
-    "list_kind": "128강 대진 결과 (세트 경기)"
+    "list_kind": ""
   },
   {
     "pst": 99502,
@@ -11774,6 +11774,183 @@
             "체네트"
           ],
           "first": "이희진",
+          "innings": [
+            {
+              "n": 1,
+              "a": [
+                0,
+                0,
+                0
+              ],
+              "b": [
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "tour": 273,
+    "round_code": "128",
+    "round_name": "128강",
+    "list_kind": "128강 대진 결과 (세트 경기)"
+  },
+  {
+    "pst": 99521,
+    "round": "128강",
+    "no": "No 23",
+    "date": "2026-11-23",
+    "kind": "Set",
+    "players": [
+      {
+        "name": "정시용",
+        "win": true,
+        "code": "M0017644",
+        "score": 3,
+        "tiebreak_win": false,
+        "avg": 0.0,
+        "hr": 0
+      },
+      {
+        "name": "김영섭",
+        "win": false,
+        "code": "M0017128",
+        "score": 0,
+        "tiebreak_win": false,
+        "avg": 0.0,
+        "hr": 0
+      }
+    ],
+    "sets": [
+      {
+        "label": "3 Set",
+        "date": "11-23",
+        "gp": 15,
+        "gm": 188352,
+        "players": [
+          {
+            "name": "정시용",
+            "win": true,
+            "pts": 0,
+            "inn": 0,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "white"
+          },
+          {
+            "name": "김영섭",
+            "win": false,
+            "pts": 0,
+            "inn": 0,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "yellow"
+          }
+        ],
+        "record": {
+          "names": [
+            "정시용",
+            "김영섭"
+          ],
+          "first": "정시용",
+          "innings": [
+            {
+              "n": 1,
+              "a": [
+                0,
+                0,
+                0
+              ],
+              "b": [
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "2 Set",
+        "date": "11-23",
+        "gp": 15,
+        "gm": 188351,
+        "players": [
+          {
+            "name": "정시용",
+            "win": true,
+            "pts": 0,
+            "inn": 0,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "white"
+          },
+          {
+            "name": "김영섭",
+            "win": false,
+            "pts": 0,
+            "inn": 1,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "yellow"
+          }
+        ],
+        "record": {
+          "names": [
+            "정시용",
+            "김영섭"
+          ],
+          "first": "김영섭",
+          "innings": [
+            {
+              "n": 1,
+              "a": [
+                null,
+                null,
+                null
+              ],
+              "b": [
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "1 Set",
+        "date": "11-23",
+        "gp": 15,
+        "gm": 188350,
+        "players": [
+          {
+            "name": "정시용",
+            "win": true,
+            "pts": 0,
+            "inn": 0,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "white"
+          },
+          {
+            "name": "김영섭",
+            "win": false,
+            "pts": 0,
+            "inn": 0,
+            "avg": 0.0,
+            "hr": 0,
+            "ball": "yellow"
+          }
+        ],
+        "record": {
+          "names": [
+            "정시용",
+            "김영섭"
+          ],
+          "first": "정시용",
           "innings": [
             {
               "n": 1,

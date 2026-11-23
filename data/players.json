@@ -8885,7 +8885,7 @@
     "name": "원은정",
     "nation": "대한민국",
     "birth": "1979-10-04",
-    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017282.jpg#1",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017282_S_20261123203533.jpg#1",
     "stats": {
       "matches": 76,
       "innings": 2050,
@@ -13289,7 +13289,7 @@
     "name": "최보비",
     "nation": "대한민국",
     "birth": "1977-11-10",
-    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017180.jpg#1",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017180_S_20261123203732.jpg#1",
     "stats": {
       "matches": 111,
       "innings": 2969,
@@ -19985,7 +19985,7 @@
     "name": "박가은",
     "nation": "대한민국",
     "birth": "2001-06-14",
-    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022002.jpg#1",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022002_S_2026112320340.jpg#1",
     "stats": {
       "matches": 53,
       "innings": 1441,
@@ -21741,7 +21741,7 @@
     "name": "김정혜",
     "nation": "대한민국",
     "birth": "1993-05-20",
-    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022028.jpg#1",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022028_S_20261123203035.jpg#1",
     "stats": {
       "matches": 49,
       "innings": 1346,
@@ -65323,7 +65323,7 @@
     "name": "최지영2",
     "nation": "대한민국",
     "birth": "1997-09-09",
-    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023198_S_20250912160628.jpg#1",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023198_S_20261123203751.jpg#1",
     "stats": {
       "matches": 23,
       "innings": 579,
@@ -71559,6 +71559,1616 @@
     "points": 4500,
     "points_rank": 142,
     "code": "M0017311",
+    "type": "LPBA"
+  },
+  "M0025071": {
+    "name": "김미경",
+    "nation": "대한민국",
+    "birth": "1977-10-19",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025071_S_20261123202813.jpg#1",
+    "stats": {
+      "matches": 6,
+      "innings": 183,
+      "avg": 0.246,
+      "best_avg": 0.364,
+      "hr": 3,
+      "p1": 27,
+      "p2": 9,
+      "bank": 40.0,
+      "long": 0.0,
+      "success": 16.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 500,
+    "points_rank": 231,
+    "code": "M0025071",
+    "type": "LPBA"
+  },
+  "M0022037": {
+    "name": "진유경",
+    "nation": "대한민국",
+    "birth": "1979-01-07",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022037_S_20261123203713.jpg#1",
+    "stats": {
+      "matches": 7,
+      "innings": 209,
+      "avg": 0.268,
+      "best_avg": 0.419,
+      "hr": 4,
+      "p1": 32,
+      "p2": 12,
+      "bank": 42.9,
+      "long": 0.0,
+      "success": 17.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 500,
+    "points_rank": 231,
+    "code": "M0022037",
+    "type": "LPBA"
+  },
+  "M0025064": {
+    "name": "이예슬",
+    "nation": "대한민국",
+    "birth": "1997-04-02",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025064_S_2026112320363.jpg#1",
+    "stats": {
+      "matches": 6,
+      "innings": 185,
+      "avg": 0.335,
+      "best_avg": 0.56,
+      "hr": 4,
+      "p1": 46,
+      "p2": 8,
+      "bank": 25.8,
+      "long": 0.0,
+      "success": 22.6
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 500,
+    "points_rank": 231,
+    "code": "M0025064",
+    "type": "LPBA"
+  },
+  "M0025058": {
+    "name": "김하울",
+    "nation": "대한민국",
+    "birth": "2009-10-18",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025058_S_2026112320314.jpg#1",
+    "stats": {
+      "matches": 6,
+      "innings": 181,
+      "avg": 0.403,
+      "best_avg": 0.692,
+      "hr": 3,
+      "p1": 43,
+      "p2": 15,
+      "bank": 41.1,
+      "long": 0.0,
+      "success": 24.3
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 500,
+    "points_rank": 231,
+    "code": "M0025058",
+    "type": "LPBA"
+  },
+  "M0023184": {
+    "name": "강민정",
+    "nation": "대한민국",
+    "birth": "1983-08-17",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023184_S_2026112320279.jpg#1",
+    "stats": {
+      "matches": 21,
+      "innings": 611,
+      "avg": 0.574,
+      "best_avg": 1.316,
+      "hr": 7,
+      "p1": 229,
+      "p2": 61,
+      "bank": 34.8,
+      "long": 1.2,
+      "success": 32.2
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하이원리조트 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "NH농협카드 LPBA 챔피언십 24-25",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024 한가위",
+        "result": "97위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2024-25",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024",
+        "result": "65위"
+      },
+      {
+        "name": "웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "17위"
+      }
+    ],
+    "prize": 700000,
+    "prize_rank": 164,
+    "points": 2100,
+    "points_rank": 183,
+    "code": "M0023184",
+    "type": "LPBA"
+  },
+  "M0023202": {
+    "name": "김예나",
+    "nation": "대한민국",
+    "birth": "2004-05-21",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023202_S_20261123202924.jpg#1",
+    "stats": {
+      "matches": 8,
+      "innings": 240,
+      "avg": 0.454,
+      "best_avg": 0.68,
+      "hr": 4,
+      "p1": 81,
+      "p2": 14,
+      "bank": 25.7,
+      "long": 0.0,
+      "success": 28.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 600,
+    "points_rank": 224,
+    "code": "M0023202",
+    "type": "LPBA"
+  },
+  "M0025060": {
+    "name": "배지혜",
+    "nation": "대한민국",
+    "birth": "1986-08-28",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025060_S_20261123203430.jpg#1",
+    "stats": {
+      "matches": 7,
+      "innings": 208,
+      "avg": 0.428,
+      "best_avg": 0.607,
+      "hr": 5,
+      "p1": 61,
+      "p2": 14,
+      "bank": 31.5,
+      "long": 0.5,
+      "success": 26.5
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 600,
+    "points_rank": 224,
+    "code": "M0025060",
+    "type": "LPBA"
+  },
+  "M0025057": {
+    "name": "김은지",
+    "nation": "대한민국",
+    "birth": "2005-05-14",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025057_S_20261123202959.jpg#1",
+    "stats": {
+      "matches": 8,
+      "innings": 224,
+      "avg": 0.554,
+      "best_avg": 0.87,
+      "hr": 4,
+      "p1": 72,
+      "p2": 26,
+      "bank": 41.9,
+      "long": 0.0,
+      "success": 30.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 600,
+    "points_rank": 224,
+    "code": "M0025057",
+    "type": "LPBA"
+  },
+  "M0024076": {
+    "name": "김별",
+    "nation": "대한민국",
+    "birth": "2007-03-11",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0024076_S_2026112320299.jpg#1",
+    "stats": {
+      "matches": 21,
+      "innings": 552,
+      "avg": 0.556,
+      "best_avg": 1.087,
+      "hr": 8,
+      "p1": 225,
+      "p2": 41,
+      "bank": 26.7,
+      "long": 1.1,
+      "success": 32.5
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2025 한가위",
+        "result": "96위"
+      },
+      {
+        "name": "SY 베리테옴므 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 2000,
+    "points_rank": 186,
+    "code": "M0024076",
+    "type": "LPBA"
+  },
+  "M0023197": {
+    "name": "김미희",
+    "nation": "대한민국",
+    "birth": "1978-05-08",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023197_S_20261123202835.jpg#1",
+    "stats": {
+      "matches": 14,
+      "innings": 408,
+      "avg": 0.4,
+      "best_avg": 0.72,
+      "hr": 5,
+      "p1": 105,
+      "p2": 29,
+      "bank": 35.6,
+      "long": 0.3,
+      "success": 24.7
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "NH농협카드 LPBA 챔피언십 24-25",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십 2024",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024 한가위",
+        "result": "97위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2024-25",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 1300,
+    "points_rank": 202,
+    "code": "M0023197",
+    "type": "LPBA"
+  },
+  "M0025065": {
+    "name": "정수아",
+    "nation": "대한민국",
+    "birth": "2009-05-27",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025065_S_20261123203632.jpg#1",
+    "stats": {
+      "matches": 8,
+      "innings": 214,
+      "avg": 0.486,
+      "best_avg": 0.778,
+      "hr": 4,
+      "p1": 72,
+      "p2": 16,
+      "bank": 30.8,
+      "long": 0.0,
+      "success": 29.1
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 700,
+    "points_rank": 219,
+    "code": "M0025065",
+    "type": "LPBA"
+  },
+  "M0025061": {
+    "name": "신민선",
+    "nation": "대한민국",
+    "birth": "1991-11-26",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025061_S_2026112320352.jpg#1",
+    "stats": {
+      "matches": 9,
+      "innings": 219,
+      "avg": 0.616,
+      "best_avg": 1.389,
+      "hr": 6,
+      "p1": 101,
+      "p2": 17,
+      "bank": 25.2,
+      "long": 1.8,
+      "success": 35
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "65위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 700,
+    "points_rank": 219,
+    "code": "M0025061",
+    "type": "LPBA"
+  },
+  "M0025069": {
+    "name": "한지혜",
+    "nation": "대한민국",
+    "birth": "2008-05-24",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0025069_S_2026112320388.jpg#1",
+    "stats": {
+      "matches": 10,
+      "innings": 249,
+      "avg": 0.602,
+      "best_avg": 0.962,
+      "hr": 4,
+      "p1": 98,
+      "p2": 26,
+      "bank": 34.7,
+      "long": 0.0,
+      "success": 33.2
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "65위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 900,
+    "points_rank": 212,
+    "code": "M0025069",
+    "type": "LPBA"
+  },
+  "M0022014": {
+    "name": "장성아",
+    "nation": "대한민국",
+    "birth": "1981-03-25",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022014_S_20261123203616.jpg#1",
+    "stats": {
+      "matches": 14,
+      "innings": 400,
+      "avg": 0.373,
+      "best_avg": 0.75,
+      "hr": 5,
+      "p1": 97,
+      "p2": 26,
+      "bank": 34.9,
+      "long": 0.3,
+      "success": 23.5
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 1200,
+    "points_rank": 207,
+    "code": "M0022014",
+    "type": "LPBA"
+  },
+  "M0022033": {
+    "name": "이경연",
+    "nation": "대한민국",
+    "birth": "1990-06-16",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022033_S_20261123203549.jpg#1",
+    "stats": {
+      "matches": 29,
+      "innings": 810,
+      "avg": 0.34,
+      "best_avg": 0.731,
+      "hr": 5,
+      "p1": 193,
+      "p2": 41,
+      "bank": 29.8,
+      "long": 0.1,
+      "success": 22.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2025 한가위",
+        "result": "96위"
+      },
+      {
+        "name": "SY 베리테옴므 LPBA 챔피언십",
+        "result": "141위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024 한가위",
+        "result": "97위"
+      },
+      {
+        "name": "2024 LPBA 에스와이 바자르 하노이 오픈",
+        "result": "111위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2024-25",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하이원리조트 LPBA 챔피언십 2023",
+        "result": "97위"
+      },
+      {
+        "name": "NH농협카드 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "에스와이 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "실크로드 안산 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "경주 블루원리조트 LPBA 챔피언십",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 2600,
+    "points_rank": 177,
+    "code": "M0022033",
+    "type": "LPBA"
+  },
+  "M0024070": {
+    "name": "이재현",
+    "nation": "대한민국",
+    "birth": "2000-01-12",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0024070_S_2026112320466.jpg#1",
+    "stats": {
+      "matches": 21,
+      "innings": 591,
+      "avg": 0.511,
+      "best_avg": 0.962,
+      "hr": 5,
+      "p1": 224,
+      "p2": 39,
+      "bank": 25.8,
+      "long": 0.5,
+      "success": 30.8
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2025 한가위",
+        "result": "96위"
+      },
+      {
+        "name": "SY 베리테옴므 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "65위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 2000,
+    "points_rank": 186,
+    "code": "M0024070",
+    "type": "LPBA"
+  },
+  "M0020071": {
+    "name": "정혜빈",
+    "nation": "대한민국",
+    "birth": "1996-10-04",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020071_S_2026112320371.jpg#1",
+    "stats": {
+      "matches": 15,
+      "innings": 355,
+      "avg": 0.521,
+      "best_avg": 0.875,
+      "hr": 9,
+      "p1": 127,
+      "p2": 29,
+      "bank": 31.4,
+      "long": 1.1,
+      "success": 30.5
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "65위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "33위"
+      },
+      {
+        "name": "[4차]휴온스 LPBA 챔피언십",
+        "result": "138위"
+      },
+      {
+        "name": "[3차]TS샴푸·푸라닭 LPBA 챔피언십 2022",
+        "result": "65위"
+      },
+      {
+        "name": "[2차]하나카드 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[1차]경주 블루원리조트 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[2차]TS샴푸 LPBA 챔피언십 2021",
+        "result": "33위"
+      },
+      {
+        "name": "[1차]블루원리조트 LPBA 챔피언십",
+        "result": "65위"
+      }
+    ],
+    "prize": 750000,
+    "prize_rank": 159,
+    "points": 1600,
+    "points_rank": 198,
+    "code": "M0020071",
+    "type": "LPBA"
+  },
+  "M0020044": {
+    "name": "김유민",
+    "nation": "대한민국",
+    "birth": "1977-05-02",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020044_S_20261123202941.jpg#1",
+    "stats": {
+      "matches": 19,
+      "innings": 573,
+      "avg": 0.393,
+      "best_avg": 0.679,
+      "hr": 5,
+      "p1": 143,
+      "p2": 41,
+      "bank": 36.4,
+      "long": 0.2,
+      "success": 24.3
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "33위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "33위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      }
+    ],
+    "prize": 900000,
+    "prize_rank": 152,
+    "points": 1700,
+    "points_rank": 192,
+    "code": "M0020044",
+    "type": "LPBA"
+  },
+  "M0017185": {
+    "name": "김민정1",
+    "nation": "대한민국",
+    "birth": "1975-06-01",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017185_S_20261123202853.jpg#1",
+    "stats": {
+      "matches": 64,
+      "innings": 1835,
+      "avg": 0.396,
+      "best_avg": 0.765,
+      "hr": 6,
+      "p1": 530,
+      "p2": 98,
+      "bank": 27.0,
+      "long": 0.4,
+      "success": 25.5
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "65위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2025 한가위",
+        "result": "96위"
+      },
+      {
+        "name": "SY 베리테옴므 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하이원리조트 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "NH농협카드 LPBA 챔피언십 24-25",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024 한가위",
+        "result": "97위"
+      },
+      {
+        "name": "2024 LPBA 에스와이 바자르 하노이 오픈",
+        "result": "111위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2024-25",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2024",
+        "result": "97위"
+      },
+      {
+        "name": "웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하이원리조트 LPBA 챔피언십 2023",
+        "result": "33위"
+      },
+      {
+        "name": "NH농협카드 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "에스와이 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "실크로드 안산 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "경주 블루원리조트 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "[8차] 크라운해태 LPBA 챔피언십 2023",
+        "result": "65위"
+      },
+      {
+        "name": "[7차] 웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[6차] NH농협카드 LPBA 챔피언십 22-23",
+        "result": "65위"
+      },
+      {
+        "name": "[5차] 하이원리조트 LPBA 챔피언십 2022",
+        "result": "65위"
+      },
+      {
+        "name": "[4차]휴온스 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[3차]TS샴푸·푸라닭 LPBA 챔피언십 2022",
+        "result": "65위"
+      },
+      {
+        "name": "[2차]하나카드 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[1차]경주 블루원리조트 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[7차]웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "63위"
+      },
+      {
+        "name": "[6차]NH농협카드 LPBA 챔피언십 21-22",
+        "result": "65위"
+      },
+      {
+        "name": "[5차]에버콜라겐 LPBA 챔피언십 태백",
+        "result": "65위"
+      },
+      {
+        "name": "[4차]크라운해태 LPBA 챔피언십 21-22",
+        "result": "64위"
+      },
+      {
+        "name": "[3차]휴온스 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[2차]TS샴푸 LPBA 챔피언십 2021",
+        "result": "65위"
+      },
+      {
+        "name": "[1차]블루원리조트 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "[5차]웰컴저축은행 웰뱅 LPBA 챔피언십 2021",
+        "result": "65위"
+      },
+      {
+        "name": "[4차]크라운해태 LPBA 챔피언십 2021",
+        "result": "65위"
+      },
+      {
+        "name": "[3차]LPBA TOUR  제3차전 NH농협카드 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "[2차]TS샴푸 LPBA 챔피언십 2020",
+        "result": "65위"
+      },
+      {
+        "name": "[1차]LPBA TOUR 개막전 SK렌터카 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "SK렌터카 LPBA 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "메디힐 LPBA 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "TS 샴푸 LPBA 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "웰컴저축은행 웰뱅 LPBA 챔피언십",
+        "result": "33위"
+      },
+      {
+        "name": "신한금융투자 LPBA Championship",
+        "result": "33위"
+      },
+      {
+        "name": "LPBA Tour Panasonic Open",
+        "result": "17위"
+      }
+    ],
+    "prize": 150000,
+    "prize_rank": 187,
+    "points": 6400,
+    "points_rank": 120,
+    "code": "M0017185",
+    "type": "LPBA"
+  },
+  "M0024137": {
+    "name": "선주아",
+    "nation": "대한민국",
+    "birth": "1987-02-24",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0024137_S_20261123203447.jpg#1",
+    "stats": {
+      "matches": 17,
+      "innings": 497,
+      "avg": 0.386,
+      "best_avg": 0.69,
+      "hr": 5,
+      "p1": 128,
+      "p2": 32,
+      "bank": 33.3,
+      "long": 0.2,
+      "success": 24.4
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "129위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "65위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 1500,
+    "points_rank": 200,
+    "code": "M0024137",
+    "type": "LPBA"
+  },
+  "M0022010": {
+    "name": "정수현",
+    "nation": "대한민국",
+    "birth": "1998-03-04",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022010_S_20261123203645.jpg#1",
+    "stats": {
+      "matches": 19,
+      "innings": 527,
+      "avg": 0.476,
+      "best_avg": 0.938,
+      "hr": 5,
+      "p1": 197,
+      "p2": 27,
+      "bank": 21.5,
+      "long": 0.6,
+      "success": 29.8
+    },
+    "tours": [
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "진행중"
+      },
+      {
+        "name": "지금 잘 사는 방법 zgm NH농협카드 LPBA 챔피언십 26-27",
+        "result": "129위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "친환경 건축자재 에스와이 LPBA 챔피언십",
+        "result": "65위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2026",
+        "result": "65위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2026",
+        "result": "129위"
+      },
+      {
+        "name": "웰컴저축은행 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "하림 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "국민의 행복쉼터 하이원리조트 LPBA 챔피언십 2025",
+        "result": "97위"
+      },
+      {
+        "name": "휴온스 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "크라운해태 LPBA 챔피언십 2025 한가위",
+        "result": "96위"
+      },
+      {
+        "name": "SY 베리테옴므 LPBA 챔피언십",
+        "result": "97위"
+      },
+      {
+        "name": "올바른 생활카드 NH농협카드 LPBA 채리티 챔피언십 25-26",
+        "result": "96위"
+      },
+      {
+        "name": "하나카드 LPBA 챔피언십 2025-26",
+        "result": "97위"
+      },
+      {
+        "name": "우리금융캐피탈 LPBA 챔피언십 2025",
+        "result": "97위"
+      }
+    ],
+    "prize": 0,
+    "prize_rank": 194,
+    "points": 1700,
+    "points_rank": 192,
+    "code": "M0022010",
     "type": "LPBA"
   }
 }
