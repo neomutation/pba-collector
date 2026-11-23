@@ -1287,16 +1287,16 @@
     "birth": "1990-08-09",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017737_S_20260704211422.jpg#1",
     "stats": {
-      "matches": 171,
-      "innings": 5092,
-      "avg": 0.921,
+      "matches": 172,
+      "innings": 5125,
+      "avg": 0.923,
       "best_avg": 1.72,
       "hr": 10,
-      "p1": 3411,
-      "p2": 647,
-      "bank": 27.5,
+      "p1": 3437,
+      "p2": 654,
+      "bank": 27.6,
       "long": 2.5,
-      "success": 45.3
+      "success": 45.4
     },
     "tours": [
       {
@@ -2199,15 +2199,15 @@
     "birth": "1998-06-22",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020028.jpg#1",
     "stats": {
-      "matches": 103,
-      "innings": 2792,
+      "matches": 104,
+      "innings": 2840,
       "avg": 0.677,
       "best_avg": 1.389,
       "hr": 8,
-      "p1": 1415,
-      "p2": 240,
-      "bank": 25.3,
-      "long": 1.5,
+      "p1": 1436,
+      "p2": 246,
+      "bank": 25.5,
+      "long": 1.6,
       "success": 37.5
     },
     "tours": [
@@ -2663,16 +2663,16 @@
     "birth": "1983-11-08",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017163.jpg#1",
     "stats": {
-      "matches": 163,
-      "innings": 4623,
-      "avg": 0.748,
+      "matches": 164,
+      "innings": 4652,
+      "avg": 0.749,
       "best_avg": 1.471,
       "hr": 10,
-      "p1": 2416,
-      "p2": 523,
-      "bank": 30.2,
-      "long": 1.7,
-      "success": 39.2
+      "p1": 2440,
+      "p2": 524,
+      "bank": 30.1,
+      "long": 1.8,
+      "success": 39.3
     },
     "tours": [
       {
@@ -2941,15 +2941,15 @@
     "birth": "1975-10-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020020_S_20260704172340.jpg#1",
     "stats": {
-      "matches": 133,
-      "innings": 3490,
-      "avg": 0.924,
+      "matches": 134,
+      "innings": 3523,
+      "avg": 0.925,
       "best_avg": 1.923,
       "hr": 10,
-      "p1": 2398,
-      "p2": 417,
-      "bank": 25.8,
-      "long": 3.2,
+      "p1": 2429,
+      "p2": 419,
+      "bank": 25.7,
+      "long": 3.3,
       "success": 45.3
     },
     "tours": [
@@ -3655,13 +3655,13 @@
     "birth": "1983-01-13",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017225_S_20260704204649.jpg#1",
     "stats": {
-      "matches": 299,
-      "innings": 8578,
-      "avg": 1.061,
+      "matches": 300,
+      "innings": 8603,
+      "avg": 1.062,
       "best_avg": 3.125,
       "hr": 13,
-      "p1": 6890,
-      "p2": 1119,
+      "p1": 6919,
+      "p2": 1121,
       "bank": 24.5,
       "long": 4.0,
       "success": 49.7
@@ -3941,14 +3941,14 @@
     "birth": "1999-07-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017164_S_20260730212921.jpg#1",
     "stats": {
-      "matches": 185,
-      "innings": 5492,
-      "avg": 0.846,
+      "matches": 186,
+      "innings": 5518,
+      "avg": 0.847,
       "best_avg": 2.2,
       "hr": 11,
-      "p1": 3389,
-      "p2": 632,
-      "bank": 27.2,
+      "p1": 3405,
+      "p2": 638,
+      "bank": 27.3,
       "long": 2.3,
       "success": 43
     },
@@ -4703,16 +4703,16 @@
     "birth": "1980-02-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017319_S_20260704172441.jpg#1",
     "stats": {
-      "matches": 148,
-      "innings": 4260,
-      "avg": 0.819,
+      "matches": 149,
+      "innings": 4287,
+      "avg": 0.821,
       "best_avg": 2.273,
       "hr": 11,
-      "p1": 2536,
-      "p2": 480,
+      "p1": 2559,
+      "p2": 485,
       "bank": 27.5,
       "long": 2.2,
-      "success": 42.1
+      "success": 42.2
     },
     "tours": [
       {
@@ -4953,14 +4953,14 @@
     "birth": "1998-11-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017162_S_20260704211451.jpg#1",
     "stats": {
-      "matches": 197,
-      "innings": 5701,
-      "avg": 0.893,
+      "matches": 198,
+      "innings": 5731,
+      "avg": 0.894,
       "best_avg": 2.2,
       "hr": 10,
-      "p1": 3725,
-      "p2": 690,
-      "bank": 27.0,
+      "p1": 3746,
+      "p2": 697,
+      "bank": 27.1,
       "long": 2.6,
       "success": 44.5
     },
@@ -10561,16 +10561,16 @@
     "birth": "2004-03-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022434_S_20260704192644.jpg#1",
     "stats": {
-      "matches": 87,
-      "innings": 2280,
-      "avg": 0.83,
+      "matches": 88,
+      "innings": 2313,
+      "avg": 0.833,
       "best_avg": 1.923,
       "hr": 10,
-      "p1": 1446,
-      "p2": 225,
-      "bank": 23.7,
+      "p1": 1474,
+      "p2": 228,
+      "bank": 23.6,
       "long": 2.8,
-      "success": 42.6
+      "success": 42.7
     },
     "tours": [
       {
@@ -18517,14 +18517,14 @@
     "birth": "2001-12-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020077_S_20260704172324.jpg#1",
     "stats": {
-      "matches": 98,
-      "innings": 2778,
-      "avg": 0.693,
+      "matches": 99,
+      "innings": 2802,
+      "avg": 0.691,
       "best_avg": 1.467,
       "hr": 11,
-      "p1": 1352,
+      "p1": 1365,
       "p2": 288,
-      "bank": 29.9,
+      "bank": 29.7,
       "long": 1.5,
       "success": 37.5
     },
@@ -19449,16 +19449,16 @@
     "birth": "1997-10-08",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020006.jpg#1",
     "stats": {
-      "matches": 95,
-      "innings": 2395,
-      "avg": 0.668,
+      "matches": 96,
+      "innings": 2441,
+      "avg": 0.663,
       "best_avg": 1.667,
       "hr": 10,
-      "p1": 1192,
-      "p2": 204,
-      "bank": 25.5,
+      "p1": 1208,
+      "p2": 205,
+      "bank": 25.3,
       "long": 1.3,
-      "success": 36.9
+      "success": 36.7
     },
     "tours": [
       {
@@ -22637,13 +22637,13 @@
     "birth": "2004-02-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022431.jpg#1",
     "stats": {
-      "matches": 63,
-      "innings": 1700,
-      "avg": 0.684,
+      "matches": 64,
+      "innings": 1725,
+      "avg": 0.682,
       "best_avg": 1.563,
       "hr": 13,
-      "p1": 842,
-      "p2": 160,
+      "p1": 853,
+      "p2": 162,
       "bank": 27.5,
       "long": 1.7,
       "success": 37.1
@@ -23013,16 +23013,16 @@
     "birth": "1978-11-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020003_S_20250701153440.jpg#1",
     "stats": {
-      "matches": 74,
-      "innings": 2090,
-      "avg": 0.5,
+      "matches": 75,
+      "innings": 2134,
+      "avg": 0.502,
       "best_avg": 1.667,
       "hr": 9,
-      "p1": 675,
-      "p2": 186,
-      "bank": 35.5,
+      "p1": 691,
+      "p2": 191,
+      "bank": 35.6,
       "long": 0.7,
-      "success": 29.2
+      "success": 29.3
     },
     "tours": [
       {
@@ -23495,16 +23495,16 @@
     "birth": "1992-11-02",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017198_S_20261031233626.jpg#1",
     "stats": {
-      "matches": 124,
-      "innings": 3343,
-      "avg": 0.679,
+      "matches": 125,
+      "innings": 3376,
+      "avg": 0.683,
       "best_avg": 1.389,
       "hr": 8,
-      "p1": 1673,
-      "p2": 301,
-      "bank": 26.5,
-      "long": 1.5,
-      "success": 37.4
+      "p1": 1695,
+      "p2": 308,
+      "bank": 26.7,
+      "long": 1.6,
+      "success": 37.5
     },
     "tours": [
       {
@@ -24057,16 +24057,16 @@
     "birth": "2004-07-19",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022034_S_20260704181442.jpg#1",
     "stats": {
-      "matches": 91,
-      "innings": 2819,
-      "avg": 0.713,
+      "matches": 92,
+      "innings": 2864,
+      "avg": 0.715,
       "best_avg": 2.083,
       "hr": 10,
-      "p1": 1573,
-      "p2": 220,
-      "bank": 21.9,
+      "p1": 1611,
+      "p2": 221,
+      "bank": 21.5,
       "long": 1.5,
-      "success": 39.3
+      "success": 39.5
     },
     "tours": [
       {
@@ -28577,16 +28577,16 @@
     "birth": "1998-05-07",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022016_S_2026070417242.jpg#1",
     "stats": {
-      "matches": 101,
-      "innings": 2975,
-      "avg": 0.811,
+      "matches": 102,
+      "innings": 3003,
+      "avg": 0.815,
       "best_avg": 2.273,
       "hr": 9,
-      "p1": 1666,
-      "p2": 376,
-      "bank": 31.1,
-      "long": 2.4,
-      "success": 41.3
+      "p1": 1693,
+      "p2": 379,
+      "bank": 30.9,
+      "long": 2.3,
+      "success": 41.4
     },
     "tours": [
       {
@@ -30033,18 +30033,22 @@
     "birth": "1993-06-09",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017782_S_20261031233931.jpg#1",
     "stats": {
-      "matches": 144,
-      "innings": 4369,
-      "avg": 1.557,
+      "matches": 145,
+      "innings": 4392,
+      "avg": 1.559,
       "best_avg": 4.091,
       "hr": 14,
-      "p1": 5365,
-      "p2": 727,
+      "p1": 5402,
+      "p2": 732,
       "bank": 21.3,
-      "long": 9.3,
+      "long": 9.4,
       "success": 59.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -30949,18 +30953,22 @@
     "birth": "1983-09-01",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017131_S_20250901201218.jpg#1",
     "stats": {
-      "matches": 109,
-      "innings": 3343,
-      "avg": 1.33,
+      "matches": 110,
+      "innings": 3374,
+      "avg": 1.329,
       "best_avg": 3.462,
       "hr": 12,
-      "p1": 3469,
-      "p2": 495,
+      "p1": 3498,
+      "p2": 500,
       "bank": 22.2,
-      "long": 6.9,
+      "long": 6.8,
       "success": 55.5
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -31457,7 +31465,7 @@
     "birth": "1980-04-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022425_S_2026070419379.jpg#1",
     "stats": {
-      "matches": 108,
+      "matches": 109,
       "innings": 3290,
       "avg": 1.597,
       "best_avg": 3.214,
@@ -31469,6 +31477,10 @@
       "success": 60.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -31793,18 +31805,22 @@
     "birth": "1980-03-16",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017160_S_20260704195312.jpg#1",
     "stats": {
-      "matches": 237,
-      "innings": 6846,
-      "avg": 1.679,
+      "matches": 238,
+      "innings": 6866,
+      "avg": 1.681,
       "best_avg": 2.938,
       "hr": 15,
-      "p1": 8632,
-      "p2": 1444,
+      "p1": 8667,
+      "p2": 1449,
       "bank": 25.1,
       "long": 9.8,
       "success": 61.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "9위"
@@ -32071,18 +32087,22 @@
     "birth": "1973-07-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016801_S_2026070420472.jpg#1",
     "stats": {
-      "matches": 109,
-      "innings": 3326,
+      "matches": 110,
+      "innings": 3350,
       "avg": 1.346,
       "best_avg": 3.214,
       "hr": 13,
-      "p1": 3320,
-      "p2": 581,
+      "p1": 3345,
+      "p2": 585,
       "bank": 25.9,
       "long": 6.9,
       "success": 55.2
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -32329,18 +32349,22 @@
     "birth": "1980-04-07",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017784_S_2026070421149.jpg#1",
     "stats": {
-      "matches": 200,
-      "innings": 5846,
-      "avg": 1.706,
+      "matches": 201,
+      "innings": 5875,
+      "avg": 1.705,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 7905,
-      "p2": 1049,
+      "p1": 7938,
+      "p2": 1055,
       "bank": 21.0,
       "long": 10.4,
       "success": 62.5
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -32567,18 +32591,22 @@
     "birth": "1993-05-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022044_S_20260704172056.jpg#1",
     "stats": {
-      "matches": 110,
-      "innings": 3514,
-      "avg": 1.462,
+      "matches": 111,
+      "innings": 3540,
+      "avg": 1.464,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 3954,
-      "p2": 601,
+      "p1": 3991,
+      "p2": 605,
       "bank": 23.3,
       "long": 8.3,
       "success": 58
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "3위"
@@ -32761,18 +32789,22 @@
     "birth": "1977-08-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017107_S_20260704192517.jpg#1",
     "stats": {
-      "matches": 170,
-      "innings": 5002,
-      "avg": 1.501,
+      "matches": 171,
+      "innings": 5024,
+      "avg": 1.505,
       "best_avg": 3.214,
       "hr": 15,
-      "p1": 5902,
-      "p2": 809,
+      "p1": 5940,
+      "p2": 815,
       "bank": 21.5,
       "long": 8.2,
-      "success": 58.8
+      "success": 58.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -33761,18 +33793,22 @@
     "birth": "1977-04-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022430_S_20260820031514.jpg#1",
     "stats": {
-      "matches": 112,
-      "innings": 3471,
-      "avg": 1.578,
+      "matches": 113,
+      "innings": 3512,
+      "avg": 1.573,
       "best_avg": 3.75,
       "hr": 14,
-      "p1": 4176,
-      "p2": 655,
-      "bank": 23.9,
-      "long": 9.1,
+      "p1": 4209,
+      "p2": 663,
+      "bank": 24.0,
+      "long": 9.0,
       "success": 60
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -34193,18 +34229,22 @@
     "birth": "1978-09-29",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016904_S_20260704181332.jpg#1",
     "stats": {
-      "matches": 145,
-      "innings": 4379,
-      "avg": 1.424,
+      "matches": 146,
+      "innings": 4404,
+      "avg": 1.422,
       "best_avg": 3.0,
       "hr": 15,
-      "p1": 4832,
-      "p2": 711,
+      "p1": 4858,
+      "p2": 712,
       "bank": 22.7,
       "long": 7.9,
       "success": 57.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -34459,18 +34499,22 @@
     "birth": "1995-11-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016795_S_2026070420483.jpg#1",
     "stats": {
-      "matches": 155,
-      "innings": 4572,
-      "avg": 1.477,
-      "best_avg": 2.368,
+      "matches": 156,
+      "innings": 4590,
+      "avg": 1.481,
+      "best_avg": 2.5,
       "hr": 14,
-      "p1": 5086,
-      "p2": 842,
+      "p1": 5118,
+      "p2": 849,
       "bank": 24.9,
       "long": 8.1,
-      "success": 57.9
+      "success": 58
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -34887,18 +34931,22 @@
     "birth": "1972-06-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017146_S_20260704211138.jpg#1",
     "stats": {
-      "matches": 186,
-      "innings": 5629,
-      "avg": 1.459,
+      "matches": 187,
+      "innings": 5658,
+      "avg": 1.46,
       "best_avg": 3.0,
       "hr": 15,
-      "p1": 6105,
-      "p2": 1066,
-      "bank": 25.9,
+      "p1": 6149,
+      "p2": 1069,
+      "bank": 25.8,
       "long": 8.1,
-      "success": 57.5
+      "success": 57.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -35165,18 +35213,22 @@
     "birth": "1996-04-05",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017002_S_20260704193655.jpg#1",
     "stats": {
-      "matches": 128,
-      "innings": 4488,
-      "avg": 1.34,
+      "matches": 129,
+      "innings": 4525,
+      "avg": 1.342,
       "best_avg": 2.647,
       "hr": 15,
-      "p1": 4606,
-      "p2": 715,
-      "bank": 23.7,
-      "long": 6.4,
-      "success": 55.7
+      "p1": 4647,
+      "p2": 724,
+      "bank": 23.8,
+      "long": 6.5,
+      "success": 55.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -35601,18 +35653,22 @@
     "birth": "1981-04-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017145_S_2025061801049.jpg#1",
     "stats": {
-      "matches": 136,
-      "innings": 4315,
-      "avg": 1.377,
+      "matches": 137,
+      "innings": 4357,
+      "avg": 1.374,
       "best_avg": 3.462,
       "hr": 13,
-      "p1": 4700,
-      "p2": 627,
+      "p1": 4736,
+      "p2": 633,
       "bank": 21.1,
       "long": 7.3,
       "success": 56.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -35863,18 +35919,22 @@
     "birth": "1982-06-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022042_S_20260704204747.jpg#1",
     "stats": {
-      "matches": 130,
-      "innings": 3976,
-      "avg": 1.602,
+      "matches": 131,
+      "innings": 4009,
+      "avg": 1.598,
       "best_avg": 4.091,
       "hr": 14,
-      "p1": 4831,
-      "p2": 782,
+      "p1": 4854,
+      "p2": 789,
       "bank": 24.5,
       "long": 9.5,
       "success": 60.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -36327,18 +36387,22 @@
     "birth": "1981-08-27",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017783_S_2026070419542.jpg#1",
     "stats": {
-      "matches": 134,
-      "innings": 3964,
-      "avg": 1.585,
+      "matches": 135,
+      "innings": 4000,
+      "avg": 1.582,
       "best_avg": 3.053,
       "hr": 15,
-      "p1": 4871,
-      "p2": 712,
+      "p1": 4908,
+      "p2": 716,
       "bank": 22.6,
-      "long": 9.1,
-      "success": 60.2
+      "long": 9.2,
+      "success": 60.1
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -36851,18 +36915,22 @@
     "birth": "1977-02-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017732_S_20250807000241.jpg#1",
     "stats": {
-      "matches": 63,
-      "innings": 1896,
-      "avg": 1.351,
+      "matches": 64,
+      "innings": 1919,
+      "avg": 1.358,
       "best_avg": 2.545,
       "hr": 15,
-      "p1": 1923,
-      "p2": 325,
-      "bank": 25.3,
-      "long": 6.5,
-      "success": 55.7
+      "p1": 1948,
+      "p2": 335,
+      "bank": 25.6,
+      "long": 6.6,
+      "success": 55.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -37025,18 +37093,22 @@
     "birth": "1972-01-27",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022335.jpg#1",
     "stats": {
-      "matches": 62,
-      "innings": 1939,
-      "avg": 1.337,
+      "matches": 63,
+      "innings": 1992,
+      "avg": 1.327,
       "best_avg": 2.25,
       "hr": 14,
-      "p1": 1861,
-      "p2": 369,
+      "p1": 1898,
+      "p2": 376,
       "bank": 28.4,
-      "long": 7.2,
-      "success": 55
+      "long": 7.0,
+      "success": 54.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -37721,18 +37793,22 @@
     "birth": "1982-09-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017136_S_20260518172656.jpg#1",
     "stats": {
-      "matches": 157,
-      "innings": 4805,
-      "avg": 1.395,
+      "matches": 158,
+      "innings": 4844,
+      "avg": 1.396,
       "best_avg": 2.813,
       "hr": 15,
-      "p1": 5137,
-      "p2": 791,
+      "p1": 5178,
+      "p2": 799,
       "bank": 23.6,
       "long": 7.7,
       "success": 56.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -38137,18 +38213,22 @@
     "birth": "1979-01-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017423_S_20250806235758.jpg#1",
     "stats": {
-      "matches": 33,
-      "innings": 1038,
-      "avg": 1.304,
+      "matches": 34,
+      "innings": 1062,
+      "avg": 1.317,
       "best_avg": 2.143,
       "hr": 11,
-      "p1": 959,
-      "p2": 199,
-      "bank": 29.3,
-      "long": 6.6,
-      "success": 54
+      "p1": 984,
+      "p2": 209,
+      "bank": 29.8,
+      "long": 6.9,
+      "success": 54.2
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -38379,8 +38459,8 @@
     "birth": "1975-01-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017128.jpg#1",
     "stats": {
-      "matches": 128,
-      "innings": 4071,
+      "matches": 129,
+      "innings": 4072,
       "avg": 1.382,
       "best_avg": 3.05,
       "hr": 20,
@@ -38391,6 +38471,10 @@
       "success": 56
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -39151,18 +39235,22 @@
     "birth": "1977-10-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017030.jpg#1",
     "stats": {
-      "matches": 121,
-      "innings": 3637,
-      "avg": 1.324,
+      "matches": 122,
+      "innings": 3679,
+      "avg": 1.323,
       "best_avg": 2.706,
       "hr": 15,
-      "p1": 3780,
-      "p2": 520,
+      "p1": 3822,
+      "p2": 525,
       "bank": 21.6,
       "long": 7.0,
       "success": 55.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -40007,18 +40095,22 @@
     "birth": "1971-01-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016942.jpg#1",
     "stats": {
-      "matches": 108,
-      "innings": 3282,
-      "avg": 1.303,
+      "matches": 109,
+      "innings": 3326,
+      "avg": 1.299,
       "best_avg": 2.25,
       "hr": 13,
-      "p1": 3301,
-      "p2": 492,
-      "bank": 23.0,
+      "p1": 3342,
+      "p2": 495,
+      "bank": 22.9,
       "long": 6.8,
       "success": 54.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "크라운해태 PBA 챔피언십 2026",
         "result": "65위"
@@ -40839,18 +40931,22 @@
     "birth": "1973-08-05",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022072_S_20260209104243.jpg#1",
     "stats": {
-      "matches": 36,
-      "innings": 1254,
+      "matches": 37,
+      "innings": 1277,
       "avg": 1.247,
       "best_avg": 1.96,
       "hr": 11,
-      "p1": 1157,
-      "p2": 206,
-      "bank": 26.3,
+      "p1": 1184,
+      "p2": 207,
+      "bank": 25.9,
       "long": 5.7,
       "success": 53.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -40953,18 +41049,22 @@
     "birth": "1997-05-22",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016927_S_20260704204816.jpg#1",
     "stats": {
-      "matches": 75,
-      "innings": 2079,
-      "avg": 1.405,
+      "matches": 76,
+      "innings": 2113,
+      "avg": 1.408,
       "best_avg": 2.667,
       "hr": 13,
-      "p1": 2187,
-      "p2": 372,
-      "bank": 25.4,
-      "long": 7.5,
+      "p1": 2219,
+      "p2": 383,
+      "bank": 25.7,
+      "long": 7.6,
       "success": 56.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -41151,18 +41251,22 @@
     "birth": "1970-07-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016923.jpg#1",
     "stats": {
-      "matches": 77,
-      "innings": 2451,
-      "avg": 1.19,
+      "matches": 78,
+      "innings": 2487,
+      "avg": 1.186,
       "best_avg": 2.278,
       "hr": 12,
-      "p1": 2077,
-      "p2": 423,
-      "bank": 28.9,
+      "p1": 2105,
+      "p2": 425,
+      "bank": 28.8,
       "long": 5.2,
-      "success": 51.4
+      "success": 51.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -41521,18 +41625,22 @@
     "birth": "1973-09-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022429_S_20260704193640.jpg#1",
     "stats": {
-      "matches": 78,
-      "innings": 2313,
-      "avg": 1.562,
+      "matches": 79,
+      "innings": 2343,
+      "avg": 1.564,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 2738,
-      "p2": 441,
-      "bank": 24.4,
+      "p1": 2785,
+      "p2": 444,
+      "bank": 24.2,
       "long": 8.3,
       "success": 59.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "5위"
@@ -41679,18 +41787,22 @@
     "birth": "1983-02-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017149.jpg#1",
     "stats": {
-      "matches": 124,
-      "innings": 3740,
-      "avg": 1.409,
+      "matches": 125,
+      "innings": 3765,
+      "avg": 1.412,
       "best_avg": 3.059,
       "hr": 15,
-      "p1": 4027,
-      "p2": 627,
-      "bank": 23.8,
+      "p1": 4062,
+      "p2": 632,
+      "bank": 23.7,
       "long": 7.5,
       "success": 56.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -42515,18 +42627,22 @@
     "birth": "1978-11-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017153_S_20260704195344.jpg#1",
     "stats": {
-      "matches": 92,
-      "innings": 2547,
-      "avg": 1.523,
+      "matches": 93,
+      "innings": 2581,
+      "avg": 1.521,
       "best_avg": 3.462,
       "hr": 20,
-      "p1": 3147,
-      "p2": 367,
-      "bank": 18.9,
+      "p1": 3189,
+      "p2": 370,
+      "bank": 18.8,
       "long": 8.8,
       "success": 59.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -43631,18 +43747,22 @@
     "birth": "1974-12-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017134.jpg#1",
     "stats": {
-      "matches": 116,
-      "innings": 3493,
-      "avg": 1.338,
+      "matches": 117,
+      "innings": 3517,
+      "avg": 1.341,
       "best_avg": 3.056,
       "hr": 15,
-      "p1": 3671,
-      "p2": 504,
-      "bank": 21.5,
-      "long": 6.5,
-      "success": 55.6
+      "p1": 3712,
+      "p2": 506,
+      "bank": 21.4,
+      "long": 6.6,
+      "success": 55.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -44035,18 +44155,22 @@
     "birth": "1984-10-13",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017527.jpg#1",
     "stats": {
-      "matches": 20,
-      "innings": 726,
-      "avg": 1.059,
+      "matches": 21,
+      "innings": 756,
+      "avg": 1.075,
       "best_avg": 1.567,
       "hr": 11,
-      "p1": 567,
-      "p2": 101,
-      "bank": 26.3,
-      "long": 5.0,
-      "success": 48.8
+      "p1": 601,
+      "p2": 106,
+      "bank": 26.1,
+      "long": 4.9,
+      "success": 49.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -44931,18 +45055,22 @@
     "birth": "1973-07-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016824_S_20250806235432.jpg#1",
     "stats": {
-      "matches": 41,
-      "innings": 1308,
-      "avg": 1.126,
+      "matches": 42,
+      "innings": 1361,
+      "avg": 1.119,
       "best_avg": 2.409,
       "hr": 10,
-      "p1": 1089,
-      "p2": 193,
-      "bank": 26.2,
+      "p1": 1128,
+      "p2": 199,
+      "bank": 26.1,
       "long": 4.5,
-      "success": 50.4
+      "success": 50.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -45073,18 +45201,22 @@
     "birth": "1980-03-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016778_S_20250806230730.jpg#1",
     "stats": {
-      "matches": 38,
-      "innings": 1074,
-      "avg": 1.238,
+      "matches": 39,
+      "innings": 1096,
+      "avg": 1.237,
       "best_avg": 2.35,
       "hr": 10,
-      "p1": 1014,
-      "p2": 158,
+      "p1": 1034,
+      "p2": 161,
       "bank": 23.8,
       "long": 5.6,
       "success": 53
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -45333,18 +45465,22 @@
     "birth": "1972-04-01",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0021128.jpg#1",
     "stats": {
-      "matches": 37,
-      "innings": 1129,
-      "avg": 1.217,
+      "matches": 38,
+      "innings": 1171,
+      "avg": 1.202,
       "best_avg": 1.926,
       "hr": 11,
-      "p1": 1049,
-      "p2": 163,
+      "p1": 1075,
+      "p2": 167,
       "bank": 23.7,
       "long": 5.5,
-      "success": 52.9
+      "success": 52.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -45835,18 +45971,22 @@
     "birth": "1985-03-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022043_S_20250706004552.jpg#1",
     "stats": {
-      "matches": 81,
-      "innings": 2698,
-      "avg": 1.326,
+      "matches": 82,
+      "innings": 2725,
+      "avg": 1.329,
       "best_avg": 2.813,
       "hr": 14,
-      "p1": 2654,
-      "p2": 468,
+      "p1": 2686,
+      "p2": 474,
       "bank": 26.1,
-      "long": 7.1,
-      "success": 55.2
+      "long": 7.2,
+      "success": 55.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "5위"
@@ -46195,18 +46335,22 @@
     "birth": "1979-06-28",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017298.jpg#1",
     "stats": {
-      "matches": 119,
-      "innings": 3634,
-      "avg": 1.403,
+      "matches": 120,
+      "innings": 3662,
+      "avg": 1.406,
       "best_avg": 2.647,
       "hr": 15,
-      "p1": 3839,
-      "p2": 636,
+      "p1": 3876,
+      "p2": 641,
       "bank": 24.9,
-      "long": 7.6,
+      "long": 7.7,
       "success": 56.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -46907,18 +47051,22 @@
     "birth": "1968-01-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017116_S_20260518135529.jpg#1",
     "stats": {
-      "matches": 105,
-      "innings": 3246,
-      "avg": 1.255,
+      "matches": 106,
+      "innings": 3267,
+      "avg": 1.254,
       "best_avg": 2.647,
       "hr": 15,
-      "p1": 3002,
-      "p2": 541,
-      "bank": 26.5,
+      "p1": 3021,
+      "p2": 543,
+      "bank": 26.4,
       "long": 6.1,
       "success": 53.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -47463,18 +47611,22 @@
     "birth": "1981-02-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017506.jpg#1",
     "stats": {
-      "matches": 18,
-      "innings": 564,
-      "avg": 1.14,
+      "matches": 19,
+      "innings": 585,
+      "avg": 1.152,
       "best_avg": 1.84,
-      "hr": 9,
-      "p1": 463,
-      "p2": 90,
-      "bank": 28.0,
+      "hr": 11,
+      "p1": 480,
+      "p2": 97,
+      "bank": 28.8,
       "long": 5.3,
-      "success": 50.6
+      "success": 50.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -48099,18 +48251,22 @@
     "birth": "1993-10-28",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017051_S_20251106192319.jpg#1",
     "stats": {
-      "matches": 33,
-      "innings": 967,
-      "avg": 1.206,
+      "matches": 34,
+      "innings": 995,
+      "avg": 1.223,
       "best_avg": 1.947,
       "hr": 10,
-      "p1": 837,
-      "p2": 165,
-      "bank": 28.3,
-      "long": 5.6,
-      "success": 51.7
+      "p1": 870,
+      "p2": 174,
+      "bank": 28.6,
+      "long": 5.7,
+      "success": 52
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -48229,18 +48385,22 @@
     "birth": "1975-04-15",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016786.jpg#1",
     "stats": {
-      "matches": 79,
-      "innings": 2621,
-      "avg": 1.225,
+      "matches": 80,
+      "innings": 2648,
+      "avg": 1.23,
       "best_avg": 2.813,
       "hr": 15,
-      "p1": 2398,
-      "p2": 410,
+      "p1": 2432,
+      "p2": 416,
       "bank": 25.5,
-      "long": 6.1,
-      "success": 52.9
+      "long": 6.2,
+      "success": 53
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -49255,18 +49415,22 @@
     "birth": "1975-05-16",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016791_S_20260704203512.jpg#1",
     "stats": {
-      "matches": 160,
-      "innings": 4908,
-      "avg": 1.424,
+      "matches": 161,
+      "innings": 4931,
+      "avg": 1.423,
       "best_avg": 3.278,
       "hr": 15,
-      "p1": 5264,
-      "p2": 871,
+      "p1": 5286,
+      "p2": 875,
       "bank": 24.9,
       "long": 7.7,
       "success": 56.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -49529,18 +49693,22 @@
     "birth": "1997-07-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0023103.jpg#1",
     "stats": {
-      "matches": 23,
-      "innings": 694,
-      "avg": 1.333,
+      "matches": 24,
+      "innings": 735,
+      "avg": 1.314,
       "best_avg": 3.462,
       "hr": 11,
-      "p1": 686,
-      "p2": 120,
-      "bank": 25.9,
-      "long": 7.1,
-      "success": 54.9
+      "p1": 719,
+      "p2": 124,
+      "bank": 25.7,
+      "long": 6.8,
+      "success": 54.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -50673,18 +50841,22 @@
     "birth": "1981-01-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017098_S_20260722093154.jpg#1",
     "stats": {
-      "matches": 110,
-      "innings": 3369,
-      "avg": 1.381,
+      "matches": 111,
+      "innings": 3413,
+      "avg": 1.378,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 3555,
-      "p2": 552,
+      "p1": 3594,
+      "p2": 559,
       "bank": 23.7,
-      "long": 6.9,
-      "success": 56.3
+      "long": 6.8,
+      "success": 56.2
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "5위"
@@ -51795,7 +51967,7 @@
     "birth": "1981-10-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017644_S_2026051814016.jpg#1",
     "stats": {
-      "matches": 31,
+      "matches": 32,
       "innings": 1015,
       "avg": 1.218,
       "best_avg": 1.778,
@@ -51804,9 +51976,13 @@
       "p2": 167,
       "bank": 27.0,
       "long": 6.2,
-      "success": 52.5
+      "success": 52.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52109,18 +52285,22 @@
     "birth": "1997-07-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0020080.jpg#1",
     "stats": {
-      "matches": 59,
-      "innings": 1882,
-      "avg": 1.297,
+      "matches": 60,
+      "innings": 1898,
+      "avg": 1.292,
       "best_avg": 2.368,
       "hr": 11,
-      "p1": 1905,
+      "p1": 1916,
       "p2": 271,
-      "bank": 22.2,
+      "bank": 22.1,
       "long": 6.6,
-      "success": 54.8
+      "success": 54.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -52271,18 +52451,22 @@
     "birth": "1983-03-09",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0023145_S_20250806222036.jpg#1",
     "stats": {
-      "matches": 13,
-      "innings": 403,
-      "avg": 1.176,
+      "matches": 14,
+      "innings": 425,
+      "avg": 1.209,
       "best_avg": 1.957,
       "hr": 9,
-      "p1": 340,
-      "p2": 67,
-      "bank": 28.3,
-      "long": 6.5,
-      "success": 51.3
+      "p1": 366,
+      "p2": 74,
+      "bank": 28.8,
+      "long": 6.8,
+      "success": 51.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52329,18 +52513,22 @@
     "birth": "1983-02-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0023189_S_20251103172121.jpg#1",
     "stats": {
-      "matches": 12,
-      "innings": 362,
-      "avg": 1.362,
+      "matches": 13,
+      "innings": 364,
+      "avg": 1.354,
       "best_avg": 1.964,
       "hr": 9,
       "p1": 387,
       "p2": 53,
       "bank": 21.5,
       "long": 5.5,
-      "success": 56.1
+      "success": 55.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52387,18 +52575,22 @@
     "birth": "1981-02-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0021029.jpg#1",
     "stats": {
-      "matches": 21,
-      "innings": 775,
-      "avg": 1.014,
+      "matches": 22,
+      "innings": 804,
+      "avg": 1.016,
       "best_avg": 1.783,
       "hr": 13,
-      "p1": 576,
-      "p2": 106,
-      "bank": 26.9,
+      "p1": 597,
+      "p2": 111,
+      "bank": 27.1,
       "long": 3.9,
       "success": 47.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52527,18 +52719,22 @@
     "birth": "1985-08-15",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0025073_S_2026070421152.jpg#1",
     "stats": {
-      "matches": 10,
-      "innings": 333,
-      "avg": 1.369,
+      "matches": 11,
+      "innings": 359,
+      "avg": 1.412,
       "best_avg": 2.045,
       "hr": 11,
-      "p1": 341,
-      "p2": 58,
-      "bank": 25.4,
-      "long": 7.2,
-      "success": 56
+      "p1": 381,
+      "p2": 64,
+      "bank": 25.2,
+      "long": 7.8,
+      "success": 56.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -52569,18 +52765,22 @@
     "birth": "1977-05-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017364_S_20260518140129.jpg#1",
     "stats": {
-      "matches": 7,
-      "innings": 238,
-      "avg": 1.055,
+      "matches": 8,
+      "innings": 276,
+      "avg": 1.033,
       "best_avg": 1.364,
       "hr": 10,
-      "p1": 172,
-      "p2": 40,
-      "bank": 31.8,
-      "long": 3.4,
-      "success": 48.1
+      "p1": 202,
+      "p2": 42,
+      "bank": 29.4,
+      "long": 3.6,
+      "success": 47.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52645,18 +52845,22 @@
     "birth": "1979-12-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0023151_S_20260518144242.jpg#1",
     "stats": {
-      "matches": 15,
-      "innings": 389,
-      "avg": 1.172,
+      "matches": 16,
+      "innings": 416,
+      "avg": 1.18,
       "best_avg": 2.083,
       "hr": 12,
-      "p1": 340,
-      "p2": 58,
-      "bank": 25.4,
-      "long": 6.2,
-      "success": 51.3
+      "p1": 367,
+      "p2": 62,
+      "bank": 25.3,
+      "long": 5.8,
+      "success": 51.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -52769,18 +52973,22 @@
     "birth": "1981-12-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017077.jpg#1",
     "stats": {
-      "matches": 28,
-      "innings": 868,
-      "avg": 1.281,
+      "matches": 29,
+      "innings": 907,
+      "avg": 1.279,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 835,
-      "p2": 139,
-      "bank": 25.0,
-      "long": 5.8,
-      "success": 54.3
+      "p1": 869,
+      "p2": 146,
+      "bank": 25.2,
+      "long": 5.6,
+      "success": 54.2
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "9위"
@@ -52989,18 +53197,22 @@
     "birth": "1973-06-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017748_S_20260518205950.jpg#1",
     "stats": {
-      "matches": 5,
-      "innings": 155,
+      "matches": 6,
+      "innings": 196,
       "avg": 1.194,
       "best_avg": 1.515,
       "hr": 9,
-      "p1": 119,
-      "p2": 33,
-      "bank": 35.7,
-      "long": 3.9,
-      "success": 50.3
+      "p1": 155,
+      "p2": 40,
+      "bank": 34.0,
+      "long": 3.6,
+      "success": 50.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -53217,18 +53429,22 @@
     "birth": "1979-06-08",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016644.jpg#1",
     "stats": {
-      "matches": 133,
-      "innings": 3938,
-      "avg": 1.405,
+      "matches": 134,
+      "innings": 3974,
+      "avg": 1.402,
       "best_avg": 2.5,
       "hr": 13,
-      "p1": 3915,
-      "p2": 815,
+      "p1": 3944,
+      "p2": 820,
       "bank": 29.4,
-      "long": 7.9,
-      "success": 56
+      "long": 7.8,
+      "success": 55.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -53653,18 +53869,22 @@
     "birth": "1999-02-19",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022137.jpg#1",
     "stats": {
-      "matches": 6,
-      "innings": 209,
-      "avg": 1.077,
+      "matches": 7,
+      "innings": 227,
+      "avg": 1.088,
       "best_avg": 1.455,
       "hr": 9,
-      "p1": 147,
-      "p2": 39,
-      "bank": 34.7,
-      "long": 4.8,
-      "success": 47.8
+      "p1": 167,
+      "p2": 40,
+      "bank": 32.4,
+      "long": 4.9,
+      "success": 48.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -53901,18 +54121,22 @@
     "birth": "1978-12-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016962.jpg#1",
     "stats": {
-      "matches": 98,
-      "innings": 3006,
-      "avg": 1.273,
+      "matches": 99,
+      "innings": 3038,
+      "avg": 1.276,
       "best_avg": 2.143,
       "hr": 21,
-      "p1": 2805,
-      "p2": 516,
-      "bank": 26.9,
+      "p1": 2849,
+      "p2": 519,
+      "bank": 26.7,
       "long": 6.0,
-      "success": 53.6
+      "success": 53.7
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "33위"
@@ -54553,18 +54777,22 @@
     "birth": "1997-06-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0025074_S_20261031233644.jpg#1",
     "stats": {
-      "matches": 13,
-      "innings": 446,
-      "avg": 1.534,
+      "matches": 14,
+      "innings": 476,
+      "avg": 1.548,
       "best_avg": 2.143,
       "hr": 15,
-      "p1": 485,
-      "p2": 101,
-      "bank": 29.4,
-      "long": 7.4,
-      "success": 58.6
+      "p1": 527,
+      "p2": 107,
+      "bank": 28.9,
+      "long": 7.6,
+      "success": 58.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "9위"
@@ -54831,18 +55059,22 @@
     "birth": "1971-02-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0024012.jpg#1",
     "stats": {
-      "matches": 8,
-      "innings": 247,
-      "avg": 1.117,
+      "matches": 9,
+      "innings": 275,
+      "avg": 1.098,
       "best_avg": 1.897,
       "hr": 9,
-      "p1": 215,
-      "p2": 31,
-      "bank": 22.4,
-      "long": 4.9,
-      "success": 50.9
+      "p1": 233,
+      "p2": 35,
+      "bank": 23.1,
+      "long": 4.4,
+      "success": 50.4
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -55143,18 +55375,22 @@
     "birth": "1955-09-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017730.jpg#1",
     "stats": {
-      "matches": 27,
-      "innings": 876,
-      "avg": 1.245,
+      "matches": 28,
+      "innings": 909,
+      "avg": 1.237,
       "best_avg": 1.96,
       "hr": 9,
-      "p1": 773,
-      "p2": 162,
-      "bank": 29.5,
-      "long": 5.9,
-      "success": 52.9
+      "p1": 798,
+      "p2": 166,
+      "bank": 29.4,
+      "long": 5.8,
+      "success": 52.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -55275,18 +55511,22 @@
     "birth": "1989-07-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0025109_S_20260605194821.jpg#1",
     "stats": {
-      "matches": 11,
-      "innings": 338,
-      "avg": 1.367,
+      "matches": 12,
+      "innings": 378,
+      "avg": 1.373,
       "best_avg": 1.926,
       "hr": 10,
-      "p1": 334,
-      "p2": 64,
-      "bank": 27.7,
-      "long": 7.7,
-      "success": 55.7
+      "p1": 379,
+      "p2": 70,
+      "bank": 27.0,
+      "long": 7.4,
+      "success": 55.9
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "17위"
@@ -55427,18 +55667,22 @@
     "birth": "2000-07-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017493_S_2026020910387.jpg#1",
     "stats": {
-      "matches": 16,
-      "innings": 521,
-      "avg": 1.292,
+      "matches": 17,
+      "innings": 555,
+      "avg": 1.306,
       "best_avg": 1.931,
       "hr": 11,
-      "p1": 467,
-      "p2": 105,
-      "bank": 31.0,
+      "p1": 506,
+      "p2": 112,
+      "bank": 30.7,
       "long": 6.9,
-      "success": 53.9
+      "success": 54.3
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "9위"
@@ -55481,18 +55725,22 @@
     "birth": "1982-01-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0020082_S_20260518172639.jpg#1",
     "stats": {
-      "matches": 26,
-      "innings": 806,
-      "avg": 1.355,
+      "matches": 27,
+      "innings": 843,
+      "avg": 1.364,
       "best_avg": 2.143,
       "hr": 11,
-      "p1": 816,
-      "p2": 140,
-      "bank": 25.6,
-      "long": 7.2,
-      "success": 55.6
+      "p1": 864,
+      "p2": 145,
+      "bank": 25.1,
+      "long": 7.4,
+      "success": 55.8
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
@@ -56715,18 +56963,22 @@
     "birth": "1981-09-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017332_S_20260518145720.jpg#1",
     "stats": {
-      "matches": 26,
-      "innings": 826,
-      "avg": 1.194,
+      "matches": 27,
+      "innings": 862,
+      "avg": 1.204,
       "best_avg": 2.412,
       "hr": 13,
-      "p1": 693,
-      "p2": 148,
-      "bank": 29.9,
-      "long": 4.6,
-      "success": 51.5
+      "p1": 721,
+      "p2": 160,
+      "bank": 30.7,
+      "long": 4.9,
+      "success": 51.6
     },
     "tours": [
+      {
+        "name": "휴온스 PBA 챔피언십",
+        "result": "진행중"
+      },
       {
         "name": "지금 잘 사는 방법 zgm NH농협카드 PBA 챔피언십 26-27",
         "result": "65위"
