@@ -2,7 +2,7 @@
 # 앱 데이터 갱신: 이번 시즌 새 경기 수집 → 선수정보 갱신 → DB 다시 만들기
 #   ./update_app.sh          # 이번 시즌만
 #   ./update_app.sh 2019     # 2019-20 시즌부터 전부 (이미 끝난 투어는 건너뜀)
-# 바탕화면 앱을 켜면 server.rb 가 바로 한 번, 그 뒤 30분마다 실행한다. (예전 launchd 2시간 자동 실행은 꺼 둠: kr.local.pba-update.plist.disabled)
+# 바탕화면 앱을 켜면 server.rb 가 바로 한 번, 그 뒤 대회 날 12~24시는 30분마다 · 그 밖엔 3시간마다 실행한다. (예전 launchd 2시간 자동 실행은 꺼 둠: kr.local.pba-update.plist.disabled)
 cd "$(dirname "$0")"
 export LANG=ko_KR.UTF-8 LC_ALL=ko_KR.UTF-8 PATH=/usr/bin:/bin:/usr/sbin:/sbin
 LOG=data/update.log

@@ -388,6 +388,17 @@ srv.mount_proc('/api/meta') do |_req, res|
                                                                                                        # 화면 파일이 바뀐 시각: 바뀌면 화면이 스스로 새로고침한다
                                                                                                        'ui' => Dir[File.join(ROOT, 'app', '*')].map { |f| File.mtime(f) }.max.to_f))
 end
+# 머리줄 '업데이트' 버튼: POST = 지금 바로 update_app.sh (자동 업데이트가 돌고 있으면 새로 띄우지 않고 그것을 기다림)
+#  GET = 업데이트 중인지 · 버튼으로 띄운 마지막 업데이트가 잘 끝났는지
+$upd_thr = nil
+srv.mount_proc('/api/update') do |req, res|
+  lock = File.join(ROOT, 'data', '.update.lock')
+  if req.request_method == 'POST' && !Dir.exist?(lock) && !$upd_thr&.alive?
+    $upd_thr = Process.detach(spawn('/bin/zsh', File.join(ROOT, 'update_app.sh'), out: File::NULL, err: File::NULL))
+  end
+  running = Dir.exist?(lock) || !!$upd_thr&.alive?
+  json.(res, { running: running, ok: running || !$upd_thr || $upd_thr.value.success? })
+end
 # 화면 파일은 캐시하지 말라고 알려서(앱 창이 옛 화면을 붙잡지 않게) 그대로 내준다
 class NoCacheFiles < WEBrick::HTTPServlet::FileHandler
   def do_GET(req, res)
@@ -399,17 +410,32 @@ srv.mount('/', NoCacheFiles, File.join(ROOT, 'app'))
 trap('INT') { srv.shutdown }
 trap('TERM') { srv.shutdown }
 $stderr.puts "PBA 앱: http://localhost:#{PORT}"
-# 바탕화면 앱(포트 4580)으로 켜졌을 때: 켜자마자 새 경기 결과를 한 번 받고, 그 뒤로 30분마다 (update_app.sh, 겹치면 스스로 건너뜀)
+# 바탕화면 앱(포트 4580)으로 켜졌을 때: 켜자마자 새 경기 결과를 한 번 받고 (update_app.sh, 겹치면 스스로 건너뜀),
+#  대회가 열리는 날은 낮 12시부터 밤 12시까지 30분마다(:00 · :30), 그 밖에는 3시간마다
 # 개발용 서버(4567)는 업데이트를 돌리지 않는다. AUTO_UPDATE=1 로 강제로 켤 수 있다.
 # 앱을 쓰는 동안(화면이 보이면 30초마다 /api/active 를 보냄)에는 30초마다 진행 중 경기 목록(실시간 정보, 투어마다 한 번 요청)을 보고,
 #  목록에서 사라진 경기(= 방금 끝난 경기)가 있으면 그 투어만 빠른 업데이트(quick_update.sh). 홈피에 부담이 적은 방식.
 $last_active = Time.at(0)
 srv.mount_proc('/api/active') { |_req, res| $last_active = Time.now; json.(res, { ok: true }) }
 if PORT == 4580 || ENV['AUTO_UPDATE'] == '1'
+  # 대회가 열리는 날: 개인투어 대회 기간(또는 홈피 '진행중')이거나, 팀리그 라운드의 첫 경기일~마지막 경기일 사이
+  match_day = lambda do |d|
+    tours = (JSON.parse(File.read(File.join(ROOT, 'data', 'tours.json'))) rescue [])
+    sched = (JSON.parse(File.read(File.join(ROOT, 'data', 'team_schedule.json'))) rescue [])
+    tours.any? { |t| t['status'] == '진행중' || (t['start'].to_s <= d && d <= t['end'].to_s) } ||
+      sched.group_by { |g| [g['league'], g['round']] }.any? { |_, gs| ds = gs.map { |g| g['date'].to_s }; ds.min <= d && d <= ds.max }
+  end
   Thread.new do
+    last = nil
     loop do
-      system('/bin/zsh', File.join(ROOT, 'update_app.sh'), out: File::NULL, err: File::NULL)
-      sleep 30 * 60
+      now = Time.now
+      half = Time.at(now.to_i / 1800 * 1800)   # 가장 최근 :00 · :30
+      busy = (half.hour >= 12 || (half.hour == 0 && half.min == 0)) && match_day.((half - 60).strftime('%F'))   # 밤 12시 정각은 전날 기준
+      if last.nil? || (busy ? last < half : now - last >= 3 * 3600)
+        last = now
+        system('/bin/zsh', File.join(ROOT, 'update_app.sh'), out: File::NULL, err: File::NULL)
+      end
+      sleep 60
     end
   end
   Thread.new do

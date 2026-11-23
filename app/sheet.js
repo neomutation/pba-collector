@@ -277,6 +277,10 @@ body.sheetwin #sheet { left: 0; top: 0; transform: none; width: 100vw; height: 1
 #sheet .tinfo.ext .ti small { flex: 0 0 auto; } #sheet .tinfo.ext .ti i { flex: 1 1 0; text-align: right; order: 3; }
 #sheet .tinfo.ext .ti > small { flex: 0 0 var(--lw, auto); margin-right: .3em; } #sheet .tinfo.ext .ti b .vs { display: inline-block; min-width: var(--vsw, 0); text-align: left; }   /* 이름 칸(가장 긴 이름) + 한 칸 → 시즌 값은 왼쪽부터, ' / ' 는 가장 긴 시즌 값 뒤에 맞춘다 */   /* 라이브 정보: 이름 칸 = 그 묶음에서 가장 긴 이름 폭(alignExt) → 수치 시작 위치가 같다. 자리가 모자라면 작은 승패 글씨부터 줄어든다 */
 #sheet .lv .vs, #sheet .tinfo.ext .ti b .vs { color: var(--ny); } #sheet .lv .va, #sheet .tinfo.ext .ti b .va { color: var(--ink); } #sheet table.inn th.cumh { font-size: 15px; font-weight: 800; color: var(--ink); }
+#sheet .board .mid .mscore { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: 6px; } #sheet .board .mid .mscore .msl, #sheet .board .mid .mscore .msr { display: flex; align-items: center; gap: 6px; } #sheet .board .mid .mscore .msl { justify-content: flex-end; } #sheet .board .mid .mscore .msr { justify-content: flex-start; }   /* 점수판 '세트 점수 (세트스코어) : (세트스코어) 세트 점수': 쌍점이 가운데 */
+#sheet summary.ssum .sn { min-width: 4.6em; text-align: center; } #sheet summary.ssum .sn .perf.ph { visibility: hidden; margin: 0 4px 0 0; }   /* 세트 결과 줄: P 칩 반대편에 같은 폭 빈 칩을 둬서 'N세트'와 점수가 가운데 */
+.rkbub table.tktip td { padding: 0 4px; text-align: right; color: var(--ink); } .rkbub table.tktip td small { color: var(--sub); font-weight: 500; font-size: 9.5px; margin-left: 2px; } .rkbub table.tktip td.g { color: var(--sub); } .rkbub table.tktip td.g b { font-weight: 600; } .rkbub table.tktip td.k { text-align: center; color: var(--ink); font-weight: 800; padding: 0 8px; }
+.rkbub table.tktip tr.hd td { text-align: center; color: var(--ink); font-weight: 800; padding-bottom: 1px; } .rkbub table.tktip tr.hd2 td { text-align: right; font-size: 10px; color: var(--sub); font-weight: 600; } .rkbub table.tktip tr.atk td { border-bottom: 1px solid var(--line); padding-bottom: 2px; } .rkbub table.tktip tr.atk + tr td { padding-top: 2px; } .rkbub table.tktip tr.atk td.k { color: var(--accent); }   /* 기록지 '이닝' 말풍선: 세트 · 게임 기술 성공률 */
 #sheet .ls { display: none; } @media (max-width: 900px) { #sheet .lf { display: none; } #sheet .ls { display: inline; } }
 @media (max-width: 820px) { #sheet .board .mid { max-width: 210px; } #sheet table.mt td { min-width: 2.2em; } #sheet .tinfo .ti { padding: 0 3px; } }
 #sheet .pad button.act.go { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -369,7 +373,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     const rows = Math.ceil(set.turns.length / 2), live = si === S.sets.length - 1 && !matchOver();
     // 지금 칠 차례인 쪽: 위 점수판 이름 칸처럼 이 세트 기록 표의 그쪽 절반에도 테두리
     const last = set.turns[set.turns.length - 1], on = !live || sel ? null : !last ? set.first : last.closed ? 1 - sideOf(set, set.turns.length - 1) : sideOf(set, set.turns.length - 1);
-    let h = `${live ? pfqLine(set, si) : ''}<table class="inn${on == null ? '' : on ? ' onb' : ' ona'}"><thead><tr><th style="text-align:right">${headCell(set, si, 0, headNames(set, si, 0) || esc(S.names[0] || '왼쪽'))}</th><th class="cumh">${setScore(set)[0]}</th><th>이닝</th><th class="cumh">${setScore(set)[1]}</th><th style="text-align:left">${headCell(set, si, 1, headNames(set, si, 1) || esc(S.names[1] || '오른쪽'))}</th></tr></thead><tbody>`;
+    let h = `${live ? pfqLine(set, si) : ''}<table class="inn${on == null ? '' : on ? ' onb' : ' ona'}"><thead><tr><th style="text-align:right">${headCell(set, si, 0, headNames(set, si, 0) || esc(S.names[0] || '왼쪽'))}</th><th class="cumh">${setScore(set)[0]}</th><th data-stip="${esc(techTip(set, si))}">이닝</th><th class="cumh">${setScore(set)[1]}</th><th style="text-align:left">${headCell(set, si, 1, headNames(set, si, 1) || esc(S.names[1] || '오른쪽'))}</th></tr></thead><tbody>`;
     for (let r = 0; r < Math.max(rows, 1); r++) {
       const cell = [null, null], idx = [null, null];
       [2 * r, 2 * r + 1].forEach(i => { if (i < set.turns.length) { const p = sideOf(set, i); cell[p] = set.turns[i]; idx[p] = i; } });
@@ -392,6 +396,17 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
     return `<table class="st"><tbody>${R.map(r => `<tr>${td(A, B, r)}<td class="lab">${r[0]}</td>${td(B, A, r)}</tr>`).join('')}</tbody></table>`;
   }
   // 공격 종류별 시도 · 성공 (기호 순서 고정, 둘 다 안 쓴 기호는 뺀다)
+  // 세트 기록 표 머리 '이닝' 말풍선: 두 선수의 이 세트 · 게임 전체 기술 성공률 (맨 윗줄 = 공격 성공률 = 성공 ÷ 시도)
+  //  칸 순서: 게임 | 세트 | 기술 | 세트 | 게임 (가운데 기술 바로 옆이 이번 세트)
+  function techTip(set, si) {
+    const st = [0, 1].map(p => stat(turnsOf(set, p))), gm = [0, 1].map(p => stat(S.sets.flatMap(x => turnsOf(x, p))));
+    const seen = [...new Set(gm.flatMap(o => Object.keys(o.type)))], keys = TECH.concat(seen.filter(k => !TECH.includes(k) && !BANK.includes(k) && !isFoul(k)), BANK).filter(k => gm[0].type[k] || gm[1].type[k]);
+    const c = (s, a) => a ? `<b>${pc(rt(s, a))}</b><small>${s}/${a}</small>` : '–', ty = (o, k) => o.type[k] ? c(o.type[k].s, o.type[k].a) : '–';
+    const row = (l, f, cls) => `<tr${cls ? ` class="${cls}"` : ''}><td class="g">${f(gm[0])}</td><td>${f(st[0])}</td><td class="k">${l}</td><td>${f(st[1])}</td><td class="g">${f(gm[1])}</td></tr>`;
+    const o = S.type === '팀리그' && orderOf(si), nm = p => esc((o && o.p && o.p[p] || []).join('·') || S.names[p] || '');
+    return `<div class="rkh0">${set.tb ? '승부치기' : `${si + 1}세트`} 기술 성공률<small>세트 · 게임 전체</small></div><table class="tktip"><tr class="hd"><td colspan="2">${nm(0)}</td><td></td><td colspan="2">${nm(1)}</td></tr><tr class="hd2"><td class="g">게임</td><td>세트</td><td></td><td>세트</td><td class="g">게임</td></tr>`
+      + row('공격 성공률', x => c(x.succ, x.att), 'atk') + keys.map(k => row(esc(k), x => ty(x, k))).join('') + '</table>';
+  }
   function typeTable(A, B) {
     const seen = [...new Set(Object.keys(A.type).concat(Object.keys(B.type)))], rest = seen.filter(k => !TECH.includes(k) && !BANK.includes(k) && !isFoul(k));
     const keys = TECH.concat(rest, BANK, FOUL).filter(k => A.type[k] || B.type[k]);
@@ -561,7 +576,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
       <select data-cfg="input"><option value="direct" ${direct ? 'selected' : ''}>직접 입력</option><option value="btn" ${direct ? '' : 'selected'}>버튼 입력</option></select>
       <button class="sbtn" data-brief>${S.brief === false ? '브리핑 펼치기' : '브리핑 접기'}</button><button class="sbtn" data-new>새 경기</button>${SHEETWIN ? (HAS_NATIVE ? '<button class="sbtn" data-win="left">◧ 왼쪽 절반</button><button class="sbtn" data-win="right">◨ 오른쪽 절반</button><button class="sbtn" data-win="full">⛶ 전용 화면</button><button class="sbtn" data-win="tile">앱과 나란히</button>' : '') : `<button class="sbtn" data-popout>↗ 새 창으로</button>${HAS_NATIVE ? '<button class="sbtn" data-tile>◧ 앱과 나란히</button>' : ''}`}<button class="sbtn min" data-min>${SHEETWIN ? '창 닫기' : '최소화 ▁'}</button></div>
       ${sel ? `<div class="snote ask">${sel.set + 1}세트 ${Math.floor(sel.turn / 2) + 1}이닝 ${esc(S.names[sideOf(S.sets[sel.set], sel.turn)] || '')} 고치는 중 · 글자 입력 / Backspace 지우기 · Tab으로 끝</div>` : ''}${S.pend ? `<div class="snote pend">지금 기록지는 <b>${esc(S.names.join(' vs '))}</b> 경기(진행 중)입니다. <b>${esc(S.pend.title)}</b> ${S.pend.ind ? '경기를 불렀습니다.' : '오더가 있습니다.'} <button class="sbtn" data-apply>이 경기로 새 기록 시작 (지금 기록 지움)</button></div>` : notice ? `<div class="snote">${esc(notice)}</div>` : ''}
-      <div class="board">${plCol(0, ' a')}${gwpH}<div class="mid">${topT}<div class="mscore"><b>${sc[0]}</b><span class="msets">(${won[0]})</span><b class="colon">:</b><span class="msets">(${won[1]})</span><b>${sc[1]}</b></div>${over ? '<small>경기 끝</small>' : ''}${luT}</div>${plCol(1, '')}</div>
+      <div class="board">${plCol(0, ' a')}${gwpH}<div class="mid">${topT}<div class="mscore"><span class="msl"><b>${sc[0]}</b><span class="msets">(${won[0]})</span></span><b class="colon">:</b><span class="msr"><span class="msets">(${won[1]})</span><b>${sc[1]}</b></span></div>${over ? '<small>경기 끝</small>' : ''}${luT}</div>${plCol(1, '')}</div>
       <div class="pad${direct ? ' dir' : ''}">${direct ? `<span class="hint">키보드로 바로 입력 · 숫자 1·2·3 = 뱅크샷 · Shift+T·O·W·H = 파울</span>` : `${TECH.map(k => `<button data-k="${esc(k)}">${esc(k)}</button>`).join('')}<span class="gap"></span>${BANK.map(k => `<button class="bk" data-k="${k}">${k}</button>`).join('')}<span class="gap"></span>${FOUL.map(k => `<button class="fl" data-k="${k}">${k}</button>`).join('')}`}
         <span class="gap"></span><button class="act" data-enter>${sel ? '⇥ 고치기 끝 <small class="kh">(Tab)</small>' : '⇥ 이닝 끝 · 실패 <small class="kh">(Tab)</small>'}</button><button class="act fin${canFinish() ? ' on' : ''}" data-endok ${canFinish() ? '' : 'disabled'}>↵ 세트 끝 · 성공 <small class="kh">(Enter)</small></button><button class="act" data-back>⌫ 지우기</button>${(isTeam || ind) && !started ? '<button class="act go" data-start>▶ 경기 시작</button>' : (isTeam || ind || set.tb) && !over && !fcDone ? `<button class="act go" data-fc="0">◀ ${nm(0)} ${set.tb ? '승치 ' : ''}선공</button><button class="act go" data-fc="1">${nm(1)} ${set.tb ? '승치 ' : ''}선공 ▶</button>` : !set.turns.length && !over ? `<button class="act" data-swap>선공 바꾸기</button>${!isTeam && !set.tb && si > 0 && won[0] === won[1] && won[0] === (S.toWin || 3) - 1 ? '<button class="act go" data-tb>⚔ 승부치기</button>' : ''}` : ''}</div></div>
       <div class="sbody">`;
@@ -587,7 +602,7 @@ header.top .sheetbtn:hover { background: rgba(255,255,255,.2); }
       const res = st.winner != null ? `${nm(st.winner)} 승` : i === si && !over ? '진행 중' : '';
       // 퍼펙트큐: 이긴 쪽이 한 이닝에 세트 점수를 모두 냈으면 P
       const perf = st.winner != null && st.turns.some((t, k) => sideOf(st, k) === st.winner && ptsOf(t) >= targetOf(i));
-      h += `<details data-open="s${i}" ${S.open['s' + i] ? 'open' : ''}><summary class="ssum"><small class="sl">${A.inn ? `에버 ${f3(A.avg)} · 하이런 ${A.hr}` : ''}</small><span class="sp${st.winner === 0 ? ' w' : ''}">${s2[0]}</span><span class="sn">${st.tb ? '승부치기' : `${i + 1}세트`}${perf ? '<b class="perf" title="퍼펙트큐">P</b>' : ''}</span><span class="sp${st.winner === 1 ? ' w' : ''}">${s2[1]}</span><small class="sr">${B.inn ? `에버 ${f3(B.avg)} · 하이런 ${B.hr}` : ''}</small></summary>
+      h += `<details data-open="s${i}" ${S.open['s' + i] ? 'open' : ''}><summary class="ssum"><small class="sl">${A.inn ? `에버 ${f3(A.avg)} · 하이런 ${A.hr}` : ''}</small><span class="sp${st.winner === 0 ? ' w' : ''}">${s2[0]}</span><span class="sn">${perf ? '<b class="perf ph">P</b>' : ''}${st.tb ?'승부치기' : `${i + 1}세트`}${perf ? '<b class="perf" title="퍼펙트큐">P</b>' : ''}</span><span class="sp${st.winner === 1 ? ' w' : ''}">${s2[1]}</span><small class="sr">${B.inn ? `에버 ${f3(B.avg)} · 하이런 ${B.hr}` : ''}</small></summary>
         ${i === si ? timingH() : ''}${innTable(st, i)}
         <details data-open="r${i}" ${S.open['r' + i] ? 'open' : ''}><summary class="lsum">${st.tb ? '승부치기' : `${i + 1}세트`} 세부 결과</summary><div class="sdet">${setT([A, B])}<div class="sdh">기술 성공률</div>${typeTable(A, B)}</div></details></details>`;
     });

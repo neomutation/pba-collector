@@ -4,9 +4,10 @@
 //   ⌘1 / ⌘2  지금 보이는 1번 / 2번 선수(팀) 영역 전체
 //   ⌘A  지금 앱 화면 전체   입력칸에서는 원래 전체 선택
 //   찍은 그림은 /Users/당구/캡쳐 폴더에도 PNG 로 저장 (맥 앱이 저장)
+//   방송 요약(본 창 · 새 창 모두): 위쪽 '📷 캡쳐' = 보이는 요약 전체, 칸 제목 옆 📷 = 그 칸 (칸 맨 위로 올린 뒤 찍음)
 (() => {
-  if (new URLSearchParams(location.search).has('bcwin')) return;
   if (!(window.webkit && webkit.messageHandlers && webkit.messageHandlers.pba)) return;
+  document.body.classList.add('cancap');
   let mx = -1, my = -1, last = null;   // last: 바로 전 ⌘C 로 찍은 항목 (다시 누르면 그 위 항목)
   addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, true);
 
@@ -51,6 +52,25 @@
     requestAnimationFrame(() => webkit.messageHandlers.pba.postMessage(`cap:${[rc.l, rc.t, rc.w, rc.h, innerWidth].map(v => Math.round(v * 100) / 100).join(',')}|${fname || label}`));
     setTimeout(() => { if (busy) window.pbaCapDone(false); }, 4000);
   };
+
+  // 방송 요약 캡쳐 버튼 (제목 줄 클릭 = 접기가 되지 않게 먼저 받는다)
+  document.addEventListener('click', e => {
+    const b = e.target.closest && e.target.closest('[data-bccap]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const root = b.closest('#bc, #tbc'), top = root && root.querySelector('.bctop'); if (!root) return;
+    const who = [...root.querySelectorAll('.bchead .bp b')].map(x => x.textContent.trim()).join(' vs ');
+    const below = rc => { const tb = top ? top.getBoundingClientRect().bottom : 0; if (!rc || rc.t >= tb) return rc; const h = rc.h - (tb - rc.t); return h >= 4 ? { ...rc, t: tb, h } : null; };
+    if (b.dataset.bccap === 'all') { shoot(below(visRect(root)), '방송 요약', `방송요약 ${who}`); return; }
+    const sec = b.closest('section'), h3 = sec.querySelector('h3');
+    const name = h3 ? [...h3.childNodes].filter(n => n.nodeType === 3 || !n.matches('.n, small, button, .fgrp')).map(n => n.textContent).join('').trim() : '';
+    // 접힌 칸이면 펼치고, 칸 머리를 맨 위 막대 바로 아래로 올린 뒤 찍는다 (화면보다 긴 칸은 보이는 데까지)
+    if (sec.classList.contains('folded') && h3) h3.click();
+    sec.scrollIntoView({ block: 'start' });
+    let sc = sec.parentElement; while (sc && sc !== document.body && !(sc.scrollHeight > sc.clientHeight + 4 && /auto|scroll/.test(getComputedStyle(sc).overflowY))) sc = sc.parentElement;
+    if (!sc || sc === document.body) sc = document.scrollingElement;
+    if (top) sc.scrollTop -= top.getBoundingClientRect().bottom - sec.getBoundingClientRect().top + 4;
+    requestAnimationFrame(() => requestAnimationFrame(() => shoot(below(visRect(sec)), `'${name}' 칸`, `방송요약 ${name} ${who}`)));
+  }, true);
 
   const paneOf = k => {
     const id = document.body.classList.contains('teammode') ? `#tpane${k}` : `#pane${k}`;

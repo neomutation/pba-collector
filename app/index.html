@@ -22,6 +22,10 @@ header.top h1 { font-size: 16px; margin: 0; letter-spacing: .02em; white-space: 
 /* 경기 수 · 업데이트 시각은 머리줄 오른쪽 끝 작은 두 줄 (버튼 줄 높이 안에) */
 header.top .meta { font-size: 10.5px; line-height: 1.25; opacity: .7; margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; white-space: nowrap; }
 #sheetSlot:empty { display: none; }
+/* 업데이트 버튼(경기 수 · 업데이트 시각 오른쪽): 받는 중엔 ↻ 가 돈다 */
+header.top .updbtn { white-space: nowrap; } header.top .updbtn i { font-style: normal; display: inline-block; }
+header.top .updbtn:disabled { cursor: default; opacity: .75; } header.top .updbtn.busy i { animation: updspin 1s linear infinite; }
+@keyframes updspin { to { transform: rotate(360deg); } }
 /* 좁은 창(절반 화면): 제목을 빼고 버튼 글자를 줄여 탭 · 버튼 · 기록지가 한 줄에 들어가게. [ ] 로 감싼 글자(.hl)는 숨김 */
 .hl { display: inline; }
 @media (max-width: 1100px) {
@@ -649,7 +653,7 @@ td.seq { letter-spacing: 1px; }
 table.setdet td { white-space: nowrap; font-size: 12px; }
 /* 방송 요약 */
 .bcbtn { border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.1); color: #fff; border-radius: 7px; padding: 4px 12px; font-size: 13px; cursor: pointer; }
-body.bcmode .bcbtn { background: #fff; color: var(--head); }
+body.bcmode .bcbtn:not(.updbtn) { background: #fff; color: var(--head); }
 body.bcmode #h2h, body.bcmode .panes { display: none !important; }
 /* 방송 요약을 보는 동안 라이브 브리핑은 한 줄(LIVE 표시)로 줄여 방송 요약이 바로 보이게 */
 body.bcmode #live .lcard, body.bcmode #live .lother, body.tbcmode #live .lcard, body.tbcmode #live .lother { display: none; }
@@ -666,6 +670,10 @@ body.tbcmode #tbcBtn { background: #fff; color: var(--head); }
 .bcplayers td:first-child, .bcplayers th:first-child { text-align: left; }
 .bctop { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; gap: 10px; flex-wrap: wrap; position: sticky; top: 0; background: var(--bg); z-index: 3; }
 .bctop .bcx { display: flex; gap: 6px; margin-left: auto; } .bctop .bcl { display: flex; gap: 6px; }
+/* 방송 요약 캡쳐 버튼: 맥 앱(capture.js 가 body.cancap)에서만, 찍는 동안엔 그림에 안 나오게 */
+.bccap { display: none; } body.cancap .bccap { display: inline-flex; align-items: center; }
+.bcsec h3 .bccap { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 0 5px; height: 24px; font-size: 13px; cursor: pointer; }
+body.capshot .bccap { visibility: hidden; }
 /* 방송 요약 별도 창 (?bcwin): 방송 요약만 보인다 */
 body.bcwin > header.top, body.bcwin #live, body.bcwin #sheet, body.bcwin #sheetFab, body.bcwin #board { display: none !important; }
 body.pdfmode, html:has(body.pdfmode) { height: auto !important; } body.pdfmode { display: block !important; } body.pdfmode > :not(#bc):not(#tbc) { display: none !important; } body.pdfmode #bc, body.pdfmode #tbc { overflow: visible !important; height: auto !important; } body.pdfmode .bctop { display: none !important; }
@@ -730,8 +738,15 @@ table.bc3 tbody th { font-size: 14px; color: var(--sub); font-weight: 600; min-w
 table.bc3 td { font-size: 19px; font-weight: 700; }
 table.bc3 td.ps { font-size: 21px; }
 table.bc3 td.pt, table.bc3 thead th.pt { background: rgba(229, 37, 71, .06); }
+table.bc3 thead th.pt { background: linear-gradient(rgba(229, 37, 71, .06), rgba(229, 37, 71, .06)) var(--panel); }   /* 머리줄이 고정돼 스크롤될 때 아래 숫자가 비치지 않게 */
 table.bc3 td.pa { color: var(--sub); font-weight: 600; }
 table.bc3 td.win { color: var(--accent); font-weight: 900; }
+/* 통산 · 시즌 열 테두리 (세부 칩 열 테두리와 같은 모양: 통산 회색 · 시즌 노란색) */
+table.bc3.colmk .cbt { --cb: #8b93a1; } table.bc3.colmk .cbc { --cb: #ffd60a; }
+table.bc3.colmk .cbt, table.bc3.colmk .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb); }
+table.bc3.colmk thead .cbt, table.bc3.colmk thead .cbc { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 2px var(--cb); border-radius: 7px 7px 0 0; }
+table.bc3.colmk .cbt.cbot, table.bc3.colmk .cbc.cbot { box-shadow: inset 2px 0 var(--cb), inset -2px 0 var(--cb), inset 0 -2px var(--cb); border-radius: 0 0 7px 7px; }
+table.bc3.colmk thead th.cbc { color: #ffd60a; }
 .bcgrid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; }
 /* 방송 요약 ① 주요 특징: 키워드 블록(.bckwb) — 키워드를 누르면 접기 · 펼치기. 관전포인트 | 상대전적 반반, 육각형 이번 시즌 | 통산 반반 */
 .bcfeat2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 18px; align-items: start; }
@@ -979,7 +994,7 @@ table.cfold .cfb { color: var(--accent); }
 
 </head>
 <body>
-<header class="top"><h1>PBA 기록 비교</h1><nav class="apptabs"><button data-app="indiv" class="on">개인투어</button><button data-app="team">팀리그</button></nav><button id="bcBtn" class="bcbtn" hidden>📺 <span class="hl">방송 </span>요약</button><button id="tbcBtn" class="bcbtn" hidden>📺 <span class="hl">방송 </span>요약</button><span id="sheetSlot"></span><span class="meta" id="meta"></span></header>
+<header class="top"><h1>PBA 기록 비교</h1><nav class="apptabs"><button data-app="indiv" class="on">개인투어</button><button data-app="team">팀리그</button></nav><button id="bcBtn" class="bcbtn" hidden>📺 <span class="hl">방송 </span>요약</button><button id="tbcBtn" class="bcbtn" hidden>📺 <span class="hl">방송 </span>요약</button><span id="sheetSlot"></span><span class="meta" id="meta"></span><button id="updBtn" class="bcbtn updbtn" title="홈피에서 새 경기 결과를 지금 바로 받아옵니다"><i>↻</i><span class="hl"> 업데이트</span></button></header>
 <div id="live"></div>
 <div id="bc" hidden></div>
 <div id="h2h"></div>
@@ -1719,7 +1734,10 @@ const POP_CLICKABLE = 'a, button, input, select, textarea, label, summary, .opp,
 // 그림: 바깥일수록 비교 대상 중 높음 · 점선 = 리그 평균. 꼭짓점 = 대표 수치, 누르면 말풍선
 //  opts.ranks: 항목 이름 양옆에 두 쪽의 그 항목 순위 (팀 방송요약: 그 시즌 팀들 중)
 // 방송요약 3기간 비교 표(라운드·대회 | 시즌 | 통산 | 항목 | 통산 | 시즌 | 라운드·대회): 양쪽 칸 너비를 똑같이 고정해 5:5 (값 길이에 따라 한쪽이 넓어지지 않게)
-const BC3_COLS = '<colgroup><col style="width:13.5%"><col style="width:13.5%"><col style="width:13.5%"><col style="width:19%"><col style="width:13.5%"><col style="width:13.5%"><col style="width:13.5%"></colgroup>';
+//  nc = 한쪽 기간 칸 수 (이번 대회 · 라운드 기록이 없으면 2)
+const bc3Cols = (nc = 3) => { const w = nc === 3 ? 13.5 : 20.25, c = `<col style="width:${w}%">`.repeat(nc); return `<colgroup>${c}<col style="width:19%">${c}</colgroup>`; };
+// 통산 · 시즌 열 테두리 맨 아래 칸 (소제목 줄을 뺀 마지막 줄)
+function bc3Bottoms(root) { root.querySelectorAll('table.bc3.colmk').forEach(colBottoms); }
 //  칸 너비가 고정이라 값이 길면(예: 통산 140-23-107) 그 칸만 글자를 0.5px씩 줄여 맞춘다 (최소 10px). 그릴 때 · 창 크기가 바뀔 때
 function fitBc3(root = document) {
   root.querySelectorAll('table.bc3 td').forEach(td => {
@@ -3806,6 +3824,13 @@ document.addEventListener('click', e => {
   });
 });
 // 이번 대회: 그 선수가 뛴 진행 중 대회, 없으면 가장 최근에 뛴 대회
+// 방송 요약 칸 제목 옆 캡쳐 버튼 (맥 앱에서만 보임, capture.js 가 처리)
+const BCCAP = '<button class="bccap" data-bccap="sec" title="이 칸을 그림으로 (클립보드 + 캡쳐 폴더)">📷</button>';
+// 리그의 이번 대회: 홈피 대회 목록에서 진행 중인 대회 (없으면 가장 최근에 열린 대회) — 선수가 뛰었는지와 상관없이
+function nowTour(d) {
+  const ts = d.tours || [], live = ts.filter(t => t.status && t.status !== '종료');
+  return live[live.length - 1] || ts[ts.length - 1] || null;
+}
 function curTour(d) {
   const played = new Set(d.games.map(g => g.tour)), ts = d.tours.filter(t => played.has(t.code));
   return ts.find(t => t.status && t.status !== '종료') || ts[ts.length - 1] || null;
@@ -3868,15 +3893,16 @@ async function renderBroadcast() {
   bcL = L; bcSeason = lastSeason(A);   // 수치 칸 순위 말풍선에서 쓴다
   const an = A.player.name, bn = B.player.name;
   // ②~⑦ 은 처음엔 접혀 제목(키워드)만 보이고, 누르면 펼침
-  const sec = (n, title, body, sub = '') => `<section class="bcsec"${n > 1 ? ' data-fdef' : ''}><h3><span class="n">${n}</span>${title}${sub ? `<small>${sub}</small>` : ''}</h3>${body}</section>`;
+  const sec = (n, title, body, sub = '') => `<section class="bcsec"${n > 1 ? ' data-fdef' : ''}><h3><span class="n">${n}</span>${title}${BCCAP}${sub ? `<small>${sub}</small>` : ''}</h3>${body}</section>`;
   const head = `<div class="bchead"><div class="bp a">${A.player.photo ? `<img src="${esc(A.player.photo)}">` : ''}<b>${esc(an)}</b></div><div class="bvs">VS</div><div class="bp b"><b>${esc(bn)}</b>${B.player.photo ? `<img src="${esc(B.player.photo)}">` : ''}</div></div>`;
   const W = gs => gs.filter(g => g.win).length;
-  let h = `<div class="bctop">${bcTopLeft('← 비교 화면')}<span class="bcx"><button data-export="text">공유</button><button data-export="share">PDF로 공유하기</button><button data-export="pdf">PDF로 만들기</button></span></div>${head}<!--RCPBTN-->`;
+  let h = `<div class="bctop">${bcTopLeft('← 비교 화면')}<span class="bcx"><button class="bccap" data-bccap="all" title="지금 보이는 방송 요약을 그림으로 (클립보드 + 캡쳐 폴더) · 칸마다 📷 = 그 칸만 · ⌘C = 커서 아래 항목">📷 캡쳐</button><button data-export="text">공유</button><button data-export="share">PDF로 공유하기</button><button data-export="pdf">PDF로 만들기</button></span></div>${head}<!--RCPBTN-->`;
   const R = {};   // 섹션별 표 줄 (레시피 항목으로도 쓴다)
 
   // 방송 순서: ① 관전 포인트 + 상대 전적 ② 기본 기록 ③ 세부 기록 1 (뱅킹·공·선후공) ④ 세부 기록 2 (초구) ⑤ 세트 기록
-  //  ②~⑤ 는 모두 이번 대회 · 이번 시즌 · 통산 세 기간 표: 대회 | 시즌 | 통산 | 항목 | 통산 | 시즌 | 대회 (같은 기간끼리 더 좋은 쪽 강조)
-  const cs = lastSeason(A), tA3 = curTour(A), tB3 = curTour(B);
+  //  ②~⑤ 는 모두 이번 대회 · 이번 시즌 · 통산 세 기간 표: 통산 | 시즌 | 대회 | 항목 | 대회 | 시즌 | 통산 (가운데 항목에 가까울수록 최근, 같은 기간끼리 더 좋은 쪽 강조)
+  //  이번 대회 = 홈피 대회 목록(tours)에서 진행 중인 대회 (없으면 가장 최근 대회). 두 선수 모두 그 대회 기록이 있을 때만 대회 칸을 넣고, 아니면 칸을 뺀다
+  const cs = lastSeason(A), tNow = nowTour(A), hasT = !!tNow && [A, B].every(d => d.games.some(g => g.tour === tNow.code)), tA3 = hasT ? tNow : null, tB3 = tA3;
   const is5 = g => (g.target || Math.max(g.sw, g.sl)) === 3;   // 5전 3선승 경기
   const is7 = g => (g.target || Math.max(g.sw, g.sl)) === 4;   // 7전 4선승 경기 (준결승·결승)
   const per3 = (d, t) => {
@@ -3890,13 +3916,14 @@ async function renderBroadcast() {
   };
   const PA = per3(A, tA3), PB = per3(B, tB3);
   const tname = t => t ? `${tourShort(t.seq)}${t.status && t.status !== '종료' ? ' (진행 중)' : ''}` : '–';
-  const bcHead = `<thead><tr><th colspan="3" class="nm a">${esc(an)}</th><th></th><th colspan="3" class="nm b">${esc(bn)}</th></tr>
-    <tr><th class="pt">이번 대회<small>${esc(tname(tA3))}</small></th><th class="ps">${esc(seasonLabel(cs))} 시즌</th><th class="pa">통산</th><th></th>
-      <th class="pa">통산</th><th class="ps">${esc(seasonLabel(cs))} 시즌</th><th class="pt">이번 대회<small>${esc(tname(tB3))}</small></th></tr></thead>`;
+  const PK = hasT ? ['all', 'season', 'tour'] : ['all', 'season'], nc = PK.length;
+  const pHead = (k, t) => k === 'tour' ? `<th class="pt">이번 대회<small>${esc(tname(t))}</small></th>` : k === 'season' ? `<th class="ps cbc">${esc(seasonLabel(cs))} 시즌</th>` : '<th class="pa cbt">통산</th>';
+  const bcHead = `<thead><tr><th colspan="${nc}" class="nm a">${esc(an)}</th><th></th><th colspan="${nc}" class="nm b">${esc(bn)}</th></tr>
+    <tr>${PK.map(k => pHead(k, tA3)).join('')}<th></th>${PK.slice().reverse().map(k => pHead(k, tB3)).join('')}</tr></thead>`;
   // rows: [항목, (선수 기간 묶음, 'tour'|'season'|'all') → { v: 비교값, t: 보이는 값, s: 작은 글씨 } | null, 'high'|'low'|'none']
-  //  항목 이름이 '#' 로 시작하면 소제목 줄
-  const bc3 = rows => `<div class="tw"><table class="bc3">${BC3_COLS}${bcHead}<tbody>${rows.map(([label, get, better = 'high']) => {
-    if (label.startsWith('#')) return `<tr class="grp"><th colspan="7">${label.slice(1)}</th></tr>`;
+  //  항목 이름이 '#' 로 시작하면 소제목 줄. 통산 · 시즌 열은 테두리(통산 회색 · 시즌 노란색, 맨 아래 칸은 bc3Bottoms)
+  const bc3 = rows => `<div class="tw"><table class="bc3 colmk">${bc3Cols(nc)}${bcHead}<tbody>${rows.map(([label, get, better = 'high']) => {
+    if (label.startsWith('#')) return `<tr class="grp"><th colspan="${nc * 2 + 1}">${label.slice(1)}</th></tr>`;
     const td = (P, Q, k) => {
       const x = get(P, k), y = get(Q, k);
       const ok = better !== 'none' && x && y && x.v != null && y.v != null && x.v !== y.v;
@@ -3905,14 +3932,14 @@ async function renderBroadcast() {
       // 횟수가 적은 세트 스코어 칸은 해당 경기들을 같은 말풍선 위쪽에 (이번 대회 칸은 순위 없이 경기만)
       const hk = get.key && k !== 'tour' && x && x.v != null ? ` data-bkh="${k}|${esc(P.id)}|${better === 'low' ? 1 : 0}" data-bkk="${esc(get.key)}" data-bkp="${esc(P.name)}" data-bkn="${esc(get.rname || label.replace(/<small>.*?<\/small>/g, '').replace(/<[^>]*>/g, '').trim())}"${x.tip ? ` data-bkt="${esc(x.tip)}"` : ''}` : '';
       const tip = !hk && x && x.tip ? ` title="${esc(x.tip)}"` : '';
-      return `<td class="${k === 'tour' ? 'pt' : k === 'season' ? 'ps' : 'pa'}${win ? ' win' : ''}"${hk}${tip}>${(x && x.t) || '–'}${x && x.s ? `<small>${x.s}</small>` : ''}</td>`;
+      return `<td class="${k === 'tour' ? 'pt' : k === 'season' ? 'ps cbc' : 'pa cbt'}${win ? ' win' : ''}"${hk}${tip}>${(x && x.t) || '–'}${x && x.s ? `<small>${x.s}</small>` : ''}</td>`;
     };
-    return `<tr>${td(PA, PB, 'tour')}${td(PA, PB, 'season')}${td(PA, PB, 'all')}<th>${label}</th>${td(PB, PA, 'all')}${td(PB, PA, 'season')}${td(PB, PA, 'tour')}</tr>`;
+    return `<tr>${PK.map(k => td(PA, PB, k)).join('')}<th>${label}</th>${PK.slice().reverse().map(k => td(PB, PA, k)).join('')}</tr>`;
   }).join('')}</tbody></table></div>`;
   BC_FMT.winRate = pct;   // 승-패 칸 순위는 경기 승률로
   const st3 = (key, f, sub) => { BC_FMT[key] = f; return Object.assign((P, k) => { const o = P[k]; return o.games && o[key] != null ? { v: o[key], t: f(o[key]), s: sub ? sub(o) : '' } : null; }, { key }); };
   const sameT = tA3 && tB3 && tA3.code === tB3.code;
-  const tNote = sameT ? `이번 대회 = ${esc(tA3.name)}` : '이번 대회 = 진행 중인 대회 (없으면 가장 최근에 뛴 대회)';
+  const tNote = sameT ? `이번 대회 = ${esc(tA3.name)}` : tNow ? `이번 대회(${esc(tourShort(tNow.seq))}) 기록이 두 선수 모두 있을 때만 대회 칸을 넣습니다` : '';
 
   // ① 관전 포인트 (키워드) + 상대 전적
   let hh;
@@ -4013,10 +4040,11 @@ async function renderBroadcast() {
     .concat([['#1세트 결과에 따른 경기 승률'], ['1세트 승리 시 경기 승률<small>이긴 경기 / 1세트 이긴 경기</small>', st3('s1wRate', pct, o => `${o.s1wW}/${o.s1wN}`)], ['1세트 패배 시 경기 승률<small>역전승 / 1세트 진 경기</small>', st3('s1lRate', pct, o => `${o.s1lW}/${o.s1lN}`)]])))
     + sec(8, '세트 스코어별 최종 승률', bc3(R.states = [['#5전 3선승 (그 스코어가 된 경기 중 이긴 경기)']].concat(STATES.map(([label, a, b, first]) => [label, stateOf(a, b, first, 3, label)]))
     .concat([['#7전 4선승 (준결승 · 결승)']], STATES7.map(([label, a, b, first]) => [label, stateOf(a, b, first, 4, label)])))) + '</div>';
-  h += `<div class="note" style="text-align:center;padding:16px">②~⑧ = 이번 대회 · 이번 시즌 · 통산 · 1:1 세트제 경기 기준 · 같은 기간끼리 더 좋은 쪽이 강조됩니다.</div>`;
+  h += `<div class="note" style="text-align:center;padding:16px">②~⑧ = 통산 · 이번 시즌 · 이번 대회 (가운데 항목 쪽이 최근, 이번 대회 기록이 없으면 칸을 뺌) · 1:1 세트제 경기 기준 · 같은 기간끼리 더 좋은 쪽이 강조됩니다.</div>`;
   RCP.bc = { groups: rcpNorm([['기본 기록', R.basic], ['세트 흐름 · 클러치', R.flow], ['뱅킹 · 공 · 선후공', R.bank], ['초구', R.fb], ['세트별 기록', R.sets], ['세트 스코어별 최종 승률', R.states]]), table: rows => bc3(rows) };
   h = h.replace('<!--RCPBTN-->', rcpPanel('bc')).replace('<!--RCP-->', rcpSection('bc'));
   el.innerHTML = h;
+  bc3Bottoms(el);
   fitBc3(el);
   applyFolds(el);
 }
@@ -4437,7 +4465,7 @@ function applyFolds(root) {
   const area = root.id || (root.closest('[id]') || {}).id || '';
   root.querySelectorAll('section.bcsec:not(.fblk)').forEach(sec => {
     const h3 = sec.querySelector(':scope > h3'); if (!h3) return;
-    const t = [...h3.childNodes].filter(n => !(n.classList && (n.classList.contains('n') || n.tagName === 'SMALL'))).map(n => n.textContent).join('').trim();
+    const t = [...h3.childNodes].filter(n => !(n.classList && (n.classList.contains('n') || n.tagName === 'SMALL' || n.tagName === 'BUTTON'))).map(n => n.textContent).join('').trim();
     sec.classList.add('fblk'); sec.dataset.fk = `${area}:${t}`; h3.classList.add('fhd');
   });
   root.querySelectorAll('[data-fsec] .subhead:not(.fhd)').forEach(sh => {
@@ -4452,8 +4480,8 @@ function applyFolds(root) {
     b.classList.toggle('folded', isFolded(b));
     const hd = b.querySelector(':scope > .fhd'); if (!hd || hd.querySelector(':scope > .fbtn')) return;
     const btn = document.createElement('button'); btn.className = 'fbtn'; btn.type = 'button'; btn.title = '접기 · 펼치기';
-    // 버튼은 항목 이름 바로 옆: 굵은 제목(b) 뒤, 없으면 작은 부제(small) 앞, 그것도 없으면 끝
-    const t = hd.querySelector(':scope > b'), sm = hd.querySelector(':scope > small');
+    // 버튼은 항목 이름 바로 옆: 굵은 제목(b) 뒤, 없으면 캡쳐 버튼(.bccap) · 작은 부제(small) 앞, 그것도 없으면 끝
+    const t = hd.querySelector(':scope > b'), sm = hd.querySelector(':scope > .bccap, :scope > small');
     t ? t.after(btn) : sm ? sm.before(btn) : hd.append(btn);
   });
 }
@@ -4540,6 +4568,24 @@ async function checkMeta() {
 }
 checkMeta();
 setInterval(checkMeta, 30 * 1000);
+// 머리줄 업데이트 버튼: 서버가 바로 새 경기 결과를 받는다. 끝나면 checkMeta 가 새 기록으로 바꿔 준다 (휴대폰 사이트엔 없음)
+const updBtn = $('#updBtn');
+let updTimer = null;
+function updShow(st) {
+  const busy = st === 'busy';
+  updBtn.disabled = busy; updBtn.classList.toggle('busy', busy);
+  updBtn.querySelector('i').textContent = st === 'fail' ? '!' : st === 'done' ? '✓' : '↻';
+  updBtn.querySelector('.hl').textContent = busy ? ' 받는 중…' : st === 'fail' ? ' 실패' : st === 'done' ? ' 완료' : ' 업데이트';
+  updBtn.title = busy ? '새 경기 결과를 받는 중입니다' : st === 'fail' ? '업데이트 중 문제가 생겼습니다 (data/collect_app.log)' : '홈피에서 새 경기 결과를 지금 바로 받아옵니다';
+}
+async function updPoll(method) {
+  const s = await fetch('/api/update', { method }).then(r => r.json()).catch(() => null);
+  if (!s) { updShow('fail'); updBtn.title = '앱을 다시 켜야 업데이트 버튼을 쓸 수 있습니다'; return; }
+  if (s.running) { updShow('busy'); clearTimeout(updTimer); updTimer = setTimeout(() => updPoll('GET'), 3000); return; }
+  if (updBtn.classList.contains('busy')) { await checkMeta(); updShow(s.ok ? 'done' : 'fail'); setTimeout(() => updShow(), 4000); }
+}
+if (STATIC) updBtn.hidden = true;
+else { updBtn.onclick = () => updPoll('POST'); updPoll('GET'); }
 // 세부 항목 메뉴가 붙을 위치 = 각 칸 맨 위 검색칸 높이 (팀리그는 다시 그릴 때마다 검색칸을 새로 만든다)
 function syncStick() {
   document.querySelectorAll('.pane').forEach(p => { const s = p.querySelector(':scope > .search'); p.style.setProperty('--stick', (s ? s.offsetHeight : 0) + 'px'); });

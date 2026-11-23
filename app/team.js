@@ -1797,20 +1797,25 @@
   }
   // 세 기간 비교 표: 라운드 | 시즌 | 통산 | 항목 | 통산 | 시즌 | 라운드 (같은 기간끼리 더 좋은 쪽 강조)
   //  rows: [항목, (그 기간 기록 o, 기간 키, 팀 묶음 P) → { v: 비교값, t: 보이는 값, s: 작은 글씨 } | null, 'high'|'low'|'none'] · '#' 로 시작하면 소제목
-  function tri3(an, bn, PA, PB, sl, rows, cls = 'bc3', mid = '') {
-    const head = `<thead><tr><th colspan="3" class="nm a">${esc(an)}</th><th></th><th colspan="3" class="nm b">${esc(bn)}</th></tr>
-      <tr><th class="pt">이번 라운드<small>${esc(PA.rname || '')}</small></th><th class="ps">${esc(sl)} 시즌</th><th class="pa">통산</th><th></th><th class="pa">통산</th><th class="ps">${esc(sl)} 시즌</th><th class="pt">이번 라운드<small>${esc(PB.rname || '')}</small></th></tr></thead>`;
+  //  bc(방송 요약): 통산 | 시즌 | 라운드 | 항목 | 라운드 | 시즌 | 통산 (가운데에 가까울수록 최근), 두 팀 모두 라운드 기록이 있을 때만 라운드 칸을 넣고 통산 · 시즌 열은 테두리
+  function tri3(an, bn, PA, PB, sl, rows, cls = 'bc3', mid = '', bc = false) {
+    const hasR = !bc || !!(PA.round && PA.round.games && PB.round && PB.round.games);
+    const PK = bc ? (hasR ? ['all', 'season', 'round'] : ['all', 'season']) : ['round', 'season', 'all'], nc = PK.length;
+    const C = { round: 'pt', season: bc ? 'ps cbc' : 'ps', all: bc ? 'pa cbt' : 'pa' };
+    const ph = (k, P) => k === 'round' ? `<th class="pt">이번 라운드<small>${esc(P.rname || '')}</small></th>` : k === 'season' ? `<th class="${C.season}">${esc(sl)} 시즌</th>` : `<th class="${C.all}">통산</th>`;
+    const head = `<thead><tr><th colspan="${nc}" class="nm a">${esc(an)}</th><th></th><th colspan="${nc}" class="nm b">${esc(bn)}</th></tr>
+      <tr>${PK.map(k => ph(k, PA)).join('')}<th></th>${PK.slice().reverse().map(k => ph(k, PB)).join('')}</tr></thead>`;
     const body = rows.map(([label, get, better = 'high']) => {
-      if (label.startsWith('#')) return `<tr class="grp"><th colspan="7">${label.slice(1)}</th></tr>`;
-      const td = (P, Q, k, c) => {
+      if (label.startsWith('#')) return `<tr class="grp"><th colspan="${nc * 2 + 1}">${label.slice(1)}</th></tr>`;
+      const td = (P, Q, k) => {
         const x = get(P[k], k, P), y = get(Q[k], k, Q);
         const ok = better !== 'none' && x && y && x.v != null && y.v != null && !isNaN(x.v) && !isNaN(y.v) && x.v !== y.v;
         const win = ok && (better === 'high' ? x.v > y.v : x.v < y.v);
-        return `<td class="${c}${win ? ' win' : ''}">${(x && x.t) || '–'}${x && x.s ? `<small>${x.s}</small>` : ''}</td>`;
+        return `<td class="${C[k]}${win ? ' win' : ''}">${(x && x.t) || '–'}${x && x.s ? `<small>${x.s}</small>` : ''}</td>`;
       };
-      return `<tr>${td(PA, PB, 'round', 'pt')}${td(PA, PB, 'season', 'ps')}${td(PA, PB, 'all', 'pa')}<th${mid ? ` class="${mid}"` : ''}>${label}</th>${td(PB, PA, 'all', 'pa')}${td(PB, PA, 'season', 'ps')}${td(PB, PA, 'round', 'pt')}</tr>`;
+      return `<tr>${PK.map(k => td(PA, PB, k)).join('')}<th${mid ? ` class="${mid}"` : ''}>${label}</th>${PK.slice().reverse().map(k => td(PB, PA, k)).join('')}</tr>`;
     }).join('');
-    return `<div class="tw"><table class="${cls}">${BC3_COLS}${head}<tbody>${body}</tbody></table></div>`;
+    return `<div class="tw"><table class="${cls}${bc ? ' colmk' : ''}">${bc3Cols(nc)}${head}<tbody>${body}</tbody></table></div>`;
   }
   // 값 하나를 { v, t, s } 로 (기록이 없으면 null)
   const g3 = (f, fmt = pct, sub) => o => { if (!o || !o.games) return null; const v = f(o); return v == null || isNaN(v) ? null : { v, t: fmt(v), s: sub ? sub(o) : '' }; };
@@ -1880,11 +1885,11 @@
     const sl = seasonLabel(leagueOf[A.league].season) + (A.league !== B.league ? ` / ${seasonLabel(leagueOf[B.league].season)}` : '');
     const h2h = gamesOf(A.code, g => g.t1 === B.code || g.t2 === B.code);
     // ② 이후는 처음엔 접혀 제목(키워드)만 보이고, 누르면 펼침
-    const sec = (n, title, body, sub = '') => `<section class="bcsec"${n > 1 ? ' data-fdef' : ''}><h3><span class="n">${n}</span>${title}${sub ? `<small>${sub}</small>` : ''}</h3>${body}</section>`;
+    const sec = (n, title, body, sub = '') => `<section class="bcsec"${n > 1 ? ' data-fdef' : ''}><h3><span class="n">${n}</span>${title}${BCCAP}${sub ? `<small>${sub}</small>` : ''}</h3>${body}</section>`;
     const stA = standings(A.league).find(r => r.code === A.code), stB = standings(B.league).find(r => r.code === B.code);
     const logo = (p, st) => { const u = (st && st.logo) || teamLogo[p.code]; return u ? `<img class="logo" src="${esc(u)}">` : ''; };
-    const T = rows => tri3(an, bn, PA, PB, sl, rows);
-    let h = `<div class="bctop">${bcTopLeft('← 팀 비교 화면', 'tbcback')}<span class="bcx"><button data-export="text">공유</button><button data-export="share">PDF로 공유하기</button><button data-export="pdf">PDF로 만들기</button></span></div>
+    const T = rows => tri3(an, bn, PA, PB, sl, rows, 'bc3', '', true);
+    let h = `<div class="bctop">${bcTopLeft('← 팀 비교 화면', 'tbcback')}<span class="bcx"><button class="bccap" data-bccap="all" title="지금 보이는 방송 요약을 그림으로 (클립보드 + 캡쳐 폴더) · 칸마다 📷 = 그 칸만 · ⌘C = 커서 아래 항목">📷 캡쳐</button><button data-export="text">공유</button><button data-export="share">PDF로 공유하기</button><button data-export="pdf">PDF로 만들기</button></span></div>
       <div class="bchead"><div class="bp a">${logo(A, stA)}<b>${esc(an)}</b></div><div class="bvs">VS</div><div class="bp b"><b>${esc(bn)}</b>${logo(B, stB)}</div></div><!--RCPBTN-->`;
     const R = {};   // 섹션별 표 줄 (방송 요약 레시피 항목으로도 쓴다)
 
@@ -1972,7 +1977,7 @@
     RCP.tbc = { groups: rcpNorm([['기본 기록', R.basic], ['세트별 승률', R.setno], ['종목별 승률', R.kind], ['세트 흐름', R.flow]]), table: rows => T(rows) };
     h = h.replace('<!--RCPBTN-->', rcpPanel('tbc')).replace('<!--RCP-->', rcpSection('tbc'));
     el.innerHTML = h;
-    if (typeof fitBc3 === 'function') fitBc3(el);
+    if (typeof fitBc3 === 'function') { bc3Bottoms(el); fitBc3(el); }
     applyFolds(el);
     fillTeamPredict(A.code, B.code, an, bn, cA, cB);
   }
