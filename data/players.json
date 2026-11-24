@@ -73422,5 +73422,35 @@
     "points_rank": 192,
     "code": "M0022010",
     "type": "LPBA"
+  },
+  "M0023255": {
+    "name": "한민준",
+    "nation": "대한민국",
+    "birth": "2009-03-24",
+    "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0023255_S_20261123204622.jpg#1",
+    "stats": {
+      "matches": 0,
+      "innings": 0,
+      "avg": 0.0,
+      "best_avg": 0.0,
+      "hr": 0,
+      "p1": 0,
+      "p2": 0,
+      "bank": 0,
+      "long": 0,
+      "success": 0
+    },
+    "tours": [
+      {
+        "name": "데이터가 없습니다.",
+        "result": null
+      }
+    ],
+    "prize": null,
+    "prize_rank": null,
+    "points": null,
+    "points_rank": null,
+    "code": "M0023255",
+    "type": "PBA"
   }
 }
