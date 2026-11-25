@@ -1287,13 +1287,13 @@
     "birth": "1990-08-09",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017737_S_20260704211422.jpg#1",
     "stats": {
-      "matches": 172,
-      "innings": 5125,
+      "matches": 173,
+      "innings": 5161,
       "avg": 0.923,
       "best_avg": 1.72,
       "hr": 10,
-      "p1": 3437,
-      "p2": 654,
+      "p1": 3458,
+      "p2": 659,
       "bank": 27.6,
       "long": 2.5,
       "success": 45.4
@@ -1961,13 +1961,13 @@
     "birth": "1990-09-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020007_S_20260704192655.jpg#1",
     "stats": {
-      "matches": 199,
-      "innings": 6015,
+      "matches": 200,
+      "innings": 6052,
       "avg": 0.979,
       "best_avg": 2.778,
       "hr": 11,
-      "p1": 4427,
-      "p2": 739,
+      "p1": 4459,
+      "p2": 741,
       "bank": 25.0,
       "long": 3.3,
       "success": 47.5
@@ -2199,16 +2199,16 @@
     "birth": "1998-06-22",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020028.jpg#1",
     "stats": {
-      "matches": 104,
-      "innings": 2840,
-      "avg": 0.677,
+      "matches": 105,
+      "innings": 2862,
+      "avg": 0.676,
       "best_avg": 1.389,
       "hr": 8,
-      "p1": 1436,
-      "p2": 246,
-      "bank": 25.5,
-      "long": 1.6,
-      "success": 37.5
+      "p1": 1443,
+      "p2": 248,
+      "bank": 25.6,
+      "long": 1.5,
+      "success": 37.4
     },
     "tours": [
       {
@@ -2941,14 +2941,14 @@
     "birth": "1975-10-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0020020_S_20260704172340.jpg#1",
     "stats": {
-      "matches": 134,
-      "innings": 3523,
-      "avg": 0.925,
+      "matches": 135,
+      "innings": 3557,
+      "avg": 0.924,
       "best_avg": 1.923,
       "hr": 10,
-      "p1": 2429,
-      "p2": 419,
-      "bank": 25.7,
+      "p1": 2444,
+      "p2": 425,
+      "bank": 25.8,
       "long": 3.3,
       "success": 45.3
     },
@@ -3655,13 +3655,13 @@
     "birth": "1983-01-13",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017225_S_20260704204649.jpg#1",
     "stats": {
-      "matches": 300,
-      "innings": 8603,
-      "avg": 1.062,
+      "matches": 301,
+      "innings": 8626,
+      "avg": 1.063,
       "best_avg": 3.125,
       "hr": 13,
-      "p1": 6919,
-      "p2": 1121,
+      "p1": 6944,
+      "p2": 1125,
       "bank": 24.5,
       "long": 4.0,
       "success": 49.7
@@ -4703,16 +4703,16 @@
     "birth": "1980-02-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017319_S_20260704172441.jpg#1",
     "stats": {
-      "matches": 149,
-      "innings": 4287,
-      "avg": 0.821,
+      "matches": 150,
+      "innings": 4322,
+      "avg": 0.824,
       "best_avg": 2.273,
       "hr": 11,
-      "p1": 2559,
-      "p2": 485,
+      "p1": 2590,
+      "p2": 490,
       "bank": 27.5,
       "long": 2.2,
-      "success": 42.2
+      "success": 42.3
     },
     "tours": [
       {
@@ -4953,16 +4953,16 @@
     "birth": "1998-11-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017162_S_20260704211451.jpg#1",
     "stats": {
-      "matches": 198,
-      "innings": 5731,
-      "avg": 0.894,
+      "matches": 199,
+      "innings": 5759,
+      "avg": 0.896,
       "best_avg": 2.2,
       "hr": 10,
-      "p1": 3746,
-      "p2": 697,
+      "p1": 3774,
+      "p2": 701,
       "bank": 27.1,
       "long": 2.6,
-      "success": 44.5
+      "success": 44.6
     },
     "tours": [
       {
@@ -5763,13 +5763,13 @@
     "birth": "1996-06-16",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017161_S_20260704193612.jpg#1",
     "stats": {
-      "matches": 210,
-      "innings": 5988,
-      "avg": 0.926,
+      "matches": 211,
+      "innings": 6043,
+      "avg": 0.924,
       "best_avg": 2.056,
       "hr": 13,
-      "p1": 4193,
-      "p2": 680,
+      "p1": 4224,
+      "p2": 685,
       "bank": 24.5,
       "long": 2.8,
       "success": 45.7
@@ -8443,16 +8443,16 @@
     "birth": "1996-02-07",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017224_S_20260704211233.jpg#1",
     "stats": {
-      "matches": 195,
-      "innings": 5904,
-      "avg": 0.835,
+      "matches": 196,
+      "innings": 5931,
+      "avg": 0.837,
       "best_avg": 1.933,
       "hr": 10,
-      "p1": 3608,
-      "p2": 666,
-      "bank": 27.0,
+      "p1": 3638,
+      "p2": 670,
+      "bank": 26.9,
       "long": 2.3,
-      "success": 42.7
+      "success": 42.8
     },
     "tours": [
       {
@@ -23353,16 +23353,16 @@
     "birth": "1979-02-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0023172_S_20260517165529.png#1",
     "stats": {
-      "matches": 87,
-      "innings": 2576,
-      "avg": 0.863,
+      "matches": 88,
+      "innings": 2607,
+      "avg": 0.865,
       "best_avg": 2.083,
       "hr": 10,
-      "p1": 1661,
-      "p2": 286,
+      "p1": 1686,
+      "p2": 290,
       "bank": 25.6,
       "long": 2.6,
-      "success": 43.7
+      "success": 43.8
     },
     "tours": [
       {
@@ -24057,14 +24057,14 @@
     "birth": "2004-07-19",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022034_S_20260704181442.jpg#1",
     "stats": {
-      "matches": 92,
-      "innings": 2864,
-      "avg": 0.715,
+      "matches": 93,
+      "innings": 2900,
+      "avg": 0.717,
       "best_avg": 2.083,
       "hr": 10,
-      "p1": 1611,
-      "p2": 221,
-      "bank": 21.5,
+      "p1": 1637,
+      "p2": 223,
+      "bank": 21.4,
       "long": 1.5,
       "success": 39.5
     },
@@ -26463,14 +26463,14 @@
     "birth": "1991-02-16",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017274_S_20260704204830.jpg#1",
     "stats": {
-      "matches": 133,
-      "innings": 3677,
+      "matches": 134,
+      "innings": 3733,
       "avg": 0.773,
       "best_avg": 2.273,
       "hr": 9,
-      "p1": 2047,
-      "p2": 401,
-      "bank": 28.2,
+      "p1": 2074,
+      "p2": 409,
+      "bank": 28.3,
       "long": 1.9,
       "success": 40.4
     },
@@ -26979,15 +26979,15 @@
     "birth": "1988-01-01",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0017215_S_20261031233830.jpg#1",
     "stats": {
-      "matches": 158,
-      "innings": 4796,
-      "avg": 0.721,
+      "matches": 159,
+      "innings": 4827,
+      "avg": 0.722,
       "best_avg": 1.7,
-      "hr": 9,
-      "p1": 2514,
-      "p2": 476,
-      "bank": 27.5,
-      "long": 1.8,
+      "hr": 10,
+      "p1": 2531,
+      "p2": 483,
+      "bank": 27.6,
+      "long": 1.9,
       "success": 39
     },
     "tours": [
@@ -28577,16 +28577,16 @@
     "birth": "1998-05-07",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022016_S_2026070417242.jpg#1",
     "stats": {
-      "matches": 102,
-      "innings": 3003,
-      "avg": 0.815,
+      "matches": 103,
+      "innings": 3040,
+      "avg": 0.821,
       "best_avg": 2.273,
       "hr": 9,
-      "p1": 1693,
-      "p2": 379,
-      "bank": 30.9,
-      "long": 2.3,
-      "success": 41.4
+      "p1": 1734,
+      "p2": 383,
+      "bank": 30.6,
+      "long": 2.4,
+      "success": 41.7
     },
     "tours": [
       {
@@ -28771,16 +28771,16 @@
     "birth": "1999-11-01",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0022011_S_20260704211436.jpg#1",
     "stats": {
-      "matches": 112,
-      "innings": 3122,
-      "avg": 0.873,
+      "matches": 113,
+      "innings": 3154,
+      "avg": 0.876,
       "best_avg": 2.75,
       "hr": 11,
-      "p1": 1988,
-      "p2": 372,
-      "bank": 27.2,
+      "p1": 2012,
+      "p2": 379,
+      "bank": 27.4,
       "long": 2.5,
-      "success": 43.7
+      "success": 43.8
     },
     "tours": [
       {
@@ -29231,14 +29231,14 @@
     "birth": "1975-09-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017287_S_20260704211533.jpg#1",
     "stats": {
-      "matches": 182,
-      "innings": 5445,
-      "avg": 1.578,
+      "matches": 183,
+      "innings": 5476,
+      "avg": 1.579,
       "best_avg": 3.0,
       "hr": 15,
-      "p1": 6729,
-      "p2": 940,
-      "bank": 21.8,
+      "p1": 6767,
+      "p2": 946,
+      "bank": 21.9,
       "long": 9.8,
       "success": 60.2
     },
@@ -29489,14 +29489,14 @@
     "birth": "1991-11-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017113_S_2026070421127.jpg#1",
     "stats": {
-      "matches": 238,
-      "innings": 6893,
-      "avg": 1.697,
+      "matches": 239,
+      "innings": 6928,
+      "avg": 1.695,
       "best_avg": 4.091,
       "hr": 17,
-      "p1": 8804,
-      "p2": 1456,
-      "bank": 24.9,
+      "p1": 8843,
+      "p2": 1461,
+      "bank": 24.8,
       "long": 10.2,
       "success": 61.8
     },
@@ -29763,14 +29763,14 @@
     "birth": "1992-08-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017147_S_2026070419264.jpg#1",
     "stats": {
-      "matches": 229,
-      "innings": 6845,
-      "avg": 1.608,
+      "matches": 230,
+      "innings": 6874,
+      "avg": 1.609,
       "best_avg": 5.625,
       "hr": 15,
-      "p1": 8639,
-      "p2": 1199,
-      "bank": 21.7,
+      "p1": 8676,
+      "p2": 1206,
+      "bank": 21.8,
       "long": 9.5,
       "success": 60.7
     },
@@ -30045,16 +30045,16 @@
     "birth": "1993-06-09",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017782_S_20261031233931.jpg#1",
     "stats": {
-      "matches": 145,
-      "innings": 4392,
-      "avg": 1.559,
+      "matches": 146,
+      "innings": 4416,
+      "avg": 1.562,
       "best_avg": 4.091,
       "hr": 14,
-      "p1": 5402,
-      "p2": 732,
+      "p1": 5444,
+      "p2": 735,
       "bank": 21.3,
       "long": 9.4,
-      "success": 59.9
+      "success": 60
     },
     "tours": [
       {
@@ -30283,14 +30283,14 @@
     "birth": "1981-04-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017129_S_20260704192531.jpg#1",
     "stats": {
-      "matches": 166,
-      "innings": 4919,
+      "matches": 167,
+      "innings": 4952,
       "avg": 1.506,
       "best_avg": 3.462,
       "hr": 15,
-      "p1": 5592,
-      "p2": 918,
-      "bank": 24.7,
+      "p1": 5628,
+      "p2": 926,
+      "bank": 24.8,
       "long": 8.6,
       "success": 58.6
     },
@@ -30823,16 +30823,16 @@
     "birth": "1964-09-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022428_S_20260704203436.jpg#1",
     "stats": {
-      "matches": 110,
-      "innings": 3174,
-      "avg": 1.672,
+      "matches": 111,
+      "innings": 3210,
+      "avg": 1.669,
       "best_avg": 3.462,
       "hr": 15,
-      "p1": 4266,
-      "p2": 529,
+      "p1": 4308,
+      "p2": 534,
       "bank": 19.9,
       "long": 10.4,
-      "success": 62.1
+      "success": 62
     },
     "tours": [
       {
@@ -31211,13 +31211,13 @@
     "birth": "1969-12-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017156_S_20260704193722.jpg#1",
     "stats": {
-      "matches": 197,
-      "innings": 5738,
+      "matches": 198,
+      "innings": 5768,
       "avg": 1.598,
       "best_avg": 3.75,
       "hr": 15,
-      "p1": 7425,
-      "p2": 883,
+      "p1": 7464,
+      "p2": 888,
       "bank": 19.2,
       "long": 9.5,
       "success": 60.8
@@ -31493,14 +31493,14 @@
     "birth": "1980-04-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022425_S_2026070419379.jpg#1",
     "stats": {
-      "matches": 109,
-      "innings": 3290,
-      "avg": 1.597,
+      "matches": 110,
+      "innings": 3322,
+      "avg": 1.594,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 4230,
-      "p2": 516,
-      "bank": 19.6,
+      "p1": 4266,
+      "p2": 518,
+      "bank": 19.5,
       "long": 10.1,
       "success": 60.9
     },
@@ -31833,13 +31833,13 @@
     "birth": "1980-03-16",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017160_S_20260704195312.jpg#1",
     "stats": {
-      "matches": 238,
-      "innings": 6866,
-      "avg": 1.681,
+      "matches": 239,
+      "innings": 6884,
+      "avg": 1.682,
       "best_avg": 2.938,
       "hr": 15,
-      "p1": 8667,
-      "p2": 1449,
+      "p1": 8687,
+      "p2": 1456,
       "bank": 25.1,
       "long": 9.8,
       "success": 61.4
@@ -32377,13 +32377,13 @@
     "birth": "1980-04-07",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017784_S_2026070421149.jpg#1",
     "stats": {
-      "matches": 201,
-      "innings": 5875,
-      "avg": 1.705,
+      "matches": 202,
+      "innings": 5896,
+      "avg": 1.706,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 7938,
-      "p2": 1055,
+      "p1": 7969,
+      "p2": 1061,
       "bank": 21.0,
       "long": 10.4,
       "success": 62.5
@@ -32619,16 +32619,16 @@
     "birth": "1993-05-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022044_S_20260704172056.jpg#1",
     "stats": {
-      "matches": 111,
-      "innings": 3540,
-      "avg": 1.464,
+      "matches": 112,
+      "innings": 3572,
+      "avg": 1.466,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 3991,
-      "p2": 605,
-      "bank": 23.3,
+      "p1": 4032,
+      "p2": 610,
+      "bank": 23.2,
       "long": 8.3,
-      "success": 58
+      "success": 58.1
     },
     "tours": [
       {
@@ -32817,15 +32817,15 @@
     "birth": "1977-08-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017107_S_20260704192517.jpg#1",
     "stats": {
-      "matches": 171,
-      "innings": 5024,
-      "avg": 1.505,
+      "matches": 172,
+      "innings": 5047,
+      "avg": 1.506,
       "best_avg": 3.214,
       "hr": 15,
-      "p1": 5940,
-      "p2": 815,
+      "p1": 5976,
+      "p2": 818,
       "bank": 21.5,
-      "long": 8.2,
+      "long": 8.3,
       "success": 58.9
     },
     "tours": [
@@ -33825,14 +33825,14 @@
     "birth": "1977-04-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022430_S_20260820031514.jpg#1",
     "stats": {
-      "matches": 113,
-      "innings": 3512,
-      "avg": 1.573,
+      "matches": 114,
+      "innings": 3533,
+      "avg": 1.577,
       "best_avg": 3.75,
       "hr": 14,
-      "p1": 4209,
-      "p2": 663,
-      "bank": 24.0,
+      "p1": 4249,
+      "p2": 666,
+      "bank": 23.9,
       "long": 9.0,
       "success": 60
     },
@@ -33991,16 +33991,16 @@
     "birth": "1992-01-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017111_S_20260704203459.jpg#1",
     "stats": {
-      "matches": 198,
-      "innings": 6008,
-      "avg": 1.554,
+      "matches": 199,
+      "innings": 6046,
+      "avg": 1.551,
       "best_avg": 2.813,
       "hr": 21,
-      "p1": 7211,
-      "p2": 1081,
+      "p1": 7237,
+      "p2": 1088,
       "bank": 23.1,
       "long": 9.0,
-      "success": 59.7
+      "success": 59.6
     },
     "tours": [
       {
@@ -34535,15 +34535,15 @@
     "birth": "1995-11-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016795_S_2026070420483.jpg#1",
     "stats": {
-      "matches": 156,
-      "innings": 4590,
-      "avg": 1.481,
+      "matches": 157,
+      "innings": 4615,
+      "avg": 1.482,
       "best_avg": 2.5,
       "hr": 14,
-      "p1": 5118,
-      "p2": 849,
-      "bank": 24.9,
-      "long": 8.1,
+      "p1": 5161,
+      "p2": 850,
+      "bank": 24.8,
+      "long": 8.2,
       "success": 58
     },
     "tours": [
@@ -34805,15 +34805,15 @@
     "birth": "1974-08-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022426_S_20260704204729.jpg#1",
     "stats": {
-      "matches": 99,
-      "innings": 3144,
-      "avg": 1.581,
+      "matches": 100,
+      "innings": 3169,
+      "avg": 1.584,
       "best_avg": 3.462,
       "hr": 15,
-      "p1": 3787,
-      "p2": 601,
-      "bank": 24.1,
-      "long": 9.6,
+      "p1": 3829,
+      "p2": 604,
+      "bank": 24.0,
+      "long": 9.7,
       "success": 60.1
     },
     "tours": [
@@ -34971,14 +34971,14 @@
     "birth": "1972-06-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017146_S_20260704211138.jpg#1",
     "stats": {
-      "matches": 187,
-      "innings": 5658,
-      "avg": 1.46,
+      "matches": 188,
+      "innings": 5691,
+      "avg": 1.461,
       "best_avg": 3.0,
       "hr": 15,
-      "p1": 6149,
-      "p2": 1069,
-      "bank": 25.8,
+      "p1": 6180,
+      "p2": 1080,
+      "bank": 25.9,
       "long": 8.1,
       "success": 57.6
     },
@@ -35253,16 +35253,16 @@
     "birth": "1996-04-05",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017002_S_20260704193655.jpg#1",
     "stats": {
-      "matches": 129,
-      "innings": 4525,
-      "avg": 1.342,
+      "matches": 130,
+      "innings": 4558,
+      "avg": 1.34,
       "best_avg": 2.647,
       "hr": 15,
-      "p1": 4647,
-      "p2": 724,
-      "bank": 23.8,
+      "p1": 4665,
+      "p2": 733,
+      "bank": 23.9,
       "long": 6.5,
-      "success": 55.8
+      "success": 55.7
     },
     "tours": [
       {
@@ -35697,16 +35697,16 @@
     "birth": "1981-04-04",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017145_S_2025061801049.jpg#1",
     "stats": {
-      "matches": 137,
-      "innings": 4357,
-      "avg": 1.374,
+      "matches": 138,
+      "innings": 4386,
+      "avg": 1.373,
       "best_avg": 3.462,
       "hr": 13,
-      "p1": 4736,
-      "p2": 633,
+      "p1": 4759,
+      "p2": 638,
       "bank": 21.1,
       "long": 7.3,
-      "success": 56.6
+      "success": 56.5
     },
     "tours": [
       {
@@ -36161,16 +36161,16 @@
     "birth": "1992-10-19",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016947_S_20260704211515.jpg#1",
     "stats": {
-      "matches": 146,
-      "innings": 4397,
-      "avg": 1.489,
+      "matches": 147,
+      "innings": 4417,
+      "avg": 1.493,
       "best_avg": 2.5,
       "hr": 14,
-      "p1": 5150,
-      "p2": 711,
+      "p1": 5189,
+      "p2": 714,
       "bank": 21.6,
       "long": 7.7,
-      "success": 58.6
+      "success": 58.7
     },
     "tours": [
       {
@@ -36967,16 +36967,16 @@
     "birth": "1977-02-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017732_S_20250807000241.jpg#1",
     "stats": {
-      "matches": 64,
-      "innings": 1919,
-      "avg": 1.358,
+      "matches": 65,
+      "innings": 1961,
+      "avg": 1.353,
       "best_avg": 2.545,
       "hr": 15,
-      "p1": 1948,
-      "p2": 335,
+      "p1": 1983,
+      "p2": 341,
       "bank": 25.6,
       "long": 6.6,
-      "success": 55.8
+      "success": 55.7
     },
     "tours": [
       {
@@ -37145,16 +37145,16 @@
     "birth": "1972-01-27",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022335.jpg#1",
     "stats": {
-      "matches": 63,
-      "innings": 1992,
-      "avg": 1.327,
+      "matches": 64,
+      "innings": 2027,
+      "avg": 1.323,
       "best_avg": 2.25,
       "hr": 14,
-      "p1": 1898,
-      "p2": 376,
+      "p1": 1923,
+      "p2": 382,
       "bank": 28.4,
-      "long": 7.0,
-      "success": 54.8
+      "long": 6.9,
+      "success": 54.7
     },
     "tours": [
       {
@@ -37849,13 +37849,13 @@
     "birth": "1982-09-23",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017136_S_20260518172656.jpg#1",
     "stats": {
-      "matches": 158,
-      "innings": 4844,
-      "avg": 1.396,
+      "matches": 159,
+      "innings": 4864,
+      "avg": 1.399,
       "best_avg": 2.813,
       "hr": 15,
-      "p1": 5178,
-      "p2": 799,
+      "p1": 5211,
+      "p2": 805,
       "bank": 23.6,
       "long": 7.7,
       "success": 56.6
@@ -38127,15 +38127,15 @@
     "birth": "1979-11-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017074.jpg#1",
     "stats": {
-      "matches": 47,
-      "innings": 1224,
-      "avg": 1.261,
+      "matches": 48,
+      "innings": 1265,
+      "avg": 1.262,
       "best_avg": 2.5,
       "hr": 13,
-      "p1": 1168,
-      "p2": 188,
-      "bank": 24.4,
-      "long": 6.1,
+      "p1": 1203,
+      "p2": 197,
+      "bank": 24.7,
+      "long": 6.3,
       "success": 53.4
     },
     "tours": [
@@ -38273,15 +38273,15 @@
     "birth": "1979-01-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017423_S_20250806235758.jpg#1",
     "stats": {
-      "matches": 34,
-      "innings": 1062,
-      "avg": 1.317,
+      "matches": 35,
+      "innings": 1104,
+      "avg": 1.313,
       "best_avg": 2.143,
       "hr": 11,
-      "p1": 984,
-      "p2": 209,
-      "bank": 29.8,
-      "long": 6.9,
+      "p1": 1026,
+      "p2": 214,
+      "bank": 29.4,
+      "long": 7.0,
       "success": 54.2
     },
     "tours": [
@@ -38391,16 +38391,16 @@
     "birth": "2000-12-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022198_S_20260722093213.jpg#1",
     "stats": {
-      "matches": 43,
-      "innings": 1420,
-      "avg": 1.341,
+      "matches": 44,
+      "innings": 1454,
+      "avg": 1.345,
       "best_avg": 1.926,
       "hr": 11,
-      "p1": 1408,
-      "p2": 249,
-      "bank": 26.1,
+      "p1": 1451,
+      "p2": 253,
+      "bank": 25.9,
       "long": 6.7,
-      "success": 55.2
+      "success": 55.3
     },
     "tours": [
       {
@@ -38789,16 +38789,16 @@
     "birth": "1972-09-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016797.jpg#1",
     "stats": {
-      "matches": 69,
-      "innings": 2096,
-      "avg": 1.249,
+      "matches": 70,
+      "innings": 2119,
+      "avg": 1.259,
       "best_avg": 2.5,
       "hr": 13,
-      "p1": 1859,
-      "p2": 383,
-      "bank": 29.2,
-      "long": 5.9,
-      "success": 52.7
+      "p1": 1884,
+      "p2": 396,
+      "bank": 29.6,
+      "long": 6.0,
+      "success": 52.8
     },
     "tours": [
       {
@@ -38999,15 +38999,15 @@
     "birth": "2001-02-14",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022040_S_20260516172435.jpg#1",
     "stats": {
-      "matches": 60,
-      "innings": 1975,
+      "matches": 61,
+      "innings": 1998,
       "avg": 1.208,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 1861,
-      "p2": 264,
-      "bank": 22.1,
-      "long": 5.9,
+      "p1": 1887,
+      "p2": 265,
+      "bank": 21.9,
+      "long": 6.0,
       "success": 53
     },
     "tours": [
@@ -39307,16 +39307,16 @@
     "birth": "1977-10-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017030.jpg#1",
     "stats": {
-      "matches": 122,
-      "innings": 3679,
-      "avg": 1.323,
+      "matches": 123,
+      "innings": 3715,
+      "avg": 1.315,
       "best_avg": 2.706,
       "hr": 15,
-      "p1": 3822,
-      "p2": 525,
+      "p1": 3835,
+      "p2": 529,
       "bank": 21.6,
-      "long": 7.0,
-      "success": 55.4
+      "long": 6.9,
+      "success": 55.2
     },
     "tours": [
       {
@@ -39667,16 +39667,16 @@
     "birth": "1979-05-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022319_S_20250806231157.jpg#1",
     "stats": {
-      "matches": 25,
-      "innings": 751,
-      "avg": 1.302,
-      "best_avg": 2.25,
-      "hr": 12,
-      "p1": 703,
-      "p2": 138,
-      "bank": 28.2,
-      "long": 5.9,
-      "success": 54.1
+      "matches": 26,
+      "innings": 768,
+      "avg": 1.332,
+      "best_avg": 2.647,
+      "hr": 13,
+      "p1": 732,
+      "p2": 146,
+      "bank": 28.5,
+      "long": 6.3,
+      "success": 54.7
     },
     "tours": [
       {
@@ -40429,16 +40429,16 @@
     "birth": "1982-02-13",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017295_S_20260704211219.jpg#1",
     "stats": {
-      "matches": 98,
-      "innings": 3058,
-      "avg": 1.337,
+      "matches": 99,
+      "innings": 3090,
+      "avg": 1.332,
       "best_avg": 2.368,
       "hr": 14,
-      "p1": 2973,
-      "p2": 563,
+      "p1": 2990,
+      "p2": 568,
       "bank": 27.5,
-      "long": 6.8,
-      "success": 55
+      "long": 6.7,
+      "success": 54.9
     },
     "tours": [
       {
@@ -40897,16 +40897,16 @@
     "birth": "2006-04-08",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0024006_S_20260704181359.jpg#1",
     "stats": {
-      "matches": 60,
-      "innings": 1815,
-      "avg": 1.51,
+      "matches": 61,
+      "innings": 1840,
+      "avg": 1.514,
       "best_avg": 2.813,
       "hr": 14,
-      "p1": 2047,
-      "p2": 350,
+      "p1": 2080,
+      "p2": 356,
       "bank": 25.5,
       "long": 8.7,
-      "success": 58.6
+      "success": 58.7
     },
     "tours": [
       {
@@ -41137,15 +41137,15 @@
     "birth": "1997-05-22",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016927_S_20260704204816.jpg#1",
     "stats": {
-      "matches": 76,
-      "innings": 2113,
-      "avg": 1.408,
+      "matches": 77,
+      "innings": 2141,
+      "avg": 1.409,
       "best_avg": 2.667,
       "hr": 13,
-      "p1": 2219,
-      "p2": 383,
+      "p1": 2247,
+      "p2": 389,
       "bank": 25.7,
-      "long": 7.6,
+      "long": 7.5,
       "success": 56.3
     },
     "tours": [
@@ -41713,16 +41713,16 @@
     "birth": "1973-09-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022429_S_20260704193640.jpg#1",
     "stats": {
-      "matches": 79,
-      "innings": 2343,
-      "avg": 1.564,
+      "matches": 80,
+      "innings": 2381,
+      "avg": 1.558,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 2785,
-      "p2": 444,
-      "bank": 24.2,
-      "long": 8.3,
-      "success": 59.7
+      "p1": 2817,
+      "p2": 451,
+      "bank": 24.3,
+      "long": 8.2,
+      "success": 59.6
     },
     "tours": [
       {
@@ -41875,16 +41875,16 @@
     "birth": "1983-02-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017149.jpg#1",
     "stats": {
-      "matches": 125,
-      "innings": 3765,
-      "avg": 1.412,
+      "matches": 126,
+      "innings": 3788,
+      "avg": 1.416,
       "best_avg": 3.059,
       "hr": 15,
-      "p1": 4062,
-      "p2": 632,
+      "p1": 4099,
+      "p2": 638,
       "bank": 23.7,
-      "long": 7.5,
-      "success": 56.9
+      "long": 7.6,
+      "success": 57
     },
     "tours": [
       {
@@ -42633,16 +42633,16 @@
     "birth": "1995-02-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0024069_S_20261031233847.jpg#1",
     "stats": {
-      "matches": 48,
-      "innings": 1460,
-      "avg": 1.517,
+      "matches": 49,
+      "innings": 1478,
+      "avg": 1.529,
       "best_avg": 3.063,
       "hr": 11,
-      "p1": 1750,
-      "p2": 233,
-      "bank": 21.0,
-      "long": 9.3,
-      "success": 59.4
+      "p1": 1789,
+      "p2": 236,
+      "bank": 20.9,
+      "long": 9.4,
+      "success": 59.6
     },
     "tours": [
       {
@@ -42723,14 +42723,14 @@
     "birth": "1978-11-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017153_S_20260704195344.jpg#1",
     "stats": {
-      "matches": 93,
-      "innings": 2581,
+      "matches": 94,
+      "innings": 2614,
       "avg": 1.521,
       "best_avg": 3.462,
       "hr": 20,
-      "p1": 3189,
-      "p2": 370,
-      "bank": 18.8,
+      "p1": 3224,
+      "p2": 377,
+      "bank": 19.0,
       "long": 8.8,
       "success": 59.3
     },
@@ -42893,16 +42893,16 @@
     "birth": "1993-08-01",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022311_S_20261031234012.jpg#1",
     "stats": {
-      "matches": 46,
-      "innings": 1441,
-      "avg": 1.359,
+      "matches": 47,
+      "innings": 1466,
+      "avg": 1.362,
       "best_avg": 2.125,
       "hr": 15,
-      "p1": 1435,
-      "p2": 263,
-      "bank": 26.8,
-      "long": 6.7,
-      "success": 55.5
+      "p1": 1466,
+      "p2": 267,
+      "bank": 26.7,
+      "long": 6.8,
+      "success": 55.6
     },
     "tours": [
       {
@@ -43023,16 +43023,16 @@
     "birth": "1983-02-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017118_S_20260704192547.jpg#1",
     "stats": {
-      "matches": 193,
-      "innings": 5794,
-      "avg": 1.525,
+      "matches": 194,
+      "innings": 5818,
+      "avg": 1.528,
       "best_avg": 3.462,
       "hr": 15,
-      "p1": 6673,
-      "p2": 1087,
+      "p1": 6716,
+      "p2": 1093,
       "bank": 24.6,
       "long": 8.8,
-      "success": 58.8
+      "success": 58.9
     },
     "tours": [
       {
@@ -43859,13 +43859,13 @@
     "birth": "1974-12-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017134.jpg#1",
     "stats": {
-      "matches": 117,
-      "innings": 3517,
-      "avg": 1.341,
+      "matches": 118,
+      "innings": 3547,
+      "avg": 1.339,
       "best_avg": 3.056,
       "hr": 15,
-      "p1": 3712,
-      "p2": 506,
+      "p1": 3742,
+      "p2": 508,
       "bank": 21.4,
       "long": 6.6,
       "success": 55.7
@@ -44271,16 +44271,16 @@
     "birth": "1984-10-13",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017527.jpg#1",
     "stats": {
-      "matches": 21,
-      "innings": 756,
-      "avg": 1.075,
+      "matches": 22,
+      "innings": 799,
+      "avg": 1.088,
       "best_avg": 1.567,
       "hr": 11,
-      "p1": 601,
-      "p2": 106,
-      "bank": 26.1,
-      "long": 4.9,
-      "success": 49.3
+      "p1": 645,
+      "p2": 112,
+      "bank": 25.8,
+      "long": 5.0,
+      "success": 49.6
     },
     "tours": [
       {
@@ -44499,15 +44499,15 @@
     "birth": "1974-03-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022424_S_20260704203423.jpg#1",
     "stats": {
-      "matches": 110,
-      "innings": 3199,
-      "avg": 1.719,
+      "matches": 111,
+      "innings": 3238,
+      "avg": 1.716,
       "best_avg": 3.214,
       "hr": 15,
-      "p1": 4453,
-      "p2": 527,
-      "bank": 19.1,
-      "long": 10.4,
+      "p1": 4499,
+      "p2": 533,
+      "bank": 19.2,
+      "long": 10.3,
       "success": 63
     },
     "tours": [
@@ -45893,15 +45893,15 @@
     "birth": "1979-08-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017154.jpg#1",
     "stats": {
-      "matches": 70,
-      "innings": 2016,
-      "avg": 1.233,
+      "matches": 71,
+      "innings": 2047,
+      "avg": 1.234,
       "best_avg": 2.25,
       "hr": 13,
-      "p1": 1779,
-      "p2": 356,
-      "bank": 28.6,
-      "long": 5.6,
+      "p1": 1809,
+      "p2": 361,
+      "bank": 28.5,
+      "long": 5.7,
       "success": 52.4
     },
     "tours": [
@@ -46099,16 +46099,16 @@
     "birth": "1985-03-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022043_S_20250706004552.jpg#1",
     "stats": {
-      "matches": 82,
-      "innings": 2725,
+      "matches": 83,
+      "innings": 2743,
       "avg": 1.329,
       "best_avg": 2.813,
       "hr": 14,
-      "p1": 2686,
-      "p2": 474,
+      "p1": 2702,
+      "p2": 478,
       "bank": 26.1,
       "long": 7.2,
-      "success": 55.3
+      "success": 55.2
     },
     "tours": [
       {
@@ -48395,16 +48395,16 @@
     "birth": "1993-10-28",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017051_S_20251106192319.jpg#1",
     "stats": {
-      "matches": 34,
-      "innings": 995,
+      "matches": 35,
+      "innings": 1026,
       "avg": 1.223,
       "best_avg": 1.947,
       "hr": 10,
-      "p1": 870,
-      "p2": 174,
-      "bank": 28.6,
+      "p1": 900,
+      "p2": 178,
+      "bank": 28.3,
       "long": 5.7,
-      "success": 52
+      "success": 52.1
     },
     "tours": [
       {
@@ -48969,16 +48969,16 @@
     "birth": "1983-05-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022423_S_20250618010719.jpg#1",
     "stats": {
-      "matches": 71,
-      "innings": 2257,
-      "avg": 1.425,
+      "matches": 72,
+      "innings": 2280,
+      "avg": 1.43,
       "best_avg": 2.269,
       "hr": 12,
-      "p1": 2467,
-      "p2": 378,
+      "p1": 2501,
+      "p2": 384,
       "bank": 23.5,
-      "long": 7.1,
-      "success": 57.3
+      "long": 7.2,
+      "success": 57.4
     },
     "tours": [
       {
@@ -49217,15 +49217,15 @@
     "birth": "1977-04-19",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017099.jpg#1",
     "stats": {
-      "matches": 61,
-      "innings": 2093,
-      "avg": 1.197,
+      "matches": 62,
+      "innings": 2122,
+      "avg": 1.199,
       "best_avg": 2.368,
       "hr": 13,
-      "p1": 1888,
-      "p2": 312,
-      "bank": 24.8,
-      "long": 5.7,
+      "p1": 1914,
+      "p2": 318,
+      "bank": 24.9,
+      "long": 5.8,
       "success": 52.5
     },
     "tours": [
@@ -50091,16 +50091,16 @@
     "birth": "1980-10-17",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016789_S_20260820031534.jpg#1",
     "stats": {
-      "matches": 132,
-      "innings": 4077,
-      "avg": 1.388,
+      "matches": 133,
+      "innings": 4099,
+      "avg": 1.392,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 4138,
-      "p2": 767,
+      "p1": 4172,
+      "p2": 774,
       "bank": 27.1,
-      "long": 7.1,
-      "success": 56
+      "long": 7.2,
+      "success": 56.1
     },
     "tours": [
       {
@@ -50361,16 +50361,16 @@
     "birth": "2007-10-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0021129_S_2026103123389.jpg#1",
     "stats": {
-      "matches": 105,
-      "innings": 3259,
-      "avg": 1.613,
+      "matches": 106,
+      "innings": 3290,
+      "avg": 1.614,
       "best_avg": 3.462,
       "hr": 14,
-      "p1": 4142,
-      "p2": 568,
-      "bank": 21.5,
+      "p1": 4172,
+      "p2": 579,
+      "bank": 21.7,
       "long": 9.8,
-      "success": 61.1
+      "success": 61
     },
     "tours": [
       {
@@ -50515,16 +50515,16 @@
     "birth": "1991-02-15",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016834.jpg#1",
     "stats": {
-      "matches": 131,
-      "innings": 4038,
+      "matches": 132,
+      "innings": 4073,
       "avg": 1.405,
       "best_avg": 2.647,
       "hr": 12,
-      "p1": 4276,
-      "p2": 702,
+      "p1": 4315,
+      "p2": 707,
       "bank": 24.7,
-      "long": 6.9,
-      "success": 56.5
+      "long": 7.0,
+      "success": 56.6
     },
     "tours": [
       {
@@ -51005,16 +51005,16 @@
     "birth": "1981-01-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017098_S_20260722093154.jpg#1",
     "stats": {
-      "matches": 111,
-      "innings": 3413,
-      "avg": 1.378,
+      "matches": 112,
+      "innings": 3438,
+      "avg": 1.382,
       "best_avg": 2.813,
       "hr": 13,
-      "p1": 3594,
-      "p2": 559,
+      "p1": 3629,
+      "p2": 565,
       "bank": 23.7,
       "long": 6.8,
-      "success": 56.2
+      "success": 56.3
     },
     "tours": [
       {
@@ -51831,16 +51831,16 @@
     "birth": "1993-10-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017081_S_20260516172326.jpg#1",
     "stats": {
-      "matches": 93,
-      "innings": 2725,
-      "avg": 1.352,
+      "matches": 94,
+      "innings": 2763,
+      "avg": 1.353,
       "best_avg": 2.348,
       "hr": 14,
-      "p1": 2776,
-      "p2": 460,
+      "p1": 2816,
+      "p2": 467,
       "bank": 24.9,
       "long": 7.2,
-      "success": 55.6
+      "success": 55.7
     },
     "tours": [
       {
@@ -52143,16 +52143,16 @@
     "birth": "1981-10-24",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017644_S_2026051814016.jpg#1",
     "stats": {
-      "matches": 32,
-      "innings": 1015,
-      "avg": 1.218,
+      "matches": 33,
+      "innings": 1051,
+      "avg": 1.215,
       "best_avg": 1.778,
       "hr": 13,
-      "p1": 905,
-      "p2": 167,
+      "p1": 934,
+      "p2": 173,
       "bank": 27.0,
       "long": 6.2,
-      "success": 52.6
+      "success": 52.5
     },
     "tours": [
       {
@@ -52253,16 +52253,16 @@
     "birth": "1995-09-21",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0021101.jpg#1",
     "stats": {
-      "matches": 56,
-      "innings": 1910,
-      "avg": 1.216,
+      "matches": 57,
+      "innings": 1926,
+      "avg": 1.219,
       "best_avg": 2.647,
       "hr": 12,
-      "p1": 1790,
-      "p2": 269,
-      "bank": 23.1,
-      "long": 6.1,
-      "success": 53.1
+      "p1": 1810,
+      "p2": 271,
+      "bank": 23.0,
+      "long": 6.2,
+      "success": 53.2
     },
     "tours": [
       {
@@ -52907,16 +52907,16 @@
     "birth": "1985-08-15",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0025073_S_2026070421152.jpg#1",
     "stats": {
-      "matches": 11,
-      "innings": 359,
-      "avg": 1.412,
+      "matches": 12,
+      "innings": 401,
+      "avg": 1.364,
       "best_avg": 2.045,
       "hr": 11,
-      "p1": 381,
-      "p2": 64,
-      "bank": 25.2,
-      "long": 7.8,
-      "success": 56.9
+      "p1": 415,
+      "p2": 67,
+      "bank": 24.4,
+      "long": 7.7,
+      "success": 56
     },
     "tours": [
       {
@@ -53115,16 +53115,16 @@
     "birth": "2001-09-25",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016840.jpg#1",
     "stats": {
-      "matches": 8,
-      "innings": 244,
-      "avg": 1.307,
+      "matches": 9,
+      "innings": 279,
+      "avg": 1.305,
       "best_avg": 1.957,
       "hr": 8,
-      "p1": 243,
-      "p2": 38,
-      "bank": 23.8,
-      "long": 4.9,
-      "success": 54.9
+      "p1": 273,
+      "p2": 46,
+      "bank": 25.2,
+      "long": 5.4,
+      "success": 54.8
     },
     "tours": [
       {
@@ -53887,16 +53887,16 @@
     "birth": "1976-10-12",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016809.jpg#1",
     "stats": {
-      "matches": 63,
-      "innings": 1857,
-      "avg": 1.226,
+      "matches": 64,
+      "innings": 1874,
+      "avg": 1.221,
       "best_avg": 2.111,
       "hr": 15,
-      "p1": 1653,
-      "p2": 315,
-      "bank": 27.6,
-      "long": 6.3,
-      "success": 52.4
+      "p1": 1659,
+      "p2": 318,
+      "bank": 27.7,
+      "long": 6.2,
+      "success": 52.3
     },
     "tours": [
       {
@@ -54325,16 +54325,16 @@
     "birth": "1978-12-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016962.jpg#1",
     "stats": {
-      "matches": 99,
-      "innings": 3038,
-      "avg": 1.276,
+      "matches": 100,
+      "innings": 3059,
+      "avg": 1.28,
       "best_avg": 2.143,
       "hr": 21,
-      "p1": 2849,
-      "p2": 519,
+      "p1": 2878,
+      "p2": 524,
       "bank": 26.7,
-      "long": 6.0,
-      "success": 53.7
+      "long": 6.1,
+      "success": 53.8
     },
     "tours": [
       {
@@ -55039,15 +55039,15 @@
     "birth": "1975-05-31",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0016997.jpg#1",
     "stats": {
-      "matches": 78,
-      "innings": 2366,
-      "avg": 1.314,
+      "matches": 79,
+      "innings": 2390,
+      "avg": 1.313,
       "best_avg": 1.92,
       "hr": 13,
-      "p1": 2139,
-      "p2": 492,
+      "p1": 2160,
+      "p2": 496,
       "bank": 31.5,
-      "long": 7.1,
+      "long": 7.0,
       "success": 53.9
     },
     "tours": [
@@ -55697,16 +55697,16 @@
     "birth": "1992-12-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017718.jpg#1",
     "stats": {
-      "matches": 9,
-      "innings": 299,
-      "avg": 1.231,
+      "matches": 10,
+      "innings": 340,
+      "avg": 1.229,
       "best_avg": 1.944,
       "hr": 15,
-      "p1": 246,
-      "p2": 62,
-      "bank": 33.5,
-      "long": 4.4,
-      "success": 51.9
+      "p1": 284,
+      "p2": 68,
+      "bank": 32.4,
+      "long": 4.7,
+      "success": 52
     },
     "tours": [
       {
@@ -55747,16 +55747,16 @@
     "birth": "1989-07-03",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0025109_S_20260605194821.jpg#1",
     "stats": {
-      "matches": 12,
-      "innings": 378,
+      "matches": 13,
+      "innings": 416,
       "avg": 1.373,
       "best_avg": 1.926,
       "hr": 10,
-      "p1": 379,
-      "p2": 70,
-      "bank": 27.0,
-      "long": 7.4,
-      "success": 55.9
+      "p1": 423,
+      "p2": 74,
+      "bank": 25.9,
+      "long": 7.7,
+      "success": 56
     },
     "tours": [
       {
@@ -55965,16 +55965,16 @@
     "birth": "1982-01-30",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0020082_S_20260518172639.jpg#1",
     "stats": {
-      "matches": 27,
-      "innings": 843,
-      "avg": 1.364,
+      "matches": 28,
+      "innings": 868,
+      "avg": 1.377,
       "best_avg": 2.143,
       "hr": 11,
-      "p1": 864,
-      "p2": 145,
-      "bank": 25.1,
-      "long": 7.4,
-      "success": 55.8
+      "p1": 898,
+      "p2": 151,
+      "bank": 25.2,
+      "long": 7.5,
+      "success": 56.1
     },
     "tours": [
       {
@@ -57203,16 +57203,16 @@
     "birth": "1981-09-20",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017332_S_20260518145720.jpg#1",
     "stats": {
-      "matches": 27,
-      "innings": 862,
-      "avg": 1.204,
+      "matches": 28,
+      "innings": 892,
+      "avg": 1.214,
       "best_avg": 2.412,
       "hr": 13,
-      "p1": 721,
-      "p2": 160,
-      "bank": 30.7,
-      "long": 4.9,
-      "success": 51.6
+      "p1": 750,
+      "p2": 168,
+      "bank": 30.9,
+      "long": 5.0,
+      "success": 51.9
     },
     "tours": [
       {
@@ -66497,16 +66497,16 @@
     "birth": "2004-06-26",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/LPBA/small/M0024073_S_20261031234042.jpg#1",
     "stats": {
-      "matches": 61,
-      "innings": 1718,
-      "avg": 1.001,
+      "matches": 62,
+      "innings": 1748,
+      "avg": 0.994,
       "best_avg": 1.947,
       "hr": 11,
-      "p1": 1350,
-      "p2": 186,
-      "bank": 21.6,
+      "p1": 1367,
+      "p2": 187,
+      "bank": 21.5,
       "long": 3.2,
-      "success": 48.3
+      "success": 48.1
     },
     "tours": [
       {
