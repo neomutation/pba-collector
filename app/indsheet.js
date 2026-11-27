@@ -1,6 +1,8 @@
 // 캐스터 기록지 · 개인투어 경기 브리핑과 라이브 정보 (팀리그 기록지와 같은 모양, team.js 의 TeamApp.sheet* 에 해당)
 //  자료 = 같은 종목 전체 경기(/api/league, 기권 제외)의 1:1 세트 경기. 이번 시즌 · 통산, 순위는 같은 종목 선수 중 (시즌 3 · 통산 5번 이상, 초구는 5 · 20번)
 //  세트 스코어는 선승 세트 수(경기 target)가 같은 경기끼리 센다 (3선승의 2:2 와 4선승의 2:2 는 다르다)
+//  합 · 세 · 단 (기록지 설정 줄, setKind): 합 = 세트제 + 25점 단판(경기 승패 · 에버 · 초구 · 선후공 · 뱅킹 · 공격 성공률은 단판 포함, 세트 승률 · 스코어별 · 흐름은 세트제만),
+//   세 = 세트제만, 단 = 25점 단판만(한 세트짜리 경기로). 세트 승률은 홈피처럼 옛 월드챔피언십 조별예선 세트를 뺀다
 (function () {
   const C = {}, P = {};   // 종목 → 집계 / 불러오는 중
   const z = () => ({ w: 0, n: 0 }), add = (x, w) => { x.n++; if (w) x.w++; }, addK = (m, k, w) => add(m[k] || (m[k] = z()), w);
@@ -14,13 +16,17 @@
   const rk2 = (D, me, val, cnt, mins) => ['s', 'a'].map(sc => rankIn(D.pool, me, sc, val, cnt, mins));
   const UI = () => window.TeamApp && TeamApp.sheetUI;
 
-  function build(type, L) {
-    const gs = L.games.filter(g => !g.single && g.sets && g.sets.length);
-    const cur = Math.max(...gs.map(g => g.season));
+  let kind = 'sum';
+  const wcOld = g => typeof wcGroupOld === 'function' && wcGroupOld(g);
+  function build(type, L, kind) {
+    const all = L.games.filter(g => g.sets && g.sets.length);
+    const gs = kind === 'set' ? all.filter(g => !g.single) : kind === 'single' ? all.filter(g => g.single).map(g => ({ ...g, single: false })) : all;
+    const cur = Math.max(...all.map(g => g.season));
     const idx = {}; gs.forEach(g => { idx[`${g.tour}|${g.round_code}|${g.player}|${g.opp}`] = g; });
+    const cg = all.filter(g => g.season === cur).reduce((m, g) => !m || String(g.date) > String(m.date) ? g : m, null), curTour = cg ? cg.tour : null;   // 이번 대회 = 이번 시즌 가장 최근 경기의 대회
     const E = {}, byName = {}, last = {}, lg = { fst: z(), after: {} };   // lg = 리그 전체 승부치기: 선공 승률 · 선공 초구 n점 뒤 후공 승률 (선공 쪽 기록으로 한 번씩)
     gs.slice().sort((a, b) => String(a.date).localeCompare(String(b.date))).forEach(g => {
-      const e = E[g.player] || (E[g.player] = { id: g.player, name: g.player_name, s: blank(), a: blank(), h2h: {} });
+      const e = E[g.player] || (E[g.player] = { id: g.player, name: g.player_name, s: blank(), a: blank(), h2h: {}, tourFb: z() });
       if (!last[g.player_name] || g.season >= last[g.player_name]) { byName[g.player_name] = g.player; last[g.player_name] = g.season; }
       const og = idx[`${g.tour}|${g.round_code}|${g.opp}|${g.player}`], T = g.target || Math.max(g.sw, g.sl), xs = g.season === cur ? [e.s, e.a] : [e.a];
       const hx = e.h2h[g.opp] || (e.h2h[g.opp] = { s: { w: 0, sw: 0, n: 0 }, a: { w: 0, sw: 0, n: 0 } });
@@ -28,32 +34,39 @@
       xs.forEach(x => { add(x.game, g.win); if (g.ball === 'ㅎ' || g.ball === 'ㄴ') { add(x.bank, g.ball === 'ㅎ'); add(g.ball === 'ㅎ' ? x.wh : x.ye, g.win); } });
       e.a.recent.push(g); if (g.season === cur) e.s.recent.push(g);
       // 승부치기 초구: 내가 선공 = 초구 성공률 · 초성/초실 승률, 후공 = 상대 초구(상대 쪽 기록) 성공/실패 뒤 승률
+      //  일반 초구 성공률 · 다득률 · 에버에도 승부치기 초구를 넣는다 (초성 · 초실 · 초3+ 승률, 스코어별 초구는 세트만)
       if (g.tiebreak) { const t0 = g.tiebreak, ofb = og && og.tiebreak ? og.tiebreak.first_ball : null;
-        xs.forEach(x => { if (t0.first && t0.first_ball != null) { add(x.tfb, t0.first_ball > 0); add(t0.first_ball > 0 ? x.tfbOk : x.tfbMiss, t0.win); } if (!t0.first && ofb != null) add(ofb > 0 ? x.tofbOk : x.tofbMiss, t0.win); }); }
+        xs.forEach(x => { if (t0.first && t0.first_ball != null) { const r = t0.first_ball; add(x.tfb, r > 0); add(r > 0 ? x.tfbOk : x.tfbMiss, t0.win);
+          x.fbN++; x.fbP += r; if (r >= 2) x.fbM++; add(x.fb, r > 0); if (x === e.a && g.tour === curTour) add(e.tourFb, r > 0); }
+          if (!t0.first && ofb != null) add(ofb > 0 ? x.tofbOk : x.tofbMiss, t0.win); }); }
       if (g.tiebreak) { xs.forEach(x => tbAdd(x.tb, g)); const t = g.tiebreak; if (t.first) { add(lg.fst, t.win); if (t.first_ball != null) addK(lg.after, Math.min(t.first_ball, 5), !t.win); } }
       let a = 0, b = 0, prev = null, sq = '';   // sq = 앞 세트 결과 순서 ('패승' = 1세트 패 · 2세트 승)
+      const setG = !g.single, old = wcOld(g);   // setG = 세트 항목에 넣는 경기 (합 보기의 단판은 빼고)
       g.sets.forEach((s, i) => {
         const sk = `${a}:${b}`, tk = prev ? `${prev}>${sk}` : null, sq0 = sq; prev = sk; s.win ? a++ : b++; sq += s.win ? '승' : '패';
         const os = og && og.sets[i];
         xs.forEach(x => {
-          add(x.set, s.win); addK(x.st, `${T}|${sk}`, s.win); if (tk) addK(x.tr, `${T}|${tk}`, s.win);
+          if (setG) { if (!old) add(x.set, s.win); addK(x.st, `${T}|${sk}`, s.win); if (tk) addK(x.tr, `${T}|${tk}`, s.win);
           if (sq0) addX(x.sq, `${T}|${sq0}`, s); if (sq.length > 1) addK(x.gsq, `${T}|${sq}`, g.win); addK(x.no, s.no, s.win);   // 세트 결과 순서별: 다음 세트 승패 · 초구 / 경기 승패
-          addK(x.gs, `${T}|${a}:${b}`, g.win); addK(x.gtr, `${T}|${sk}>${a}:${b}`, g.win);
+          addK(x.gs, `${T}|${a}:${b}`, g.win); addK(x.gtr, `${T}|${sk}>${a}:${b}`, g.win); }
           x.pts += s.pts || 0; x.inn += s.inn || 0;
-          if (s.p1 != null && s.inn) { const h = s.p1 + (s.p2 || 0); x.sh += h; x.sa += h + s.inn - (s.win ? 1 : 0); }   // 일반 세트 공격 성공률 (승부치기 성공률과 비교)
+          if (s.p1 != null && s.inn) { const h = s.p1 + (s.p2 || 0); x.sh += h; x.sa += h + s.inn - (s.win && setG && !old ? 1 : 0); }   // 일반 세트 공격 성공률 (승부치기 성공률과 비교). 홈피처럼 단판 · 옛 WC 조별 세트는 마지막 이닝도 시도로
           if (s.first === true) add(x.fst, s.win); else if (s.first === false) add(x.snd, s.win);
+          if (s.first && s.first_ball != null && x === e.a && g.tour === curTour) add(e.tourFb, s.first_ball > 0);   // 이번 대회 초구
           if (s.first && s.first_ball != null) { const r = s.first_ball; x.fbN++; x.fbP += r; if (r >= 2) x.fbM++; add(x.fb, r > 0); addK(x.fbSt, sk, r > 0); add(r > 0 ? x.fbOk : x.fbMiss, s.win); if (r >= 3) add(x.fb3, s.win); }
           if (s.first === false && os && os.first_ball != null) { add(os.first_ball > 0 ? x.ofbOk : x.ofbMiss, s.win); if (os.first_ball >= 3) add(x.al3, s.win); }
-          if (s.lf === 0) add(x.tie, s.win); else if (s.lf === 1) add(x.keep, s.win); else if (s.lf === -1) add(x.back, s.win);
-          if (s.cl) add(x.cl, s.win);
+          if (setG) { if (s.lf === 0) add(x.tie, s.win); else if (s.lf === 1) add(x.keep, s.win); else if (s.lf === -1) add(x.back, s.win);
+          if (s.cl) add(x.cl, s.win); }
         });
       });
     });
     return { type, cur, E, byName, pool: Object.values(E), lg };
   }
   // 불러오기: 다 받으면 then (기록지가 다시 그린다)
-  const load = type => C[type] ? Promise.resolve(C[type]) : P[type] || (P[type] = (typeof league === 'function' ? league(type) : Promise.reject()).then(L => (C[type] = build(type, L))).catch(() => { P[type] = null; return null; }));
-  const get = type => C[type] || null;
+  //  집계는 종목 · 보기(합 · 세 · 단)마다 따로 (kind = 기록지가 setKind 로 정한 보기)
+  const load = type => { const k = type + '|' + kind, kd = kind; return C[k] ? Promise.resolve(C[k]) : P[k] || (P[k] = (typeof league === 'function' ? league(type) : Promise.reject()).then(L => (C[k] = build(type, L, kd))).catch(() => { P[k] = null; return null; })); };
+  const get = type => C[type + '|' + kind] || null;
+  const setKind = k => { kind = k === 'set' || k === 'single' ? k : 'sum'; };
   const who = (D, name) => { const id = D && D.byName[name]; return id ? D.E[id] : null; };
 
   // ── 선수 칸 브리핑 (팀 칩 자리): 경기 승-패 · 세트 승률 · 에버 · 흰공 · 노란공 · 뱅킹 승률 (이번 시즌 값(순위), 말풍선 = 시즌 · 통산 값과 순위) ──
@@ -125,7 +138,8 @@
     const pk = seq && seq.length > 1 ? `${T}|${seq}` : '';
     const fbX = x => x && x.fbN ? { w: x.fbH, n: x.fbN } : null;
     const pathChip = pk ? U.xtChip(seqH(seq), fbX(me.s.sq[pk]), fbX(me.a.sq[pk]), ny, rk2(D, me, x => rt(fbX(x.sq[pk])), x => x.sq[pk] ? x.sq[pk].fbN : 0)).replace('<span class="ti xt', '<span class="ti xt fbp') : '';
-    return U.grp([c('초구 성공률', 'fb'), scChip, pathChip,
+    const fbChip = U.xtChip('초구 성공률', me.s.fb, me.a.fb, ny, rk2(D, me, x => rt(x.fb), x => cn(x.fb), FB_MIN), '', { lab: '대회', x: me.tourFb });
+    return U.grp([fbChip, scChip, pathChip,
       `<span class="ti xt${ny ? ' ny' : ''}"><small>초구 에버</small><b>${U.xtVal(avgV(me.s), avgV(me.a), avgR)}</b><i>${me.s.fbN} / ${me.a.fbN}회</i></span>`,
       U.xtChip('초구 다득률', multi(me.s), multi(me.a), ny, rk2(D, me, x => rt(multi(x)), x => x.fbN, FB_MIN))], 'gfb', 'gfb' + p)
       + U.grp([c('초성 승률', 'fbOk'), c('초실 승률', 'fbMiss'), c('초3+ 승률', 'fb3'), c('선공 세트 승률', 'fst')], 'gwr', 'gwr' + p);
@@ -185,5 +199,5 @@
     const lab = role === 'first' ? '선공' : role === 'second' ? '후공' : '';
     return U.xtHead(`승부치기${lab ? ' ' + lab : ''} ${esc(me.name)} <small>${S2.n} / ${A.n}회 · 리그 통산 선공 승률 ${D.lg.fst.n ? pct(D.lg.fst.w / D.lg.fst.n) : '–'}</small>`) + ch.join('');
   }
-  window.IndSheet = { load, get, brief, flow, state, bankInfo, firstInfo, secondInfo, timing, tbInfo };
+  window.IndSheet = { setKind, load, get, brief, flow, state, bankInfo, firstInfo, secondInfo, timing, tbInfo };
 })();

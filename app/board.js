@@ -16,7 +16,7 @@
     return false;
   }
   // 개인투어 · 팀리그 버튼을 따로 둔다 (지금 보는 탭에 맞춰 바뀜)
-  const TABS_I = [['sched', '📅 일정'], ['points', '포인트'], ['prize', '상금'], ['top', '[웰컴]톱랭킹'], ['irec', '세부'], ['games', '🔎 [경기 ]결과']];
+  const TABS_I = [['sched', '📅 일정'], ['points', '포인트'], ['prize', '상금'], ['top', '[웰컴]톱랭킹'], ['best', '베스트[게임]'], ['irec', '세부'], ['games', '🔎 [경기 ]결과']];
   const TABS_T = [['tsched', '📅 일정'], ['trank', '팀'], ['tplayer', '선수'], ['tperfect', '퍼펙트큐'], ['tgames', '🔎 [경기 ]결과'], ['tqa', '🔍 [리그 ]검색']];
   const isTeamApp = () => document.body.classList.contains('teammode');
   const tabsNow = () => isTeamApp() ? TABS_T : TABS_I;
@@ -46,7 +46,7 @@
 #board .btabs button.on { border-color: var(--accent); }
 #board .btabs button.on, #board .bseg button.on { background: var(--accent); color: #fff; }
 @media (max-width: 1000px) { #board .bcols.many td.v small { display: none; } }
-#board .wtop { display: grid; grid-template-columns: minmax(0, 1fr) 180px 220px; gap: 8px; height: calc(100% - 26px); min-height: 0; } #board .wtop .bcol { min-height: 0; }
+#board .wtop { display: grid; grid-template-columns: minmax(0, 1fr) 180px 240px; gap: 8px; height: calc(100% - 26px); min-height: 0; } #board .wtop .bcol { min-height: 0; }
 #board .wseg { margin-left: auto; } #board .wseg button { padding: 2px 9px; font-size: 12px; }
 #board table.wgrid td.wc { text-align: center; padding: 3px 6px; white-space: nowrap; line-height: 1.25; } #board table.wgrid td.wc small { display: block; font-size: 10.5px; color: var(--sub); } #board table.wgrid td.wc small b { color: var(--ink); } #board table.wgrid td.wq { font-weight: 800; position: sticky; left: 0; background: var(--panel); white-space: nowrap; } #board table.wgrid td.dim { opacity: .3; }
 #board .rrgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr)); gap: 8px; } #board .rrb .bscr { overflow-x: auto; } #board .rrt { width: 100%; } #board .rrt td.rrc { text-align: center; padding: 2px 4px; line-height: 1.2; white-space: nowrap; } #board .rrt td.rrc b { display: block; font-size: 12.5px; } #board .rrt td.rrc small { display: block; font-size: 10px; color: var(--sub); } #board .rrt td.dim { opacity: .3; }
@@ -54,6 +54,8 @@
 #board .pfw.two { grid-template-columns: 340px minmax(0, 1fr); } #board .pf2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; min-height: 0; } #board .pf2 .bcol { min-height: 0; } #board .tday { margin-bottom: 10px; } #board .tday h4 { margin: 0 0 6px; font-size: 14px; } #board .tday h4 small { color: var(--sub); font-weight: 500; font-size: 11.5px; margin-left: 6px; } #board .tdcs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; } #board .tdc { border: 1px solid #ffd60a; border-radius: 8px; padding: 4px 4px; min-width: 0; cursor: pointer; background: color-mix(in srgb, #ffd60a 6%, transparent); } #board .tdc:hover { background: color-mix(in srgb, #ffd60a 14%, transparent); } #board .tdh { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 4px; font-weight: 800; font-size: 13px; white-space: nowrap; } .tdh .l, .tdh .r { overflow: hidden; text-overflow: clip; }   /* 한 줄에 다섯 경기 */ #board .tdh .l { text-align: right; } #board .tdh .c { text-align: center; white-space: nowrap; } #board .tdh .c small { display: block; font-size: 10.5px; color: var(--sub); font-weight: 500; } #board .tdh .tdt { color: #ffd60a; }   /* 일정: 오늘 경기 카드 */ #board .pfside table { table-layout: fixed; } #board .pfside td.l { overflow: hidden; text-overflow: ellipsis; } #board .pfside td.v { width: 5.4em; padding-left: 0; } #board tr.pfz1 td { background: color-mix(in srgb, var(--chip) 55%, transparent); } #board tr.pfnew td { border-top: 2px solid var(--sub); } #board .pfss { margin-left: auto; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 2px 9px; font-size: 11.5px; font-weight: 500; color: var(--sub); } #board .pfss b { color: var(--ink); font-weight: 800; } #board .bcol h4:has(.pfss) { flex-wrap: wrap; }   /* 종목별: 시즌 구분 */ @media (max-width: 900px) { #board .pfw > .bcol table.gt td small { display: none; } #board .pfw > .bcol table.gt td, #board .pfw > .bcol table.gt th { padding: 2px 4px; font-size: 12px; } }   /* 절반 화면: 경기 목록은 종목 · 상대 선수 작은 글씨를 숨겨 한 화면 폭에 */ #board .tag.kd { display: inline-block; font-size: 10px; font-weight: 800; padding: 0 4px; border-radius: 4px; background: #7c3aed; color: #fff; vertical-align: 1px; } #board .kdp { color: var(--sub); font-weight: 500; } #board small.kdn { color: #a78bfa; font-weight: 700; font-size: 10.5px; } #board .pfl2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; min-height: 0; } #board .pfl2 .bcol { min-height: 0; } #board .pfl2 table.gt td small { display: none; } #board .pfl2 table.gt td, #board .pfl2 table.gt th { padding: 2px 4px; font-size: 12px; }   /* 2분할: 종목 · 상대 선수 작은 글씨는 줄인다 (한 줄 유지) */ @media (max-width: 1200px) { #board .pfl2 { grid-template-columns: 1fr; } } @media (max-width: 900px) { #board .pfw.two { grid-template-columns: 1fr; } }
 #board .pfw { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 8px; height: calc(100% - 66px); min-height: 0; } #board .pfw .bcol { min-height: 0; } #board tr.pfrow { cursor: pointer; } #board tr.pfrow:hover td { background: rgba(var(--heat), .08); } #board tr.pfrow.on td { background: rgba(var(--heat), .2); font-weight: 800; } #board table.gt td.plain { font-weight: 400; } #board table.gt td small { color: var(--sub); font-size: 10.5px; } @media (max-width: 900px) { #board .pfw { grid-template-columns: 1fr; height: auto; } #board .pfside .bscr { max-height: 170px; } }
 #board .wsub { display: block; font-size: 10.5px; color: var(--sub); }
+#board .wtop .awbar { width: 44px; } #board table.awrt { margin-bottom: 8px; } #board table.awrt th, #board table.awrt td { white-space: nowrap; } #board tr.awr { cursor: pointer; } #board tr.awr:hover td { background: rgba(var(--heat), .08); } #board tr.awr small { color: var(--sub); } #board tr.awd > td { padding: 0 0 4px 10px; } #board tr.awd table { width: 100%; background: var(--chip); border-radius: 6px; } #board tr.dim { opacity: .3; }   /* 웰컴톱랭킹: 수상 비율 */
+#board .btop { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 8px; height: calc(100% - 60px); min-height: 0; } #board .btop > .bcol { min-height: 0; } #board .bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px; overflow-y: auto; min-height: 0; align-content: start; } #board .bgrid .bcol { min-height: auto; } #board .bgrid .bscr { overflow: visible; flex: none; } #board .bcol h4 small { color: var(--sub); font-weight: 500; font-size: 11px; } @media (max-width: 900px) { #board .btop { grid-template-columns: 1fr; height: auto; } #board .bgrid { overflow: visible; } }   /* 베스트게임 */
 @media (max-width: 1100px) { #board .wtop { grid-template-columns: 1fr 1fr; height: auto; } #board .wtop .bcol:first-child { grid-column: 1 / -1; } }
 
 #board input.bq, #board select { font: inherit; font-size: 13px; background: var(--chip); color: var(--ink); border: 1px solid var(--line); border-radius: 7px; padding: 4px 8px; }
@@ -156,8 +158,8 @@
     { k: 'bank', l: '뱅크샷 득점 비율', v: x => x.o.bank, f: pct, c: x => `${x.o.bankN}개`, n: x => x.o.games, min: [10, 30], note: '득점 중 뱅크샷 득점 비율 (개인투어 자료에는 뱅크샷 시도 수가 없어 성공률 대신). 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'setRatio', l: '세트 득실비', v: x => x.oS.setRatio, f: f3, c: x => `${x.oS.setW}-${x.oS.setL}`, n: x => x.oS.games, min: [10, 30], note: '세트제 경기의 딴 세트 ÷ 내준 세트 (25점 단판 제외). 시즌 10경기 · 통산 30경기 이상 (세트제 경기 수).' },
     { k: 'ptRatio', l: '점수득실비', v: x => x.o.ptRatio, f: f3, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '득점 ÷ 실점. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
-    { k: 'clutch', l: '클러치 승률', v: x => x.o.setClutch, f: pct, c: x => `${x.o.lateW}/${x.o.lateN}`, n: x => x.o.lateN, min: [5, 15], note: '이닝과 상관없이 두 선수 모두 목표 점수까지 PBA 5점 · LPBA 4점 이내로 남은 채 이어진 세트의 승률. 시즌 5세트 · 통산 15세트 이상.' },
-    { k: 'dom', l: '게임 지배력', v: x => x.dom, f: f1, c: x => `${x.o.games}경기`, n: x => x.o.games, min: [10, 30], note: '리그 평균 = 100. 점수득실비 40% · 선제 리드 우위 30% · 리드 유지율 15% · 역전률 15%. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
+    { k: 'clutch', l: '클러치 승률', v: x => x.oS.setClutch, f: pct, c: x => `${x.oS.lateW}/${x.oS.lateN}`, n: x => x.oS.lateN, min: [5, 15], note: '이닝과 상관없이 두 선수 모두 목표 점수까지 PBA 5점 · LPBA 4점 이내로 남은 채 이어진 세트의 승률 (세트제 경기만). 시즌 5세트 · 통산 15세트 이상.' },
+    { k: 'dom', l: '게임 지배력', v: x => x.dom, f: f1, c: x => `${x.oS.games}경기`, n: x => x.oS.games, min: [10, 30], note: '리그 평균 = 100. 점수득실비 40% · 선제 리드 우위 30% · 리드 유지율 15% · 역전률 15%. 세트제 경기만, 시즌 10경기 · 통산 30경기 이상.' },
     { k: 'bankWin', l: '뱅킹 승률', v: x => x.o.bankWinRate, f: pct, c: x => `${x.o.bankWin}-${x.o.bankLose}`, n: x => x.o.bankWin + x.o.bankLose, min: [10, 30], note: '뱅킹(선공 결정)을 이긴 비율. 시즌 10경기 · 통산 30경기 이상 (세트제 + 25점 단판 모든 경기).' },
     { k: 'fb', l: '초구 성공률', v: x => x.o.fbSuccess, f: pct, c: x => `${x.o.fbN}번`, n: x => x.o.fbN, min: [10, 30], note: '초구로 득점한 비율. 괄호 = 초구 수. 시즌 10번 · 통산 30번 이상.' },
   ];
@@ -167,9 +169,9 @@
     if (iAggCache[type] && iAggCache[type].L === L) return iAggCache[type];
     const asSets = gs => gs.map(g => g.single ? { ...g, single: false } : g);   // calc 는 단판을 빼므로 단판도 세트처럼
     const mk = (gs, lg) => { const m = {}; gs.forEach(g => { (m[g.player] || (m[g.player] = { id: g.player, name: g.player_name, gs: [] })).gs.push(g); });
-      return Object.values(m).map(x => { const o = calc(asSets(x.gs)); return { id: x.id, name: x.name, o, oS: calc(x.gs), tours: new Set(x.gs.map(g => g.tour)), fin: x.gs.filter(isFinal).length, champ: x.gs.filter(g => isFinal(g) && g.win).length, dom: lg ? dominanceOf(o, lg) : null }; }); };
-    const seasons = [...new Set(L.games.map(g => g.season))].sort((a, b) => b - a), by = { all: mk(L.games, calc(asSets(L.games))) };   // 지배력 기준 리그 평균도 모든 경기
-    seasons.forEach(s => { const gs = L.games.filter(g => g.season === s); by['s' + s] = mk(gs, calc(asSets(gs))); });
+      return Object.values(m).map(x => { const o = calc(asSets(x.gs)), oS = calc(x.gs); return { id: x.id, name: x.name, o, oS, tours: new Set(x.gs.map(g => g.tour)), fin: x.gs.filter(isFinal).length, champ: x.gs.filter(g => isFinal(g) && g.win).length, dom: lg ? dominanceOf(oS, lg) : null }; }); };
+    const seasons = [...new Set(L.games.map(g => g.season))].sort((a, b) => b - a), by = { all: mk(L.games, calc(L.games)) };   // 지배력 기준 리그 평균도 세트제 경기 (calc 는 세트 기록을 세트제로만 센다)
+    seasons.forEach(s => { const gs = L.games.filter(g => g.season === s); by['s' + s] = mk(gs, calc(gs)); });
     return (iAggCache[type] = { L, seasons, by });
   }
   // 통산 보기 줄: 순위 | 이름(4글자까지, 넘으면 말풍선에 전체 이름) 두 칸 띄고 값
@@ -211,9 +213,39 @@
     const mostAll = ranked(Object.values(m), o => o.n), lastR = mostAll.length ? mostAll[mostAll.length - 1].r : 0;
     const mostTied = mostAll.length > 10 ? mostAll.filter(y => y.r === lastR) : [], mostRows = mostAll.filter(y => !mostTied.includes(y));
     const most = `<div class="bcol"><h4>최다 수상 TOP10</h4>${scrTbl('<th class="c">순위</th><th class="l">선수</th><th>수상</th>', mostRows.filter(({ x }) => hit(x.name)).map(({ x, r }) => `<tr><td class="rk c ${r === 1 ? 'r1' : ''}">${r}위</td><td class="l"><span class="nm" ${openP(x.id)}>${esc(x.name)}</span><small class="wsub">최고 ${f3(x.best)}</small></td><td class="v">${x.n}회</td></tr>`).join('') + (mostTied.length && !V.q ? `<tr><td class="rk c">${mostTied[0].r}위</td><td class="l" style="color:var(--sub)">${mostTied.length}명 동률</td><td class="v">${mostTied[0].x.n}회</td></tr>` : ''))}</div>`;
+    // 수상 비율: 에버 구간별(0.5 단위) · 달성 라운드별. 라운드 줄을 누르면 그 라운드 수상 기록이 펼쳐진다
+    const n = A.length, bar = (v, max) => `<span class="awbar"><i style="width:${(v / max * 100).toFixed(1)}%"></i></span>`;
+    const bins = {}; A.forEach(a => { const lo = Math.floor(a.avg / 0.5) * 0.5; bins[lo] = (bins[lo] || 0) + 1; });
+    const bmax = Math.max(...Object.values(bins));
+    const RORD = ['PPQ', 'PQ', 'Q', '128강', '64강', '조별리그', '32강', '16강', '8강', '4강', '결승'];
+    const rc = A.reduce((o, a) => { const r = rnd(a) || '기록 없음'; o[r] = (o[r] || 0) + 1; return o; }, {});
+    const rmax = Math.max(...Object.values(rc));
+    const rateRow = (l, c, max) => `<td class="l">${l}</td><td class="v">${c}회</td><td class="v"><b>${pct(c / n)}</b></td><td class="c">${bar(c, max)}</td>`;
+    const rate = `<div class="bcol"><h4>수상 비율<small>${n}회</small></h4><div class="bscr"><table class="awrt"><thead><tr><th class="l">에버 구간</th><th>수상</th><th>비율</th><th></th></tr></thead><tbody>
+      ${Object.keys(bins).map(Number).sort((a, b) => b - a).map(lo => `<tr>${rateRow(`${lo.toFixed(1)} ~ ${(lo + 0.5).toFixed(1)}`, bins[lo], bmax)}</tr>`).join('')}</tbody></table>
+      <table class="awrt"><thead><tr><th class="l">달성 라운드</th><th>수상</th><th>비율</th><th></th></tr></thead><tbody>${Object.keys(rc).sort((a, b) => (RORD.indexOf(a) + 99) % 99 - (RORD.indexOf(b) + 99) % 99).map(r => {
+        const won = A.filter(a => (rnd(a) || '기록 없음') === r).sort((x, y) => y.avg - x.avg);
+        return `<tr class="awr" data-awr>${rateRow(`${esc(r)} <small>▾</small>`, rc[r], rmax)}</tr><tr class="awd" hidden><td colspan="4"><table>${won.map(a => `<tr${hit(a.player_name) ? '' : ' class="dim"'}><td class="l"><span class="nm" ${openP(a.player)}>${esc(a.player_name)}</span><small class="wsub">${seasonLabel(a.season)} ${esc(tourShort(a.seq))}${a.opp_name ? ` vs ${esc(a.opp_name)}` : ''}</small></td><td class="v">${f3(a.avg)}</td></tr>`).join('')}</table></td></tr>`;
+      }).join('')}</tbody></table></div></div>`;
+    return `<div class="wtop">${grid}${most}${rate}</div><div class="note">표: 그 대회 공식 웰컴톱랭킹 수상자 · 에버 · 달성 라운드. 수상 비율의 구간은 0.5 단위 (예: 2.5 ~ 3.0 = 2.500 이상 3.000 미만), 라운드 줄을 누르면 수상 기록. pbatour.org 공식 수상 기록 기준.</div>`;
+  }
+  // ── 베스트게임: 최고 에버 TOP10 · 라운드별 베스트 게임 TOP5 (통산 | 시즌별) ──
+  function bestTab(B, L, A) {
+    const hit = n => !V.q || nameHit(n, V.q);
+    const seasons = [...new Set(L.games.map(g => g.season))].sort((a, b) => b - a);
+    if (V.bgS !== 'all' && !seasons.includes(V.bgS)) V.bgS = 'all';
+    const gs = L.games.filter(g => isPlayed(g) && (V.bgS === 'all' || g.season === V.bgS));
     const awarded = new Set(A.map(a => a.pst + '|' + a.player));
-    const best = `<div class="bcol"><h4>역대 최고 에버 TOP10</h4>${scrTbl('<th class="c">순위</th><th class="l">선수</th><th>에버</th>', ranked(L.games.filter(isPlayed), g => g.avg).filter(({ x }) => hit(x.player_name)).map(({ x: g, r }) => `<tr><td class="rk c ${r === 1 ? 'r1' : ''}">${r}위</td><td class="l"><span class="nm" ${openP(g.player)}>${esc(g.player_name)}</span>${awarded.has(g.pst + '|' + g.player) ? '<span class="tagw">수상</span>' : ''}<small class="wsub">${seasonLabel(g.season)} ${esc(tourShort(g.seq))} ${esc(roundName(g))}${g.single ? ' · 25점 단판' : ''}</small></td><td class="v">${f3(g.avg)}</td></tr>`).join(''))}</div>`;
-    return `<div class="wtop">${grid}${most}${best}</div><div class="note">표: 그 대회 공식 웰컴톱랭킹 수상자 · 에버 · 달성 라운드. 역대 최고 에버는 공식 웰컴톱랭킹처럼 25점 단판까지 모든 1:1 경기 기준이고(기권 제외), <b style="color:#ffd60a">수상</b> = 공식 웰컴톱랭킹.</div>`;
+    // 같은 에버는 같은 순위 (TOP n 안까지)
+    const ranked = (list, top) => { const s = list.slice().sort((a, b) => b.avg - a.avg); return s.map(x => ({ x: x, r: s.findIndex(y => y.avg === x.avg) + 1 })).filter(y => y.r <= top); };
+    const row = ({ x: g, r }, withRound) => `<tr${hit(g.player_name) ? '' : ' class="dim"'}><td class="rk c ${r === 1 ? 'r1' : ''}">${r}위</td><td class="l"><span class="nm" ${openP(g.player)}>${esc(g.player_name)}</span>${awarded.has(g.pst + '|' + g.player) ? '<span class="tagw">수상</span>' : ''}<small class="wsub">${V.bgS === 'all' ? seasonLabel(g.season) + ' ' : ''}${esc(tourShort(g.seq))}${withRound ? ' ' + esc(roundName(g)) : ''}${g.opp_name ? ` vs ${esc(g.opp_name)}` : ''}${g.single ? ' · 단판' : ''}</small></td><td class="v">${f3(g.avg)}</td></tr>`;
+    const head = '<th class="c">순위</th><th class="l">선수</th><th>에버</th>';
+    const seg = `<span class="bseg wseg"><button data-bgs="all" class="${V.bgS === 'all' ? 'on' : ''}">통산</button>${seasons.map(s => `<button data-bgs="${s}" class="${V.bgS === s ? 'on' : ''}">${seasonLabel(s)}</button>`).join('')}</span>`;
+    const top = `<div class="bcol"><h4>최고 에버 TOP10</h4>${scrTbl(head, ranked(gs, 10).map(y => row(y, true)).join(''))}</div>`;
+    const ORDER = ['결승', '4강', '8강', '16강', '32강', '조별리그', '64강', '128강', 'Q', 'PQ', 'PPQ'];
+    const rounds = ORDER.filter(r => gs.some(g => roundName(g) === r));
+    const byR = `<div class="bgrid">${rounds.map(r => `<div class="bcol"><h4>${esc(r)}<small>${gs.filter(g => roundName(g) === r).length.toLocaleString()}경기</small></h4>${scrTbl(head, ranked(gs.filter(g => roundName(g) === r), 5).map(y => row(y, false)).join(''))}</div>`).join('')}</div>`;
+    return `<div class="bhead" style="padding:0 0 8px;border:0"><b style="font-size:13px">라운드별 베스트 게임</b>${seg}</div><div class="btop">${top}${byR}</div><div class="note">한 경기 에버 순위. 25점 단판까지 모든 1:1 경기 기준이고(기권 제외), 라운드별은 TOP5. <b style="color:#ffd60a">수상</b> = 공식 웰컴톱랭킹.</div>`;
   }
   const setsLine = g => (g.sets || []).map(s => `${s.pts}:${s.opp_pts ?? ''}`).join(' ');
   function gameTip(g) {
@@ -489,7 +521,7 @@
       body.innerHTML = V.tab === 'tsched' ? tSchedTab(X) : V.tab === 'trank' ? tRankTab(X) : V.tab === 'tplayer' ? tPlayerTab(X) : V.tab === 'tperfect' ? tPerfectTab(X) : tGamesTab(X);
       return;
     }
-    const need = V.tab === 'top' || V.tab === 'games';
+    const need = V.tab === 'top' || V.tab === 'best' || V.tab === 'games';
     if ((need && !leagueCache[V.type]) || !boards[V.type]) body.innerHTML = '<div class="empty">자료를 불러오는 중…</div>';
     const B = await getBoard(V.type);
     if (my !== renderNo) return;
@@ -499,8 +531,8 @@
     if (V.tab === 'sched') { body.innerHTML = schedTab(B); return; }
     if (V.tab === 'irec') { if (!leagueCache[V.type]) body.innerHTML = '<div class="empty">자료를 불러오는 중…</div>'; const L2 = await league(V.type); if (my !== renderNo) return; body.innerHTML = irecTab(B, L2); return; }
     const L = await league(V.type); if (my !== renderNo) return;
-    const Aw = V.tab === 'top' ? await (awardsCache[V.type] || (awardsCache[V.type] = api('/api/awards?type=' + encodeURIComponent(V.type)))) : null; if (my !== renderNo) return;
-    body.innerHTML = V.tab === 'top' ? topTab(B, L, Aw) : gamesTab(B, L);
+    const Aw = V.tab === 'top' || V.tab === 'best' ? await (awardsCache[V.type] || (awardsCache[V.type] = api('/api/awards?type=' + encodeURIComponent(V.type)))) : null; if (my !== renderNo) return;
+    body.innerHTML = V.tab === 'top' ? topTab(B, L, Aw) : V.tab === 'best' ? bestTab(B, L, Aw) : gamesTab(B, L);
   }
   function render() {
     if (!isGamesTab(V.tab)) lastRank[isTeamApp() ? 't' : 'i'] = V.tab;
@@ -524,6 +556,8 @@
     const pfb = e.target.closest('[data-pfb]'); if (pfb) { V.pfBy = pfb.dataset.pfb; V.pfSel = null; renderBody(); return; }
     const pfs = e.target.closest('[data-pfs]'); if (pfs) { V.pfSel = pfs.dataset.pfs || null; renderBody(); return; }
     const trk = e.target.closest('[data-trk]'); if (trk) { V.tRk = trk.dataset.trk; renderBody(); return; }
+    const bgs = e.target.closest('[data-bgs]'); if (bgs) { V.bgS = bgs.dataset.bgs === 'all' ? 'all' : +bgs.dataset.bgs; renderBody(); return; }
+    const awr = e.target.closest('[data-awr]'); if (awr) { const d = awr.nextElementSibling; d.hidden = !d.hidden; return; }
     const wo = e.target.closest('[data-wo]'); if (wo) { V.topOld = wo.dataset.wo === 'old'; renderBody(); return; }
     // 리버스 스윕 보기(전체 · 시즌별 · 팀별): 다시 그리지 않고 그 카드 안에서 표만 바꾼다
     const rsv = e.target.closest("[data-rsv]");
