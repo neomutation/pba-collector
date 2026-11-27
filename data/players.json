@@ -32817,13 +32817,13 @@
     "birth": "1977-08-06",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017107_S_20260704192517.jpg#1",
     "stats": {
-      "matches": 173,
-      "innings": 5072,
-      "avg": 1.51,
+      "matches": 174,
+      "innings": 5087,
+      "avg": 1.513,
       "best_avg": 3.214,
       "hr": 15,
-      "p1": 6029,
-      "p2": 821,
+      "p1": 6058,
+      "p2": 826,
       "bank": 21.4,
       "long": 8.3,
       "success": 59
@@ -41713,16 +41713,16 @@
     "birth": "1973-09-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0022429_S_20260704193640.jpg#1",
     "stats": {
-      "matches": 81,
-      "innings": 2400,
-      "avg": 1.565,
+      "matches": 82,
+      "innings": 2416,
+      "avg": 1.574,
       "best_avg": 3.214,
       "hr": 14,
-      "p1": 2857,
-      "p2": 454,
-      "bank": 24.1,
-      "long": 8.3,
-      "success": 59.8
+      "p1": 2900,
+      "p2": 456,
+      "bank": 23.9,
+      "long": 8.4,
+      "success": 60
     },
     "tours": [
       {
@@ -43023,13 +43023,13 @@
     "birth": "1983-02-10",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0017118_S_20260704192547.jpg#1",
     "stats": {
-      "matches": 195,
-      "innings": 5844,
+      "matches": 196,
+      "innings": 5864,
       "avg": 1.531,
       "best_avg": 3.462,
       "hr": 15,
-      "p1": 6758,
-      "p2": 1100,
+      "p1": 6780,
+      "p2": 1104,
       "bank": 24.6,
       "long": 8.9,
       "success": 58.9
@@ -50361,15 +50361,15 @@
     "birth": "2007-10-18",
     "photo": "https://xpbao.billiboard.co.kr/upload/players/PBA/small/M0021129_S_2026103123389.jpg#1",
     "stats": {
-      "matches": 107,
-      "innings": 3323,
-      "avg": 1.615,
+      "matches": 108,
+      "innings": 3344,
+      "avg": 1.618,
       "best_avg": 3.462,
       "hr": 14,
-      "p1": 4216,
-      "p2": 586,
+      "p1": 4251,
+      "p2": 591,
       "bank": 21.8,
-      "long": 9.8,
+      "long": 9.9,
       "success": 61.1
     },
     "tours": [
